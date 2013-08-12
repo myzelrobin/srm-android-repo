@@ -8,16 +8,42 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".ActivityMain$FragmentInActivityMain" >
 
-    <TextView 
-	    android:id="@+id/textview_in_fragment"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:gravity="center"
-	    android:text="@string/hello_world" />
+    <TextView
+        android:id="@+id/textview_in_fragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="@string/hello_world" />
+
+    <TextView
+        android:id="@+id/textview_in_fragment2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textview_in_fragment"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:text="@string/hello_world" />
+
+    <Button
+        android:id="@+id/button_in_fragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView_in_fragment2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="71dp"
+        android:text="Test" />
 
 </RelativeLayout>
 
-
+<!-- some attributes
+android:layout_below="@id/name"
+android:layout_alignParentLeft="true"
+android:layout_alignParentRight="true"
+android:layout_toLeftOf="@+id/times"
+ -->
     
 <!-- original
 

@@ -215,6 +215,10 @@ public class ActivityMain extends Activity {
             TextView textview_in_fragment = (TextView) rootView.findViewById(R.id.textview_in_fragment);
             textview_in_fragment.setText(fragment_title);
             getActivity().setTitle(fragment_title);
+            
+            String fragment_title2 = getResources().getStringArray(R.array.drawer_items)[i+1];
+            TextView textview_in_fragment2 = (TextView) rootView.findViewById(R.id.textview_in_fragment2);
+            textview_in_fragment2.setText(fragment_title2);
             return rootView;
         }
     }
