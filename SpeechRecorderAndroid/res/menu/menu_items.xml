@@ -1,0 +1,82 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <!-- Buttons shown under the right button in Actionbar -->
+    <group 
+        android:id="@+id/bgroup_settings"    
+        android:visible="false"
+        android:orderInCategory="100" >
+    
+	    <item
+	        android:id="@+id/button_settings"
+	        android:showAsAction="never"
+	        android:title="@string/button_settings" />
+	    
+	    <item
+	        android:id="@+id/button_exit"
+	        android:showAsAction="never"
+	        android:title="@string/button_exit" />
+    
+    </group>
+    
+    
+    <!-- Buttons in Actionbar for Fragments, not shown when ActivityMain is created,
+            only shown when the Fragment is created -->
+    
+    <!-- Fragment "Sessions" -->
+    <!-- Buttons in Actionbar for Fragment "Sessions"-->
+    <group 
+        android:id="@+id/bgroup_sessions"
+        android:visible="false" >
+    
+        <item
+            android:id="@+id/button_add_sessions"
+            android:showAsAction="always"
+            android:title="@string/button_add" />
+        
+        <item
+	        android:id="@+id/button_search_sessions"
+	        android:showAsAction="always"
+	        android:title="@string/button_search" />
+    
+    </group>
+
+</menu>
+
+<!-- 
+
+
+    <?xml version="1.0" encoding="utf-8"?>
+    <menu xmlns:android="http://schemas.android.com/apk/res/android">
+        <item android:id="@[+][package:]id/resource_name"
+              android:title="string"
+              android:titleCondensed="string"
+              android:icon="@[package:]drawable/drawable_resource_name"
+              android:onClick="method name"
+              android:showAsAction=["ifRoom" | "never" | "withText" | "always" | "collapseActionView"]
+              android:actionLayout="@[package:]layout/layout_resource_name"
+              android:actionViewClass="class name"
+              android:actionProviderClass="class name"
+              android:alphabeticShortcut="string"
+              android:numericShortcut="string"
+              android:checkable=["true" | "false"]
+              android:visible=["true" | "false"]
+              android:enabled=["true" | "false"]
+              android:menuCategory=["container" | "system" | "secondary" | "alternative"]
+              android:orderInCategory="integer" />
+        <group android:id="@[+][package:]id/resource name"
+               android:checkableBehavior=["none" | "all" | "single"]
+               android:visible=["true" | "false"]
+               android:enabled=["true" | "false"]
+               android:menuCategory=["container" | "system" | "secondary" | "alternative"]
+               android:orderInCategory="integer" >
+            <item />
+        </group>
+        <item >
+            <menu>
+              <item />
+            </menu>
+        </item>
+    </menu>
+
+
+ -->
