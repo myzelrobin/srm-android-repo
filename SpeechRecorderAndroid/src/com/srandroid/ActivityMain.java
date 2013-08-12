@@ -138,7 +138,7 @@ public class ActivityMain extends Activity {
         
         // here needs a method to show different buttons for different fragments
         //menu.findItem(R.id.button_search).setEnabled(!drawerOpen);
-        menu.setGroupVisible(R.id.bgroup_settings, !drawerOpen);
+        menu.setGroupVisible(R.id.bgroup_overflow, !drawerOpen);
         menu.setGroupVisible(R.id.bgroup_sessions, !drawerOpen);
         return super.onPrepareOptionsMenu(menu);
     }

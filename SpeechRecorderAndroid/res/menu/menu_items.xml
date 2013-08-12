@@ -2,7 +2,7 @@
 
     <!-- Buttons shown under the right button in Actionbar -->
     <group 
-        android:id="@+id/bgroup_settings"    
+        android:id="@+id/bgroup_overflow"    
         android:visible="false"
         android:orderInCategory="100" >
     
@@ -30,13 +30,21 @@
     
         <item
             android:id="@+id/button_add_sessions"
+            android:icon="@drawable/ic_button_add"
             android:showAsAction="always"
             android:title="@string/button_add" />
         
         <item
 	        android:id="@+id/button_search_sessions"
+	        android:icon="@drawable/ic_button_search"
 	        android:showAsAction="always"
 	        android:title="@string/button_search" />
+        
+        <item
+            android:id="@+id/button_download_sessions"
+            android:icon="@drawable/ic_button_download"
+            android:showAsAction="always"
+            android:title="@string/button_download" />
     
     </group>
 
