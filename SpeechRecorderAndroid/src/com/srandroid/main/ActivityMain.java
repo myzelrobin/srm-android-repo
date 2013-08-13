@@ -12,6 +12,7 @@ import android.app.FragmentManager;
 import android.content.res.Configuration;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -221,32 +222,26 @@ public class ActivityMain extends Activity {
         menu.setGroupVisible(R.id.bgroup_overflow, !drawerOpen);
         
         //show different buttons for different fragments
-        menu.setGroupVisible(getButtonGroupId(menu), !drawerOpen);
-        
-        return super.onPrepareOptionsMenu(menu);
-    }
-	
-	private int getButtonGroupId(Menu menu)
-	{
-		CharSequence title = getTitle();
+        CharSequence title = getTitle();
+        Log.w(this.getClass().getName(), "onPrepareOptionsMenu(): title = " + title);
 		int i = Arrays.asList(array_drawer_items).indexOf(title);
-		int bGroupId = 0;
 		switch(i)
 		{
 			case 0:
-				bGroupId = R.id.bgroup_sessions;
+				menu.setGroupVisible(R.id.bgroup_sessions, !drawerOpen);
 				break;
 			case 1:
-				bGroupId = R.id.bgroup_scripts;
+				menu.setGroupVisible(R.id.bgroup_scripts, !drawerOpen);
 				break;
 			case 2:
-				bGroupId = R.id.bgroup_speakers;
+				menu.setGroupVisible(R.id.bgroup_speakers, !drawerOpen);
 				break;
 			default:
 				break;
 		}
-		return bGroupId;
-	}
+        
+        return super.onPrepareOptionsMenu(menu);
+    }
 	
 	/**
 	 * Handles click events on app icon and menu items in actionbar
