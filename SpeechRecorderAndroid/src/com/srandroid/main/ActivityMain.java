@@ -118,15 +118,13 @@ public class ActivityMain extends Activity {
         
         
         // Pop up hint at the left side
-        // toastHint();
+        toastHint();
 	}
 	
 	@Override
     protected void onStart()
 	{
 		super.onStart();
-		// Pop up hint at the left side
-        toastHint();
 	}
 	
 	@Override
