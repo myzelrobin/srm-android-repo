@@ -101,20 +101,7 @@ public class ActivityMain extends Activity {
         drawer_items_toggle.onConfigurationChanged(newConfig);
     }
     
-	/**
-	 * Handles click events on drawer items
-	 * 
-	 */
-	private class DrawerItemClickListener implements ListView.OnItemClickListener
-	{
-		@Override
-		public void onItemClick(AdapterView<?> parent, View view, int position, long arg3) 
-		{
-			// TODO Auto-generated method stub
-			selectItem(position);
-		}
 
-	}
 
 	
 	/**
@@ -201,7 +188,20 @@ public class ActivityMain extends Activity {
 	    getActionBar().setTitle(activity_title);
 	}
 	
-	
+	/**
+	 * Listener handles click events on drawer items
+	 * 
+	 */
+	private class DrawerItemClickListener implements ListView.OnItemClickListener
+	{
+		@Override
+		public void onItemClick(AdapterView<?> parent, View view, int position, long arg3) 
+		{
+			// TODO Auto-generated method stub
+			selectItem(position);
+		}
+
+	}
 	/**
      * Fragment that appears in the "content_frame", shows a planet
      */
