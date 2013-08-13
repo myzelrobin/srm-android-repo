@@ -114,6 +114,9 @@ public class ActivityMain extends Activity {
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);
         
+        
+        
+        
         // Pop up hint at the left side
         toastHint();
 	}
