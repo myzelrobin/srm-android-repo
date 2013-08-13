@@ -38,20 +38,6 @@ public class ActivityMain extends Activity {
     private ListView listview_drawer_items;
     private ActionBarDrawerToggle drawer_items_toggle;
     
-    /**
-	 * 
-	 */
-	public ActivityMain() {
-		super();
-		this.setPresenter_main(new PresenterMain(this));
-	}
-    
-    /**
-	 * @return the presenter_main
-	 */
-	public PresenterMain getPresenter_main() {
-		return presenter_main;
-	}
 
 	/**
 	 * @param presenter_main the presenter_main to set
@@ -65,7 +51,7 @@ public class ActivityMain extends Activity {
 	protected void onCreate(Bundle savedInstanceState) 
 	{
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.layout_activity_main);
+		setContentView(R.layout.drawerlayout_in_activitymain);
 		
 		activity_title = drawer_items_title = getTitle();
 		
@@ -338,7 +324,7 @@ public class ActivityMain extends Activity {
         							ViewGroup container, 
         							Bundle savedInstanceState) 
         {
-            View rootView = inflater.inflate(R.layout.layout_fragement_in_activitymain, container, false);
+            View rootView = inflater.inflate(R.layout.layout_fragment_in_activitymain, container, false);
             int i = getArguments().getInt(ARG_FRAGMENT_NUMBER);
             String fragment_title = getResources().getStringArray(R.array.drawer_items)[i];
             TextView textview_in_fragment = (TextView) rootView.findViewById(R.id.textview_in_fragment);
