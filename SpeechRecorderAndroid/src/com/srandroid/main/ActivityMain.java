@@ -245,7 +245,7 @@ public class ActivityMain extends Activity {
     }
 	
 	/**
-	 * Handles click events on app icon and menu items in actionbar
+	 * Handles click events on app icon and menu items in actionbar and overflow
 	 */
 	@Override
     public boolean onOptionsItemSelected(MenuItem item) 
