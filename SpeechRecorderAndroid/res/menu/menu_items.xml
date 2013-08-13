@@ -29,7 +29,7 @@
         android:visible="false" >
     
         <item
-            android:id="@+id/button_add_sessions"
+            android:id="@+id/button_add_session"
             android:icon="@drawable/ic_button_add"
             android:showAsAction="always"
             android:title="@string/button_add" />

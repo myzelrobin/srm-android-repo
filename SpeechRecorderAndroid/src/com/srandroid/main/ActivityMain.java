@@ -224,7 +224,7 @@ public class ActivityMain extends Activity {
     }
 	
 	/**
-	 * Handles click events on app icon and menu items in action bar
+	 * Handles click events on app icon and menu items in actionbar
 	 */
 	@Override
     public boolean onOptionsItemSelected(MenuItem item) 
@@ -235,7 +235,17 @@ public class ActivityMain extends Activity {
         {
           return true;
         }
-        // Handle your other action bar items...
+        
+        // Handles other action bar items
+        switch(item.getItemId())
+        {
+        	case R.id.button_add_session:
+        		Toast.makeText(getApplicationContext(), "clicked add session", Toast.LENGTH_LONG * 3).show();
+        		break;
+        	default:
+        		break;
+        }
+        
 
         return super.onOptionsItemSelected(item);
     }
