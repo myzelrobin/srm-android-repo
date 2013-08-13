@@ -216,29 +216,30 @@ public class ActivityMain extends Activity {
     public boolean onPrepareOptionsMenu(Menu menu) 
 	{
         // If the navigation drawer is open, hide action items related to the content view
-        boolean drawerOpen = drawer_layout_activity_main.isDrawerOpen(listview_drawer_items);
+        boolean isDrawerOpen = drawer_layout_activity_main.isDrawerOpen(listview_drawer_items);
         
         // menu.findItem(R.id.button_search).setEnabled(!drawerOpen);
-        menu.setGroupVisible(R.id.bgroup_overflow, !drawerOpen);
+        menu.setGroupVisible(R.id.bgroup_overflow, !isDrawerOpen);
         
         //show different buttons for different fragments
-        CharSequence title = drawer_items_title;
-        Log.w(this.getClass().getName(), "onPrepareOptionsMenu(): title = " + drawer_items_title);
-		int i = Arrays.asList(array_drawer_items).indexOf(title);
-		switch(i)
+        CharSequence title = getActionBar().getTitle();
+        int index = Arrays.asList(array_drawer_items).indexOf(title);
+        Log.w(this.getClass().getName(), "onPrepareOptionsMenu: title =" + title + " index=" + index);
+		switch(index)
 		{
 			case 0:
-				menu.setGroupVisible(R.id.bgroup_sessions, !drawerOpen);
+				menu.setGroupVisible(R.id.bgroup_sessions, true);
 				break;
 			case 1:
-				menu.setGroupVisible(R.id.bgroup_scripts, !drawerOpen);
+				menu.setGroupVisible(R.id.bgroup_scripts, true);
 				break;
 			case 2:
-				menu.setGroupVisible(R.id.bgroup_speakers, !drawerOpen);
+				menu.setGroupVisible(R.id.bgroup_speakers, true);
 				break;
 			default:
 				break;
 		}
+        
         
         return super.onPrepareOptionsMenu(menu);
     }
