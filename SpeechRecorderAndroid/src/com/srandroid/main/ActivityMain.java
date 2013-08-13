@@ -11,6 +11,7 @@ import android.app.FragmentManager;
 import android.content.res.Configuration;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,6 +21,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class ActivityMain extends Activity {
@@ -112,6 +114,8 @@ public class ActivityMain extends Activity {
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);
         
+        // Pop up hint at the left side
+        toastHint();
 	}
 	
 	@Override
@@ -229,7 +233,21 @@ public class ActivityMain extends Activity {
 	}
 	
 	
-	
+	public void toastHint()
+	{
+		LayoutInflater inflater = getLayoutInflater();
+		View layout = inflater.inflate(R.layout.layout_toasthint_in_activitymain,
+		                               (ViewGroup) findViewById(R.id.linearlayout_toasthint));
+
+		TextView text = (TextView) layout.findViewById(R.id.text_toasthint);
+		text.setText("Swipe from here to right");
+
+		Toast toast = new Toast(getApplicationContext());
+		toast.setGravity(Gravity.CENTER_VERTICAL | Gravity.LEFT, 0, 0);
+		toast.setDuration(Toast.LENGTH_LONG * 3);
+		toast.setView(layout);
+		toast.show();
+	}
 	
 	
 	
