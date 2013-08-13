@@ -85,7 +85,46 @@ public class ActivityMain extends Activity {
         getActionBar().setHomeButtonEnabled(true);
         
 	}
+	@Override
+    protected void onStart()
+	{
+		
+	}
 	
+	@Override
+    protected void onRestart()
+    {
+		
+	}
+	
+	@Override
+    protected void onResume()
+    {
+		
+	}
+	
+	@Override
+    protected void onPause()
+    {
+		
+	}
+	
+	@Override
+    protected void onStop()
+    {
+		
+	}
+	
+	@Override
+    protected void onDestroy()
+    {
+		
+	}
+
+	
+	/**
+	 * 
+	 */
 	@Override
     protected void onPostCreate(Bundle savedInstanceState) 
 	{
@@ -93,11 +132,14 @@ public class ActivityMain extends Activity {
         // Sync the toggle state after onRestoreInstanceState has occurred.
         drawer_items_toggle.syncState();
     }
-
+	/**
+	 * 
+	 */
     @Override
     public void onConfigurationChanged(Configuration newConfig) 
     {
         super.onConfigurationChanged(newConfig);
+        // Updates the toggle when the device configuration changes while your activity is running
         drawer_items_toggle.onConfigurationChanged(newConfig);
     }
     
@@ -154,6 +196,17 @@ public class ActivityMain extends Activity {
     }
 	
 	/**
+	 * 
+	 * @param title
+	 */
+	@Override
+	public void setTitle(CharSequence title) 
+	{
+	    activity_title = title;
+	    getActionBar().setTitle(activity_title);
+	}
+	
+	/**
 	 * Swaps fragments in the content frame
 	 * @param position
 	 */
@@ -175,17 +228,6 @@ public class ActivityMain extends Activity {
 	    listview_drawer_items.setItemChecked(position, true);
 	    setTitle(array_drawer_items[position]);
 	    drawer_layout_activity_main.closeDrawer(listview_drawer_items);
-	}
-	
-	/**
-	 * 
-	 * @param title
-	 */
-	@Override
-	public void setTitle(CharSequence title) 
-	{
-	    activity_title = title;
-	    getActionBar().setTitle(activity_title);
 	}
 	
 	/**
