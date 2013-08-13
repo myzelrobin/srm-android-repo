@@ -47,6 +47,34 @@ public class ActivityMain extends Activity {
 		this.setPresenter_main(new PresenterMain(this));
 	}
     
+
+	/**
+	 * @return the presenter_main
+	 */
+	public PresenterMain getPresenter_main() {
+		return presenter_main;
+	}
+
+	/**
+	 * @param presenter_main the presenter_main to set
+	 */
+	public void setPresenter_main(PresenterMain presenter_main) {
+		this.presenter_main = presenter_main;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	// Creates View of this activity
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
@@ -108,19 +136,6 @@ public class ActivityMain extends Activity {
         toastHint();
 	}
 	
-	/**
-	 * @return the presenter_main
-	 */
-	public PresenterMain getPresenter_main() {
-		return presenter_main;
-	}
-
-	/**
-	 * @param presenter_main the presenter_main to set
-	 */
-	public void setPresenter_main(PresenterMain presenter_main) {
-		this.presenter_main = presenter_main;
-	}
 
 	@Override
     protected void onStart()
@@ -346,9 +361,6 @@ public class ActivityMain extends Activity {
             textview_in_fragment.setText(fragment_title);
             getActivity().setTitle(fragment_title);
             
-            String fragment_title2 = getResources().getStringArray(R.array.drawer_items)[i+1];
-            TextView textview_in_fragment2 = (TextView) rootView.findViewById(R.id.textview_in_fragment2);
-            textview_in_fragment2.setText(fragment_title2);
             return rootView;
         }
         
