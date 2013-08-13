@@ -1,5 +1,7 @@
 package com.srandroid.main;
 
+import java.util.Arrays;
+
 import com.srandroid.R;
 
 import android.os.Bundle;
@@ -78,8 +80,9 @@ public class ActivityMain extends Activity {
         listview_drawer_items.setAdapter(new ArrayAdapter<String>(this,
                 R.layout.layout_drawer_items, array_drawer_items));
         
+        int select_sessions = Arrays.asList(array_drawer_items).indexOf("sessions");
         // Set the list's click listener
-        listview_drawer_items.setOnItemClickListener(new DrawerItemClickListener(0));
+        listview_drawer_items.setOnItemClickListener(new DrawerItemClickListener(select_sessions));
         
         // Set the open&close listener in actionbar(swipe and click app icon)
         drawer_items_toggle = new ActionBarDrawerToggle(this,                         /* host Activity */
