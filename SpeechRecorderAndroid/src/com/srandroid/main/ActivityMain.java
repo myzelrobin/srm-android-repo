@@ -260,6 +260,7 @@ public class ActivityMain extends Activity {
         // Handles other action bar items
         switch(item.getItemId())
         {
+        	// actionbar buttons
         	case R.id.button_add_session:
         		Toast.makeText(getApplicationContext(), "clicked add session", Toast.LENGTH_LONG * 3).show();
         		break;
@@ -272,6 +273,27 @@ public class ActivityMain extends Activity {
         	case R.id.button_search_scripts:
         		Toast.makeText(getApplicationContext(), "clicked search scripts", Toast.LENGTH_LONG * 3).show();
         		break;
+        	case R.id.button_add_speaker:
+        		Toast.makeText(getApplicationContext(), "clicked add speaker", Toast.LENGTH_LONG * 3).show();
+        		break;
+        	case R.id.button_search_speakers:
+        		Toast.makeText(getApplicationContext(), "clicked search speakers", Toast.LENGTH_LONG * 3).show();
+        		break;
+        		
+        	// overflow buttons
+        	case R.id.button_set_microphone:
+        		Toast.makeText(getApplicationContext(), "clicked set microphone", Toast.LENGTH_LONG * 3).show();
+        		break;
+        	case R.id.button_set_recording_values:
+        		Toast.makeText(getApplicationContext(), "clicked set recording values", Toast.LENGTH_LONG * 3).show();
+        		break;
+        	case R.id.button_settings:
+        		Toast.makeText(getApplicationContext(), "clicked settings", Toast.LENGTH_LONG * 3).show();
+        		break;
+        	case R.id.button_exit:
+        		Toast.makeText(getApplicationContext(), "clicked exit, app exits", Toast.LENGTH_LONG * 3).show();
+        		break;
+        	
         	default:
         		break;
         }
