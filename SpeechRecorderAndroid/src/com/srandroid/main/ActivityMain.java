@@ -65,6 +65,11 @@ public class ActivityMain extends Activity {
 		
 		activity_title = drawer_items_title = getTitle();
 		
+		
+		
+		
+		
+		// Creates drawer
 		array_drawer_items = getResources().getStringArray(R.array.drawer_items);
         listview_drawer_items = (ListView) findViewById(R.id.listview_drawer_items);
         drawer_layout_activity_main = (DrawerLayout) findViewById(R.id.drawer_layout_activity_main);
@@ -72,8 +77,9 @@ public class ActivityMain extends Activity {
         // Set the adapter for the list view
         listview_drawer_items.setAdapter(new ArrayAdapter<String>(this,
                 R.layout.layout_drawer_items, array_drawer_items));
+        
         // Set the list's click listener
-        listview_drawer_items.setOnItemClickListener(new DrawerItemClickListener());
+        listview_drawer_items.setOnItemClickListener(new DrawerItemClickListener(0));
         
         // Set the open&close listener in actionbar(swipe and click app icon)
         drawer_items_toggle = new ActionBarDrawerToggle(this,                         /* host Activity */
@@ -227,9 +233,26 @@ public class ActivityMain extends Activity {
 	
 	
 	
-	
-	
-	
+	/**
+	 * Listener handles click events on drawer items
+	 * 
+	 */
+	private class DrawerItemClickListener implements ListView.OnItemClickListener
+	{
+		
+		public DrawerItemClickListener(int position) {
+			super();
+			selectItem(position);
+		}
+
+		@Override
+		public void onItemClick(AdapterView<?> parent, View view, int position, long arg3) 
+		{
+			// TODO Auto-generated method stub
+			selectItem(position);
+		}
+
+	}
 	
 	/**
 	 * Swaps fragments in the content frame
@@ -268,23 +291,6 @@ public class ActivityMain extends Activity {
 	
 	
 	
-	
-	
-	
-	/**
-	 * Listener handles click events on drawer items
-	 * 
-	 */
-	private class DrawerItemClickListener implements ListView.OnItemClickListener
-	{
-		@Override
-		public void onItemClick(AdapterView<?> parent, View view, int position, long arg3) 
-		{
-			// TODO Auto-generated method stub
-			selectItem(position);
-		}
-
-	}
 	/**
      * Fragment that appears in the "content_frame", shows a planet
      */

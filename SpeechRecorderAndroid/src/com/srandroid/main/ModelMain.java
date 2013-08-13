@@ -4,7 +4,7 @@
 package com.srandroid.main;
 
 /**
- * @author fanli
+ * Model for PresenterMain
  *
  */
 public class ModelMain {
