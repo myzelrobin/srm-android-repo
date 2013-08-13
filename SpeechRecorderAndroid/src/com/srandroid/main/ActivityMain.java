@@ -222,8 +222,8 @@ public class ActivityMain extends Activity {
         menu.setGroupVisible(R.id.bgroup_overflow, !drawerOpen);
         
         //show different buttons for different fragments
-        CharSequence title = getTitle();
-        Log.w(this.getClass().getName(), "onPrepareOptionsMenu(): title = " + title);
+        CharSequence title = drawer_items_title;
+        Log.w(this.getClass().getName(), "onPrepareOptionsMenu(): title = " + drawer_items_title);
 		int i = Arrays.asList(array_drawer_items).indexOf(title);
 		switch(i)
 		{
