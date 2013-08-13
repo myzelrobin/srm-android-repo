@@ -11,7 +11,7 @@ public class PresenterMain {
 
 	// View and Model
 	private ActivityMain activity_main;
-	private ModelMain model_main;
+	// private ModelMain model_main;
 	
 	/**
 	 * 
@@ -19,7 +19,6 @@ public class PresenterMain {
 	public PresenterMain(ActivityMain activity_main) {
 		// TODO Auto-generated constructor stub
 		this.setActivity_main(activity_main);
-		this.setModel_main(new ModelMain(this));
 	}
 
 	/**
@@ -34,20 +33,6 @@ public class PresenterMain {
 	 */
 	public void setActivity_main(ActivityMain activity_main) {
 		this.activity_main = activity_main;
-	}
-
-	/**
-	 * @return the model_main
-	 */
-	public ModelMain getModel_main() {
-		return model_main;
-	}
-
-	/**
-	 * @param model_main the model_main to set
-	 */
-	public void setModel_main(ModelMain model_main) {
-		this.model_main = model_main;
 	}
 
 }

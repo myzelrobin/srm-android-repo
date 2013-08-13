@@ -26,7 +26,6 @@ import android.widget.Toast;
 
 public class ActivityMain extends Activity {
 	
-	
 	// presenter
 	private PresenterMain presenter_main;
 	
@@ -40,12 +39,14 @@ public class ActivityMain extends Activity {
     
 
 	/**
-	 * @param presenter_main the presenter_main to set
+	 * 
 	 */
-	public void setPresenter_main(PresenterMain presenter_main) {
-		this.presenter_main = presenter_main;
+	public ActivityMain() {
+		super();
+		// TODO Auto-generated constructor stub
+		this.setPresenter_main(new PresenterMain(this));
 	}
-
+    
 	// Creates View of this activity
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
@@ -107,6 +108,20 @@ public class ActivityMain extends Activity {
         toastHint();
 	}
 	
+	/**
+	 * @return the presenter_main
+	 */
+	public PresenterMain getPresenter_main() {
+		return presenter_main;
+	}
+
+	/**
+	 * @param presenter_main the presenter_main to set
+	 */
+	public void setPresenter_main(PresenterMain presenter_main) {
+		this.presenter_main = presenter_main;
+	}
+
 	@Override
     protected void onStart()
 	{
