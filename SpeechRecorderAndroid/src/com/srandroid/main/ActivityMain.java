@@ -1,12 +1,6 @@
 package com.srandroid.main;
 
 import com.srandroid.R;
-import com.srandroid.R.array;
-import com.srandroid.R.drawable;
-import com.srandroid.R.id;
-import com.srandroid.R.layout;
-import com.srandroid.R.menu;
-import com.srandroid.R.string;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -28,15 +22,41 @@ import android.widget.TextView;
 
 public class ActivityMain extends Activity {
 	
+	
+	// presenter
+	private PresenterMain presenter_main;
+	
 	// fields for Drawer
-	private CharSequence activity_title, drawer_items_title;
+	private CharSequence activity_title;
+	private CharSequence drawer_items_title;
 	private String[] array_drawer_items;
     private DrawerLayout drawer_layout_activity_main;
     private ListView listview_drawer_items;
     private ActionBarDrawerToggle drawer_items_toggle;
-
     
-    // Creates View of this activity
+    /**
+	 * 
+	 */
+	public ActivityMain() {
+		super();
+		this.setPresenter_main(new PresenterMain(this));
+	}
+    
+    /**
+	 * @return the presenter_main
+	 */
+	public PresenterMain getPresenter_main() {
+		return presenter_main;
+	}
+
+	/**
+	 * @param presenter_main the presenter_main to set
+	 */
+	public void setPresenter_main(PresenterMain presenter_main) {
+		this.presenter_main = presenter_main;
+	}
+
+	// Creates View of this activity
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
 	{
@@ -62,7 +82,6 @@ public class ActivityMain extends Activity {
     													R.string.drawer_items_open,    /* "open drawer" description */
     													R.string.drawer_items_close)   /* "close drawer" description */
         {
-
             /** Called when a drawer has settled in a completely closed state. */
             public void onDrawerClosed(View view) 
             {
@@ -85,46 +104,43 @@ public class ActivityMain extends Activity {
         getActionBar().setHomeButtonEnabled(true);
         
 	}
+	
 	@Override
     protected void onStart()
 	{
-		
+		super.onStart();
 	}
 	
 	@Override
     protected void onRestart()
     {
-		
+		super.onRestart();
 	}
 	
 	@Override
     protected void onResume()
     {
-		
+		super.onResume();
 	}
 	
 	@Override
     protected void onPause()
     {
-		
+		super.onPause();
 	}
 	
 	@Override
     protected void onStop()
     {
-		
+		super.onStop();
 	}
 	
 	@Override
     protected void onDestroy()
     {
-		
+		super.onDestroy();
 	}
-
 	
-	/**
-	 * 
-	 */
 	@Override
     protected void onPostCreate(Bundle savedInstanceState) 
 	{
@@ -132,9 +148,7 @@ public class ActivityMain extends Activity {
         // Sync the toggle state after onRestoreInstanceState has occurred.
         drawer_items_toggle.syncState();
     }
-	/**
-	 * 
-	 */
+	
     @Override
     public void onConfigurationChanged(Configuration newConfig) 
     {
@@ -143,9 +157,6 @@ public class ActivityMain extends Activity {
         drawer_items_toggle.onConfigurationChanged(newConfig);
     }
     
-
-
-	
 	/**
 	 * Creates menu items in action bar
 	 * 
@@ -179,15 +190,17 @@ public class ActivityMain extends Activity {
         menu.setGroupVisible(R.id.bgroup_sessions, !drawerOpen);
         return super.onPrepareOptionsMenu(menu);
     }
-
+	
 	/**
 	 * Handles click events on app icon and menu items in action bar
 	 */
 	@Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item) 
+	{
         // Pass the event to ActionBarDrawerToggle, if it returns
         // true, then it has handled the app icon touch event
-        if (drawer_items_toggle.onOptionsItemSelected(item)) {
+        if (drawer_items_toggle.onOptionsItemSelected(item)) 
+        {
           return true;
         }
         // Handle your other action bar items...
@@ -205,6 +218,18 @@ public class ActivityMain extends Activity {
 	    activity_title = title;
 	    getActionBar().setTitle(activity_title);
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	/**
 	 * Swaps fragments in the content frame
@@ -230,6 +255,22 @@ public class ActivityMain extends Activity {
 	    drawer_layout_activity_main.closeDrawer(listview_drawer_items);
 	}
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	/**
 	 * Listener handles click events on drawer items
 	 * 
@@ -247,10 +288,12 @@ public class ActivityMain extends Activity {
 	/**
      * Fragment that appears in the "content_frame", shows a planet
      */
-    public static class FragmentInActivityMain extends Fragment {
+    public static class FragmentInActivityMain extends Fragment 
+    {
         public static final String ARG_FRAGMENT_NUMBER = "fragment_number";
 
-        public FragmentInActivityMain() {
+        public FragmentInActivityMain() 
+        {
             // Empty constructor required for fragment subclasses
         }
 
