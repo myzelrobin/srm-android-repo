@@ -12,8 +12,6 @@
         <item>Sessions</item>
         <item>Scripts</item>
         <item>Speakers</item>
-        <item>Microphone</item>
-        <item>Recording Settings</item>
     </string-array>
     
     <!-- Buttons in Actionbar -->
@@ -22,7 +20,7 @@
     <string name="button_search">Search</string>
     <string name="button_add">Add</string>
     <string name="button_download">Download</string>
+    <string name="button_set_microphone">Set Microphone</string>
+    <string name="button_set_microphone">Set Recording Values</string>
     
-    
-
 </resources>

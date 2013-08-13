@@ -1,5 +1,6 @@
 package com.srandroid.main;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 
 import com.srandroid.R;
@@ -216,12 +217,36 @@ public class ActivityMain extends Activity {
         // If the navigation drawer is open, hide action items related to the content view
         boolean drawerOpen = drawer_layout_activity_main.isDrawerOpen(listview_drawer_items);
         
-        // here needs a method to show different buttons for different fragments
-        //menu.findItem(R.id.button_search).setEnabled(!drawerOpen);
+        // menu.findItem(R.id.button_search).setEnabled(!drawerOpen);
         menu.setGroupVisible(R.id.bgroup_overflow, !drawerOpen);
-        menu.setGroupVisible(R.id.bgroup_sessions, !drawerOpen);
+        
+        //show different buttons for different fragments
+        menu.setGroupVisible(getButtonGroupId(menu), !drawerOpen);
+        
         return super.onPrepareOptionsMenu(menu);
     }
+	
+	private int getButtonGroupId(Menu menu)
+	{
+		CharSequence title = getTitle();
+		int i = Arrays.asList(array_drawer_items).indexOf(title);
+		int bGroupId = 0;
+		switch(i)
+		{
+			case 0:
+				bGroupId = R.id.bgroup_sessions;
+				break;
+			case 1:
+				bGroupId = R.id.bgroup_scripts;
+				break;
+			case 2:
+				bGroupId = R.id.bgroup_speakers;
+				break;
+			default:
+				break;
+		}
+		return bGroupId;
+	}
 	
 	/**
 	 * Handles click events on app icon and menu items in actionbar

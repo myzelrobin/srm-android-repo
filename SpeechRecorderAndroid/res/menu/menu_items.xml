@@ -6,15 +6,25 @@
         android:visible="false"
         android:orderInCategory="100" >
     
-	    <item
-	        android:id="@+id/button_settings"
-	        android:showAsAction="never"
-	        android:title="@string/button_settings" />
-	    
-	    <item
-	        android:id="@+id/button_exit"
-	        android:showAsAction="never"
-	        android:title="@string/button_exit" />
+        <item
+            android:id="@+id/button_set_microphone"
+            android:showAsAction="never"
+            android:title="@string/button_set_microphone" />
+
+        <item
+            android:id="@+id/button_set_recording_values"
+            android:showAsAction="never"
+            android:title="@string/button_set_recording_values" />
+            
+        <item
+            android:id="@+id/button_settings"
+            android:showAsAction="never"
+            android:title="@string/button_settings" />
+        
+        <item
+            android:id="@+id/button_exit"
+            android:showAsAction="never"
+            android:title="@string/button_exit" />
     
     </group>
     
@@ -40,12 +50,46 @@
 	        android:showAsAction="always"
 	        android:title="@string/button_search" />
         
+    </group>
+    
+    <!-- Fragment "Scripts" -->
+    <!-- Buttons in Actionbar for Fragment "Scripts"-->
+    <group 
+        android:id="@+id/bgroup_scripts"
+        android:visible="false" >
+    
         <item
-            android:id="@+id/button_download_sessions"
+            android:id="@+id/button_download_script"
             android:icon="@drawable/ic_button_download"
             android:showAsAction="always"
             android:title="@string/button_download" />
+        
+        <item
+            android:id="@+id/button_search_script"
+            android:icon="@drawable/ic_button_search"
+            android:showAsAction="always"
+            android:title="@string/button_search" />
+        
+    </group>
     
+    <!-- Fragment "Speakers" -->
+    <!-- Buttons in Actionbar for Fragment "Speakers"-->
+    <group 
+        android:id="@+id/bgroup_speakers"
+        android:visible="false" >
+    
+        <item
+            android:id="@+id/button_add_speaker"
+            android:icon="@drawable/ic_button_add"
+            android:showAsAction="always"
+            android:title="@string/button_add" />
+        
+        <item
+            android:id="@+id/button_search_speaker"
+            android:icon="@drawable/ic_button_search"
+            android:showAsAction="always"
+            android:title="@string/button_search" />
+        
     </group>
 
 </menu>
