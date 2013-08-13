@@ -1,4 +1,12 @@
-package com.srandroid;
+package com.srandroid.main;
+
+import com.srandroid.R;
+import com.srandroid.R.array;
+import com.srandroid.R.drawable;
+import com.srandroid.R.id;
+import com.srandroid.R.layout;
+import com.srandroid.R.menu;
+import com.srandroid.R.string;
 
 import android.os.Bundle;
 import android.app.Activity;
