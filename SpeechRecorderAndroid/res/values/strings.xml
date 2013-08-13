@@ -21,6 +21,6 @@
     <string name="button_add">Add</string>
     <string name="button_download">Download</string>
     <string name="button_set_microphone">Set Microphone</string>
-    <string name="button_set_microphone">Set Recording Values</string>
+    <string name="button_set_recording_values">Set Recording Values</string>
     
 </resources>
