@@ -65,7 +65,7 @@
             android:title="@string/button_download" />
         
         <item
-            android:id="@+id/button_search_script"
+            android:id="@+id/button_search_scripts"
             android:icon="@drawable/ic_button_search"
             android:showAsAction="always"
             android:title="@string/button_search" />
@@ -85,7 +85,7 @@
             android:title="@string/button_add" />
         
         <item
-            android:id="@+id/button_search_speaker"
+            android:id="@+id/button_search_speakers"
             android:icon="@drawable/ic_button_search"
             android:showAsAction="always"
             android:title="@string/button_search" />

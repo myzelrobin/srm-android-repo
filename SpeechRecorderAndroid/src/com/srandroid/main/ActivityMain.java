@@ -263,11 +263,19 @@ public class ActivityMain extends Activity {
         	case R.id.button_add_session:
         		Toast.makeText(getApplicationContext(), "clicked add session", Toast.LENGTH_LONG * 3).show();
         		break;
+        	case R.id.button_search_sessions:
+        		Toast.makeText(getApplicationContext(), "clicked search sessions", Toast.LENGTH_LONG * 3).show();
+        		break;
+        	case R.id.button_download_script:
+        		Toast.makeText(getApplicationContext(), "clicked download script", Toast.LENGTH_LONG * 3).show();
+        		break;
+        	case R.id.button_search_scripts:
+        		Toast.makeText(getApplicationContext(), "clicked search scripts", Toast.LENGTH_LONG * 3).show();
+        		break;
         	default:
         		break;
         }
         
-
         return super.onOptionsItemSelected(item);
     }
 	
@@ -296,12 +304,6 @@ public class ActivityMain extends Activity {
 		toast.setGravity(Gravity.CENTER_VERTICAL | Gravity.LEFT, 0, 0);
 		toast.setDuration(Toast.LENGTH_LONG * 3);
 		toast.setView(layout);
-		try {
-			toast.wait(1000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		toast.show();
 	}
 	
