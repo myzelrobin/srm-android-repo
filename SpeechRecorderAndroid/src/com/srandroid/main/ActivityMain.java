@@ -4,11 +4,13 @@ import java.lang.reflect.Array;
 import java.util.Arrays;
 
 import com.srandroid.R;
+import com.srandroid.overflow.PreferenceActivitySettings;
 
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
@@ -179,7 +181,6 @@ public class ActivityMain extends Activity {
         super.onPostCreate(savedInstanceState);
         // Sync the toggle state after onRestoreInstanceState has occurred.
         drawer_items_toggle.syncState();
-        toastSwipeHint();
     }
 	
     @Override
@@ -287,7 +288,11 @@ public class ActivityMain extends Activity {
         		toastHint("clicked set recording vlaues");
         		break;
         	case R.id.button_settings:
-        		toastHint("clicked settings");
+        		// Launch Preference activity
+        	    Intent i = new Intent(ActivityMain.this, PreferenceActivitySettings.class);
+        	    startActivity(i);
+        	    // Some feedback to the user
+        		toastHint("clicked settings, settings window starts");
         		break;
         	case R.id.button_exit:
         		toastHint("clicked exit, app exits");

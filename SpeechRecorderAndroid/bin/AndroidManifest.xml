@@ -22,10 +22,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".overflow.PreferenceActivitySettings"></activity>
     </application>
-	
-	<!-- test push from netbook -->
-
 </manifest>
 
 

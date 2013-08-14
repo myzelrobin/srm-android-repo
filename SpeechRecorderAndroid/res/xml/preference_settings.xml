@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory>
+        <ListPreference
+            android:dialogTitle="@string/settings_language"
+            android:entries="@array/language_items"
+            android:entryValues="@array/language_items_values"
+            android:key="@string/settings_language"
+            android:negativeButtonText="CANCEL"
+            android:positiveButtonText="DONE"
+            android:summary="Set the language of the app"
+            android:title="@string/settings_language" />
+        <ListPreference
+            android:dialogTitle="@string/settings_interface"
+            android:entries="@array/interface_items"
+            android:entryValues="@array/interface_items_values"
+            android:key="@string/settings_interface"
+            android:negativeButtonText="CANCEL"
+            android:positiveButtonText="DONE"
+            android:summary="Set the interface of the app"
+            android:title="@string/settings_interface" />
+    </PreferenceCategory>
+
+</PreferenceScreen>
