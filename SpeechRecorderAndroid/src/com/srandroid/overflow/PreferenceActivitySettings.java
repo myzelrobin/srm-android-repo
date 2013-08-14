@@ -95,11 +95,7 @@ public class PreferenceActivitySettings extends PreferenceActivity
 	    super.onResume();
 	}
 	
-	
-	/**
-	 * 
-	 *
-	 */
+	/*
 	public static class FragmentInSettings extends PreferenceFragment
     {
         @Override
@@ -110,6 +106,7 @@ public class PreferenceActivitySettings extends PreferenceActivity
         }
         
     }
+	/**/
 	
 	/*
 	//get data from settings activity in this case the language
