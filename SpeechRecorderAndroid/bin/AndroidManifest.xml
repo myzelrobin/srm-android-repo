@@ -23,6 +23,8 @@
             </intent-filter>
         </activity>
     </application>
+	
+	<!-- test push from netbook -->
 
 </manifest>
 

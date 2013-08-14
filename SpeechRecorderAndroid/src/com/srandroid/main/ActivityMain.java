@@ -104,12 +104,13 @@ public class ActivityMain extends Activity {
         listview_drawer_items.setOnItemClickListener(new DrawerItemClickListener(select_sessions));
         
         // Set the open&close listener in actionbar(swipe and click app icon)
-        drawer_items_toggle = new ActionBarDrawerToggle(this,                         /* host Activity */
-    													drawer_layout_activity_main,   /* DrawerLayout object */
-    													R.drawable.ic_drawer,          /* new drawer icon to replace 'Up' caret */
-    													R.string.drawer_items_open,    /* "open drawer" description */
-    													R.string.drawer_items_close)   /* "close drawer" description */
-        {
+        drawer_items_toggle = new ActionBarDrawerToggle(
+        		this,                         /* host Activity */
+    			drawer_layout_activity_main,   /* DrawerLayout object */
+				R.drawable.ic_drawer,          /* new drawer icon to replace 'Up' caret */
+				R.string.drawer_items_open,    /* "open drawer" description */
+				R.string.drawer_items_close   /* "close drawer" description */
+        ){
             /** Called when a drawer has settled in a completely closed state. */
             public void onDrawerClosed(View view) 
             {
@@ -135,7 +136,7 @@ public class ActivityMain extends Activity {
         
         
         // Pop up hint at the left side
-        toastHint();
+        toastSwipeHint();
 	}
 	
 
@@ -262,36 +263,36 @@ public class ActivityMain extends Activity {
         {
         	// actionbar buttons
         	case R.id.button_add_session:
-        		Toast.makeText(getApplicationContext(), "clicked add session", Toast.LENGTH_LONG * 3).show();
+        		toastHint("clicked add session");
         		break;
         	case R.id.button_search_sessions:
-        		Toast.makeText(getApplicationContext(), "clicked search sessions", Toast.LENGTH_LONG * 3).show();
+        		toastHint("clicked search sessions");
         		break;
         	case R.id.button_download_script:
-        		Toast.makeText(getApplicationContext(), "clicked download script", Toast.LENGTH_LONG * 3).show();
+        		toastHint("clicked download script");
         		break;
         	case R.id.button_search_scripts:
-        		Toast.makeText(getApplicationContext(), "clicked search scripts", Toast.LENGTH_LONG * 3).show();
+        		toastHint("clicked search scripts");
         		break;
         	case R.id.button_add_speaker:
-        		Toast.makeText(getApplicationContext(), "clicked add speaker", Toast.LENGTH_LONG * 3).show();
+        		toastHint("clicked add speaker");
         		break;
         	case R.id.button_search_speakers:
-        		Toast.makeText(getApplicationContext(), "clicked search speakers", Toast.LENGTH_LONG * 3).show();
+        		toastHint("clicked search speakers");
         		break;
         		
         	// overflow buttons
         	case R.id.button_set_microphone:
-        		Toast.makeText(getApplicationContext(), "clicked set microphone", Toast.LENGTH_LONG * 3).show();
+        		toastHint("clicked set microphone");
         		break;
         	case R.id.button_set_recording_values:
-        		Toast.makeText(getApplicationContext(), "clicked set recording values", Toast.LENGTH_LONG * 3).show();
+        		toastHint("clicked set recording vlaues");
         		break;
         	case R.id.button_settings:
-        		Toast.makeText(getApplicationContext(), "clicked settings", Toast.LENGTH_LONG * 3).show();
+        		toastHint("clicked settings");
         		break;
         	case R.id.button_exit:
-        		Toast.makeText(getApplicationContext(), "clicked exit, app exits", Toast.LENGTH_LONG * 3).show();
+        		toastHint("clicked exit, app exits");
         		break;
         	
         	default:
@@ -312,8 +313,10 @@ public class ActivityMain extends Activity {
 	    getActionBar().setTitle(activity_title);
 	}
 	
-	
-	public void toastHint()
+	/**
+	 *  Shows a toast with "swipe from here to right" at the left center of the screen
+	 */
+	public void toastSwipeHint()
 	{
 		LayoutInflater inflater = getLayoutInflater();
 		View layout = inflater.inflate(R.layout.layout_toasthint_in_activitymain,
@@ -326,11 +329,29 @@ public class ActivityMain extends Activity {
 		toast.setGravity(Gravity.CENTER_VERTICAL | Gravity.LEFT, 0, 0);
 		toast.setDuration(Toast.LENGTH_LONG * 3);
 		toast.setView(layout);
+		
+		new Thread(new Runnable() {
+		    public void run() {
+		      try {
+				wait(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		    }
+		  }).start();
+		
 		toast.show();
 	}
 	
-	
-	
+	/**
+	 *  Shows a toast with text at the bottom center of the screen
+	 * @param s
+	 */
+	public void toastHint(CharSequence s)
+	{
+		Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG * 3).show();
+	}
 	
 	
 	
