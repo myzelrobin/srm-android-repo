@@ -11,10 +11,16 @@ public final class R {
     public static final class array {
         public static final int drawer_items=0x7f070000;
         /**  languages 
+ languages 
+ languages 
+ languages 
          */
         public static final int language_items=0x7f070001;
         public static final int language_items_values=0x7f070002;
         /**  interfaces 
+ interfaces 
+ interfaces 
+ interfaces 
          */
         public static final int theme_items=0x7f070003;
         public static final int theme_items_values=0x7f070004;
@@ -80,9 +86,15 @@ public final class R {
         public static final int button_download=0x7f060006;
         public static final int button_exit=0x7f06000a;
         /**  Buttons in Actionbar 
+ Buttons in Actionbar 
+ Buttons in Actionbar 
+ Buttons in Actionbar 
          */
         public static final int button_search=0x7f060004;
         /**  Buttons in Overflow 
+ Buttons in Overflow 
+ Buttons in Overflow 
+ Buttons in Overflow 
          */
         public static final int button_set_microphone=0x7f060007;
         public static final int button_set_recording_values=0x7f060008;
@@ -90,12 +102,21 @@ public final class R {
         public static final int drawer_items_close=0x7f060003;
         /**  ActivityMain 
  Drawer in ActivityMain 
+ ActivityMain 
+ Drawer in ActivityMain 
+ ActivityMain 
+ Drawer in ActivityMain 
+ ActivityMain 
+ Drawer in ActivityMain 
          */
         public static final int drawer_items_open=0x7f060002;
         public static final int hello_world=0x7f060001;
         public static final int settings_language=0x7f06000c;
         public static final int settings_theme=0x7f06000d;
         /**  PreferenceActivitySettings 
+ PreferenceActivitySettings 
+ PreferenceActivitySettings 
+ PreferenceActivitySettings 
          */
         public static final int title_settings=0x7f06000b;
     }
