@@ -225,7 +225,7 @@ public class ActivityMain extends Activity {
         //show different buttons for different fragments
         CharSequence title = getActionBar().getTitle();
         int index = Arrays.asList(array_drawer_items).indexOf(title);
-        Log.w(this.getClass().getName(), "onPrepareOptionsMenu: title =" + title + " index=" + index);
+        Log.w(this.getClass().getName(), "onPrepareOptionsMenu: title=" + title + " index=" + index);
 		switch(index)
 		{
 			case 0:

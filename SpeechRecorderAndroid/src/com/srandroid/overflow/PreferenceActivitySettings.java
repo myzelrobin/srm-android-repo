@@ -29,8 +29,7 @@ public class PreferenceActivitySettings extends PreferenceActivity
 	private CharSequence old_lang, new_lang;
 	private SharedPreferences settings;
 	
-	
-	private FragmentInSettings fragmentInSettings = new FragmentInSettings();
+	//private FragmentInSettings fragmentInSettings = new FragmentInSettings();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
@@ -41,7 +40,8 @@ public class PreferenceActivitySettings extends PreferenceActivity
 		super.onCreate(savedInstanceState);
 		
 		// create a PreferenceFragment to load the Preference layout
-		getFragmentManager().beginTransaction().replace(android.R.id.content, fragmentInSettings).commit();
+		addPreferencesFromResource(R.xml.preference_settings);
+		// getFragmentManager().beginTransaction().replace(android.R.id.content, fragmentInSettings).commit();
 		
 		// Shows Up button
 		getActionBar().setDisplayHomeAsUpEnabled(true);
@@ -108,7 +108,6 @@ public class PreferenceActivitySettings extends PreferenceActivity
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.preference_settings);
         }
-        
         
     }
 	
