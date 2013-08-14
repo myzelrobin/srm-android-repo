@@ -5,6 +5,7 @@ import java.util.Arrays;
 
 import com.srandroid.R;
 import com.srandroid.overflow.PreferenceActivitySettings;
+import com.srandroid.util.Utils;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -83,15 +84,15 @@ public class ActivityMain extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
 	{
+		// Validates new theme if theme is changed
+		Utils.onActivityCreateSetTheme(this);
+		
 		super.onCreate(savedInstanceState);
+		
 		setContentView(R.layout.drawerlayout_in_activitymain);
 		
 		activity_title = drawer_items_title = getTitle();
-		
-		
-		
-		
-		
+				
 		// Creates drawer
 		array_drawer_items = getResources().getStringArray(R.array.drawer_items);
         listview_drawer_items = (ListView) findViewById(R.id.listview_drawer_items);

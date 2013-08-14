@@ -31,7 +31,7 @@
     <!-- PreferenceActivitySettings -->
         <string name="title_settings">Settings</string>
 	    <string name="settings_language">Language</string>
-	    <string name="settings_interface">Interface</string>
+	    <string name="settings_theme">Theme</string>
 	
 	    <!-- languages -->
 		    <string-array name="language_items">
@@ -47,14 +47,16 @@
             </string-array>
 	        
 		<!-- interfaces -->
-            <string-array name="interface_items">
-                <item>Light</item>
-                <item>Dark</item>
+            <string-array name="theme_items">
+                <item>Light Theme with Dark Actionbar</item>
+                <item>Dark Theme</item>
+                <item>Test Theme</item>
             </string-array>
             
-            <string-array name="interface_items_values">
+            <string-array name="theme_items_values">
                 <item>light</item>
                 <item>dark</item>
+                <item>test</item>
             </string-array>
     
     
