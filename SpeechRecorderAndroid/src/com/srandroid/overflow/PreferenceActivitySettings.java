@@ -14,6 +14,7 @@ import android.preference.PreferenceActivity;
  */
 public class PreferenceActivitySettings extends PreferenceActivity 
 {
+	private CharSequence activity_title;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -22,4 +23,18 @@ public class PreferenceActivitySettings extends PreferenceActivity
 		
 		addPreferencesFromResource(R.xml.preference_settings);
 	}	
+	
+	
+	/**
+	 * 
+	 * @param title
+	 */
+	@Override
+	public void setTitle(CharSequence title) 
+	{
+	    activity_title = title;
+	    getActionBar().setTitle(activity_title);
+	}
+	
+	
 }

@@ -34,26 +34,26 @@
 	
 	    <!-- languages -->
 		    <string-array name="language_items">
-	            <item>en</item>
-	            <item>de</item>
-	            <item>chs</item>
+	            <item>English</item>
+	            <item>German</item>
+	            <item>Chinese Simplified</item>
 	        </string-array>
 	        
 		    <string-array name="language_items_values">
-                <item>English</item>
-                <item>German</item>
-                <item>Chinese simplified</item>
+                <item>en</item>
+                <item>de</item>
+                <item>chs</item>
             </string-array>
 	        
 		<!-- interfaces -->
             <string-array name="interface_items">
-                <item>light</item>
-                <item>dark</item>
+                <item>Light</item>
+                <item>Dark</item>
             </string-array>
             
             <string-array name="interface_items_values">
-                <item>Light Holo Theme</item>
-                <item>Dark Holo Theme</item>
+                <item>light</item>
+                <item>dark</item>
             </string-array>
     
     
