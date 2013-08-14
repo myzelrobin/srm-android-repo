@@ -132,11 +132,19 @@ public class ActivityMain extends Activity {
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);
         
-        
-        
-        
         // Pop up hint at the left side
-        toastSwipeHint();
+        new Thread(new Runnable() {
+		    public void run() {
+		      try {
+				wait(1000);
+				toastSwipeHint();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		    }
+		  }).start();
+        
 	}
 	
 
@@ -329,18 +337,6 @@ public class ActivityMain extends Activity {
 		toast.setGravity(Gravity.CENTER_VERTICAL | Gravity.LEFT, 0, 0);
 		toast.setDuration(Toast.LENGTH_LONG * 3);
 		toast.setView(layout);
-		
-		new Thread(new Runnable() {
-		    public void run() {
-		      try {
-				wait(1000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		    }
-		  }).start();
-		
 		toast.show();
 	}
 	
