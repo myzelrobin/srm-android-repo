@@ -92,7 +92,7 @@ public class PreferenceActivitySettings extends PreferenceActivity
 	    	
 	    }
 	    
-	    super.onResume();
+	    //super.onResume();
 	}
 	
 	/*
