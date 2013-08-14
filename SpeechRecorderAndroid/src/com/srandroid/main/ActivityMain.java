@@ -133,18 +133,7 @@ public class ActivityMain extends Activity {
         getActionBar().setHomeButtonEnabled(true);
         
         // Pop up hint at the left side
-        new Thread(new Runnable() {
-		    public void run() {
-		      try {
-				wait(1000);
-				toastSwipeHint();
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		    }
-		  }).start();
-        
+        // toastSwipeHint();
 	}
 	
 
@@ -190,6 +179,7 @@ public class ActivityMain extends Activity {
         super.onPostCreate(savedInstanceState);
         // Sync the toggle state after onRestoreInstanceState has occurred.
         drawer_items_toggle.syncState();
+        toastSwipeHint();
     }
 	
     @Override
