@@ -29,6 +29,7 @@
     
     
     <!-- PreferenceActivitySettings -->
+        <string name="title_settings">Settings</string>
 	    <string name="settings_language">Language</string>
 	    <string name="settings_interface">Interface</string>
 	

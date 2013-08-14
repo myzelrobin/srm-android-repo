@@ -93,21 +93,17 @@ public final class R {
          */
         public static final int drawer_items_open=0x7f060002;
         public static final int hello_world=0x7f060001;
-        public static final int settings_interface=0x7f06000c;
+        public static final int settings_interface=0x7f06000d;
+        public static final int settings_language=0x7f06000c;
         /**  PreferenceActivitySettings 
          */
-        public static final int settings_language=0x7f06000b;
+        public static final int title_settings=0x7f06000b;
     }
     public static final class style {
         /** 
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     
-
-            Theme customizations available in newer API levels can go in
-            res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
-        
 
         Base application theme for API 11+. This theme completely replaces
         AppBaseTheme from res/values/styles.xml on API 11+ devices.

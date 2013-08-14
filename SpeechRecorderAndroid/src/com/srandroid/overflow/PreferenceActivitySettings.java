@@ -7,6 +7,8 @@ import com.srandroid.R;
 
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
+import android.support.v4.app.NavUtils;
+import android.view.MenuItem;
 
 /**
  * Activity settings
@@ -22,19 +24,24 @@ public class PreferenceActivitySettings extends PreferenceActivity
 		super.onCreate(savedInstanceState);
 		
 		addPreferencesFromResource(R.xml.preference_settings);
+		
+		// Shows Up button
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 	}	
 	
-	
 	/**
-	 * 
-	 * @param title
+	 * handles the click on Up button.
 	 */
 	@Override
-	public void setTitle(CharSequence title) 
+	public boolean onOptionsItemSelected(MenuItem item) 
 	{
-	    activity_title = title;
-	    getActionBar().setTitle(activity_title);
+	    switch (item.getItemId()) {
+	    // Respond to the action bar's Up/Home button
+	    case android.R.id.home:
+	        NavUtils.navigateUpFromSameTask(this);
+	        return true;
+	    }
+	    return super.onOptionsItemSelected(item);
 	}
 	
 	
