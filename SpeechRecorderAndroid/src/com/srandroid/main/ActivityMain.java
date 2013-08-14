@@ -85,7 +85,7 @@ public class ActivityMain extends Activity {
 	protected void onCreate(Bundle savedInstanceState) 
 	{
 		// Validates new theme if theme is changed
-		Utils.onActivityCreateSetTheme(this);
+		// Utils.onActivityCreateSetTheme(this);
 		
 		super.onCreate(savedInstanceState);
 		

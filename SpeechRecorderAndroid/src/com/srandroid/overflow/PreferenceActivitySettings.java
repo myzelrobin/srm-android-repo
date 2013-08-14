@@ -24,24 +24,23 @@ import android.widget.Toast;
 public class PreferenceActivitySettings extends PreferenceActivity 
 {
 	
-	private CharSequence old_theme, new_theme;
-	private String[] array_theme_items_values = getResources().getStringArray(R.array.theme_items_values);
-	private CharSequence old_lang, new_lang;
+	//private CharSequence old_theme, new_theme;
+	//private String[] array_theme_items_values = getResources().getStringArray(R.array.theme_items_values);
+	//private CharSequence old_lang, new_lang;
 	private SharedPreferences settings;
 	
-	//private FragmentInSettings fragmentInSettings = new FragmentInSettings();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
 	{
 		// Validates new theme if theme is changed
-		Utils.onActivityCreateSetTheme(this);
+		// Utils.onActivityCreateSetTheme(this);
 				
 		super.onCreate(savedInstanceState);
 		
 		// create a PreferenceFragment to load the Preference layout
-		addPreferencesFromResource(R.xml.preference_settings);
-		// getFragmentManager().beginTransaction().replace(android.R.id.content, fragmentInSettings).commit();
+		// addPreferencesFromResource(R.xml.preference_settings);
+		getFragmentManager().beginTransaction().replace(android.R.id.content, new PrefFragmentInSettings()).commit();
 		
 		// Shows Up button
 		getActionBar().setDisplayHomeAsUpEnabled(true);
@@ -49,8 +48,9 @@ public class PreferenceActivitySettings extends PreferenceActivity
 		// Get old settings values
 		// get data from settings activity in this case the language
 	    settings = PreferenceManager.getDefaultSharedPreferences(this);
-	    old_theme = settings.getString("Theme", "light");
-	    old_lang = settings.getString("Language", "en");
+	    
+	    //old_theme = settings.getString("Theme", "light");
+	    //old_lang = settings.getString("Language", "en");
 	}
 	
 	/**
@@ -74,16 +74,18 @@ public class PreferenceActivitySettings extends PreferenceActivity
 	 */
 	protected void onResume(Bundle savedInstanceState) 
 	{
-		
+		/*
 		// Get new settings values
 		new_theme = settings.getString("Theme", "light");
 	    new_lang = settings.getString("Language", "en");
+	    
+	    int sTheme = Arrays.asList(array_theme_items_values).indexOf(new_theme);
 	    
 	    if(new_theme != old_theme)
 	    {
 	    	Toast.makeText(getApplicationContext(), "theme changed, validates new theme", 3 * Toast.LENGTH_LONG).show();
 	    	// change theme
-	    	Utils.changeToTheme(this, Arrays.asList(array_theme_items_values).indexOf(new_theme));
+	    	Utils.changeToTheme(this, sTheme);
 	    }
 	    
 	    if(new_lang != old_lang)
@@ -91,12 +93,12 @@ public class PreferenceActivitySettings extends PreferenceActivity
 	    	// change language
 	    	
 	    }
-	    
-	    //super.onResume();
+	    /**/
+	    super.onResume();
 	}
 	
-	/*
-	public static class FragmentInSettings extends PreferenceFragment
+	
+	public static class PrefFragmentInSettings extends PreferenceFragment
     {
         @Override
         public void onCreate(final Bundle savedInstanceState)
