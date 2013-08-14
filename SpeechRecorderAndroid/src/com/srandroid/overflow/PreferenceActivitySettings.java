@@ -22,6 +22,7 @@ public class PreferenceActivitySettings extends PreferenceActivity
 		super.onCreate(savedInstanceState);
 		
 		addPreferencesFromResource(R.xml.preference_settings);
+		getActionBar().setDisplayHomeAsUpEnabled(true);
 	}	
 	
 	
