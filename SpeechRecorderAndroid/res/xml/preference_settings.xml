@@ -14,7 +14,7 @@
             android:positiveButtonText="DONE" />
         <CheckBoxPreferences
             android:title="@string/settings_microphone"
-            android:key="@string/settings_microphone"
+            android:key="@string/settings_mic_key"
             android:summary="Test the microphone"
             android:defaultValue="true" />
         <ListPreference
