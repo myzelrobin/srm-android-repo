@@ -42,7 +42,10 @@ public class Utils
 		Log.w(Utils.class.getName(), "APP_FILES_DIR=" + APP_FILES_DIR_PATH);
 		
 		REC_FILES_DIR_PATH = makeDir(APP_FILES_DIR_PATH, "recorders");
+		Log.w(Utils.class.getName(), "REC_FILES_DIR_PATH=" + REC_FILES_DIR_PATH);
+		
 		REC_TEST_DIR_PATH = makeDir(REC_FILES_DIR_PATH, "test");
+		Log.w(Utils.class.getName(), "REC_TEST_DIR_PATH=" + REC_TEST_DIR_PATH);
 		
 	}
 	
