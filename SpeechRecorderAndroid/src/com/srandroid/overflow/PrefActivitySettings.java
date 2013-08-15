@@ -6,6 +6,7 @@ package com.srandroid.overflow;
 import java.util.Arrays;
 
 import com.srandroid.R;
+import com.srandroid.util.Utils;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
@@ -104,26 +105,24 @@ public class PrefActivitySettings extends PreferenceActivity
     		if(key.equals(PrefActivitySettings.LANGUAGE_KEY))
     		{
     			Log.w(this.getClass().getName(), "changed language");
-    			Toast.makeText(getActivity(), 
+    			Utils.toastText(getActivity(), 
     					"changed language to " + sharedPreferences.getString(PrefActivitySettings.LANGUAGE_KEY, 
-    																			PrefActivitySettings.LANGUAGE_DEF), 
-    					3 * Toast.LENGTH_LONG).show();
+    																			PrefActivitySettings.LANGUAGE_DEF));
+    			
     		}
     		if(key.equals(PrefActivitySettings.MICROPHONE_KEY))
     		{
     			Log.w(this.getClass().getName(), "changed microphone");
-    			Toast.makeText(getActivity(), 
-    					"changed microphone to " + sharedPreferences.getBoolean(PrefActivitySettings.MICROPHONE_KEY,
-    																			true), 
-    					3 * Toast.LENGTH_LONG).show();
+    			Utils.toastText(getActivity(), 
+    					"changed language to " + sharedPreferences.getBoolean(PrefActivitySettings.MICROPHONE_KEY,
+																				true));
     		}
     		if(key.equals(PrefActivitySettings.RECVALUE_KEY))
     		{
     			Log.w(this.getClass().getName(), "changed recording values");
-    			Toast.makeText(getActivity(), 
-    					"changed recording values to " + sharedPreferences.getString(PrefActivitySettings.RECVALUE_KEY, 
-    																					PrefActivitySettings.RECVALUE_KEY), 
-    					3 * Toast.LENGTH_LONG).show();
+    			Utils.toastText(getActivity(), 
+    					"changed language to " + sharedPreferences.getString(PrefActivitySettings.RECVALUE_KEY, 
+																				PrefActivitySettings.RECVALUE_KEY));
     		}
     	}
 

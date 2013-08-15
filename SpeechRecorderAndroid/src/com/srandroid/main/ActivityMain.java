@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 import com.srandroid.R;
 import com.srandroid.overflow.PrefActivitySettings;
+import com.srandroid.util.Utils;
 
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -77,8 +78,6 @@ public class ActivityMain extends Activity {
 	
 	
 	
-	
-	
 	// Creates View of this activity
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
@@ -137,7 +136,7 @@ public class ActivityMain extends Activity {
         getActionBar().setHomeButtonEnabled(true);
         
         // Pop up hint at the left side
-        // toastSwipeHint();
+        toastSwipeHint();
 	}
 	
 
@@ -264,22 +263,22 @@ public class ActivityMain extends Activity {
         {
         	// actionbar buttons
         	case R.id.button_add_session:
-        		toastHint("clicked add session");
+        		Utils.toastText(getApplicationContext(), "clicked add session");
         		break;
         	case R.id.button_search_sessions:
-        		toastHint("clicked search sessions");
+        		Utils.toastText(getApplicationContext(), "clicked search sessions");
         		break;
         	case R.id.button_download_script:
-        		toastHint("clicked download script");
+        		Utils.toastText(getApplicationContext(), "clicked download script");
         		break;
         	case R.id.button_search_scripts:
-        		toastHint("clicked search scripts");
+        		Utils.toastText(getApplicationContext(), "clicked search scripts");
         		break;
         	case R.id.button_add_speaker:
-        		toastHint("clicked add speaker");
+        		Utils.toastText(getApplicationContext(), "clicked add speaker");
         		break;
         	case R.id.button_search_speakers:
-        		toastHint("clicked search speakers");
+        		Utils.toastText(getApplicationContext(), "clicked search speakers");
         		break;
         		
         	// overflow buttons
@@ -288,10 +287,10 @@ public class ActivityMain extends Activity {
         	    Intent i = new Intent(ActivityMain.this, PrefActivitySettings.class);
         	    startActivity(i);
         	    // Some feedback to the user
-        		toastHint("clicked settings, settings window starts");
+        	    Utils.toastText(getApplicationContext(), "clicked settings, settings window starts");
         		break;
         	case R.id.button_exit:
-        		toastHint("clicked exit, app exits");
+        		Utils.toastText(getApplicationContext(), "clicked exit, app exits");
         		break;
         	
         	default:
@@ -330,16 +329,6 @@ public class ActivityMain extends Activity {
 		toast.setView(layout);
 		toast.show();
 	}
-	
-	/**
-	 *  Shows a toast with text at the bottom center of the screen
-	 * @param s
-	 */
-	public void toastHint(CharSequence s)
-	{
-		Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG * 3).show();
-	}
-	
 	
 	
 	/**
