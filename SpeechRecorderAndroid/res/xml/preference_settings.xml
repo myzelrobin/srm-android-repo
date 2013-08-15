@@ -17,7 +17,9 @@
     <PreferenceCategory >
             <com.srandroid.overflow.DialogSetMicrophoneVolume
 	            android:title="@string/settings_microphone"
-	            android:summary="Set the microphone volume" />
+	            android:summary="Set the microphone volume" 
+	            android:key="@string/settings_mic_volume_key" 
+	            android:defaultValue="@string/settings_mic_volume_default" />
     </PreferenceCategory>
     
     <PreferenceCategory
