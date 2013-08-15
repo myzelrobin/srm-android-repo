@@ -29,13 +29,13 @@ public class PreferenceActivitySettings extends PreferenceActivity implements On
 	//private String[] array_theme_items_values = getResources().getStringArray(R.array.theme_items_values);
 	//private CharSequence old_lang, new_lang;
 	
-	private SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);;
+	private final String LANGUAGE_KEY = "lang";
+	private final String LANGUAGE_DEF = "en";
 	
-	private String LANGUAGE_KEY;
-	private String LANGUAGE_DEF;
-	private String MICROPHONE_KEY;
-	private String RECVALUE_KEY;
-	private String RECVALUE_DEF;
+	private final String MICROPHONE_KEY = "mic";
+	
+	private final String RECVALUE_KEY = "recvalue";
+	private final String RECVALUE_DEF = "1000";
 	
 	
 	@Override
@@ -46,13 +46,7 @@ public class PreferenceActivitySettings extends PreferenceActivity implements On
 				
 		super.onCreate(savedInstanceState);
 		
-		LANGUAGE_KEY = getResources().getString(R.string.settings_lang_key);
-		LANGUAGE_DEF = getResources().getString(R.string.settings_lang_default);
 		
-		RECVALUE_KEY = getResources().getString(R.string.settings_recvalues_key);
-		RECVALUE_DEF = getResources().getString(R.string.settings_recvalues_default);
-		
-		MICROPHONE_KEY = getResources().getString(R.string.settings_mic_key);
 		
 		// create a PreferenceFragment to load the Preference layout
 		// addPreferencesFromResource(R.xml.preference_settings);
@@ -61,8 +55,6 @@ public class PreferenceActivitySettings extends PreferenceActivity implements On
 		// Shows Up button
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		
-	    settings.registerOnSharedPreferenceChangeListener(this);
-	    
 	}
 	
 	/**
@@ -82,23 +74,27 @@ public class PreferenceActivitySettings extends PreferenceActivity implements On
 	/**
 	 * handles changes of the settings
 	 */
+	@SuppressWarnings("deprecation")
 	@Override
 	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences,
 			String key) {
 		// TODO Auto-generated method stub
 		if(key.equals(LANGUAGE_KEY))
 		{
-			Toast.makeText(getApplicationContext(), "changed language to " + settings.getString(LANGUAGE_KEY, LANGUAGE_DEF), 
+			Toast.makeText(getApplicationContext(), 
+					"changed language to " + getPreferenceScreen().getSharedPreferences().getString(LANGUAGE_KEY, LANGUAGE_DEF), 
 					3 * Toast.LENGTH_LONG).show();
 		}
 		if(key.equals(MICROPHONE_KEY))
 		{
-			Toast.makeText(getApplicationContext(), "changed microphone to " + settings.getString(MICROPHONE_KEY, "true"), 
+			Toast.makeText(getApplicationContext(), 
+					"changed microphone to " + getPreferenceScreen().getSharedPreferences().getString(MICROPHONE_KEY, "true"), 
 					3 * Toast.LENGTH_LONG).show();
 		}
 		if(key.equals(RECVALUE_KEY))
 		{
-			Toast.makeText(getApplicationContext(), "changed microphone to " + settings.getString(RECVALUE_KEY, RECVALUE_DEF), 
+			Toast.makeText(getApplicationContext(), 
+					"changed microphone to " + getPreferenceScreen().getSharedPreferences().getString(RECVALUE_KEY, RECVALUE_DEF), 
 					3 * Toast.LENGTH_LONG).show();
 		}
 	}
@@ -106,17 +102,19 @@ public class PreferenceActivitySettings extends PreferenceActivity implements On
 	/**
 	 * @param savedInstanceState
 	 */
+	@SuppressWarnings("deprecation")
 	protected void onResume(Bundle savedInstanceState) 
 	{
 	    super.onResume();
-	    settings.registerOnSharedPreferenceChangeListener(this);
+	    getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
 	}
 	
 	
+	@SuppressWarnings("deprecation")
 	protected void onPause() 
 	{
 	    super.onPause();
-	    settings.unregisterOnSharedPreferenceChangeListener(this);
+	    getPreferenceScreen().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(this);
 	}
 	
 	
