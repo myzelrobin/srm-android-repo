@@ -15,6 +15,7 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.support.v4.app.NavUtils;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -24,11 +25,6 @@ import android.widget.Toast;
  */
 public class PreferenceActivitySettings extends PreferenceActivity implements OnSharedPreferenceChangeListener
 {
-	
-	//private CharSequence old_theme, new_theme;
-	//private String[] array_theme_items_values = getResources().getStringArray(R.array.theme_items_values);
-	//private CharSequence old_lang, new_lang;
-	
 	private final String LANGUAGE_KEY = "lang";
 	private final String LANGUAGE_DEF = "en";
 	
@@ -41,9 +37,6 @@ public class PreferenceActivitySettings extends PreferenceActivity implements On
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
 	{
-		// Validates new theme if theme is changed
-		// Utils.onActivityCreateSetTheme(this);
-				
 		super.onCreate(savedInstanceState);
 		
 		
@@ -74,28 +67,21 @@ public class PreferenceActivitySettings extends PreferenceActivity implements On
 	/**
 	 * handles changes of the settings
 	 */
-	@SuppressWarnings("deprecation")
 	@Override
 	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences,
 			String key) {
 		// TODO Auto-generated method stub
 		if(key.equals(LANGUAGE_KEY))
 		{
-			Toast.makeText(getApplicationContext(), 
-					"changed language to " + getPreferenceScreen().getSharedPreferences().getString(LANGUAGE_KEY, LANGUAGE_DEF), 
-					3 * Toast.LENGTH_LONG).show();
+			Log.w(this.getClass().getName(), "changed language");
 		}
 		if(key.equals(MICROPHONE_KEY))
 		{
-			Toast.makeText(getApplicationContext(), 
-					"changed microphone to " + getPreferenceScreen().getSharedPreferences().getString(MICROPHONE_KEY, "true"), 
-					3 * Toast.LENGTH_LONG).show();
+			Log.w(this.getClass().getName(), "changed micrphone");
 		}
 		if(key.equals(RECVALUE_KEY))
 		{
-			Toast.makeText(getApplicationContext(), 
-					"changed microphone to " + getPreferenceScreen().getSharedPreferences().getString(RECVALUE_KEY, RECVALUE_DEF), 
-					3 * Toast.LENGTH_LONG).show();
+			Log.w(this.getClass().getName(), "changed recording values");
 		}
 	}
 	
