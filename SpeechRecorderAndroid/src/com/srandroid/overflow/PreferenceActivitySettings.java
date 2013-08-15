@@ -23,15 +23,15 @@ import android.widget.Toast;
  * Activity settings
  *
  */
-public class PreferenceActivitySettings extends PreferenceActivity implements OnSharedPreferenceChangeListener
+public class PreferenceActivitySettings extends PreferenceActivity 
 {
-	private final String LANGUAGE_KEY = "lang";
-	private final String LANGUAGE_DEF = "en";
+	public static final String LANGUAGE_KEY = "lang";
+	public static final String LANGUAGE_DEF = "en";
 	
-	private final String MICROPHONE_KEY = "mic";
+	public static final String MICROPHONE_KEY = "mic";
 	
-	private final String RECVALUE_KEY = "recvalue";
-	private final String RECVALUE_DEF = "1000";
+	public static final String RECVALUE_KEY = "recvalue";
+	public static final String RECVALUE_DEF = "1000";
 	
 	
 	@Override
@@ -64,44 +64,7 @@ public class PreferenceActivitySettings extends PreferenceActivity implements On
 	    }
 	    return super.onOptionsItemSelected(item);
 	}
-	/**
-	 * handles changes of the settings
-	 */
-	@Override
-	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences,
-			String key) {
-		// TODO Auto-generated method stub
-		if(key.equals(LANGUAGE_KEY))
-		{
-			Log.w(this.getClass().getName(), "changed language");
-		}
-		if(key.equals(MICROPHONE_KEY))
-		{
-			Log.w(this.getClass().getName(), "changed micrphone");
-		}
-		if(key.equals(RECVALUE_KEY))
-		{
-			Log.w(this.getClass().getName(), "changed recording values");
-		}
-	}
 	
-	/**
-	 * @param savedInstanceState
-	 */
-	@SuppressWarnings("deprecation")
-	protected void onResume(Bundle savedInstanceState) 
-	{
-	    super.onResume();
-	    getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
-	}
-	
-	
-	@SuppressWarnings("deprecation")
-	protected void onPause() 
-	{
-	    super.onPause();
-	    getPreferenceScreen().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(this);
-	}
 	
 	
 	
@@ -114,14 +77,43 @@ public class PreferenceActivitySettings extends PreferenceActivity implements On
 	 * 
 	 *
 	 */
-	public static class PrefFragmentInSettings extends PreferenceFragment 
+	public static class PrefFragmentInSettings extends PreferenceFragment implements OnSharedPreferenceChangeListener
     {
         @Override
         public void onCreate(final Bundle savedInstanceState)
         {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.preference_settings);
+            
+            getPreferenceManager().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
         }
+        
+        @Override
+    	public void onDestroy() 
+    	{
+    	    super.onPause();
+    	    getPreferenceManager().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(this);
+    	}
+    	/**
+    	 * handles changes of the settings
+    	 */
+    	@Override
+    	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences,
+    			String key) {
+    		// TODO Auto-generated method stub
+    		if(key.equals(PreferenceActivitySettings.LANGUAGE_KEY))
+    		{
+    			Log.w(this.getClass().getName(), "changed language");
+    		}
+    		if(key.equals(PreferenceActivitySettings.MICROPHONE_KEY))
+    		{
+    			Log.w(this.getClass().getName(), "changed microphone");
+    		}
+    		if(key.equals(PreferenceActivitySettings.RECVALUE_KEY))
+    		{
+    			Log.w(this.getClass().getName(), "changed recording values");
+    		}
+    	}
 
         
     }
