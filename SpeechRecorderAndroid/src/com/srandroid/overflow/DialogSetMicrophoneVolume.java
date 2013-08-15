@@ -52,7 +52,7 @@ import com.srandroid.util.Utils;
 						 bStart.setText("STOP");
 						 Utils.toastText(v.getContext(), "settings: start testing microphone");
 					 }
-					 else
+					 if(bStart.getText() == "STOP")
 					 {
 						 bStart.setText("START");
 						 Utils.toastText(v.getContext(), "settings: finish testing microphone, change microphone volume level");

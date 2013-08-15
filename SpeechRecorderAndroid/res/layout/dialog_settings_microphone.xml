@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:text="@string/dialogmessage_microphone"
-        android:textSize="14sp" />
+        android:textSize="28sp" />
     
      <LinearLayout
 		android:layout_width="fill_parent"
