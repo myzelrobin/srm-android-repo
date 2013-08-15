@@ -12,18 +12,15 @@
             android:defaultValue="@string/settings_lang_default" 
             android:negativeButtonText="CANCEL"
             android:positiveButtonText="DONE" />
-        
-        
-        <!--
-            <DialogPreference
-            android:title="@string/settings_microphone"
-            android:summary="Set the microphone volume" 
-            android:dialogMessage="@string/microphone_dialogmessage"
-            android:key="@string/settings_mic_volume_key"
-            android:defaultValue="@string/settings_mic_volume_default"
-            android:negativeButtonText="CANCEL" 
-            android:positiveButtonText="DONE"  />
-         -->
+    </PreferenceCategory>
+    
+    <com.example.PinDialog
+                  android:summary="pin dialog summary"
+                  android:title="pin dialog title" />
+    <PreferenceCategory >
+            <com.srandroid.overflow.DialogSetMicrophoneVolume
+	            android:title="@string/settings_microphone"
+	            android:summary="Set the microphone volume" />
     </PreferenceCategory>
     
     <PreferenceCategory

@@ -3,8 +3,6 @@
  */
 package com.srandroid.overflow;
 
-import java.util.Arrays;
-
 import com.srandroid.R;
 import com.srandroid.util.Utils;
 
@@ -13,11 +11,9 @@ import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
-import android.preference.PreferenceManager;
 import android.support.v4.app.NavUtils;
 import android.util.Log;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 /**
  * Activity settings
@@ -159,9 +155,6 @@ public class PrefActivitySettings extends PreferenceActivity
 
         
     }
-
-
-	
 	
 }
 

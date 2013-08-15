@@ -51,31 +51,35 @@ public final class R {
         public static final int icon_arrow_left=0x7f020008;
     }
     public static final class id {
-        public static final int bgroup_overflow=0x7f0a0007;
-        public static final int bgroup_scripts=0x7f0a000d;
-        public static final int bgroup_sessions=0x7f0a000a;
-        public static final int bgroup_speakers=0x7f0a0010;
-        public static final int button_add_session=0x7f0a000b;
-        public static final int button_add_speaker=0x7f0a0011;
-        public static final int button_download_script=0x7f0a000e;
-        public static final int button_exit=0x7f0a0009;
-        public static final int button_search_scripts=0x7f0a000f;
-        public static final int button_search_sessions=0x7f0a000c;
-        public static final int button_search_speakers=0x7f0a0012;
-        public static final int button_settings=0x7f0a0008;
-        public static final int content_frame=0x7f0a0001;
-        public static final int drawer_layout_activity_main=0x7f0a0000;
-        public static final int linearlayout_toasthint=0x7f0a0005;
-        public static final int listview_drawer_items=0x7f0a0002;
-        public static final int text_toasthint=0x7f0a0006;
-        public static final int textview_in_fragment=0x7f0a0003;
-        public static final int textview_in_fragment2=0x7f0a0004;
+        public static final int bgroup_overflow=0x7f0a000a;
+        public static final int bgroup_scripts=0x7f0a0010;
+        public static final int bgroup_sessions=0x7f0a000d;
+        public static final int bgroup_speakers=0x7f0a0013;
+        public static final int button_add_session=0x7f0a000e;
+        public static final int button_add_speaker=0x7f0a0014;
+        public static final int button_cancel_in_dialog_mic=0x7f0a0001;
+        public static final int button_download_script=0x7f0a0011;
+        public static final int button_exit=0x7f0a000c;
+        public static final int button_search_scripts=0x7f0a0012;
+        public static final int button_search_sessions=0x7f0a000f;
+        public static final int button_search_speakers=0x7f0a0015;
+        public static final int button_settings=0x7f0a000b;
+        public static final int button_start_in_dialog_mic=0x7f0a0002;
+        public static final int content_frame=0x7f0a0004;
+        public static final int drawer_layout_activity_main=0x7f0a0003;
+        public static final int linearlayout_toasthint=0x7f0a0008;
+        public static final int listview_drawer_items=0x7f0a0005;
+        public static final int text_toasthint=0x7f0a0009;
+        public static final int textview_in_dialog_microphone=0x7f0a0000;
+        public static final int textview_in_fragment=0x7f0a0006;
+        public static final int textview_in_fragment2=0x7f0a0007;
     }
     public static final class layout {
-        public static final int drawerlayout_in_activitymain=0x7f030000;
-        public static final int layout_drawer_items=0x7f030001;
-        public static final int layout_fragment_in_activitymain=0x7f030002;
-        public static final int layout_toasthint_in_activitymain=0x7f030003;
+        public static final int dialog_settings_microphone=0x7f030000;
+        public static final int drawerlayout_in_activitymain=0x7f030001;
+        public static final int layout_drawer_items=0x7f030002;
+        public static final int layout_fragment_in_activitymain=0x7f030003;
+        public static final int layout_toasthint_in_activitymain=0x7f030004;
     }
     public static final class menu {
         public static final int menu_items=0x7f090000;
@@ -100,6 +104,7 @@ public final class R {
         /**  Buttons in Overflow 
          */
         public static final int button_settings=0x7f060007;
+        public static final int dialogmessage_microphone=0x7f060010;
         public static final int drawer_items_close=0x7f060003;
         /**  ActivityMain 
  Drawer in ActivityMain 
@@ -112,7 +117,6 @@ public final class R {
          */
         public static final int drawer_items_open=0x7f060002;
         public static final int hello_world=0x7f060001;
-        public static final int microphone_dialogmessage=0x7f060010;
         /**  channels 
          */
         public static final int settings_channels=0x7f060015;
