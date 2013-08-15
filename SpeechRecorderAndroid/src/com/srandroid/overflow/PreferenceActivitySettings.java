@@ -113,8 +113,8 @@ public class PreferenceActivitySettings extends PreferenceActivity
     		{
     			Log.w(this.getClass().getName(), "changed microphone");
     			Toast.makeText(getActivity(), 
-    					"changed microphone to " + sharedPreferences.getString(PreferenceActivitySettings.MICROPHONE_KEY, 
-    																			"true"), 
+    					"changed microphone to " + sharedPreferences.getBoolean(PreferenceActivitySettings.MICROPHONE_KEY,
+    																			true), 
     					3 * Toast.LENGTH_LONG).show();
     		}
     		if(key.equals(PreferenceActivitySettings.RECVALUE_KEY))
