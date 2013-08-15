@@ -85,7 +85,7 @@ import com.srandroid.util.Utils;
 			 super.onBindDialogView(view);
 		 }
 		 /**
-		  * Saves new value for this preference key in the SharedPreference
+		  * Saves new value for this preference key from xml into the SharedPreference
 		  */
 		 @Override
 		 protected void onDialogClosed(boolean positiveResult) {

@@ -1,6 +1,9 @@
 package com.srandroid.util;
 
+import java.io.File;
+
 import android.content.Context;
+import android.util.Log;
 import android.widget.Toast;
 
 
@@ -13,7 +16,29 @@ import android.widget.Toast;
 public class Utils
 {
 	public static final boolean canToastText = true;
+	public static String APP_DIR;
+	public static String APP_FILES_DIR;
 	
+	public static void initializeApp(Context context)
+	{
+		// get application folder path (/data/data/APP_PACKAGE/)
+		try {
+			APP_DIR = getAppDir(context);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Log.w(Utils.class.getName(), "APP_DIR=" + APP_DIR);
+		
+		// get files folder path (/data/data/APP_PACKAGE/files)
+		try {
+			APP_FILES_DIR = getAppFilesDir(context);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Log.w(Utils.class.getName(), "APP_FILES_DIR=" + APP_FILES_DIR);
+	}
 	
 	// Toast some text for debugging
 	public static void toastText(Context context, String s)
@@ -21,6 +46,18 @@ public class Utils
 		if(canToastText) Toast.makeText(context, s, 2 * Toast.LENGTH_LONG).show();
 	}
 	
+	
+	public static String getAppDir(Context context) throws Exception 
+	{
+	    return context.getPackageManager()
+	            .getPackageInfo(context.getPackageName(), 0)
+	            .applicationInfo.dataDir;
+	}
+	
+	public static String getAppFilesDir(Context context) throws Exception 
+	{
+	    return context.getFilesDir().getAbsolutePath();
+	}
 }
 
 

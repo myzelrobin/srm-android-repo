@@ -50,6 +50,7 @@ public class ActivityMain extends Activity {
 		super();
 		// TODO Auto-generated constructor stub
 		this.setPresenter_main(new PresenterMain(this));
+		Utils.initializeApp(getApplicationContext());
 	}
     
 
@@ -86,7 +87,7 @@ public class ActivityMain extends Activity {
 		super.onCreate(savedInstanceState);
 		
 		// initialize the app with default values, need a method? is it necessary?
-		// PreferenceManager.setDefaultValues(this, R.xml.preference_settings, false);
+		PreferenceManager.setDefaultValues(this, R.xml.preference_settings, false);
 		
 		setContentView(R.layout.drawerlayout_in_activitymain);
 		
