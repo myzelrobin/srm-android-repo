@@ -49,10 +49,10 @@ import com.srandroid.util.Utils;
 				 public void onClick(View v) 
 				 {
 					Utils.toastText(v.getContext(), "settings: start testing microphone");
+					bStart.setText("STOP");
 					
 					 if(bStart.getText() == "STOP")
 					 {
-						 bStart.setText("START");
 						 Utils.toastText(v.getContext(), "settings: finish testing microphone, change microphone volume level");
 						 getDialog().dismiss();
 					 }
