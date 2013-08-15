@@ -1,5 +1,7 @@
 package com.srandroid.overflow;
 
+import java.io.IOException;
+
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -10,12 +12,15 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 
 import com.srandroid.R;
+import com.srandroid.util.SRMMediaLib;
 import com.srandroid.util.Utils;
 
 	public class DialogSetMicrophoneVolume extends DialogPreference
 	{
 		private Button bCancel, bStart, bFinish;
 		private String volume_value = "0"; 
+		
+		private SRMMediaLib media_lib;
 		
 		/**
 		 * @param context
@@ -65,6 +70,13 @@ import com.srandroid.util.Utils;
 				 {
 					Utils.toastText(v.getContext(), "settings: start testing microphone");
 					bStart.setEnabled(false);
+					
+					try {
+						media_lib.startRecording(Utils.REC_TEST_DIR_PATH);
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				 }
 			 });
 			 
@@ -77,6 +89,9 @@ import com.srandroid.util.Utils;
 				 {
 					 Utils.toastText(v.getContext(), "settings: finish testing microphone");
 					 volume_value = "999";
+					 
+					 media_lib.stopRecording();
+					 
 					 onDialogClosed(true);
 					 getDialog().dismiss();
 				 }

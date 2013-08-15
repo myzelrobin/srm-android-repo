@@ -16,28 +16,34 @@ import android.widget.Toast;
 public class Utils
 {
 	public static final boolean canToastText = true;
-	public static String APP_DIR;
-	public static String APP_FILES_DIR;
+	public static String APP_DIR_PATH;
+	public static String APP_FILES_DIR_PATH;
+	public static String REC_FILES_DIR_PATH;
+	public static String REC_TEST_DIR_PATH;
 	
 	public static void initializeApp(Context context)
 	{
 		// get application folder path (/data/data/APP_PACKAGE/)
 		try {
-			APP_DIR = getAppDir(context);
+			APP_DIR_PATH = getAppDir(context);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		Log.w(Utils.class.getName(), "APP_DIR=" + APP_DIR);
+		Log.w(Utils.class.getName(), "APP_DIR=" + APP_DIR_PATH);
 		
 		// get files folder path (/data/data/APP_PACKAGE/files)
 		try {
-			APP_FILES_DIR = getAppFilesDir(context);
+			APP_FILES_DIR_PATH = getAppFilesDir(context);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		Log.w(Utils.class.getName(), "APP_FILES_DIR=" + APP_FILES_DIR);
+		Log.w(Utils.class.getName(), "APP_FILES_DIR=" + APP_FILES_DIR_PATH);
+		
+		REC_FILES_DIR_PATH = makeDir(APP_FILES_DIR_PATH, "recorders");
+		REC_TEST_DIR_PATH = makeDir(REC_FILES_DIR_PATH, "test");
+		
 	}
 	
 	// Toast some text for debugging
@@ -57,6 +63,22 @@ public class Utils
 	public static String getAppFilesDir(Context context) throws Exception 
 	{
 	    return context.getFilesDir().getAbsolutePath();
+	}
+	
+	public static String makeDir(String parentFolder, String folderName)
+	{
+		if(parentFolder != null)
+		{
+			File dir_files = new File(parentFolder + File.separator+folderName);
+			dir_files.mkdir();
+			return dir_files.getAbsolutePath();
+		}
+		else
+		{
+			Log.w(Utils.class.getName(), "Can NOT make directory, parent folder path is null!");
+		}
+		
+		return null;
 	}
 }
 
