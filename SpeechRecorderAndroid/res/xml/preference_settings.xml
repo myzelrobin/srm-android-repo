@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
 
-    <PreferenceCategory>
+    <PreferenceCategory >
         <ListPreference
             android:title="@string/settings_language" 
             android:summary="Set the language of the app" 
@@ -24,46 +24,45 @@
             android:negativeButtonText="CANCEL" 
             android:positiveButtonText="DONE"  />
          -->
-        
-        <PreferenceCategory
+    </PreferenceCategory>
+    
+    <PreferenceCategory
             android:title="@string/settings_recvalue" >
                 
-	            <ListPreference
-		            android:summary="Set sample rate value"
-		            android:title="@string/settings_sample_rate" 
-		            android:dialogTitle="@string/settings_sample_rate"
-		            android:entries="@array/sample_rate_items"
-		            android:entryValues="@array/sample_rate_items_values"
-		            android:key="@string/settings_sample_rate_key"
-		            android:defaultValue="@string/settings_sample_rate_default" 
-		            android:negativeButtonText="CANCEL"
-		            android:positiveButtonText="DONE"/>
-	            
-	            <ListPreference
-		            android:summary="Set channels"
-		            android:title="@string/settings_channels" 
-		            android:dialogTitle="@string/settings_channels"
-		            android:entries="@array/channels_items"
-		            android:entryValues="@array/channels_items_values"
-		            android:key="@string/settings_channels_key"
-		            android:defaultValue="@string/settings_channels_default" 
-		            android:negativeButtonText="CANCEL"
-		            android:positiveButtonText="DONE"/>
-	
-	            <CheckBoxPreference
-		            android:key="@string/settings_overwrite_key"
-		            android:title="@string/settings_overwrite"
-		            android:summary="Overwrite origninal file" 
-		            android:defaultValue="true" />
-	            
-	            <CheckBoxPreference
-	                android:key="@string/settings_overwrite_warning_key"
-	                android:title="@string/settings_overwrite_warning"
-	                android:summary="Show warning before overwriting origninal file" 
-	                android:defaultValue="true" />
+                <ListPreference
+                    android:summary="Set sample rate value"
+                    android:title="@string/settings_sample_rate" 
+                    android:dialogTitle="@string/settings_sample_rate"
+                    android:entries="@array/sample_rate_items"
+                    android:entryValues="@array/sample_rate_items_values"
+                    android:key="@string/settings_sample_rate_key"
+                    android:defaultValue="@string/settings_sample_rate_default" 
+                    android:negativeButtonText="CANCEL"
+                    android:positiveButtonText="DONE"/>
+                
+                <ListPreference
+                    android:summary="Set channels"
+                    android:title="@string/settings_channels" 
+                    android:dialogTitle="@string/settings_channels"
+                    android:entries="@array/channels_items"
+                    android:entryValues="@array/channels_items_values"
+                    android:key="@string/settings_channels_key"
+                    android:defaultValue="@string/settings_channels_default" 
+                    android:negativeButtonText="CANCEL"
+                    android:positiveButtonText="DONE"/>
+    
+                <CheckBoxPreference
+                    android:key="@string/settings_overwrite_key"
+                    android:title="@string/settings_overwrite"
+                    android:summary="Overwrite origninal file" 
+                    android:defaultValue="true" />
+                
+                <CheckBoxPreference
+                    android:key="@string/settings_overwrite_warning_key"
+                    android:title="@string/settings_overwrite_warning"
+                    android:summary="Show warning before overwriting origninal file" 
+                    android:defaultValue="true" />
 
         </PreferenceCategory>
-        
-    </PreferenceCategory>
 
 </PreferenceScreen>
