@@ -18,9 +18,9 @@
             android:summary="Set the microphone volume"
             android:dialogMessage="@string/microphone_dialogmessage"
             android:key="@string/settings_mic_volume_key"
-            android:defaultValue="@string/settings_mic_volume_default"
             android:negativeButtonText="CANCEL" 
             android:positiveButtonText="DONE" />
+        <!-- android:defaultValue="@string/settings_mic_volume_default" -->
         
         <PreferenceScreen
             android:key="prefscreen_recvalue"

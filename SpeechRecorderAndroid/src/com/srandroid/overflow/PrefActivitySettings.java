@@ -49,8 +49,6 @@ public class PrefActivitySettings extends PreferenceActivity
 	{
 		super.onCreate(savedInstanceState);
 		
-		
-		
 		// create a PreferenceFragment to load the Preference layout
 		// addPreferencesFromResource(R.xml.preference_settings);
 		getFragmentManager().beginTransaction().replace(android.R.id.content, new PrefFragmentInSettings()).commit();
