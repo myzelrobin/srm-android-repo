@@ -13,21 +13,20 @@
             android:negativeButtonText="CANCEL"
             android:positiveButtonText="DONE" />
         
-        <DialogPreference
-            android:title="@string/settings_microphone"
-            android:summary="Set the microphone volume" />
+        
         <!--
+            <DialogPreference
+            android:title="@string/settings_microphone"
+            android:summary="Set the microphone volume" 
             android:dialogMessage="@string/microphone_dialogmessage"
             android:key="@string/settings_mic_volume_key"
             android:defaultValue="@string/settings_mic_volume_default"
             android:negativeButtonText="CANCEL" 
-            android:positiveButtonText="DONE"  
+            android:positiveButtonText="DONE"  />
          -->
         
-        <PreferenceScreen
-            android:key="prefscreen_recvalue"
-            android:title="@string/settings_recvalue"
-            android:summary="Set the values for recording">
+        <PreferenceCategory
+            android:title="@string/settings_recvalue" >
                 
 	            <ListPreference
 		            android:summary="Set sample rate value"
@@ -63,7 +62,7 @@
 	                android:summary="Show warning before overwriting origninal file" 
 	                android:defaultValue="true" />
 
-        </PreferenceScreen>
+        </PreferenceCategory>
         
     </PreferenceCategory>
 

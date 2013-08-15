@@ -29,7 +29,6 @@
     <!-- PreferenceActivitySettings -->
         <string name="title_settings">Settings</string>
 	    
-	    <string name="settings_theme">Theme</string>
 	
 	       <!-- language -->
 	       <string name="settings_language">Language</string>
