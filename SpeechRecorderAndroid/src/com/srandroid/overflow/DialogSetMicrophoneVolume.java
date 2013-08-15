@@ -48,9 +48,12 @@ import com.srandroid.util.Utils;
 				 @Override
 				 public void onClick(View v) 
 				 {
-					Utils.toastText(v.getContext(), "settings: start testing microphone");
-					bStart.setText("STOP");
-					
+					 if(bStart.getText() == "START")
+					 {
+						 bStart.setText("STOP");
+						 Utils.toastText(v.getContext(), "settings: start testing microphone");
+					 }
+					 
 					 if(bStart.getText() == "STOP")
 					 {
 						 Utils.toastText(v.getContext(), "settings: finish testing microphone, change microphone volume level");
