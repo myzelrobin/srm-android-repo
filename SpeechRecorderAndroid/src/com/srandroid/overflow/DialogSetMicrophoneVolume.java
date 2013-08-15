@@ -13,7 +13,7 @@ import com.srandroid.util.Utils;
 
 	public class DialogSetMicrophoneVolume extends DialogPreference
 	{
-		private Button bStart, bCancel;
+		private Button bCancel, bStart, bFinish;
 		
 		/**
 		 * @param context
@@ -41,27 +41,6 @@ import com.srandroid.util.Utils;
 		 */
 		 @Override
 		 public void onBindDialogView(View view){
-			 // button START
-			 bStart = (Button) view.findViewById(R.id.button_start_in_dialog_mic);
-			 bStart.setOnClickListener(new OnClickListener() 
-			 {
-				 @Override
-				 public void onClick(View v) 
-				 {
-					 if(bStart.getText() == "START")
-					 {
-						 bStart.setText("STOP");
-						 Utils.toastText(v.getContext(), "settings: start testing microphone");
-					 }
-					 
-					 if(bStart.getText() == "STOP")
-					 {
-						 Utils.toastText(v.getContext(), "settings: finish testing microphone, change microphone volume level");
-						 getDialog().dismiss();
-					 }
-					
-				 }
-			 });
 			 
 			 // button CANCEL
 			 bCancel = (Button) view.findViewById(R.id.button_cancel_in_dialog_mic);
@@ -70,6 +49,29 @@ import com.srandroid.util.Utils;
 				 @Override
 				 public void onClick(View v) 
 				 {
+					 getDialog().dismiss();
+				 }
+			 });
+			 
+			 // button START
+			 bStart = (Button) view.findViewById(R.id.button_start_in_dialog_mic);
+			 bStart.setOnClickListener(new OnClickListener() 
+			 {
+				 @Override
+				 public void onClick(View v) 
+				 {
+					Utils.toastText(v.getContext(), "settings: start testing microphone");
+				 }
+			 });
+			 
+			// button FINISH
+			 bFinish = (Button) view.findViewById(R.id.button_finish_in_dialog_mic);
+			 bFinish.setOnClickListener(new OnClickListener() 
+			 {
+				 @Override
+				 public void onClick(View v) 
+				 {
+					 Utils.toastText(v.getContext(), "settings: finish testing microphone");
 					 getDialog().dismiss();
 				 }
 			 });
