@@ -86,7 +86,7 @@
 		       <!-- channels -->
                <string name="settings_channels">Channels</string>
                <string name="settings_channels_key">channels</string>
-               <string name="settings_channels_default">0</string>
+               <string name="settings_channels_default">2</string>
                     <string-array name="channels_items">
                         <item>0</item>
                         <item>1</item>

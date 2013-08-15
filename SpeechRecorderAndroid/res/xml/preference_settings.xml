@@ -12,6 +12,7 @@
             android:defaultValue="@string/settings_lang_default" 
             android:negativeButtonText="CANCEL"
             android:positiveButtonText="DONE" />
+        
         <CheckBoxPreference
             android:title="@string/settings_microphone"
             android:key="@string/settings_mic_key"

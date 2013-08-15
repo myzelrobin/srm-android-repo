@@ -26,13 +26,21 @@ import android.widget.Toast;
  */
 public class PrefActivitySettings extends PreferenceActivity 
 {
-	public static final String LANGUAGE_KEY = "lang";
-	public static final String LANGUAGE_DEF = "en";
+	public static final String KEY_LANGUAGE = "lang";
+	public static final String KEY_LANGUAGE_DEF = "en";
 	
-	public static final String MICROPHONE_KEY = "mic";
+	public static final String KEY_MICROPHONE = "mic";
 	
-	public static final String RECVALUE_KEY = "recvalue";
-	public static final String RECVALUE_DEF = "1000";
+	public static final String KEY_PREFSCREEN_RECVALUE = "prefscreen_recvalue";
+	
+	public static final String KEY_SAMPLE_RATE = "sample_rate";
+	public static final String KEY_SAMPLE_RATE_DEF = "22050.0";
+	
+	public static final String KEY_CHANNELS = "channels";
+	public static final String KEY_CHANNELS_DEF = "2";
+	
+	public static final String KEY_OVERWRITE = "overwrite"; // boolean value
+	public static final String KEY_OVERWRITE_WARNING = "overwrite_warning"; // boolean value
 	
 	
 	@Override
@@ -102,27 +110,51 @@ public class PrefActivitySettings extends PreferenceActivity
     	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences,
     			String key) {
     		// TODO Auto-generated method stub
-    		if(key.equals(PrefActivitySettings.LANGUAGE_KEY))
+    		if(key.equals(PrefActivitySettings.KEY_LANGUAGE))
     		{
     			Log.w(this.getClass().getName(), "changed language");
     			Utils.toastText(getActivity(), 
-    					"changed language to " + sharedPreferences.getString(PrefActivitySettings.LANGUAGE_KEY, 
-    																			PrefActivitySettings.LANGUAGE_DEF));
+    					"changed language to " + 
+    					sharedPreferences.getString(PrefActivitySettings.KEY_LANGUAGE, 
+    												PrefActivitySettings.KEY_LANGUAGE_DEF));
     			
     		}
-    		if(key.equals(PrefActivitySettings.MICROPHONE_KEY))
+    		if(key.equals(PrefActivitySettings.KEY_MICROPHONE))
     		{
     			Log.w(this.getClass().getName(), "changed microphone");
     			Utils.toastText(getActivity(), 
-    					"changed microphne to " + sharedPreferences.getBoolean(PrefActivitySettings.MICROPHONE_KEY,
-																				true));
+    					"changed microphne to " + 
+    					sharedPreferences.getBoolean(PrefActivitySettings.KEY_MICROPHONE, true));
     		}
-    		if(key.equals(PrefActivitySettings.RECVALUE_KEY))
+    		if(key.equals(PrefActivitySettings.KEY_SAMPLE_RATE))
     		{
-    			Log.w(this.getClass().getName(), "changed recording values");
+    			Log.w(this.getClass().getName(), "changed recording_values->sample_rate");
     			Utils.toastText(getActivity(), 
-    					"changed recording value to " + sharedPreferences.getString(PrefActivitySettings.RECVALUE_KEY, 
-																				PrefActivitySettings.RECVALUE_KEY));
+    					"changed recording_value->sample_rate to " 
+    					+ sharedPreferences.getString(PrefActivitySettings.KEY_SAMPLE_RATE, 
+    													PrefActivitySettings.KEY_SAMPLE_RATE_DEF));
+    		}
+    		if(key.equals(PrefActivitySettings.KEY_SAMPLE_RATE))
+    		{
+    			Log.w(this.getClass().getName(), "changed recording_values->channels");
+    			Utils.toastText(getActivity(), 
+    					"changed recording_value->channels to " 
+    					+ sharedPreferences.getString(PrefActivitySettings.KEY_CHANNELS, 
+    													PrefActivitySettings.KEY_CHANNELS_DEF));
+    		}
+    		if(key.equals(PrefActivitySettings.KEY_OVERWRITE))
+    		{
+    			Log.w(this.getClass().getName(), "changed recording_values->overwrite");
+    			Utils.toastText(getActivity(), 
+    					"changed recording_value->overwrite to " 
+    					+ sharedPreferences.getBoolean(PrefActivitySettings.KEY_OVERWRITE, true));
+    		}
+    		if(key.equals(PrefActivitySettings.KEY_OVERWRITE_WARNING))
+    		{
+    			Log.w(this.getClass().getName(), "changed recording_values->overwrite_warning");
+    			Utils.toastText(getActivity(), 
+    					"changed recording_value->overwrite_warning to " 
+    					+ sharedPreferences.getBoolean(PrefActivitySettings.KEY_OVERWRITE_WARNING, true));
     		}
     	}
 

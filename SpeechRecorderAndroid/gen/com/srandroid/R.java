@@ -18,16 +18,14 @@ public final class R {
          */
         public static final int language_items=0x7f070001;
         public static final int language_items_values=0x7f070002;
-        public static final int recvalue_items=0x7f070007;
-        public static final int recvalue_items_values=0x7f070008;
         public static final int sample_rate_items=0x7f070003;
         public static final int sample_rate_items_values=0x7f070004;
         /**  interfaces 
  interfaces 
  interfaces 
          */
-        public static final int theme_items=0x7f070009;
-        public static final int theme_items_values=0x7f07000a;
+        public static final int theme_items=0x7f070007;
+        public static final int theme_items_values=0x7f070008;
     }
     public static final class attr {
     }
@@ -97,8 +95,8 @@ public final class R {
  Buttons in Overflow 
  Buttons in Overflow 
          */
-        public static final int button_set_microphone=0x7f06001d;
-        public static final int button_set_recording_values=0x7f06001e;
+        public static final int button_set_microphone=0x7f06001b;
+        public static final int button_set_recording_values=0x7f06001c;
         /**  Buttons in Overflow 
          */
         public static final int button_settings=0x7f060007;
@@ -139,24 +137,6 @@ public final class R {
         /**  recording values
          */
         public static final int settings_recvalue=0x7f060010;
-        public static final int settings_recvalue_default=0x7f06001c;
-        /**  
-	       
-            <CheckBoxPreference
-                    android:key="@string/settings_overwrite_key"
-                    android:title="@string/settings_overwrite"
-                    android:summary="Overwrite origninal file" />
-            
-            <CheckBoxPreference
-                    android:key="@string/settings_overwrite_warning_key"
-                    android:title="@string/settings_overwrite_warning"
-                    android:summary="Show warning before overwriting origninal file" />
-	       
-	       
-	       
-	        
-         */
-        public static final int settings_recvalue_key=0x7f06001b;
         /**  sample rate 
          */
         public static final int settings_sample_rate=0x7f060011;
