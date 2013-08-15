@@ -35,14 +35,14 @@ public class SRMMediaLib {
 	
 
 	
-	public void startRecording(String dir) throws IOException 
+	public void startRecording(File dir) throws IOException 
 	{
 	   recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
 	   recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
 	   recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
 	   if (audiofile == null) 
 	   {
-	       File sampleDir = new File(dir);
+	       File sampleDir = dir;
 	       try 
 	       { 
 	    	   audiofile = File.createTempFile("test_microphone", ".3gp", sampleDir);

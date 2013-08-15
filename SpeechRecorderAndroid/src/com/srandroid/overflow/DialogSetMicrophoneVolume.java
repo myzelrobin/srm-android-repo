@@ -1,5 +1,6 @@
 package com.srandroid.overflow;
 
+import java.io.File;
 import java.io.IOException;
 
 import android.app.AlertDialog;
@@ -65,14 +66,17 @@ import com.srandroid.util.Utils;
 			 bStart = (Button) view.findViewById(R.id.button_start_in_dialog_mic);
 			 bStart.setOnClickListener(new OnClickListener() 
 			 {
+				 
 				 @Override
 				 public void onClick(View v) 
 				 {
 					Utils.toastText(v.getContext(), "settings: start testing microphone");
 					bStart.setEnabled(false);
 					
+					File rec_test_dir = new File(Utils.REC_TEST_DIR_PATH);
+					
 					try {
-						media_lib.startRecording(Utils.REC_TEST_DIR_PATH);
+						media_lib.startRecording(rec_test_dir);
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
