@@ -91,7 +91,7 @@ public class PreferenceActivitySettings extends PreferenceActivity
         @Override
     	public void onDestroy() 
     	{
-    	    super.onPause();
+    	    super.onDestroy();
     	    getPreferenceManager().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(this);
     	}
     	/**
