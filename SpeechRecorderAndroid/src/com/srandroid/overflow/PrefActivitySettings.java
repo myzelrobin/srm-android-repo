@@ -134,7 +134,7 @@ public class PrefActivitySettings extends PreferenceActivity
     					+ sharedPreferences.getString(PrefActivitySettings.KEY_SAMPLE_RATE, 
     													PrefActivitySettings.KEY_SAMPLE_RATE_DEF));
     		}
-    		if(key.equals(PrefActivitySettings.KEY_SAMPLE_RATE))
+    		if(key.equals(PrefActivitySettings.KEY_CHANNELS))
     		{
     			Log.w(this.getClass().getName(), "changed recording_values->channels");
     			Utils.toastText(getActivity(), 
