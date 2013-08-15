@@ -61,6 +61,7 @@ import com.srandroid.util.Utils;
 				 public void onClick(View v) 
 				 {
 					Utils.toastText(v.getContext(), "settings: start testing microphone");
+					bStart.setEnabled(false);
 				 }
 			 });
 			 
