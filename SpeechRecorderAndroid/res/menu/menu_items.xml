@@ -1,20 +1,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
-    <!-- Buttons shown under the right button in Actionbar -->
+    <!-- Buttons shown in overflow in Actionbar -->
     <group 
         android:id="@+id/bgroup_overflow"    
         android:visible="false"
         android:orderInCategory="100" >
-    
-        <item
-            android:id="@+id/button_set_microphone"
-            android:showAsAction="never"
-            android:title="@string/button_set_microphone" />
-
-        <item
-            android:id="@+id/button_set_recording_values"
-            android:showAsAction="never"
-            android:title="@string/button_set_recording_values" />
             
         <item
             android:id="@+id/button_settings"

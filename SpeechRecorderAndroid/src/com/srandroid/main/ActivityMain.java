@@ -283,12 +283,6 @@ public class ActivityMain extends Activity {
         		break;
         		
         	// overflow buttons
-        	case R.id.button_set_microphone:
-        		toastHint("clicked set microphone");
-        		break;
-        	case R.id.button_set_recording_values:
-        		toastHint("clicked set recording vlaues");
-        		break;
         	case R.id.button_settings:
         		// Launch Preference activity
         	    Intent i = new Intent(ActivityMain.this, PreferenceActivitySettings.class);
