@@ -29,13 +29,13 @@ public class PreferenceActivitySettings extends PreferenceActivity implements On
 	//private String[] array_theme_items_values = getResources().getStringArray(R.array.theme_items_values);
 	//private CharSequence old_lang, new_lang;
 	
-	private SharedPreferences settings;
+	private SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);;
 	
-	public static final String LANGUAGE_KEY = "lang";
-	public static final String LANGUAGE_DEF = "en";
-	public static final String MICROPHONE_KEY = "mic";
-	public static final String RECVALUE_KEY = "recvalue";
-	public static final String RECVALUE_DEF = "en";
+	private String LANGUAGE_KEY;
+	private String LANGUAGE_DEF;
+	private String MICROPHONE_KEY;
+	private String RECVALUE_KEY;
+	private String RECVALUE_DEF;
 	
 	
 	@Override
@@ -46,7 +46,13 @@ public class PreferenceActivitySettings extends PreferenceActivity implements On
 				
 		super.onCreate(savedInstanceState);
 		
+		LANGUAGE_KEY = getResources().getString(R.string.settings_lang_key);
+		LANGUAGE_DEF = getResources().getString(R.string.settings_lang_default);
 		
+		RECVALUE_KEY = getResources().getString(R.string.settings_recvalues_key);
+		RECVALUE_DEF = getResources().getString(R.string.settings_recvalues_default);
+		
+		MICROPHONE_KEY = getResources().getString(R.string.settings_mic_key);
 		
 		// create a PreferenceFragment to load the Preference layout
 		// addPreferencesFromResource(R.xml.preference_settings);
@@ -55,12 +61,8 @@ public class PreferenceActivitySettings extends PreferenceActivity implements On
 		// Shows Up button
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		
-		// Get old settings values
-		// get data from settings activity in this case the language
-	    settings = PreferenceManager.getDefaultSharedPreferences(this);
+	    settings.registerOnSharedPreferenceChangeListener(this);
 	    
-	    //old_theme = settings.getString("Theme", "light");
-	    //old_lang = settings.getString("Language", "en");
 	}
 	
 	/**
