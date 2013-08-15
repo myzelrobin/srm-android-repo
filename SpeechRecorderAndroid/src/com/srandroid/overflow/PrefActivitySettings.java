@@ -23,7 +23,7 @@ import android.widget.Toast;
  * Activity settings
  *
  */
-public class PreferenceActivitySettings extends PreferenceActivity 
+public class PrefActivitySettings extends PreferenceActivity 
 {
 	public static final String LANGUAGE_KEY = "lang";
 	public static final String LANGUAGE_DEF = "en";
@@ -101,28 +101,28 @@ public class PreferenceActivitySettings extends PreferenceActivity
     	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences,
     			String key) {
     		// TODO Auto-generated method stub
-    		if(key.equals(PreferenceActivitySettings.LANGUAGE_KEY))
+    		if(key.equals(PrefActivitySettings.LANGUAGE_KEY))
     		{
     			Log.w(this.getClass().getName(), "changed language");
     			Toast.makeText(getActivity(), 
-    					"changed language to " + sharedPreferences.getString(PreferenceActivitySettings.LANGUAGE_KEY, 
-    																			PreferenceActivitySettings.LANGUAGE_DEF), 
+    					"changed language to " + sharedPreferences.getString(PrefActivitySettings.LANGUAGE_KEY, 
+    																			PrefActivitySettings.LANGUAGE_DEF), 
     					3 * Toast.LENGTH_LONG).show();
     		}
-    		if(key.equals(PreferenceActivitySettings.MICROPHONE_KEY))
+    		if(key.equals(PrefActivitySettings.MICROPHONE_KEY))
     		{
     			Log.w(this.getClass().getName(), "changed microphone");
     			Toast.makeText(getActivity(), 
-    					"changed microphone to " + sharedPreferences.getBoolean(PreferenceActivitySettings.MICROPHONE_KEY,
+    					"changed microphone to " + sharedPreferences.getBoolean(PrefActivitySettings.MICROPHONE_KEY,
     																			true), 
     					3 * Toast.LENGTH_LONG).show();
     		}
-    		if(key.equals(PreferenceActivitySettings.RECVALUE_KEY))
+    		if(key.equals(PrefActivitySettings.RECVALUE_KEY))
     		{
     			Log.w(this.getClass().getName(), "changed recording values");
     			Toast.makeText(getActivity(), 
-    					"changed recording values to " + sharedPreferences.getString(PreferenceActivitySettings.RECVALUE_KEY, 
-    																					PreferenceActivitySettings.RECVALUE_KEY), 
+    					"changed recording values to " + sharedPreferences.getString(PrefActivitySettings.RECVALUE_KEY, 
+    																					PrefActivitySettings.RECVALUE_KEY), 
     					3 * Toast.LENGTH_LONG).show();
     		}
     	}

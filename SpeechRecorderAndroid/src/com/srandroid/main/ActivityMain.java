@@ -3,7 +3,7 @@ package com.srandroid.main;
 import java.util.Arrays;
 
 import com.srandroid.R;
-import com.srandroid.overflow.PreferenceActivitySettings;
+import com.srandroid.overflow.PrefActivitySettings;
 
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -285,7 +285,7 @@ public class ActivityMain extends Activity {
         	// overflow buttons
         	case R.id.button_settings:
         		// Launch Preference activity
-        	    Intent i = new Intent(ActivityMain.this, PreferenceActivitySettings.class);
+        	    Intent i = new Intent(ActivityMain.this, PrefActivitySettings.class);
         	    startActivity(i);
         	    // Some feedback to the user
         		toastHint("clicked settings, settings window starts");
