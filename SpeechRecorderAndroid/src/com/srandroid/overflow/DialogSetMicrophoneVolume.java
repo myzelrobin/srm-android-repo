@@ -2,6 +2,7 @@ package com.srandroid.overflow;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.preference.DialogPreference;
 import android.util.AttributeSet;
 import android.view.View;
@@ -14,6 +15,7 @@ import com.srandroid.util.Utils;
 	public class DialogSetMicrophoneVolume extends DialogPreference
 	{
 		private Button bCancel, bStart, bFinish;
+		private String volume_value = "0"; 
 		
 		/**
 		 * @param context
@@ -40,7 +42,8 @@ import com.srandroid.util.Utils;
 		 * handles clicks on buttons
 		 */
 		 @Override
-		 public void onBindDialogView(View view){
+		 public void onBindDialogView(View view)
+		 {
 			 
 			 // button CANCEL
 			 bCancel = (Button) view.findViewById(R.id.button_cancel_in_dialog_mic);
@@ -73,10 +76,45 @@ import com.srandroid.util.Utils;
 				 public void onClick(View v) 
 				 {
 					 Utils.toastText(v.getContext(), "settings: finish testing microphone");
+					 volume_value = "999";
+					 onDialogClosed(true);
 					 getDialog().dismiss();
 				 }
 			 });
 			 
 			 super.onBindDialogView(view);
 		 }
+		 /**
+		  * Saves new value for this preference key in the SharedPreference
+		  */
+		 @Override
+		 protected void onDialogClosed(boolean positiveResult) {
+		     // When the user selects "OK", persist the new value
+		     if (positiveResult) {
+		         persistString(volume_value);
+		     }
+		 }
+		 /**
+		  * Saves the default value  for this preference key in the SharedPreferences.
+		  */
+		 @Override
+		 protected Object onGetDefaultValue(TypedArray a, int index) 
+		 {
+		     return a.getString(index);
+		 }
+		 /**
+		  * Initialize the default value
+		  */
+		 @Override
+		 protected void onSetInitialValue(boolean restorePersistedValue, Object defaultValue) {
+		     if (restorePersistedValue) {
+		         // Restore existing state
+		         volume_value = this.getPersistedString(PrefActivitySettings.KEY_MICVOL_DEF);
+		     } else {
+		         // Set default state from the XML attribute
+		    	 volume_value = (String) defaultValue;
+		         persistString(volume_value);
+		     }
+		 }
+		 
 	}

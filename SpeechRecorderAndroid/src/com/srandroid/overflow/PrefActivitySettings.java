@@ -25,7 +25,7 @@ public class PrefActivitySettings extends PreferenceActivity
 	public static final String KEY_LANGUAGE_DEF = "en";
 	
 	public static final String KEY_MICVOL = "mic_vol";
-	public static final String KEY_MICVOL_DEF = "unknown";
+	public static final String KEY_MICVOL_DEF = "-1";
 	
 	public static final String KEY_PREFSCREEN_RECVALUE = "prefscreen_recvalue";
 	

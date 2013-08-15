@@ -83,10 +83,9 @@ public class ActivityMain extends Activity {
 	protected void onCreate(Bundle savedInstanceState) 
 	{
 		
-
 		super.onCreate(savedInstanceState);
 		
-		// initialize the app with default values
+		// initialize the app with default values, need a method? is it necessary?
 		// PreferenceManager.setDefaultValues(this, R.xml.preference_settings, false);
 		
 		setContentView(R.layout.drawerlayout_in_activitymain);
@@ -338,7 +337,8 @@ public class ActivityMain extends Activity {
 	private class DrawerItemClickListener implements ListView.OnItemClickListener
 	{
 		
-		public DrawerItemClickListener(int position) {
+		public DrawerItemClickListener(int position) 
+		{
 			super();
 			selectItem(position);
 		}
