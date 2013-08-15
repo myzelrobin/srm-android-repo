@@ -14,9 +14,6 @@
             android:positiveButtonText="DONE" />
     </PreferenceCategory>
     
-    <com.example.PinDialog
-                  android:summary="pin dialog summary"
-                  android:title="pin dialog title" />
     <PreferenceCategory >
             <com.srandroid.overflow.DialogSetMicrophoneVolume
 	            android:title="@string/settings_microphone"
