@@ -40,6 +40,7 @@ public class PrefActivitySettings extends PreferenceActivity
 	public static final String KEY_CHANNELS_DEF = "2";
 	
 	public static final String KEY_OVERWRITE = "overwrite"; // boolean value
+	
 	public static final String KEY_OVERWRITE_WARNING = "overwrite_warning"; // boolean value
 	
 	
@@ -117,7 +118,6 @@ public class PrefActivitySettings extends PreferenceActivity
     					"changed language to " + 
     					sharedPreferences.getString(PrefActivitySettings.KEY_LANGUAGE, 
     												PrefActivitySettings.KEY_LANGUAGE_DEF));
-    			
     		}
     		if(key.equals(PrefActivitySettings.KEY_MICROPHONE))
     		{
