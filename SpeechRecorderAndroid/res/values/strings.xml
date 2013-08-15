@@ -52,22 +52,72 @@
 	       <string name="settings_microphone">Microphone</string>
 	       <string name="settings_mic_key">mic</string>
 	       
-	       <!-- recording -->
-	       <string name="settings_recording_values">Recording Values</string>
-	       <string name="settings_recvalues_key">recvalue</string>
-	       <string name="settings_recvalues_default">1000</string>
-		        <string-array name="recvalues_items">
-		            <item>1000</item>
-		            <item>2000</item>
-		            <item>3000</item>
-		        </string-array>
-		        
-		        <string-array name="recvalues_items_values">
-		            <item>1000</item>
-		            <item>2000</item>
-		            <item>3000</item>
-		        </string-array>
-    
-    
+	       <!-- recording values-->
+	       <string name="settings_recvalue">Recording Values</string>
+	       
+	           <!-- sample rate -->
+	           <string name="settings_sample_rate">Sample Rate</string>
+	           <string name="settings_sample_rate_key">sample_rate</string>
+	           <string name="settings_sample_rate_default">22050.0</string>
+		            <string-array name="sample_rate_items">
+	                    <item>8000.0</item>
+	                    <item>11025.0</item>
+	                    <item>16000.0</item>
+	                    <item>22050.0</item>
+	                    <item>32000.0</item>
+	                    <item>44100.0</item>
+	                    <item>48000.0</item>
+	                    <item>96000.0</item>
+	                    <item>unknown</item>
+	                </string-array>
+	                
+		            <string-array name="sample_rate_items_values">
+                        <item>8000.0</item>
+                        <item>11025.0</item>
+                        <item>16000.0</item>
+                        <item>22050.0</item>
+                        <item>32000.0</item>
+                        <item>44100.0</item>
+                        <item>48000.0</item>
+                        <item>96000.0</item>
+                        <item>unknown</item>
+                    </string-array>
+                
+		       <!-- channels -->
+               <string name="settings_channels">Channels</string>
+               <string name="settings_channels_key">channels</string>
+               <string name="settings_channels_default">0</string>
+                    <string-array name="channels_items">
+                        <item>0</item>
+                        <item>1</item>
+                        <item>2</item>
+                        <item>3</item>
+                        <item>4</item>
+                        <item>5</item>
+                        <item>6</item>
+                        <item>7</item>
+                        <item>8</item>
+                    </string-array>
+                    
+                    <string-array name="channels_items_values">
+                        <item>0</item>
+                        <item>1</item>
+                        <item>2</item>
+                        <item>3</item>
+                        <item>4</item>
+                        <item>5</item>
+                        <item>6</item>
+                        <item>7</item>
+                        <item>8</item>
+                    </string-array>
+	           
+                <!-- Overwrite -->
+                <string name="settings_overwrite">Overwrite</string>
+                <string name="settings_overwrite_key">overwrite</string>
+                
+                <!-- Overwrite -->
+                <string name="settings_overwrite_warning">Overwrite Warning</string>
+                <string name="settings_overwrite_warning_key">overwrite_warning</string>
+	       
     
 </resources>

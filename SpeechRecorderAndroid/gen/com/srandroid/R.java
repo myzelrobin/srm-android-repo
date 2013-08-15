@@ -9,6 +9,8 @@ package com.srandroid;
 
 public final class R {
     public static final class array {
+        public static final int channels_items=0x7f070005;
+        public static final int channels_items_values=0x7f070006;
         public static final int drawer_items=0x7f070000;
         /**  languages 
  languages 
@@ -16,14 +18,16 @@ public final class R {
          */
         public static final int language_items=0x7f070001;
         public static final int language_items_values=0x7f070002;
-        public static final int recvalues_items=0x7f070003;
-        public static final int recvalues_items_values=0x7f070004;
+        public static final int recvalue_items=0x7f070007;
+        public static final int recvalue_items_values=0x7f070008;
+        public static final int sample_rate_items=0x7f070003;
+        public static final int sample_rate_items_values=0x7f070004;
         /**  interfaces 
  interfaces 
  interfaces 
          */
-        public static final int theme_items=0x7f070005;
-        public static final int theme_items_values=0x7f070006;
+        public static final int theme_items=0x7f070009;
+        public static final int theme_items_values=0x7f07000a;
     }
     public static final class attr {
     }
@@ -93,8 +97,8 @@ public final class R {
  Buttons in Overflow 
  Buttons in Overflow 
          */
-        public static final int button_set_microphone=0x7f060013;
-        public static final int button_set_recording_values=0x7f060014;
+        public static final int button_set_microphone=0x7f06001d;
+        public static final int button_set_recording_values=0x7f06001e;
         /**  Buttons in Overflow 
          */
         public static final int button_settings=0x7f060007;
@@ -110,6 +114,11 @@ public final class R {
          */
         public static final int drawer_items_open=0x7f060002;
         public static final int hello_world=0x7f060001;
+        /**  channels 
+         */
+        public static final int settings_channels=0x7f060014;
+        public static final int settings_channels_default=0x7f060016;
+        public static final int settings_channels_key=0x7f060015;
         public static final int settings_lang_default=0x7f06000d;
         public static final int settings_lang_key=0x7f06000c;
         /**  language 
@@ -119,11 +128,40 @@ public final class R {
         /**  microphone 
          */
         public static final int settings_microphone=0x7f06000e;
-        /**  recording 
+        /**  Overwrite 
          */
-        public static final int settings_recording_values=0x7f060010;
-        public static final int settings_recvalues_default=0x7f060012;
-        public static final int settings_recvalues_key=0x7f060011;
+        public static final int settings_overwrite=0x7f060017;
+        public static final int settings_overwrite_key=0x7f060018;
+        /**  Overwrite 
+         */
+        public static final int settings_overwrite_warning=0x7f060019;
+        public static final int settings_overwrite_warning_key=0x7f06001a;
+        /**  recording values
+         */
+        public static final int settings_recvalue=0x7f060010;
+        public static final int settings_recvalue_default=0x7f06001c;
+        /**  
+	       
+            <CheckBoxPreference
+                    android:key="@string/settings_overwrite_key"
+                    android:title="@string/settings_overwrite"
+                    android:summary="Overwrite origninal file" />
+            
+            <CheckBoxPreference
+                    android:key="@string/settings_overwrite_warning_key"
+                    android:title="@string/settings_overwrite_warning"
+                    android:summary="Show warning before overwriting origninal file" />
+	       
+	       
+	       
+	        
+         */
+        public static final int settings_recvalue_key=0x7f06001b;
+        /**  sample rate 
+         */
+        public static final int settings_sample_rate=0x7f060011;
+        public static final int settings_sample_rate_default=0x7f060013;
+        public static final int settings_sample_rate_key=0x7f060012;
         public static final int settings_theme=0x7f06000a;
         /**  PreferenceActivitySettings 
  PreferenceActivitySettings 

@@ -114,14 +114,14 @@ public class PrefActivitySettings extends PreferenceActivity
     		{
     			Log.w(this.getClass().getName(), "changed microphone");
     			Utils.toastText(getActivity(), 
-    					"changed language to " + sharedPreferences.getBoolean(PrefActivitySettings.MICROPHONE_KEY,
+    					"changed microphne to " + sharedPreferences.getBoolean(PrefActivitySettings.MICROPHONE_KEY,
 																				true));
     		}
     		if(key.equals(PrefActivitySettings.RECVALUE_KEY))
     		{
     			Log.w(this.getClass().getName(), "changed recording values");
     			Utils.toastText(getActivity(), 
-    					"changed language to " + sharedPreferences.getString(PrefActivitySettings.RECVALUE_KEY, 
+    					"changed recording value to " + sharedPreferences.getString(PrefActivitySettings.RECVALUE_KEY, 
 																				PrefActivitySettings.RECVALUE_KEY));
     		}
     	}
