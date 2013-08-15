@@ -84,10 +84,11 @@ public class ActivityMain extends Activity {
 	protected void onCreate(Bundle savedInstanceState) 
 	{
 		
-		super.onCreate(savedInstanceState);
-		
+
 		// initialize the app with default values
 		PreferenceManager.setDefaultValues(this, R.xml.preference_settings, false);
+		
+		super.onCreate(savedInstanceState);
 		
 		setContentView(R.layout.drawerlayout_in_activitymain);
 		
