@@ -50,7 +50,9 @@
 	        
 	       <!-- microphone -->
 	       <string name="settings_microphone">Microphone</string>
-	       <string name="settings_mic_key">mic</string>
+	       <string name="settings_mic_volume_key">mic_vol</string>
+	       <string name="settings_mic_volume_default">unknown</string>
+	       <string name="microphone_dialogmessage">Please speak something loud and something light.</string>
 	       
 	       <!-- recording values-->
 	       <string name="settings_recvalue">Recording Values</string>
@@ -82,7 +84,7 @@
                         <item>96000.0</item>
                         <item>unknown</item>
                     </string-array>
-                
+               
 		       <!-- channels -->
                <string name="settings_channels">Channels</string>
                <string name="settings_channels_key">channels</string>

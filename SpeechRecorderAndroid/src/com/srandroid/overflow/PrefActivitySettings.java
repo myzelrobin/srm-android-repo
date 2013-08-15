@@ -11,7 +11,6 @@ import com.srandroid.util.Utils;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.os.Bundle;
-import android.preference.ListPreference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
@@ -29,7 +28,8 @@ public class PrefActivitySettings extends PreferenceActivity
 	public static final String KEY_LANGUAGE = "lang";
 	public static final String KEY_LANGUAGE_DEF = "en";
 	
-	public static final String KEY_MICROPHONE = "mic";
+	public static final String KEY_MICVOL = "mic_vol";
+	public static final String KEY_MICVOL_DEF = "unknown";
 	
 	public static final String KEY_PREFSCREEN_RECVALUE = "prefscreen_recvalue";
 	
@@ -119,12 +119,13 @@ public class PrefActivitySettings extends PreferenceActivity
     					sharedPreferences.getString(PrefActivitySettings.KEY_LANGUAGE, 
     												PrefActivitySettings.KEY_LANGUAGE_DEF));
     		}
-    		if(key.equals(PrefActivitySettings.KEY_MICROPHONE))
+    		if(key.equals(PrefActivitySettings.KEY_MICVOL))
     		{
     			Log.w(this.getClass().getName(), "changed microphone");
     			Utils.toastText(getActivity(), 
-    					"changed microphne to " + 
-    					sharedPreferences.getBoolean(PrefActivitySettings.KEY_MICROPHONE, true));
+    					"changed microphne to " 
+    					+ sharedPreferences.getString(PrefActivitySettings.KEY_MICVOL, 
+    							PrefActivitySettings.KEY_MICVOL_DEF));
     		}
     		if(key.equals(PrefActivitySettings.KEY_SAMPLE_RATE))
     		{

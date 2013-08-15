@@ -18,7 +18,7 @@ public class Utils
 	// Toast some text for debugging
 	public static void toastText(Context context, String s)
 	{
-		if(canToastText) Toast.makeText(context, s, 3 * Toast.LENGTH_LONG).show();
+		if(canToastText) Toast.makeText(context, s, 2 * Toast.LENGTH_LONG).show();
 	}
 	
 }
