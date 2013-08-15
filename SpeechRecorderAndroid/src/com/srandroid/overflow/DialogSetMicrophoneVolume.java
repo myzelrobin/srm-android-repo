@@ -41,27 +41,26 @@ import com.srandroid.util.Utils;
 		 */
 		 @Override
 		 public void onBindDialogView(View view){
+			 // button START
 			 bStart = (Button) view.findViewById(R.id.button_start_in_dialog_mic);
 			 bStart.setOnClickListener(new OnClickListener() 
 			 {
 				 @Override
 				 public void onClick(View v) 
 				 {
-					 if(bStart.getText() == "START")
-					 {
-						 bStart.setText("STOP");
-						 Utils.toastText(v.getContext(), "settings: start testing microphone");
-					 }
+					Utils.toastText(v.getContext(), "settings: start testing microphone");
+					
 					 if(bStart.getText() == "STOP")
 					 {
 						 bStart.setText("START");
 						 Utils.toastText(v.getContext(), "settings: finish testing microphone, change microphone volume level");
+						 getDialog().dismiss();
 					 }
-						 
-					   
+					
 				 }
 			 });
 			 
+			 // button CANCEL
 			 bCancel = (Button) view.findViewById(R.id.button_cancel_in_dialog_mic);
 			 bCancel.setOnClickListener(new OnClickListener() 
 			 {
@@ -71,6 +70,7 @@ import com.srandroid.util.Utils;
 					 getDialog().dismiss();
 				 }
 			 });
+			 
 			 super.onBindDialogView(view);
 		 }
 	}
