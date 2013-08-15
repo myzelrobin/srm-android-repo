@@ -104,14 +104,26 @@ public class PreferenceActivitySettings extends PreferenceActivity
     		if(key.equals(PreferenceActivitySettings.LANGUAGE_KEY))
     		{
     			Log.w(this.getClass().getName(), "changed language");
+    			Toast.makeText(getActivity(), 
+    					"changed language to " + sharedPreferences.getString(PreferenceActivitySettings.LANGUAGE_KEY, 
+    																			PreferenceActivitySettings.LANGUAGE_DEF), 
+    					3 * Toast.LENGTH_LONG).show();
     		}
     		if(key.equals(PreferenceActivitySettings.MICROPHONE_KEY))
     		{
     			Log.w(this.getClass().getName(), "changed microphone");
+    			Toast.makeText(getActivity(), 
+    					"changed microphone to " + sharedPreferences.getString(PreferenceActivitySettings.MICROPHONE_KEY, 
+    																			"true"), 
+    					3 * Toast.LENGTH_LONG).show();
     		}
     		if(key.equals(PreferenceActivitySettings.RECVALUE_KEY))
     		{
     			Log.w(this.getClass().getName(), "changed recording values");
+    			Toast.makeText(getActivity(), 
+    					"changed recording values to " + sharedPreferences.getString(PreferenceActivitySettings.RECVALUE_KEY, 
+    																					PreferenceActivitySettings.RECVALUE_KEY), 
+    					3 * Toast.LENGTH_LONG).show();
     		}
     	}
 
