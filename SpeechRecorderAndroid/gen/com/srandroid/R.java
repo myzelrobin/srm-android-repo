@@ -13,17 +13,17 @@ public final class R {
         /**  languages 
  languages 
  languages 
- languages 
          */
         public static final int language_items=0x7f070001;
         public static final int language_items_values=0x7f070002;
+        public static final int recvalues_items=0x7f070003;
+        public static final int recvalues_items_values=0x7f070004;
         /**  interfaces 
  interfaces 
  interfaces 
- interfaces 
          */
-        public static final int theme_items=0x7f070003;
-        public static final int theme_items_values=0x7f070004;
+        public static final int theme_items=0x7f070005;
+        public static final int theme_items_values=0x7f070006;
     }
     public static final class attr {
     }
@@ -84,7 +84,7 @@ public final class R {
         public static final int app_name=0x7f060000;
         public static final int button_add=0x7f060005;
         public static final int button_download=0x7f060006;
-        public static final int button_exit=0x7f06000a;
+        public static final int button_exit=0x7f060008;
         /**  Buttons in Actionbar 
  Buttons in Actionbar 
  Buttons in Actionbar 
@@ -94,11 +94,12 @@ public final class R {
         /**  Buttons in Overflow 
  Buttons in Overflow 
  Buttons in Overflow 
- Buttons in Overflow 
          */
-        public static final int button_set_microphone=0x7f060007;
-        public static final int button_set_recording_values=0x7f060008;
-        public static final int button_settings=0x7f060009;
+        public static final int button_set_microphone=0x7f060013;
+        public static final int button_set_recording_values=0x7f060014;
+        /**  Buttons in Overflow 
+         */
+        public static final int button_settings=0x7f060007;
         public static final int drawer_items_close=0x7f060003;
         /**  ActivityMain 
  Drawer in ActivityMain 
@@ -111,14 +112,27 @@ public final class R {
          */
         public static final int drawer_items_open=0x7f060002;
         public static final int hello_world=0x7f060001;
-        public static final int settings_language=0x7f06000c;
-        public static final int settings_theme=0x7f06000d;
+        public static final int settings_lang_default=0x7f06000d;
+        public static final int settings_lang_key=0x7f06000c;
+        /**  language 
+         */
+        public static final int settings_language=0x7f06000b;
+        public static final int settings_mic_key=0x7f06000f;
+        /**  microphone 
+         */
+        public static final int settings_microphone=0x7f06000e;
+        /**  recording 
+         */
+        public static final int settings_recording_values=0x7f060010;
+        public static final int settings_recvalues_default=0x7f060012;
+        public static final int settings_recvalues_key=0x7f060011;
+        public static final int settings_theme=0x7f06000a;
         /**  PreferenceActivitySettings 
  PreferenceActivitySettings 
  PreferenceActivitySettings 
  PreferenceActivitySettings 
          */
-        public static final int title_settings=0x7f06000b;
+        public static final int title_settings=0x7f060009;
     }
     public static final class style {
         /** 

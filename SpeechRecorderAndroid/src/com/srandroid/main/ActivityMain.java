@@ -1,13 +1,12 @@
 package com.srandroid.main;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 import com.srandroid.R;
 import com.srandroid.overflow.PreferenceActivitySettings;
-import com.srandroid.util.Utils;
 
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -84,10 +83,11 @@ public class ActivityMain extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
 	{
-		// Validates new theme if theme is changed
-		// Utils.onActivityCreateSetTheme(this);
 		
 		super.onCreate(savedInstanceState);
+		
+		// initialize the app with default values
+		PreferenceManager.setDefaultValues(this, R.xml.preference_settings, false);
 		
 		setContentView(R.layout.drawerlayout_in_activitymain);
 		
