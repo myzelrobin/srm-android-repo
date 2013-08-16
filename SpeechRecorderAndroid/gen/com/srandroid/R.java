@@ -100,12 +100,12 @@ public final class R {
  Buttons in Overflow 
  Buttons in Overflow 
          */
-        public static final int button_set_microphone=0x7f06001c;
-        public static final int button_set_recording_values=0x7f06001d;
+        public static final int button_set_microphone=0x7f06001e;
+        public static final int button_set_recording_values=0x7f06001f;
         /**  Buttons in Overflow 
          */
         public static final int button_settings=0x7f060007;
-        public static final int dialogmessage_microphone=0x7f060010;
+        public static final int dialogmessage_microphone=0x7f060012;
         public static final int drawer_items_close=0x7f060003;
         /**  ActivityMain 
  Drawer in ActivityMain 
@@ -118,38 +118,40 @@ public final class R {
          */
         public static final int drawer_items_open=0x7f060002;
         public static final int hello_world=0x7f060001;
-        /**  channels 
-         */
-        public static final int settings_channels=0x7f060015;
-        public static final int settings_channels_default=0x7f060017;
-        public static final int settings_channels_key=0x7f060016;
-        public static final int settings_lang_default=0x7f06000c;
-        public static final int settings_lang_key=0x7f06000b;
         /**  language 
          */
-        public static final int settings_language=0x7f06000a;
-        public static final int settings_mic_volume_default=0x7f06000f;
-        public static final int settings_mic_volume_key=0x7f06000e;
+        public static final int settings_application=0x7f06000a;
+        /**  channels 
+         */
+        public static final int settings_channels=0x7f060017;
+        public static final int settings_channels_default=0x7f060019;
+        public static final int settings_channels_key=0x7f060018;
         /**  microphone 
          */
-        public static final int settings_microphone=0x7f06000d;
+        public static final int settings_hardware=0x7f06000e;
+        public static final int settings_lang_default=0x7f06000d;
+        public static final int settings_lang_key=0x7f06000c;
+        public static final int settings_language=0x7f06000b;
+        public static final int settings_mic_volume_default=0x7f060011;
+        public static final int settings_mic_volume_key=0x7f060010;
+        public static final int settings_microphone=0x7f06000f;
         /**  Overwrite 
          */
-        public static final int settings_overwrite=0x7f060018;
-        public static final int settings_overwrite_key=0x7f060019;
+        public static final int settings_overwrite=0x7f06001a;
+        public static final int settings_overwrite_key=0x7f06001b;
         /**  Overwrite 
          */
-        public static final int settings_overwrite_warning=0x7f06001a;
-        public static final int settings_overwrite_warning_key=0x7f06001b;
+        public static final int settings_overwrite_warning=0x7f06001c;
+        public static final int settings_overwrite_warning_key=0x7f06001d;
         /**  recording values
          */
-        public static final int settings_recvalue=0x7f060011;
+        public static final int settings_recvalue=0x7f060013;
         /**  sample rate 
          */
-        public static final int settings_sample_rate=0x7f060012;
-        public static final int settings_sample_rate_default=0x7f060014;
-        public static final int settings_sample_rate_key=0x7f060013;
-        public static final int settings_theme=0x7f06001e;
+        public static final int settings_sample_rate=0x7f060014;
+        public static final int settings_sample_rate_default=0x7f060016;
+        public static final int settings_sample_rate_key=0x7f060015;
+        public static final int settings_theme=0x7f060020;
         /**  PreferenceActivitySettings 
  PreferenceActivitySettings 
  PreferenceActivitySettings 

@@ -31,6 +31,7 @@
 	    
 	
 	       <!-- language -->
+	       <string name="settings_application">Application</string>
 	       <string name="settings_language">Language</string>
 	       <string name="settings_lang_key">lang</string>
 	       <string name="settings_lang_default">en</string>
@@ -48,6 +49,7 @@
 		           
 	        
 	       <!-- microphone -->
+	       <string name="settings_hardware">Hardware</string>
 	       <string name="settings_microphone">Microphone</string>
 	       <string name="settings_mic_volume_key">mic_vol</string>
 	       <string name="settings_mic_volume_default">-1</string>

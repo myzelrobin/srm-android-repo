@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
 
-    <PreferenceCategory >
+    <PreferenceCategory 
+        android:title="@string/settings_application" >
         <ListPreference
             android:title="@string/settings_language" 
             android:summary="Set the language of the app" 
@@ -15,7 +16,8 @@
             android:persistent="true" />
     </PreferenceCategory>
     
-    <PreferenceCategory >
+    <PreferenceCategory 
+        android:title="@string/settings_hardware" >
             <com.srandroid.overflow.DialogSetMicrophoneVolume
 	            android:title="@string/settings_microphone"
 	            android:summary="Set the microphone volume" 
