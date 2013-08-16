@@ -93,13 +93,13 @@ public class SrmRecorder {
 	{
 		audioSource = MediaRecorder.AudioSource.MIC;
 		sampleRateHz = Integer.parseInt(PrefActivitySettings.SAMPLE_RATE);
-		channelConfig = AudioFormat.CHANNEL_IN_MONO;
+		channelConfig = AudioFormat.CHANNEL_IN_STEREO; //STEREO=12, MONO=16
 		channels = Integer.parseInt(PrefActivitySettings.CHANNELS);
 		audioFormat = AudioFormat.ENCODING_PCM_16BIT;
 		bitsPerSample = 16;
 		
 		bufferSizeInBytes = AudioRecord.getMinBufferSize(sampleRateHz, 
-								android.media.AudioFormat.CHANNEL_IN_MONO, 
+								android.media.AudioFormat.CHANNEL_IN_STEREO, 
 								android.media.AudioFormat.ENCODING_PCM_16BIT);
 		if(bufferSizeInBytes < 0) 
 		{
