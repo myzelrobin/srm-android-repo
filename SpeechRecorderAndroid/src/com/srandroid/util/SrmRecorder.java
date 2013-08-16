@@ -29,10 +29,11 @@ import android.util.Log;
  * 
  *
  */
-public class SrmRecorder {
+public class SrmRecorder 
+{
 	
-	private static final String TAG_TESTMIC="TestMicrophone";
-	private static final String TAG_RECORDING="Recording";
+	public static final String TAG_TESTMIC="TestMicrophone";
+	public static final String TAG_RECORDING="Recording";
 	
 	//fields for audio record
 	// AudioRecord(int audioSource, int sampleRateInHz, int channelConfig, int audioFormat, int bufferSizeInBytes)
@@ -51,7 +52,7 @@ public class SrmRecorder {
 	private String audioFileName = null;
 	private String dirPath = null;
 	private String fileName = null;
-	private static final String SUFFIX = ".wav";
+	private static String SUFFIX = ".wav";
 	private static final String AUDIO_RECORDER_TEMP_FILE = "record_temp.raw";
 	
 	// fields for recording 

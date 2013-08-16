@@ -83,10 +83,11 @@ import com.srandroid.util.Utils;
 					Utils.toastText(v.getContext(), "settings: start testing microphone");
 					
 					recorder = new SrmRecorder(Utils.REC_TEST_DIR_EXT_PATH, "test_mic");
-					Log.w(this.getClass().getName(), "AudioRecord recorder created:" 
-							+ "\nsampleRateHz=" + recorder.getSampleRateHz()
-							+ "\nchannelConfig=" + recorder.getChannelConfig()
-							+ "\nchannels=" + recorder.getChannels());
+					Log.w(this.getClass().getName(), SrmRecorder.TAG_TESTMIC 
+							+ ": AudioRecord recorder is created: " 
+							+ "\nsampleRateHz=" + SrmRecorder.getSampleRateHz()
+							+ "\nchannelConfig=" + SrmRecorder.getChannelConfig()
+							+ "\nchannels=" + SrmRecorder.getChannels());
 					
 					
 				try {
@@ -110,7 +111,9 @@ import com.srandroid.util.Utils;
 					e.printStackTrace();
 				}
 					 
-					 Log.w(this.getClass().getName(), "test mic audio file: " + recorder.getAudioFileName());
+					 Log.w(this.getClass().getName(), SrmRecorder.TAG_TESTMIC 
+							 + ": test mic audio file is saved: " 
+							 + recorder.getAudioFileName());
 					 
 					 // here needs a method to set the volume_value
 					 
