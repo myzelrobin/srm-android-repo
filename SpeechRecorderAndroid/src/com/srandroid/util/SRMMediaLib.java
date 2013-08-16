@@ -35,21 +35,24 @@ public class SRMMediaLib {
 	
 
 	
-	public void startRecording(File dir) throws IOException 
+	public void startRecording() throws IOException 
 	{
+		
 	   recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
 	   recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
 	   recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
 	   if (audiofile == null) 
 	   {
-	       File sampleDir = dir;
+		   // File rec_test_dir = new File(Utils.REC_TEST_DIR_EXT_PATH);
+		   File rec_test_dir = Environment.getExternalStorageDirectory();
+		   
 	       try 
 	       { 
-	    	   audiofile = File.createTempFile("test_microphone", ".3gp", sampleDir);
+	    	   audiofile = File.createTempFile("test_microphone", ".3gp", rec_test_dir);
 	       }
 	       catch (IOException e) 
 	       {
-	           Log.e(SRMMediaLib.class.getName(),TAG + " sdcard access error");
+	           Log.e(SRMMediaLib.class.getName() + "#" + TAG + "#","sdcard access error");
 	           return;
 	       }
 	   }

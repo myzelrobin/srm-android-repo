@@ -19,7 +19,7 @@ import com.srandroid.util.Utils;
 	public class DialogSetMicrophoneVolume extends DialogPreference
 	{
 		private Button bCancel, bStart, bFinish;
-		private String volume_value = "0"; 
+		private String volume_value = "-1"; 
 		
 		private SRMMediaLib media_lib;
 		
@@ -32,6 +32,8 @@ import com.srandroid.util.Utils;
 			super(context, attrs);
 			// TODO Auto-generated constructor stub
 			setDialogLayoutResource(R.layout.dialog_settings_microphone);
+			
+			
 		}
 		/**
 		 * initiate dialog
@@ -53,6 +55,13 @@ import com.srandroid.util.Utils;
 			 
 			 // button CANCEL
 			 bCancel = (Button) view.findViewById(R.id.button_cancel_in_dialog_mic);
+			 // button START
+			 bStart = (Button) view.findViewById(R.id.button_start_in_dialog_mic);
+			 // button FINISH
+			 bFinish = (Button) view.findViewById(R.id.button_finish_in_dialog_mic);
+			 bFinish.setEnabled(false);
+			 
+			 
 			 bCancel.setOnClickListener(new OnClickListener() 
 			 {
 				 @Override
@@ -62,8 +71,6 @@ import com.srandroid.util.Utils;
 				 }
 			 });
 			 
-			 // button START
-			 bStart = (Button) view.findViewById(R.id.button_start_in_dialog_mic);
 			 bStart.setOnClickListener(new OnClickListener() 
 			 {
 				 
@@ -72,20 +79,19 @@ import com.srandroid.util.Utils;
 				 {
 					Utils.toastText(v.getContext(), "settings: start testing microphone");
 					bStart.setEnabled(false);
+					bFinish.setEnabled(true);
 					
-					File rec_test_dir = new File(Utils.REC_TEST_DIR_PATH);
 					
 					try {
-						media_lib.startRecording(rec_test_dir);
+						media_lib.startRecording();
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
+					
 				 }
 			 });
 			 
-			// button FINISH
-			 bFinish = (Button) view.findViewById(R.id.button_finish_in_dialog_mic);
 			 bFinish.setOnClickListener(new OnClickListener() 
 			 {
 				 @Override

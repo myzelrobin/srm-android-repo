@@ -5,47 +5,62 @@ import java.io.File;
 import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
+import android.os.Environment;
 
 
 
 /**
- * Functions to change theme
- * 				change locale(language)
  * 
  */
 public class Utils
 {
 	public static final boolean canToastText = true;
-	public static String APP_DIR_PATH;
-	public static String APP_FILES_DIR_PATH;
-	public static String REC_FILES_DIR_PATH;
-	public static String REC_TEST_DIR_PATH;
+	public static boolean isInitialized = false;
+	public static String APP_DIR_INT_PATH;
+	public static String APP_FILES_DIR_INT_PATH;
+	public static String APP_DIR_EXT_PATH;
+	public static String APP_FILES_DIR_EXT_PATH;
+	public static String REC_FILES_DIR_EXT_PATH;
+	public static String REC_TEST_DIR_EXT_PATH;
 	
 	public static void initializeApp(Context context)
 	{
+		if(isInitialized) return;
+		
 		// get application folder path (/data/data/APP_PACKAGE/)
 		try {
-			APP_DIR_PATH = getAppDir(context);
+			APP_DIR_INT_PATH = getAppInternalDir(context);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		Log.w(Utils.class.getName(), "APP_DIR=" + APP_DIR_PATH);
+		Log.w(Utils.class.getName(), "APP_DIR_INT=" + APP_DIR_INT_PATH);
 		
 		// get files folder path (/data/data/APP_PACKAGE/files)
 		try {
-			APP_FILES_DIR_PATH = getAppFilesDir(context);
+			APP_FILES_DIR_INT_PATH = getAppInternalFilesDir(context);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		Log.w(Utils.class.getName(), "APP_FILES_DIR=" + APP_FILES_DIR_PATH);
+		Log.w(Utils.class.getName(), "APP_FILES_DIR_INT=" + APP_FILES_DIR_INT_PATH);
 		
-		REC_FILES_DIR_PATH = makeDir(APP_FILES_DIR_PATH, "recorders");
-		Log.w(Utils.class.getName(), "REC_FILES_DIR_PATH=" + REC_FILES_DIR_PATH);
+		// get app folder path in sdcard(/mnt/sdcard/Android/APP_PACKAGE/)
+		try {
+			APP_DIR_EXT_PATH = getAppExternalDir(context);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Log.w(Utils.class.getName(), "APP_DIR_EXT=" + APP_DIR_EXT_PATH);
 		
-		REC_TEST_DIR_PATH = makeDir(REC_FILES_DIR_PATH, "test");
-		Log.w(Utils.class.getName(), "REC_TEST_DIR_PATH=" + REC_TEST_DIR_PATH);
+		REC_FILES_DIR_EXT_PATH = makeDir(APP_DIR_EXT_PATH, "recorders");
+		Log.w(Utils.class.getName(), "REC_FILES_DIR_EXT=" + REC_FILES_DIR_EXT_PATH);
+		
+		REC_TEST_DIR_EXT_PATH = makeDir(REC_FILES_DIR_EXT_PATH, "test");
+		Log.w(Utils.class.getName(), "REC_TEST_DIR_EXT=" + REC_TEST_DIR_EXT_PATH);
+		
+		isInitialized = true;
 		
 	}
 	
@@ -56,31 +71,54 @@ public class Utils
 	}
 	
 	
-	public static String getAppDir(Context context) throws Exception 
+	public static String getAppInternalDir(Context context) throws Exception 
 	{
 	    return context.getPackageManager()
 	            .getPackageInfo(context.getPackageName(), 0)
 	            .applicationInfo.dataDir;
 	}
 	
-	public static String getAppFilesDir(Context context) throws Exception 
+	public static String getAppInternalFilesDir(Context context) throws Exception 
 	{
 	    return context.getFilesDir().getAbsolutePath();
 	}
 	
-	public static String makeDir(String parentFolder, String folderName)
+	public static String getAppExternalDir(Context context) throws Exception 
 	{
-		if(parentFolder != null)
+	    String app_dir_ext_path_temp = Environment.getExternalStorageDirectory().getAbsolutePath()
+										+ File.separator + "Android" + File.separator + "data" + File.separator
+										+ context.getApplicationContext().getPackageName();
+		File dir = new File(app_dir_ext_path_temp);
+		if(dir.exists())
 		{
-			File dir_files = new File(parentFolder + File.separator+folderName);
-			dir_files.mkdir();
-			return dir_files.getAbsolutePath();
+			return app_dir_ext_path_temp;
 		}
-		else
+		if(dir.mkdir())
 		{
-			Log.w(Utils.class.getName(), "Can NOT make directory, parent folder path is null!");
+			return app_dir_ext_path_temp;
 		}
-		
+		Log.w(Utils.class.getName(), "Can NOT make directory: " + app_dir_ext_path_temp);
+		return null;
+	}
+	
+	
+	public static String makeDir(String parentFolderPath, String folderName)
+	{
+		if(parentFolderPath != null)
+		{
+			String path = parentFolderPath + File.separator + folderName;
+			File dir = new File(path);
+			if(dir.exists())
+			{
+				return path;
+			}
+			if(dir.mkdir())
+			{
+				return path;
+			}
+			Log.w(Utils.class.getName(), "Can NOT make directory: " + path);
+		}
+		Log.w(Utils.class.getName(), "Can NOT make directory, parent folder path is null: " + parentFolderPath);
 		return null;
 	}
 }
