@@ -84,12 +84,7 @@ import com.srandroid.util.Utils;
 					
 					recorder = new SrmRecorder(Utils.REC_TEST_DIR_EXT_PATH, "test_mic");
 					
-					try {
-						recorder.startRecording();
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+					recorder.startRecording();
 					
 					bStart.setEnabled(false);
 					bFinish.setEnabled(true);
@@ -100,7 +95,9 @@ import com.srandroid.util.Utils;
 					 
 					 recorder.stopRecording();
 					 
-					 Log.w(this.getClass().getName(), "test mic audio file: " + recorder.getAudioFilePath());
+					 Log.w(this.getClass().getName(), "test mic audio file: " + recorder.getAudioFileName());
+					 
+					 // here needs a method to set the volume_value
 					 
 					 onDialogClosed(true);
 					 getDialog().dismiss();
