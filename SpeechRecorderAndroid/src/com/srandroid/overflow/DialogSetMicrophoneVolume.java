@@ -33,7 +33,6 @@ import com.srandroid.util.Utils;
 			// TODO Auto-generated constructor stub
 			setDialogLayoutResource(R.layout.dialog_settings_microphone);
 			
-			recorder = new SrmRecorder(Utils.REC_TEST_DIR_EXT_PATH);
 		}
 		/**
 		 * initiate dialog
@@ -81,6 +80,9 @@ import com.srandroid.util.Utils;
 					break;
 				case R.id.button_start_in_dialog_mic:
 					Utils.toastText(v.getContext(), "settings: start testing microphone");
+					
+					recorder = new SrmRecorder(Utils.REC_TEST_DIR_EXT_PATH, "test_mic");
+					
 					try {
 						recorder.startRecording();
 					} catch (IOException e) {
