@@ -291,7 +291,8 @@ public class SrmRecorder {
 		header[31] = (byte) ((byteRate >> 24) & 0xff);
 		header[32] = (byte) (2 * 16 / 8);  // block align
 		header[33] = 0;
-		header[34] = (byte) bitsPerSample;  // bits per sample
+		header[34] = 16;  // bits per sample
+		//header[34] = (byte) bitsPerSample;  // bits per sample
 		header[35] = 0;
 		header[36] = 'd';
 		header[37] = 'a';
