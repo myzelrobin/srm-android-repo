@@ -130,7 +130,7 @@ audioRecord = new AudioRecord(audioSource, sampleRateInHz,channelConfig, audioFo
 		   
 	       try 
 	       { 
-	    	   audiofile = File.createTempFile(fileName, ".3gp", dir);
+	    	   audiofile = File.createTempFile(fileName, ".mp4", dir);
 	       }
 	       catch (IOException e) 
 	       {
