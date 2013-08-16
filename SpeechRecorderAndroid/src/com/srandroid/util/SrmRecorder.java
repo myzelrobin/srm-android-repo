@@ -19,7 +19,7 @@ import android.util.Log;
  * 
  *
  */
-public class SRMMediaLib {
+public class SrmRecorder {
 	
 	private static final String TAG="SoundRecordingTest";
 	
@@ -29,7 +29,7 @@ public class SRMMediaLib {
 	/**
 	 * Constructor
 	 */
-	public SRMMediaLib() {
+	public SrmRecorder() {
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -52,7 +52,7 @@ public class SRMMediaLib {
 	       }
 	       catch (IOException e) 
 	       {
-	           Log.e(SRMMediaLib.class.getName() + "#" + TAG + "#","sdcard access error");
+	           Log.e(SrmRecorder.class.getName() + "#" + TAG + "#","sdcard access error");
 	           return;
 	       }
 	   }

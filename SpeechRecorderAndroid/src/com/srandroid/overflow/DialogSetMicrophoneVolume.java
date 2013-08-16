@@ -13,15 +13,15 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 
 import com.srandroid.R;
-import com.srandroid.util.SRMMediaLib;
+import com.srandroid.util.SrmRecorder;
 import com.srandroid.util.Utils;
 
-	public class DialogSetMicrophoneVolume extends DialogPreference
+	public class DialogSetMicrophoneVolume extends DialogPreference implements OnClickListener
 	{
 		private Button bCancel, bStart, bFinish;
 		private String volume_value = "-1"; 
 		
-		private SRMMediaLib media_lib;
+		private SrmRecorder media_lib;
 		
 		/**
 		 * @param context
@@ -47,7 +47,7 @@ import com.srandroid.util.Utils;
 			 super.onPrepareDialogBuilder(builder);  
 		}
 		/**
-		 * handles clicks on buttons
+		 * bind clicklistener to buttons
 		 */
 		 @Override
 		 public void onBindDialogView(View view)
@@ -55,48 +55,42 @@ import com.srandroid.util.Utils;
 			 
 			 // button CANCEL
 			 bCancel = (Button) view.findViewById(R.id.button_cancel_in_dialog_mic);
+			 bCancel.setOnClickListener(this);
 			 // button START
 			 bStart = (Button) view.findViewById(R.id.button_start_in_dialog_mic);
+			 bStart.setOnClickListener(this);
 			 // button FINISH
 			 bFinish = (Button) view.findViewById(R.id.button_finish_in_dialog_mic);
+			 bFinish.setOnClickListener(this);
 			 bFinish.setEnabled(false);
 			 
+			 super.onBindDialogView(view);
+		 }
+		 /**
+		  * handles click events on buttons
+		  */
+		 @Override
+		public void onClick(View v) {
+			// TODO Auto-generated method stub
+			 int id = v.getId();
 			 
-			 bCancel.setOnClickListener(new OnClickListener() 
+			 switch (id) 
 			 {
-				 @Override
-				 public void onClick(View v) 
-				 {
-					 getDialog().dismiss();
-				 }
-			 });
-			 
-			 bStart.setOnClickListener(new OnClickListener() 
-			 {
-				 
-				 @Override
-				 public void onClick(View v) 
-				 {
+				case R.id.button_cancel_in_dialog_mic:
+					getDialog().dismiss();
+					break;
+				case R.id.button_start_in_dialog_mic:
 					Utils.toastText(v.getContext(), "settings: start testing microphone");
-					bStart.setEnabled(false);
-					bFinish.setEnabled(true);
-					
-					
 					try {
 						media_lib.startRecording();
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-					
-				 }
-			 });
-			 
-			 bFinish.setOnClickListener(new OnClickListener() 
-			 {
-				 @Override
-				 public void onClick(View v) 
-				 {
+					bStart.setEnabled(false);
+					bFinish.setEnabled(true);
+					break;
+				case R.id.button_finish_in_dialog_mic:
 					 Utils.toastText(v.getContext(), "settings: finish testing microphone");
 					 volume_value = "999";
 					 
@@ -104,11 +98,12 @@ import com.srandroid.util.Utils;
 					 
 					 onDialogClosed(true);
 					 getDialog().dismiss();
-				 }
-			 });
-			 
-			 super.onBindDialogView(view);
-		 }
+					break;
+				default:
+					break;
+			}
+			
+		}
 		 /**
 		  * Saves new value for this preference key from xml into the SharedPreference
 		  */
@@ -141,5 +136,6 @@ import com.srandroid.util.Utils;
 		         persistString(volume_value);
 		     }
 		 }
+		
 		 
 	}
