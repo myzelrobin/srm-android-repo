@@ -21,7 +21,7 @@ import com.srandroid.util.Utils;
 		private Button bCancel, bStart, bFinish;
 		private String volume_value = "-1"; 
 		
-		private SrmRecorder media_lib;
+		private SrmRecorder recorder;
 		
 		/**
 		 * @param context
@@ -33,7 +33,7 @@ import com.srandroid.util.Utils;
 			// TODO Auto-generated constructor stub
 			setDialogLayoutResource(R.layout.dialog_settings_microphone);
 			
-			
+			recorder = new SrmRecorder(Utils.REC_TEST_DIR_EXT_PATH);
 		}
 		/**
 		 * initiate dialog
@@ -82,7 +82,7 @@ import com.srandroid.util.Utils;
 				case R.id.button_start_in_dialog_mic:
 					Utils.toastText(v.getContext(), "settings: start testing microphone");
 					try {
-						media_lib.startRecording();
+						recorder.startRecording();
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -94,7 +94,7 @@ import com.srandroid.util.Utils;
 					 Utils.toastText(v.getContext(), "settings: finish testing microphone");
 					 volume_value = "999";
 					 
-					 media_lib.stopRecording();
+					 recorder.stopRecording();
 					 
 					 onDialogClosed(true);
 					 getDialog().dismiss();

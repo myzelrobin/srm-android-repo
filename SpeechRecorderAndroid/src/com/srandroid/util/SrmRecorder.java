@@ -25,12 +25,14 @@ public class SrmRecorder {
 	
 	private MediaRecorder recorder;	
 	private File audiofile = null;
+	private String dirPath = null;
 
 	/**
 	 * Constructor
 	 */
-	public SrmRecorder() {
+	public SrmRecorder(String dirPath) {
 		// TODO Auto-generated constructor stub
+		this.dirPath = dirPath;
 	}
 	
 
@@ -41,14 +43,23 @@ public class SrmRecorder {
 	   recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
 	   recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
 	   recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+	   
+	   if(dirPath == null)
+	   {
+		   Log.w(this.getClass().getName(), 
+				   "Folder to save audio file doese NOT exist, save audio file to " + Utils.REC_TEST_DIR_EXT_PATH);
+		   dirPath = Utils.REC_TEST_DIR_EXT_PATH;
+	   }
 	   if (audiofile == null) 
 	   {
-		   // File rec_test_dir = new File(Utils.REC_TEST_DIR_EXT_PATH);
-		   File rec_test_dir = Environment.getExternalStorageDirectory();
+		   Log.w(this.getClass().getName(), 
+				   "audio file does not exist, create a new audio file");
+		   File dir = new File(dirPath);
+		   //File dir = Environment.getExternalStorageDirectory();
 		   
 	       try 
 	       { 
-	    	   audiofile = File.createTempFile("test_microphone", ".3gp", rec_test_dir);
+	    	   audiofile = File.createTempFile("test_microphone", ".3gp", dir);
 	       }
 	       catch (IOException e) 
 	       {
