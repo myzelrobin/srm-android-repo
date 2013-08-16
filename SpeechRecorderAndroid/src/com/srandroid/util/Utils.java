@@ -14,8 +14,12 @@ import android.os.Environment;
  */
 public class Utils
 {
-	public static final boolean canToastText = true;
-	public static boolean isInitialized = false;
+	
+	public static boolean isPreStartInitialized = false;
+	
+	public static final boolean canToastDebugText = true;
+	public static final boolean canToastTextToUser = true;
+
 	public static String APP_DIR_INT_PATH;
 	public static String APP_FILES_DIR_INT_PATH;
 	public static String APP_DIR_EXT_PATH;
@@ -25,7 +29,7 @@ public class Utils
 	
 	public static void initializeApp(Context context)
 	{
-		if(isInitialized) return;
+		if(isPreStartInitialized) return;
 		
 		// get application folder path (/data/data/APP_PACKAGE/)
 		try {
@@ -60,14 +64,14 @@ public class Utils
 		REC_TEST_DIR_EXT_PATH = makeDir(REC_FILES_DIR_EXT_PATH, "test");
 		Log.w(Utils.class.getName(), "REC_TEST_DIR_EXT=" + REC_TEST_DIR_EXT_PATH);
 		
-		isInitialized = true;
+		isPreStartInitialized = true;
 		
 	}
 	
 	// Toast some text for debugging
 	public static void toastText(Context context, String s)
 	{
-		if(canToastText) Toast.makeText(context, s, 2 * Toast.LENGTH_LONG).show();
+		if(canToastDebugText) Toast.makeText(context, s, 2 * Toast.LENGTH_LONG).show();
 	}
 	
 	
@@ -125,7 +129,7 @@ public class Utils
 
 
 
-// example codes for changing theme in runtime, unused
+// example codes for changing theme in runtime, not work, unused
 //	// fields for themes
 //     private static int sTheme;
 //
