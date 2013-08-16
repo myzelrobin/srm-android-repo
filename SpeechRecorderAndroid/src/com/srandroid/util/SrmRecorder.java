@@ -13,9 +13,11 @@ import com.srandroid.overflow.PrefActivitySettings;
 
 import android.content.ContentResolver;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.AudioFormat;
+import android.media.AudioManager;
 import android.media.MediaRecorder;
 import android.media.AudioRecord;
 import android.net.Uri;
@@ -24,6 +26,7 @@ import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.text.TextUtils.StringSplitter;
 import android.util.Log;
+import android.app.Activity;
 
 /**
  * 
@@ -47,6 +50,8 @@ public class SrmRecorder
 	private static int bitsPerSample = 0;
 	
 	private int bufferSizeInBytes = 0;
+	
+	private int streamVolume = 0;
 	
 	// fields for audio file
 	private String audioFileName = null;
@@ -96,8 +101,7 @@ public class SrmRecorder
 		else channelConfig = AudioFormat.CHANNEL_IN_STEREO; //default channels = 2
 		
 		audioFormat = AudioFormat.ENCODING_PCM_16BIT;
-		if(audioFormat == AudioFormat.ENCODING_PCM_16BIT) bitsPerSample = 16;
-		else if(audioFormat == AudioFormat.ENCODING_PCM_8BIT) bitsPerSample = 8;
+		bitsPerSample = 16;
 		
 		
 		bufferSizeInBytes = AudioRecord.getMinBufferSize(sampleRateHz, channelConfig, audioFormat);
@@ -109,8 +113,15 @@ public class SrmRecorder
 		}
 		
 		audioRecorder = new AudioRecord(audioSource, sampleRateHz, channelConfig, audioFormat, bufferSizeInBytes);
+		
+		streamVolume = getStreamVolume();
 	}
 	
+	private int getStreamVolume() {
+		// needs a complicated method
+		return 0;
+	}
+
 	public void startRecording()
 	{
 		audioRecorder.startRecording();

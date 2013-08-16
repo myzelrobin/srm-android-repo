@@ -27,9 +27,11 @@ public class Utils
 	public static String REC_FILES_DIR_EXT_PATH;
 	public static String REC_TEST_DIR_EXT_PATH;
 	
+	
 	public static void initializeApp(Context context)
 	{
 		if(isPreStartInitialized) return;
+		
 		
 		// get application folder path (/data/data/APP_PACKAGE/)
 		try {
