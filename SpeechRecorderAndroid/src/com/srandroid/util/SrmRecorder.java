@@ -112,7 +112,7 @@ public class SrmRecorder {
 
 
 
-	public void startRecording()
+	public void startRecording() throws IllegalStateException
 	{
 		audioRecorder.startRecording();
 		

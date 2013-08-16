@@ -84,7 +84,12 @@ import com.srandroid.util.Utils;
 					
 					recorder = new SrmRecorder(Utils.REC_TEST_DIR_EXT_PATH, "test_mic");
 					
+				try {
 					recorder.startRecording();
+				} catch (IllegalStateException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 					
 					bStart.setEnabled(false);
 					bFinish.setEnabled(true);
