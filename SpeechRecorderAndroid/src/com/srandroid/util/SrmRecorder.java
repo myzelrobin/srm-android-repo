@@ -23,7 +23,13 @@ public class SrmRecorder {
 	
 	private static final String TAG="SoundRecordingTest";
 	
-	private MediaRecorder recorder;	
+	// fields for MediaRecorder
+	private MediaRecorder recorder;
+	private int audioSource = 0;
+	private int outputFormat = 0;
+	private int audioEncoder = 0;
+	
+	// fields for audio file
 	private File audiofile = null;
 	private String dirPath = null;
 	private String fileName = null;
@@ -34,8 +40,14 @@ public class SrmRecorder {
 	 */
 	public SrmRecorder(String dirPath, String fileName) {
 		// TODO Auto-generated constructor stub
+		
+		// set default values to the fields
 		this.dirPath = dirPath;
 		this.fileName = fileName;
+		
+		this.audioSource = MediaRecorder.AudioSource.MIC;
+		this.outputFormat = MediaRecorder.OutputFormat.THREE_GPP;
+		this.audioEncoder = MediaRecorder.AudioEncoder.AMR_NB;
 		
 		if(dirPath == null)
 		{
@@ -58,9 +70,9 @@ public class SrmRecorder {
 	{
 		recorder = new MediaRecorder();
 		// set the recorder
-		recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
-		recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
-		recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+		recorder.setAudioSource(audioSource);
+		recorder.setOutputFormat(outputFormat);
+		recorder.setAudioEncoder(audioEncoder);
 	   
 	   
 	   if (audiofile == null) 
@@ -122,5 +134,65 @@ public class SrmRecorder {
 
 	public void setAudioFilePath(String audioFilePath) {
 		this.audioFilePath = audioFilePath;
+	}
+
+
+
+	public MediaRecorder getRecorder() {
+		return recorder;
+	}
+
+
+
+	public void setRecorder(MediaRecorder recorder) {
+		this.recorder = recorder;
+	}
+
+
+
+	public File getAudiofile() {
+		return audiofile;
+	}
+
+
+
+	public void setAudiofile(File audiofile) {
+		this.audiofile = audiofile;
+	}
+
+
+
+	public int getAudioSource() {
+		return audioSource;
+	}
+
+
+
+	public void setAudioSource(int audioSource) {
+		this.audioSource = audioSource;
+	}
+
+
+
+	public int getOutputFormat() {
+		return outputFormat;
+	}
+
+
+
+	public void setOutputFormat(int outputFormat) {
+		this.outputFormat = outputFormat;
+	}
+
+
+
+	public int getAudioEncoder() {
+		return audioEncoder;
+	}
+
+
+
+	public void setAudioEncoder(int audioEncoder) {
+		this.audioEncoder = audioEncoder;
 	}
 }
