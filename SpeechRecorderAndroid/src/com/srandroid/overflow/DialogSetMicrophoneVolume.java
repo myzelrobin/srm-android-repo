@@ -98,7 +98,12 @@ import com.srandroid.util.Utils;
 					 Utils.toastText(v.getContext(), "settings: finish testing microphone");
 					 volume_value = "999";
 					 
-					 recorder.stopRecording();
+				try {
+					recorder.stopRecording();
+				} catch (IllegalStateException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 					 
 					 Log.w(this.getClass().getName(), "test mic audio file: " + recorder.getAudioFileName());
 					 

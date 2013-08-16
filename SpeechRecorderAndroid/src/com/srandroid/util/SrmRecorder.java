@@ -55,7 +55,7 @@ public class SrmRecorder {
 	private String dirPath = null;
 	private String fileName = null;
 	private static final String SUFFIX = ".wav";
-	private static final String AUDIO_RECORDER_TEMP_FILE = "record_temp.raw";
+	private static final String AUDIO_RECORDER_RAW_FILE = "record_temp.raw";
 	
 	// fields for recording 
 	private Thread recordingThread = null;
@@ -131,7 +131,7 @@ public class SrmRecorder {
 	
 	
 
-	public void stopRecording() 
+	public void stopRecording() throws IllegalStateException
 	{
 		if(null != audioRecorder)
 		{
@@ -202,11 +202,11 @@ public class SrmRecorder {
 		
 		if(!file.exists()) file.mkdirs();
 		
-		File tempFile = new File(dirPath, AUDIO_RECORDER_TEMP_FILE);
+		File rawFile = new File(dirPath, AUDIO_RECORDER_RAW_FILE);
 		
-		if(tempFile.exists()) tempFile.delete();
+		if(rawFile.exists()) rawFile.delete();
 		
-		return (file.getAbsolutePath() + File.separator + AUDIO_RECORDER_TEMP_FILE);
+		return (file.getAbsolutePath() + File.separator + AUDIO_RECORDER_RAW_FILE);
 	}
 	
 	private void copyWaveFile(String inFileName, String outFileName)
