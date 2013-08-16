@@ -34,9 +34,6 @@ public class SrmRecorder {
 	private static final String TAG_TESTMIC="TestMicrophone";
 	private static final String TAG_RECORDING="Recording";
 	
-	
-	
-	
 	//fields for audio record
 	// AudioRecord(int audioSource, int sampleRateInHz, int channelConfig, int audioFormat, int bufferSizeInBytes)
 	private AudioRecord audioRecorder = null;
@@ -87,20 +84,23 @@ public class SrmRecorder {
 		
 	}
 	
-
-	
 	private void initializeSrmRecorder() 
 	{
 		audioSource = MediaRecorder.AudioSource.MIC;
 		sampleRateHz = Integer.parseInt(PrefActivitySettings.SAMPLE_RATE);
-		channelConfig = AudioFormat.CHANNEL_IN_STEREO; //STEREO=12, MONO=16
 		channels = Integer.parseInt(PrefActivitySettings.CHANNELS);
-		audioFormat = AudioFormat.ENCODING_PCM_16BIT;
-		bitsPerSample = 16;
 		
-		bufferSizeInBytes = AudioRecord.getMinBufferSize(sampleRateHz, 
-								android.media.AudioFormat.CHANNEL_IN_STEREO, 
-								android.media.AudioFormat.ENCODING_PCM_16BIT);
+		if(channels == 1) channelConfig = AudioFormat.CHANNEL_IN_MONO;
+		else if(channels == 2) channelConfig = AudioFormat.CHANNEL_IN_STEREO; //STEREO=12, MONO=16
+		else channelConfig = AudioFormat.CHANNEL_IN_STEREO; //default channels = 2
+		
+		audioFormat = AudioFormat.ENCODING_PCM_16BIT;
+		if(audioFormat == AudioFormat.ENCODING_PCM_16BIT) bitsPerSample = 16;
+		else if(audioFormat == AudioFormat.ENCODING_PCM_8BIT) bitsPerSample = 8;
+		
+		
+		bufferSizeInBytes = AudioRecord.getMinBufferSize(sampleRateHz, channelConfig, audioFormat);
+		
 		if(bufferSizeInBytes < 0) 
 		{
 			Log.w(this.getClass().getName(), "bufferSize < 0, can not create AudioRecord object!");
@@ -109,9 +109,7 @@ public class SrmRecorder {
 		
 		audioRecorder = new AudioRecord(audioSource, sampleRateHz, channelConfig, audioFormat, bufferSizeInBytes);
 	}
-
-
-
+	
 	public void startRecording()
 	{
 		audioRecorder.startRecording();
