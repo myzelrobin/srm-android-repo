@@ -58,7 +58,7 @@ public class Utils
 		}
 		Log.w(Utils.class.getName(), "APP_DIR_EXT=" + APP_DIR_EXT_PATH);
 		
-		REC_FILES_DIR_EXT_PATH = makeDir(APP_DIR_EXT_PATH, "recorders");
+		REC_FILES_DIR_EXT_PATH = makeDir(APP_DIR_EXT_PATH, "records");
 		Log.w(Utils.class.getName(), "REC_FILES_DIR_EXT=" + REC_FILES_DIR_EXT_PATH);
 		
 		REC_TEST_DIR_EXT_PATH = makeDir(REC_FILES_DIR_EXT_PATH, "test");
