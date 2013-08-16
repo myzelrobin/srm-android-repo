@@ -55,7 +55,7 @@ public class SrmRecorder {
 	private String dirPath = null;
 	private String fileName = null;
 	private static final String SUFFIX = ".wav";
-	private static final String AUDIO_RECORDER_RAW_FILE = "record_temp.raw";
+	private static final String AUDIO_RECORDER_TEMP_FILE = "record_temp.raw";
 	
 	// fields for recording 
 	private Thread recordingThread = null;
@@ -93,7 +93,7 @@ public class SrmRecorder {
 	{
 		audioSource = MediaRecorder.AudioSource.MIC;
 		sampleRateHz = Integer.parseInt(PrefActivitySettings.SAMPLE_RATE);
-		channelConfig = AudioFormat.CHANNEL_IN_STEREO;
+		channelConfig = AudioFormat.CHANNEL_IN_MONO;
 		channels = Integer.parseInt(PrefActivitySettings.CHANNELS);
 		audioFormat = AudioFormat.ENCODING_PCM_16BIT;
 		bitsPerSample = 16;
@@ -112,7 +112,7 @@ public class SrmRecorder {
 
 
 
-	public void startRecording() throws IllegalStateException
+	public void startRecording()
 	{
 		audioRecorder.startRecording();
 		
@@ -131,7 +131,7 @@ public class SrmRecorder {
 	
 	
 
-	public void stopRecording() throws IllegalStateException
+	public void stopRecording() 
 	{
 		if(null != audioRecorder)
 		{
@@ -202,13 +202,17 @@ public class SrmRecorder {
 		
 		if(!file.exists()) file.mkdirs();
 		
-		File rawFile = new File(dirPath, AUDIO_RECORDER_RAW_FILE);
+		File tempFile = new File(dirPath, AUDIO_RECORDER_TEMP_FILE);
 		
-		if(rawFile.exists()) rawFile.delete();
+		if(tempFile.exists())
+			tempFile.delete();
 		
-		return (file.getAbsolutePath() + File.separator + AUDIO_RECORDER_RAW_FILE);
+		return (file.getAbsolutePath() + File.separator + AUDIO_RECORDER_TEMP_FILE);
 	}
-	
+
+
+
+
 	private void copyWaveFile(String inFileName, String outFileName)
 	{
 		FileInputStream in = null;
