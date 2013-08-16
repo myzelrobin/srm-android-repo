@@ -186,19 +186,19 @@ public class SrmRecorder {
 	
 	private String getFileName()
 	{
-		File file = new File(dirPath);
+		File file = new File(dirPath, fileName);
 		
 		if(!file.exists())
 		{
 			file.mkdirs();
 		}
 		
-		return (file.getAbsolutePath() + File.separator + fileName + System.currentTimeMillis() + SUFFIX);
+		return (file.getAbsolutePath() + File.separator + System.currentTimeMillis() + SUFFIX);
 	}
 	
 	private String getRawFileName() 
 	{
-		File file = new File(dirPath);
+		File file = new File(dirPath, fileName);
 		
 		if(!file.exists()) file.mkdirs();
 		
