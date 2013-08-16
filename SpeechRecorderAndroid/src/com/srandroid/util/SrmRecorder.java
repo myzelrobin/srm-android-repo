@@ -27,6 +27,7 @@ public class SrmRecorder {
 	private File audiofile = null;
 	private String dirPath = null;
 	private String fileName = null;
+	private String audioFilePath = null;
 
 	/**
 	 * Constructor
@@ -79,7 +80,10 @@ public class SrmRecorder {
 	           return;
 	       }
 	   }
-	   recorder.setOutputFile(audiofile.getAbsolutePath());
+	   
+	   this.setAudioFilePath(audiofile.getAbsolutePath());
+	   
+	   recorder.setOutputFile(audioFilePath);
 	   recorder.prepare();
 	   recorder.start();
 	}
@@ -106,5 +110,17 @@ public class SrmRecorder {
 	   
 	   //sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, newUri));
 	
+	}
+
+
+
+	public String getAudioFilePath() {
+		return audioFilePath;
+	}
+
+
+
+	public void setAudioFilePath(String audioFilePath) {
+		this.audioFilePath = audioFilePath;
 	}
 }

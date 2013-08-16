@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.preference.DialogPreference;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -89,6 +90,7 @@ import com.srandroid.util.Utils;
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
+					
 					bStart.setEnabled(false);
 					bFinish.setEnabled(true);
 					break;
@@ -97,6 +99,8 @@ import com.srandroid.util.Utils;
 					 volume_value = "999";
 					 
 					 recorder.stopRecording();
+					 
+					 Log.w(this.getClass().getName(), "test mic audio file: " + recorder.getAudioFilePath());
 					 
 					 onDialogClosed(true);
 					 getDialog().dismiss();
