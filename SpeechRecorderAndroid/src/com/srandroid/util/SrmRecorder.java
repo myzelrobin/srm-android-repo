@@ -95,7 +95,8 @@ public class SrmRecorder {
 		sampleRateHz = Integer.parseInt(PrefActivitySettings.SAMPLE_RATE);
 		channelConfig = AudioFormat.CHANNEL_IN_MONO;
 		channels = Integer.parseInt(PrefActivitySettings.CHANNELS);
-		audioFormat = AudioFormat.ENCODING_PCM_16BIT;
+		audioFormat = AudioFormat.ENCODING_PCM_8BIT;
+		//audioFormat = AudioFormat.ENCODING_PCM_16BIT;
 		bitsPerSample = 16;
 		
 		bufferSizeInBytes = AudioRecord.getMinBufferSize(sampleRateHz, 

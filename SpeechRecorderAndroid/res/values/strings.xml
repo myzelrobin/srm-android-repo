@@ -61,7 +61,7 @@
 	           <!-- sample rate -->
 	           <string name="settings_sample_rate">Sample Rate</string>
 	           <string name="settings_sample_rate_key">sample_rate</string>
-	           <string name="settings_sample_rate_default">22050.0</string>
+	           <string name="settings_sample_rate_default">22050</string>
 		            <string-array name="sample_rate_items">
 	                    <item>8000Hz</item>
 	                    <item>11025Hz</item>
