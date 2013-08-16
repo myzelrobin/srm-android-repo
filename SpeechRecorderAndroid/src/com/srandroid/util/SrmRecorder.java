@@ -93,10 +93,9 @@ public class SrmRecorder {
 	{
 		audioSource = MediaRecorder.AudioSource.MIC;
 		sampleRateHz = Integer.parseInt(PrefActivitySettings.SAMPLE_RATE);
-		channelConfig = AudioFormat.CHANNEL_IN_MONO;
+		channelConfig = AudioFormat.CHANNEL_IN_STEREO;
 		channels = Integer.parseInt(PrefActivitySettings.CHANNELS);
-		audioFormat = AudioFormat.ENCODING_PCM_8BIT;
-		//audioFormat = AudioFormat.ENCODING_PCM_16BIT;
+		audioFormat = AudioFormat.ENCODING_PCM_16BIT;
 		bitsPerSample = 16;
 		
 		bufferSizeInBytes = AudioRecord.getMinBufferSize(sampleRateHz, 
@@ -292,8 +291,7 @@ public class SrmRecorder {
 		header[31] = (byte) ((byteRate >> 24) & 0xff);
 		header[32] = (byte) (2 * 16 / 8);  // block align
 		header[33] = 0;
-		header[34] = 8;  // bits per sample
-		//header[34] = (byte) bitsPerSample;  // bits per sample
+		header[34] = (byte) bitsPerSample;  // bits per sample
 		header[35] = 0;
 		header[36] = 'd';
 		header[37] = 'a';
