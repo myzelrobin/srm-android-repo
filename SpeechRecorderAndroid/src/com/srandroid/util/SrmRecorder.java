@@ -33,6 +33,11 @@ public class SrmRecorder {
 	public SrmRecorder(String dirPath) {
 		// TODO Auto-generated constructor stub
 		this.dirPath = dirPath;
+		
+		// set the recorder
+		recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+		recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+		recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
 	}
 	
 
@@ -40,9 +45,7 @@ public class SrmRecorder {
 	public void startRecording() throws IOException 
 	{
 		
-	   recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
-	   recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
-	   recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+	   
 	   
 	   if(dirPath == null)
 	   {
