@@ -23,22 +23,27 @@ public class PrefActivitySettings extends PreferenceActivity
 {
 	public static final String KEY_LANGUAGE = "lang";
 	public static final String KEY_LANGUAGE_DEF = "en";
+	public static String LANGUAGE = KEY_LANGUAGE_DEF;
 	
 	public static final String KEY_MICVOL = "mic_vol";
 	public static final String KEY_MICVOL_DEF = "-1";
+	public static String MICVOL = KEY_MICVOL_DEF;
 	
 	public static final String KEY_PREFSCREEN_RECVALUE = "prefscreen_recvalue";
 	
 	public static final String KEY_SAMPLE_RATE = "sample_rate";
-	public static final String KEY_SAMPLE_RATE_DEF = "22050.0";
+	public static final String KEY_SAMPLE_RATE_DEF = "22050";
+	public static String SAMPLE_RATE = KEY_SAMPLE_RATE_DEF;
 	
 	public static final String KEY_CHANNELS = "channels";
 	public static final String KEY_CHANNELS_DEF = "2";
+	public static String CHANNELS = KEY_CHANNELS_DEF;
 	
-	public static final String KEY_OVERWRITE = "overwrite"; // boolean value
+	public static final String KEY_OVERWRITE = "overwrite"; // boolean value, default true
+	public static boolean ALLOW_OVERWRITE = true;
 	
-	public static final String KEY_OVERWRITE_WARNING = "overwrite_warning"; // boolean value
-	
+	public static final String KEY_OVERWRITE_WARNING = "overwrite_warning"; // boolean value, default true
+	public static boolean ALLOW_OVERWRITE_WARNING = true;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
@@ -69,6 +74,62 @@ public class PrefActivitySettings extends PreferenceActivity
 	    return super.onOptionsItemSelected(item);
 	}
 	
+
+
+
+
+
+	public static String getLANGUAGE() {
+		return LANGUAGE;
+	}
+
+	public static void setLANGUAGE(String lANGUAGE) {
+		LANGUAGE = lANGUAGE;
+	}
+
+	public static String getMICVOL() {
+		return MICVOL;
+	}
+
+	public static void setMICVOL(String mICVOL) {
+		MICVOL = mICVOL;
+	}
+
+	public static String getSAMPLE_RATE() {
+		return SAMPLE_RATE;
+	}
+
+	public static void setSAMPLE_RATE(String sAMPLE_RATE) {
+		SAMPLE_RATE = sAMPLE_RATE;
+	}
+
+	public static String getCHANNELS() {
+		return CHANNELS;
+	}
+
+	public static void setCHANNELS(String cHANNELS) {
+		CHANNELS = cHANNELS;
+	}
+
+	public static boolean isALLOW_OVERWRITE() {
+		return ALLOW_OVERWRITE;
+	}
+
+	public static void setALLOW_OVERWRITE(boolean aLLOW_OVERWRITE) {
+		ALLOW_OVERWRITE = aLLOW_OVERWRITE;
+	}
+
+	public static boolean isALLOW_OVERWRITE_WARNING() {
+		return ALLOW_OVERWRITE_WARNING;
+	}
+
+	public static void setALLOW_OVERWRITE_WARNING(boolean aLLOW_OVERWRITE_WARNING) {
+		ALLOW_OVERWRITE_WARNING = aLLOW_OVERWRITE_WARNING;
+	}
+	
+	
+	
+
 	
 	
 	
@@ -107,6 +168,8 @@ public class PrefActivitySettings extends PreferenceActivity
     		// TODO Auto-generated method stub
     		if(key.equals(PrefActivitySettings.KEY_LANGUAGE))
     		{
+    			setLANGUAGE(sharedPreferences.getString(PrefActivitySettings.KEY_LANGUAGE, 
+    												PrefActivitySettings.KEY_LANGUAGE_DEF));
     			Log.w(this.getClass().getName(), "changed language");
     			Utils.toastText(getActivity(), 
     					"changed language to " + 
@@ -115,6 +178,8 @@ public class PrefActivitySettings extends PreferenceActivity
     		}
     		if(key.equals(PrefActivitySettings.KEY_MICVOL))
     		{
+    			setMICVOL(sharedPreferences.getString(PrefActivitySettings.KEY_MICVOL, 
+    							PrefActivitySettings.KEY_MICVOL_DEF));
     			Log.w(this.getClass().getName(), "changed microphone");
     			Utils.toastText(getActivity(), 
     					"changed microphne to " 
@@ -123,6 +188,8 @@ public class PrefActivitySettings extends PreferenceActivity
     		}
     		if(key.equals(PrefActivitySettings.KEY_SAMPLE_RATE))
     		{
+    			setSAMPLE_RATE(sharedPreferences.getString(PrefActivitySettings.KEY_SAMPLE_RATE, 
+    													PrefActivitySettings.KEY_SAMPLE_RATE_DEF));
     			Log.w(this.getClass().getName(), "changed recording_values->sample_rate");
     			Utils.toastText(getActivity(), 
     					"changed recording_value->sample_rate to " 
@@ -131,6 +198,8 @@ public class PrefActivitySettings extends PreferenceActivity
     		}
     		if(key.equals(PrefActivitySettings.KEY_CHANNELS))
     		{
+    			setCHANNELS(sharedPreferences.getString(PrefActivitySettings.KEY_CHANNELS, 
+    													PrefActivitySettings.KEY_CHANNELS_DEF));
     			Log.w(this.getClass().getName(), "changed recording_values->channels");
     			Utils.toastText(getActivity(), 
     					"changed recording_value->channels to " 
@@ -139,6 +208,7 @@ public class PrefActivitySettings extends PreferenceActivity
     		}
     		if(key.equals(PrefActivitySettings.KEY_OVERWRITE))
     		{
+    			setALLOW_OVERWRITE(sharedPreferences.getBoolean(PrefActivitySettings.KEY_OVERWRITE, true));
     			Log.w(this.getClass().getName(), "changed recording_values->overwrite");
     			Utils.toastText(getActivity(), 
     					"changed recording_value->overwrite to " 
@@ -146,6 +216,8 @@ public class PrefActivitySettings extends PreferenceActivity
     		}
     		if(key.equals(PrefActivitySettings.KEY_OVERWRITE_WARNING))
     		{
+    			setALLOW_OVERWRITE_WARNING(sharedPreferences.getBoolean(PrefActivitySettings.KEY_OVERWRITE_WARNING, 
+    					true));
     			Log.w(this.getClass().getName(), "changed recording_values->overwrite_warning");
     			Utils.toastText(getActivity(), 
     					"changed recording_value->overwrite_warning to " 
@@ -155,6 +227,10 @@ public class PrefActivitySettings extends PreferenceActivity
 
         
     }
+
+
+
+
 	
 }
 

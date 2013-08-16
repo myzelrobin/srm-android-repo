@@ -63,26 +63,26 @@
 	           <string name="settings_sample_rate_key">sample_rate</string>
 	           <string name="settings_sample_rate_default">22050.0</string>
 		            <string-array name="sample_rate_items">
-	                    <item>8000.0</item>
-	                    <item>11025.0</item>
-	                    <item>16000.0</item>
-	                    <item>22050.0</item>
-	                    <item>32000.0</item>
-	                    <item>44100.0</item>
-	                    <item>48000.0</item>
-	                    <item>96000.0</item>
+	                    <item>8000Hz</item>
+	                    <item>11025Hz</item>
+	                    <item>16000Hz</item>
+	                    <item>22050Hz</item>
+	                    <item>32000Hz</item>
+	                    <item>44100Hz</item>
+	                    <item>48000Hz</item>
+	                    <item>96000Hz</item>
 	                    <item>unknown</item>
 	                </string-array>
 	                
 		            <string-array name="sample_rate_items_values">
-                        <item>8000.0</item>
-                        <item>11025.0</item>
-                        <item>16000.0</item>
-                        <item>22050.0</item>
-                        <item>32000.0</item>
-                        <item>44100.0</item>
-                        <item>48000.0</item>
-                        <item>96000.0</item>
+                        <item>8000</item>
+                        <item>11025</item>
+                        <item>16000</item>
+                        <item>22050</item>
+                        <item>32000</item>
+                        <item>44100</item>
+                        <item>48000</item>
+                        <item>96000</item>
                         <item>unknown</item>
                     </string-array>
                
@@ -91,15 +91,15 @@
                <string name="settings_channels_key">channels</string>
                <string name="settings_channels_default">2</string>
                     <string-array name="channels_items">
-                        <item>0</item>
-                        <item>1</item>
-                        <item>2</item>
-                        <item>3</item>
-                        <item>4</item>
-                        <item>5</item>
-                        <item>6</item>
-                        <item>7</item>
-                        <item>8</item>
+                        <item>0 Channel</item>
+                        <item>1 Channel</item>
+                        <item>2 Channels</item>
+                        <item>3 Channels</item>
+                        <item>4 Channels</item>
+                        <item>5 Channels</item>
+                        <item>6 Channels</item>
+                        <item>7 Channels</item>
+                        <item>8 Channels</item>
                     </string-array>
                     
                     <string-array name="channels_items_values">

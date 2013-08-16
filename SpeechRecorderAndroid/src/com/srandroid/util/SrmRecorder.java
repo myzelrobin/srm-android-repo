@@ -6,13 +6,20 @@ package com.srandroid.util;
 import java.io.File;
 import java.io.IOException;
 
+import com.srandroid.overflow.PrefActivitySettings;
+
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.media.AudioFormat;
 import android.media.MediaRecorder;
+import android.media.AudioRecord;
 import android.net.Uri;
 import android.os.Environment;
+import android.preference.PreferenceManager;
 import android.provider.MediaStore;
+import android.text.TextUtils.StringSplitter;
 import android.util.Log;
 
 /**
@@ -29,6 +36,27 @@ public class SrmRecorder {
 	private int outputFormat = 0;
 	private int audioEncoder = 0;
 	
+	
+	// AudioRecord(int audioSource, int sampleRateInHz, int channelConfig, int audioFormat, int bufferSizeInBytes)
+	private AudioRecord audioRecord = null;
+	private int sampleRateHz = 0;
+	private int channelConfig = 0;
+	private int audioFormat = 0;
+	private int bufferSizeInBytes = 0;
+	
+	
+	
+	/**
+	 * private static int sampleRateInHz = 8000;
+
+private static int channelConfig = AudioFormat.CHANNEL_CONFIGURATION_MONO;
+
+private static int audioFormat = AudioFormat.ENCODING_PCM_16BIT;
+
+audioRecord = new AudioRecord(audioSource, sampleRateInHz,channelConfig, audioFormat, bufferSizeInBytes);
+       audioManager.setSpeakerphoneOn(false);
+	 */
+	
 	// fields for audio file
 	private File audiofile = null;
 	private String dirPath = null;
@@ -41,13 +69,11 @@ public class SrmRecorder {
 	public SrmRecorder(String dirPath, String fileName) {
 		// TODO Auto-generated constructor stub
 		
+		initializeSrmRecorder();
+		
 		// set default values to the fields
 		this.dirPath = dirPath;
 		this.fileName = fileName;
-		
-		this.audioSource = MediaRecorder.AudioSource.MIC;
-		this.outputFormat = MediaRecorder.OutputFormat.THREE_GPP;
-		this.audioEncoder = MediaRecorder.AudioEncoder.AMR_NB;
 		
 		if(dirPath == null)
 		{
@@ -66,6 +92,26 @@ public class SrmRecorder {
 	
 
 	
+	private void initializeSrmRecorder() 
+	{
+		this.audioSource = MediaRecorder.AudioSource.MIC;
+		
+		this.outputFormat = MediaRecorder.OutputFormat.MPEG_4;
+		this.audioEncoder = MediaRecorder.AudioEncoder.AMR_NB;
+		
+		
+		sampleRateHz = Integer.parseInt(PrefActivitySettings.SAMPLE_RATE);
+		channelConfig = AudioFormat.CHANNEL_IN_MONO;
+		audioFormat = AudioFormat.ENCODING_PCM_16BIT;
+		bufferSizeInBytes = AudioRecord.getMinBufferSize(sampleRateHz, 
+								android.media.AudioFormat.CHANNEL_IN_MONO, 
+								android.media.AudioFormat.ENCODING_PCM_16BIT);
+		
+		audioRecord = new AudioRecord(audioSource, sampleRateHz, channelConfig, audioFormat, bufferSizeInBytes);
+	}
+
+
+
 	public void startRecording() throws IOException 
 	{
 		recorder = new MediaRecorder();
@@ -161,38 +207,4 @@ public class SrmRecorder {
 	}
 
 
-
-	public int getAudioSource() {
-		return audioSource;
-	}
-
-
-
-	public void setAudioSource(int audioSource) {
-		this.audioSource = audioSource;
-	}
-
-
-
-	public int getOutputFormat() {
-		return outputFormat;
-	}
-
-
-
-	public void setOutputFormat(int outputFormat) {
-		this.outputFormat = outputFormat;
-	}
-
-
-
-	public int getAudioEncoder() {
-		return audioEncoder;
-	}
-
-
-
-	public void setAudioEncoder(int audioEncoder) {
-		this.audioEncoder = audioEncoder;
-	}
 }
