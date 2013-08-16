@@ -182,7 +182,7 @@ public class PrefActivitySettings extends PreferenceActivity
     							PrefActivitySettings.KEY_MICVOL_DEF));
     			Log.w(this.getClass().getName(), "changed microphone");
     			Utils.toastText(getActivity(), 
-    					"changed microphne to " 
+    					"changed microphone to " 
     					+ sharedPreferences.getString(PrefActivitySettings.KEY_MICVOL, 
     							PrefActivitySettings.KEY_MICVOL_DEF));
     		}

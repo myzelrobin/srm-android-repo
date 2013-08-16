@@ -81,8 +81,8 @@ public class SrmRecorder {
 		if(fileName == null)
 		{
 		   Log.w(this.getClass().getName(), 
-				   "file name of this audio file is invalid, save audio file as test_audio");
-		   fileName = "test_audio";
+				   "file name of this audio file is invalid, save audio file as unnamed_audio");
+		   fileName = "unnamed_audio";
 		}
 		
 	}
@@ -186,33 +186,29 @@ public class SrmRecorder {
 	
 	private String getFileName()
 	{
-		File file = new File(dirPath, fileName);
+		File file = new File(dirPath);
 		
 		if(!file.exists())
 		{
 			file.mkdirs();
 		}
 		
-		return (file.getAbsolutePath() + File.separator + System.currentTimeMillis() + SUFFIX);
+		return (file.getAbsolutePath() + File.separator + fileName + System.currentTimeMillis() + SUFFIX);
 	}
 	
 	private String getRawFileName() 
 	{
-		File file = new File(dirPath, fileName);
+		File file = new File(dirPath);
 		
 		if(!file.exists()) file.mkdirs();
 		
 		File tempFile = new File(dirPath, AUDIO_RECORDER_TEMP_FILE);
 		
-		if(tempFile.exists())
-			tempFile.delete();
+		if(tempFile.exists()) tempFile.delete();
 		
 		return (file.getAbsolutePath() + File.separator + AUDIO_RECORDER_TEMP_FILE);
 	}
-
-
-
-
+	
 	private void copyWaveFile(String inFileName, String outFileName)
 	{
 		FileInputStream in = null;
