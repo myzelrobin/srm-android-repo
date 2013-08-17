@@ -21,7 +21,7 @@ import com.srandroid.util.Utils;
 	public class DialogSetMicrophoneVolume extends DialogPreference implements OnClickListener
 	{
 		private Button bCancel, bStart, bFinish, bTestrecord;
-		private boolean isBTestrecordClicked = false;
+		private int isBTestrecordClicked = 0;
 		private ProgressBar progressBar;
 		
 		private String volume_value = "-1"; 
@@ -143,7 +143,7 @@ import com.srandroid.util.Utils;
 					// button TESTREC
 				case R.id.button_testrecord_in_dialog_mic:
 					
-					if(isBTestrecordClicked)
+					if(isBTestrecordClicked == 1)
 					{
 						// STOP 
 						testRecorder.stopRecording();
@@ -173,7 +173,7 @@ import com.srandroid.util.Utils;
 						e.printStackTrace();
 					}
 					 
-					 isBTestrecordClicked = true;
+					 isBTestrecordClicked = 1;
 					 bTestrecord.setText("STOP");
 					 break;
 				
