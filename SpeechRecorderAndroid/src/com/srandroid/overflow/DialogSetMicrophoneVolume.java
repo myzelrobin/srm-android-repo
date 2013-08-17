@@ -96,7 +96,8 @@ import com.srandroid.util.Utils;
 							+ ": AudioRecord recorder is created: " 
 							+ "\nsampleRateHz=" + SrmRecorder.getSampleRateHz()
 							+ "\nchannelConfig=" + SrmRecorder.getChannelConfig()
-							+ "\nchannels=" + SrmRecorder.getChannels());
+							+ "\nchannels=" + SrmRecorder.getChannels()
+							+ "\nminBufferSize=" + recorder.getMinBufferSize());
 					
 					
 					try {

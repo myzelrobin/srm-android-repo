@@ -186,20 +186,22 @@ public class SrmRecorder
 			@Override
 			public void run() {
 				writeAudioDataToFile();
+				
+				updadeProgressBarThread = new Thread(new Runnable() 
+				{	
+					@Override
+					public void run() {
+						updateProgressbar(dialog.getProgressBar());
+					}
+				}, "UpdateProgressBar Thread");
+			
+				updadeProgressBarThread.start();
 			}
 		}, "AudioRecorder Thread");
 	
 		recordingThread.start();
 		
-		updadeProgressBarThread = new Thread(new Runnable() 
-		{	
-			@Override
-			public void run() {
-				updateProgressbar(dialog.getProgressBar());
-			}
-		}, "UpdateProgressBar Thread");
-	
-		updadeProgressBarThread.start();
+		
 	}
 	
 	
