@@ -125,7 +125,7 @@ import com.srandroid.util.Utils;
 					 
 					 Log.w(this.getClass().getName(), SrmRecorder.TAG_TESTMIC 
 							 + ": test mic audio file is saved: " 
-							 + recorder.getAudioFileName());
+							 + recorder.getAudioFile());
 					 
 					 // here needs a method to set the volume_value
 					 
