@@ -70,7 +70,7 @@ import com.srandroid.util.Utils;
 			 bFinish.setEnabled(false);
 			 // button TESTREC
 			 bTestrecord = (Button) view.findViewById(R.id.button_testrecord_in_dialog_mic);
-			 bFinish.setOnClickListener(this);
+			 bTestrecord.setOnClickListener(this);
 			 
 			 
 			 setProgressBar((ProgressBar) view.findViewById(R.id.progressBarInDialogSetMic)); 
