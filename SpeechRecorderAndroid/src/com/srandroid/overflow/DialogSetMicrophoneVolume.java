@@ -118,6 +118,7 @@ import com.srandroid.util.Utils;
 					
 					Utils.toastText(v.getContext(), "settings: dialog: start testing MIC");
 					bTestrecord.setEnabled(false);
+					bCancel.setEnabled(false);
 					
 					recorderForMic = new SrmRecorder(Utils.REC_TEST_DIR_EXT_PATH, "test_mic", this);
 					Log.w(this.getClass().getName(), SrmRecorder.TAG_TESTMIC 
@@ -178,6 +179,7 @@ import com.srandroid.util.Utils;
 					
 					 Utils.toastText(v.getContext(), "settings: dialog: start testing RECORD");
 					 bTestmic.setEnabled(false);
+					 bCancel.setEnabled(false);
 					 isBTestrecordClicked = 1;
 					 bTestrecord.setText("STOP");
 					 
