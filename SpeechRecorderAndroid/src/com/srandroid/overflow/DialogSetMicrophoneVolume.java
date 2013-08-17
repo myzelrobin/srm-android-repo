@@ -91,7 +91,7 @@ import com.srandroid.util.Utils;
 				case R.id.button_start_in_dialog_mic:
 					Utils.toastText(v.getContext(), "settings: start testing microphone");
 					
-					recorder = new SrmRecorder(Utils.REC_TEST_DIR_EXT_PATH, "test_mic");
+					recorder = new SrmRecorder(Utils.REC_TEST_DIR_EXT_PATH, "test_mic", this);
 					Log.w(this.getClass().getName(), SrmRecorder.TAG_TESTMIC 
 							+ ": AudioRecord recorder is created: " 
 							+ "\nsampleRateHz=" + SrmRecorder.getSampleRateHz()
