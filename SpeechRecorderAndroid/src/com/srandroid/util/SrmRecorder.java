@@ -253,8 +253,18 @@ public class SrmRecorder
 	
 	public void stopTestMicrophone() 
 	{
-		stopRecording();
-		deleteFile(getFileName());
+		if(null != audioRecorder)
+		{
+			isRecording = false;
+			
+			audioRecorder.stop();
+			audioRecorder.release();
+			
+			audioRecorder = null;
+			recordingThread = null;
+			updadeProgressBarThread = null;
+		}
+		deleteTempFile();
 	}
 	
 	
