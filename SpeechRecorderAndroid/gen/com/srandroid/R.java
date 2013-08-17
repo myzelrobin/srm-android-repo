@@ -52,30 +52,33 @@ public final class R {
         public static final int progressbar=0x7f020009;
     }
     public static final class id {
-        public static final int bgroup_overflow=0x7f0a000c;
-        public static final int bgroup_scripts=0x7f0a0012;
-        public static final int bgroup_sessions=0x7f0a000f;
-        public static final int bgroup_speakers=0x7f0a0015;
-        public static final int button_add_session=0x7f0a0010;
-        public static final int button_add_speaker=0x7f0a0016;
+        public static final int bgroup_overflow=0x7f0a000f;
+        public static final int bgroup_scripts=0x7f0a0015;
+        public static final int bgroup_sessions=0x7f0a0012;
+        public static final int bgroup_speakers=0x7f0a0018;
+        public static final int button_add_session=0x7f0a0013;
+        public static final int button_add_speaker=0x7f0a0019;
         public static final int button_cancel_in_dialog_mic=0x7f0a0002;
-        public static final int button_download_script=0x7f0a0013;
-        public static final int button_exit=0x7f0a000e;
-        public static final int button_search_scripts=0x7f0a0014;
-        public static final int button_search_sessions=0x7f0a0011;
-        public static final int button_search_speakers=0x7f0a0017;
-        public static final int button_settings=0x7f0a000d;
+        public static final int button_download_script=0x7f0a0016;
+        public static final int button_exit=0x7f0a0011;
+        public static final int button_search_scripts=0x7f0a0017;
+        public static final int button_search_sessions=0x7f0a0014;
+        public static final int button_search_speakers=0x7f0a001a;
+        public static final int button_settings=0x7f0a0010;
         public static final int button_testmic_in_dialog_mic=0x7f0a0003;
         public static final int button_testrecord_in_dialog_mic=0x7f0a0004;
         public static final int content_frame=0x7f0a0006;
         public static final int drawer_layout_activity_main=0x7f0a0005;
-        public static final int linearlayout_toasthint=0x7f0a000a;
+        public static final int gridLayout_in_fragment_in_activitymain=0x7f0a0008;
+        public static final int linearlayout_toasthint=0x7f0a000d;
         public static final int listview_drawer_items=0x7f0a0007;
         public static final int progressBarInDialogSetMic=0x7f0a0001;
-        public static final int text_toasthint=0x7f0a000b;
+        public static final int text_toasthint=0x7f0a000e;
         public static final int textview_in_dialog_microphone=0x7f0a0000;
-        public static final int textview_in_fragment=0x7f0a0008;
-        public static final int textview_in_fragment2=0x7f0a0009;
+        public static final int textview_in_fragment=0x7f0a0009;
+        public static final int textview_in_fragment2=0x7f0a000a;
+        public static final int textview_in_fragment3=0x7f0a000b;
+        public static final int textview_in_fragment4=0x7f0a000c;
     }
     public static final class layout {
         public static final int dialog_settings_microphone=0x7f030000;
@@ -100,32 +103,33 @@ public final class R {
         public static final int PREVIOUS=0x7f060007;
         public static final int RECORD=0x7f06000b;
         public static final int STOP=0x7f060009;
+        public static final int TESTVIEWTEXT=0x7f06000f;
         /**  common strings 
          */
         public static final int YES=0x7f060002;
         /**  application 
          */
         public static final int app_name=0x7f060000;
-        public static final int button_add=0x7f060013;
-        public static final int button_download=0x7f060014;
-        public static final int button_exit=0x7f060016;
+        public static final int button_add=0x7f060014;
+        public static final int button_download=0x7f060015;
+        public static final int button_exit=0x7f060017;
         /**  Buttons in Actionbar 
  Buttons in Actionbar 
  Buttons in Actionbar 
  Buttons in Actionbar 
          */
-        public static final int button_search=0x7f060012;
+        public static final int button_search=0x7f060013;
         /**  Buttons in Overflow 
  Buttons in Overflow 
  Buttons in Overflow 
          */
-        public static final int button_set_microphone=0x7f06002c;
-        public static final int button_set_recording_values=0x7f06002d;
+        public static final int button_set_microphone=0x7f06002d;
+        public static final int button_set_recording_values=0x7f06002e;
         /**  Buttons in Overflow 
          */
-        public static final int button_settings=0x7f060015;
-        public static final int dialogmessage_microphone=0x7f060020;
-        public static final int drawer_items_close=0x7f060010;
+        public static final int button_settings=0x7f060016;
+        public static final int dialogmessage_microphone=0x7f060021;
+        public static final int drawer_items_close=0x7f060011;
         /**  ActivityMain 
  Drawer in ActivityMain 
  ActivityMain 
@@ -135,49 +139,49 @@ public final class R {
  ActivityMain 
  Drawer in ActivityMain 
          */
-        public static final int drawer_items_open=0x7f06000f;
+        public static final int drawer_items_open=0x7f060010;
         public static final int hello_world=0x7f060001;
         /**  language 
          */
-        public static final int settings_application=0x7f060018;
+        public static final int settings_application=0x7f060019;
         /**  channels 
          */
-        public static final int settings_channels=0x7f060025;
-        public static final int settings_channels_default=0x7f060027;
-        public static final int settings_channels_key=0x7f060026;
+        public static final int settings_channels=0x7f060026;
+        public static final int settings_channels_default=0x7f060028;
+        public static final int settings_channels_key=0x7f060027;
         /**  microphone 
          */
-        public static final int settings_hardware=0x7f06001c;
-        public static final int settings_lang_default=0x7f06001b;
-        public static final int settings_lang_key=0x7f06001a;
-        public static final int settings_language=0x7f060019;
-        public static final int settings_mic_volume_default=0x7f06001f;
-        public static final int settings_mic_volume_key=0x7f06001e;
-        public static final int settings_microphone=0x7f06001d;
+        public static final int settings_hardware=0x7f06001d;
+        public static final int settings_lang_default=0x7f06001c;
+        public static final int settings_lang_key=0x7f06001b;
+        public static final int settings_language=0x7f06001a;
+        public static final int settings_mic_volume_default=0x7f060020;
+        public static final int settings_mic_volume_key=0x7f06001f;
+        public static final int settings_microphone=0x7f06001e;
         /**  Overwrite 
          */
-        public static final int settings_overwrite=0x7f060028;
-        public static final int settings_overwrite_key=0x7f060029;
+        public static final int settings_overwrite=0x7f060029;
+        public static final int settings_overwrite_key=0x7f06002a;
         /**  Overwrite 
          */
-        public static final int settings_overwrite_warning=0x7f06002a;
-        public static final int settings_overwrite_warning_key=0x7f06002b;
+        public static final int settings_overwrite_warning=0x7f06002b;
+        public static final int settings_overwrite_warning_key=0x7f06002c;
         /**  recording values
          */
-        public static final int settings_recvalue=0x7f060021;
+        public static final int settings_recvalue=0x7f060022;
         /**  sample rate 
          */
-        public static final int settings_sample_rate=0x7f060022;
-        public static final int settings_sample_rate_default=0x7f060024;
-        public static final int settings_sample_rate_key=0x7f060023;
-        public static final int settings_theme=0x7f06002e;
-        public static final int swipeHintText=0x7f060011;
+        public static final int settings_sample_rate=0x7f060023;
+        public static final int settings_sample_rate_default=0x7f060025;
+        public static final int settings_sample_rate_key=0x7f060024;
+        public static final int settings_theme=0x7f06002f;
+        public static final int swipeHintText=0x7f060012;
         /**  PreferenceActivitySettings 
  PreferenceActivitySettings 
  PreferenceActivitySettings 
  PreferenceActivitySettings 
          */
-        public static final int title_settings=0x7f060017;
+        public static final int title_settings=0x7f060018;
     }
     public static final class style {
         /** 

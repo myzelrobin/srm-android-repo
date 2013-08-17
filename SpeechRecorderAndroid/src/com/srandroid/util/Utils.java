@@ -17,6 +17,12 @@ import android.os.Environment;
  */
 public class Utils
 {
+	// class contains constant variables 
+	public static class ConstantVars
+	{
+		public static final String TESTTEXT = "TEST";
+	}
+	
 	
 	public static boolean isPreStartInitialized = false;
 	

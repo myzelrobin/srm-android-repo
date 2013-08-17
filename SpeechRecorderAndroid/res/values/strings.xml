@@ -19,6 +19,10 @@
     <string name="MIC">MIC</string>
     <string name="CLOSE">CLOSE</string>
     <string name="OPEN">OPEN</string>
+    <string name="TESTVIEWTEXT">
+        The quick brown fox jumps over the lazy dog.
+        \nThe quick brown fox jumps over the lazy dog.
+        \nThe quick brown fox jumps over the lazy dog.</string>
     
     
     
@@ -71,7 +75,11 @@
 	       <string name="settings_microphone">Microphone</string>
 	       <string name="settings_mic_volume_key">mic_vol</string>
 	       <string name="settings_mic_volume_default">-1</string>
-	       <string name="dialogmessage_microphone">Click MIC to start testing microphone\n OR RECORD to start recording a test sample.\nPlease speak something loud and something light.\nThen click STOP to finish the test.</string>
+	       <string name="dialogmessage_microphone">
+	           Click MIC to start testing microphone
+	           \nOR RECORD to start recording a test sample.
+	           \nPlease speak something loud and something light.
+	           \nThen click STOP to finish the test.</string>
 	       
 	       <!-- recording values-->
 	       <string name="settings_recvalue">Recording Values</string>
