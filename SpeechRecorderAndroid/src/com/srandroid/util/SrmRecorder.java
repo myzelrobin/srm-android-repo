@@ -205,7 +205,9 @@ public class SrmRecorder
 							Thread.sleep(200);
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
-							e.printStackTrace();
+							Log.w(this.getClass().getName(),
+									"startTestMicrophone(): Thread.sleep(200) throws error " 
+											+ e.getMessage() );
 						}
 						updateProgressbar(dialog.getProgressBar());
 					}
@@ -260,7 +262,9 @@ public class SrmRecorder
 		try {
 			os = new FileOutputStream(rawFileName);
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			Log.w(this.getClass().getName(), 
+					"writeAudioDataToFile(): os = new FileOutputStream(rawFileName) throws error: " 
+												+ e.getMessage());
 		}
 		
 		int read = 0;
@@ -273,7 +277,9 @@ public class SrmRecorder
 					try {
 						os.write(data);
 					} catch (IOException e) {
-						e.printStackTrace();
+						Log.w(this.getClass().getName(), 
+								"writeAudioDataToFile(): os.write(data) throws error: " 
+															+ e.getMessage());
 					}
 				}
 			}
@@ -281,7 +287,7 @@ public class SrmRecorder
 			try {
 				os.close();
 			} catch (IOException e) {
-				e.printStackTrace();
+				Log.w(this.getClass().getName(), "writeAudioDataToFile(): os.close() throws error: " + e.getMessage());
 			}
 		}
 	}
@@ -296,7 +302,7 @@ public class SrmRecorder
 			Log.w(this.getClass().getName(), "getFileName(): make a new folder at " +  file.getAbsolutePath());
 		}
 		String fileFullName = file.getAbsolutePath() + File.separator + System.currentTimeMillis() + SUFFIX;
-		Log.w(this.getClass().getName(), "getFileName(): make a new file at " +  fileFullName);
+		Log.w(this.getClass().getName(), "getFileName(): returns a new file at " +  fileFullName);
 		return (file.getAbsolutePath() + fileFullName);
 	}
 	
@@ -304,14 +310,23 @@ public class SrmRecorder
 	{
 		File file = new File(dirPath, fileName);
 		
-		if(!file.exists()) file.mkdirs();
+		if(!file.exists())
+		{
+			file.mkdirs();
+			Log.w(this.getClass().getName(), "getRawFileName(): make a new folder at " +  file.getAbsolutePath());
+		}
 		
 		File tempFile = new File(dirPath, AUDIO_RECORDER_TEMP_FILE);
 		
 		if(tempFile.exists())
+		{
+			Log.w(this.getClass().getName(), "getRawFileName(): tempFile exists, will be deleted at " 
+												+  tempFile.getAbsolutePath());
 			tempFile.delete();
-		
-		return (file.getAbsolutePath() + File.separator + AUDIO_RECORDER_TEMP_FILE);
+		}
+		String rawFileFullName = file.getAbsolutePath() + File.separator + AUDIO_RECORDER_TEMP_FILE;
+		Log.w(this.getClass().getName(), "getRawFileName(): returns a new rawfile at " + rawFileFullName);
+		return (rawFileFullName);
 	}
 	
 	private String getRawFileNameForProgBar() 
@@ -356,9 +371,13 @@ public class SrmRecorder
 			in.close();
 			out.close();
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			Log.w(this.getClass().getName(),
+					"copyWaveFile():  throws exception " 
+							+ e.getMessage() );
 		} catch (IOException e) {
-			e.printStackTrace();
+			Log.w(this.getClass().getName(),
+					"copyWaveFile():  throws exception " 
+							+ e.getMessage() );
 		}
 		
 		Log.w(this.getClass().getName(), "copyWaveFile(): copied file " 
@@ -461,7 +480,9 @@ public class SrmRecorder
 						output.writeShort(buffer[i]);
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
-						e.printStackTrace();
+						Log.w(this.getClass().getName(),
+								"updateProgressbar(): output.writeShort(buffer[i]) throws exception " 
+										+ e.getMessage() );
 					}
 					sum += buffer [i] * buffer [i];
 				}
@@ -473,7 +494,9 @@ public class SrmRecorder
 			}
 		} catch (FileNotFoundException e1) {
 			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			Log.w(this.getClass().getName(),
+					"updateProgressbar(): output.writeShort(buffer[i]) throws exception " 
+							+ e1.getMessage() );
 		} finally
 		{
 			pb.setProgress(0);
@@ -483,14 +506,18 @@ public class SrmRecorder
 					output.flush();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					Log.w(this.getClass().getName(),
+							"updateProgressbar(): output.flush() throws exception " 
+									+ e.getMessage() );
 				} finally
 				{
 					try {
 						output.close();
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
-						e.printStackTrace();
+						Log.w(this.getClass().getName(),
+								"updateProgressbar(): output.close() throws exception " 
+										+ e.getMessage() );
 					}
 				}
 			}
