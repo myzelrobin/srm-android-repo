@@ -32,7 +32,7 @@ public class Utils
 	{
 		if(isPreStartInitialized) return;
 		
-		
+		Log.w(Utils.class.getName(), "initializeApp(): will initialize data before app starts");
 		// get application folder path (/data/data/APP_PACKAGE/)
 		try {
 			APP_DIR_INT_PATH = getAppInternalDir(context);
@@ -60,13 +60,16 @@ public class Utils
 		}
 		Log.w(Utils.class.getName(), "APP_DIR_EXT=" + APP_DIR_EXT_PATH);
 		
+		// make folder path in sdcard(/mnt/sdcard/Android/APP_PACKAGE/records/)
 		REC_FILES_DIR_EXT_PATH = makeDir(APP_DIR_EXT_PATH, "records");
 		Log.w(Utils.class.getName(), "REC_FILES_DIR_EXT=" + REC_FILES_DIR_EXT_PATH);
 		
+		// make folder path in sdcard(/mnt/sdcard/Android/APP_PACKAGE/records/test)
 		REC_TEST_DIR_EXT_PATH = makeDir(REC_FILES_DIR_EXT_PATH, "test");
 		Log.w(Utils.class.getName(), "REC_TEST_DIR_EXT=" + REC_TEST_DIR_EXT_PATH);
 		
 		isPreStartInitialized = true;
+		Log.w(Utils.class.getName(), "initializeApp(): finished initializing data before app starts");
 		
 	}
 	
@@ -103,7 +106,7 @@ public class Utils
 		{
 			return app_dir_ext_path_temp;
 		}
-		Log.w(Utils.class.getName(), "Can NOT make directory: " + app_dir_ext_path_temp);
+		Log.w(Utils.class.getName(), "getAppExternalDir(): Can NOT make directory: " + app_dir_ext_path_temp);
 		return null;
 	}
 	
@@ -120,7 +123,7 @@ public class Utils
 			}
 			return dir.getAbsolutePath();
 		}
-		Log.w(Utils.class.getName(), "Can NOT make directory, parent folder path is null: " + parentFolderPath);
+		Log.w(Utils.class.getName(), "makeDir(): Can NOT make directory, parent folder path is null: " + parentFolderPath);
 		return null;
 	}
 }

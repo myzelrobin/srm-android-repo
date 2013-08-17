@@ -201,16 +201,16 @@ public class SrmRecorder
 					@Override
 					public void run() 
 					{
+						try {
+							wait(500);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 						updateProgressbar(dialog.getProgressBar());
 					}
 				}, "UpdateProgressBar Thread");
-			
-				try {
-					updadeProgressBarThread.wait(500);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				
 				updadeProgressBarThread.start();
 				
 				Log.w(this.getClass().getName(), "Thread upgradeProgressBarThread=" 
@@ -293,10 +293,11 @@ public class SrmRecorder
 		if(!file.exists())
 		{
 			file.mkdirs();
-			Log.w(this.getClass().getName(), "getFileName(): make a new dir at " +  file.getAbsolutePath());
+			Log.w(this.getClass().getName(), "getFileName(): make a new folder at " +  file.getAbsolutePath());
 		}
-		Log.w(this.getClass().getName(), "getFileName(): make a new file at " +  file.getAbsolutePath());
-		return (file.getAbsolutePath() + File.separator + System.currentTimeMillis() + SUFFIX);
+		String fileFullName = file.getAbsolutePath() + File.separator + System.currentTimeMillis() + SUFFIX;
+		Log.w(this.getClass().getName(), "getFileName(): make a new file at " +  fileFullName);
+		return (file.getAbsolutePath() + fileFullName);
 	}
 	
 	private String getRawFileName() 
