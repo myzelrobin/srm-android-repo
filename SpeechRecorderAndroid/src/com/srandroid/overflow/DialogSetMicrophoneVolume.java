@@ -116,7 +116,7 @@ import com.srandroid.util.Utils;
 					
 					recorderForMic = new SrmRecorder(Utils.REC_TEST_DIR_EXT_PATH, "test_mic", this);
 					Log.w(this.getClass().getName(), SrmRecorder.TAG_TESTMIC 
-							+ ": AudioRecord recorder is created: " 
+							+ ": AudioRecord recorderForMic is created: " 
 							+ "\nsampleRateHz=" + SrmRecorder.getSampleRateHz()
 							+ "\nchannelConfig=" + SrmRecorder.getChannelConfig()
 							+ "\nchannels=" + SrmRecorder.getChannels()
@@ -155,7 +155,7 @@ import com.srandroid.util.Utils;
 					 
 					 recorderForRecording = new SrmRecorder(Utils.REC_TEST_DIR_EXT_PATH, "test_record");
 					 Log.w(this.getClass().getName(), SrmRecorder.TAG_TESTREC 
-								+ ": AudioRecord recorder is created: " 
+								+ ": AudioRecord recorderForRecording is created: " 
 								+ "\nsampleRateHz=" + SrmRecorder.getSampleRateHz()
 								+ "\nchannelConfig=" + SrmRecorder.getChannelConfig()
 								+ "\nchannels=" + SrmRecorder.getChannels()
