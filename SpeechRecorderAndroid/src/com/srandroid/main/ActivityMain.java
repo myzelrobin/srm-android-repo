@@ -321,7 +321,7 @@ public class ActivityMain extends Activity {
 		                               (ViewGroup) findViewById(R.id.linearlayout_toasthint));
 
 		TextView text = (TextView) layout.findViewById(R.id.text_toasthint);
-		text.setText("Swipe from here to right");
+		text.setText(R.string.swipeHintText);
 
 		Toast toast = new Toast(getApplicationContext());
 		toast.setGravity(Gravity.CENTER_VERTICAL | Gravity.LEFT, 0, 0);

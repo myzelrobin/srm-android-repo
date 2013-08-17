@@ -20,10 +20,13 @@
     <string name="CLOSE">CLOSE</string>
     <string name="OPEN">OPEN</string>
     
+    
+    
     <!-- ActivityMain -->
 	    <!-- Drawer in ActivityMain -->
 	    <string name="drawer_items_open">Open navigation drawer</string>
 	    <string name="drawer_items_close">Close navigation drawer</string>
+	    <string name="swipeHintText">Swipe from here to right</string>
 	    
 	    <string-array name="drawer_items">
 	        <item>Sessions</item>
