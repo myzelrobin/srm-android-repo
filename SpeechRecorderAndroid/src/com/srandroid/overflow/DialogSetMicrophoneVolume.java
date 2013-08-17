@@ -145,7 +145,7 @@ import com.srandroid.util.Utils;
 					{
 						Utils.toastText(v.getContext(), "settings: dialog: will play record");
 						// STOP 
-						recorderForTestRecording.stopRecording();
+						recorderForTestRecording.stopTestRecording();
 						 Log.w(this.getClass().getName(), SrmRecorder.TAG_TESTREC 
 								 + ": test record audio file is saved: " 
 								 + recorderForTestRecording.getAudioFile());
@@ -155,7 +155,7 @@ import com.srandroid.util.Utils;
 						
 						// play the record
 						try {
-							Utils.playRecord(getContext(), recorderForTestRecording.getRawAudioFile());
+							Utils.playRecord(getContext(), recorderForTestRecording.getAudioFile());
 						} catch (ActivityNotFoundException e) {
 							Log.w(this.getClass().getName(), 
 									"Utils.playRecord() throws Exceptions " + e.getMessage());

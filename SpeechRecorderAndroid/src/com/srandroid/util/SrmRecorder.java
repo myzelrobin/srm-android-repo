@@ -285,6 +285,7 @@ public class SrmRecorder
 			recordingThread = null;
 			updadeProgressBarThread = null;
 		}
+		
 		deleteRawFile();
 	}
 	
@@ -302,11 +303,13 @@ public class SrmRecorder
 			recordingThread = null;
 			updadeProgressBarThread = null;
 		}
+		copyWaveFile(getRawFileName(), getFileName());
+		deleteRawFile();
 	}
 	
 	public void finishedTestRecording() 
 	{
-		deleteRawFile();
+		deleteFile(getAudioFile());;
 	}
 	
 	public void updateProgressbar(ProgressBar pb)
