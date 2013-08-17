@@ -14,6 +14,7 @@ import java.io.IOException;
 import com.srandroid.overflow.DialogSetMicrophoneVolume;
 import com.srandroid.overflow.PrefActivitySettings;
 
+import android.content.ActivityNotFoundException;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
@@ -321,9 +322,6 @@ public class SrmRecorder
 				}
 		
 	}
-	
-	
-	
 	
 	private void writeAudioDataToFile()
 	{

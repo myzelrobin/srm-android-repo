@@ -4,8 +4,11 @@ import java.io.File;
 import java.io.IOException;
 
 import android.app.AlertDialog;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.TypedArray;
+import android.net.Uri;
 import android.preference.DialogPreference;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -147,6 +150,15 @@ import com.srandroid.util.Utils;
 						 
 						 isBTestrecordClicked = 0;
 						getDialog().dismiss();
+						
+						// play the record
+						try {
+							Utils.playRecord(getContext(), recorderForRecording.getAudioFile());
+						} catch (ActivityNotFoundException e) {
+							Log.w(this.getClass().getName(), 
+									"Utils.playRecord() throws Exceptions " + e.getMessage());
+						}
+
 						break;
 					}
 					
@@ -176,7 +188,9 @@ import com.srandroid.util.Utils;
 			}
 			
 		}
-		 /**
+		 
+		 
+		/**
 		  * Saves new value for this preference key from xml into the SharedPreference
 		  */
 		 @Override

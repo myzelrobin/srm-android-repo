@@ -2,9 +2,12 @@ package com.srandroid.util;
 
 import java.io.File;
 
+import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
+import android.net.Uri;
 import android.os.Environment;
 
 
@@ -125,6 +128,19 @@ public class Utils
 		}
 		Log.w(Utils.class.getName(), "makeDir(): Can NOT make directory, parent folder path is null: " + parentFolderPath);
 		return null;
+	}
+	
+	public static void playRecord(Context context, String audioFileName) throws ActivityNotFoundException
+	 {
+		  
+		 Intent intent = new Intent(android.content.Intent.ACTION_VIEW);
+         Uri data = Uri.parse("file://" + audioFileName);
+         intent.setDataAndType(data, "audio/*");
+
+         
+         context.startActivity(intent);
+         //Log.w(this.getClass().getName(), "playRecord(): startActivity(intent) throws Exception " + e.getMessage());
+        
 	}
 }
 
