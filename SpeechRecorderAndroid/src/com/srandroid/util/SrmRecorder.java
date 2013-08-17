@@ -166,17 +166,16 @@ public class SrmRecorder
 				@Override
 				public void run() 
 				{
-					
+					Log.w(this.getClass().getName(), "Thread recordingThread=" 
+							+ recordingThread.getId()
+							+ " is started, will writeAudioDataToFile()" );
 					writeAudioDataToFile();
 				}
 			}, "AudioRecorder Thread");
 		
 		recordingThread.start();
 		
-		Log.w(this.getClass().getName(), "Thread recordingThread=" 
-				+ recordingThread.getId()
-				+ " is "
-				+ recordingThread.getState());
+		
 	}
 	
 	/**
@@ -193,7 +192,9 @@ public class SrmRecorder
 			@Override
 			public void run() 
 			{
-				
+				Log.w(this.getClass().getName(), "Thread recordingThread=" 
+						+ recordingThread.getId()
+						+ " is started, will writeAudioDataToFile()");
 				writeAudioDataToFile();
 				
 				updadeProgressBarThread = new Thread(new Runnable() 
@@ -201,6 +202,10 @@ public class SrmRecorder
 					@Override
 					public void run() 
 					{
+						Log.w(this.getClass().getName(), "Thread updadeProgressBarThread=" 
+								+ updadeProgressBarThread.getId()
+								+ " is started!" );
+						
 						try {
 							Thread.sleep(200);
 						} catch (InterruptedException e) {
@@ -215,10 +220,7 @@ public class SrmRecorder
 				
 				updadeProgressBarThread.start();
 				
-				Log.w(this.getClass().getName(), "Thread upgradeProgressBarThread=" 
-						+ updadeProgressBarThread.getId()
-						+ " is "
-						+ updadeProgressBarThread.getState());
+				
 				
 				
 			}
@@ -226,10 +228,6 @@ public class SrmRecorder
 	
 		recordingThread.start();
 		
-		Log.w(this.getClass().getName(), "Thread recordingThread=" 
-				+ recordingThread.getId()
-				+ " is "
-				+ recordingThread.getState());
 	}
 	
 	
