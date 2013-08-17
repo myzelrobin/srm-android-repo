@@ -251,6 +251,12 @@ public class SrmRecorder
 		deleteTempFile();
 	}
 	
+	public void stopTestMicrophone() 
+	{
+		stopRecording();
+		deleteFile(getFileName());
+	}
+	
 	
 	
 	public void updateProgressbar(ProgressBar pb)
@@ -466,6 +472,14 @@ public class SrmRecorder
 		file.delete();
 	}
 	
+	private void deleteFile(String fileName) 
+	{
+		File file = new File(fileName);
+		
+		Log.w(this.getClass().getName(), "deleteFile(): will delete file " + file.getAbsolutePath());
+		
+		file.delete();
+	}
 	
 	private void WriteWaveFileHeader(FileOutputStream out, 
 											long totalAudioLen,

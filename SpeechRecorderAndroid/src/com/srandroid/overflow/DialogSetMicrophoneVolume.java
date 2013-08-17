@@ -97,12 +97,12 @@ import com.srandroid.util.Utils;
 					
 					if(isBTestmicClicked == 1)
 					{
-						Utils.toastText(v.getContext(), "settings: dialog: finish testing MIC");
+						 Utils.toastText(v.getContext(), "settings: dialog: finish testing MIC");
 						 volume_value = "999";
 						 
-						 recorderForMic.stopRecording();
+						 recorderForMic.stopTestMicrophone();
 						 Log.w(this.getClass().getName(), SrmRecorder.TAG_TESTMIC 
-								 + ": test mic audio file is saved: " 
+								 + ": test mic audio file is deleted at: " 
 								 + recorderForMic.getAudioFile());
 						 
 						 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
