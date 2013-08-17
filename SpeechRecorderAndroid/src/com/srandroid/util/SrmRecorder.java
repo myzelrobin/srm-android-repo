@@ -196,24 +196,27 @@ public class SrmRecorder
 				
 				writeAudioDataToFile();
 				
-				if(getRawFileNameForProgBar() != null)
-				{
-					updadeProgressBarThread = new Thread(new Runnable() 
-					{	
-						@Override
-						public void run() 
-						{
-							updateProgressbar(dialog.getProgressBar());
-						}
-					}, "UpdateProgressBar Thread");
-				
-					updadeProgressBarThread.start();
-					
-					Log.w(this.getClass().getName(), "Thread upgradeProgressBarThread=" 
-							+ updadeProgressBarThread.getId()
-							+ " is "
-							+ updadeProgressBarThread.getState());
+				updadeProgressBarThread = new Thread(new Runnable() 
+				{	
+					@Override
+					public void run() 
+					{
+						updateProgressbar(dialog.getProgressBar());
+					}
+				}, "UpdateProgressBar Thread");
+			
+				try {
+					updadeProgressBarThread.wait(500);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
+				updadeProgressBarThread.start();
+				
+				Log.w(this.getClass().getName(), "Thread upgradeProgressBarThread=" 
+						+ updadeProgressBarThread.getId()
+						+ " is "
+						+ updadeProgressBarThread.getState());
 				
 				
 			}
@@ -290,8 +293,9 @@ public class SrmRecorder
 		if(!file.exists())
 		{
 			file.mkdirs();
+			Log.w(this.getClass().getName(), "getFileName(): make a new dir at " +  file.getAbsolutePath());
 		}
-		
+		Log.w(this.getClass().getName(), "getFileName(): make a new file at " +  file.getAbsolutePath());
 		return (file.getAbsolutePath() + File.separator + System.currentTimeMillis() + SUFFIX);
 	}
 	
@@ -313,7 +317,12 @@ public class SrmRecorder
 	{
 		File tempRawFile = new File(dirPath, AUDIO_RECORDER_TEMP_FILE);
 		
-		if(tempRawFile.exists()) return tempRawFile.getAbsolutePath();
+		if(tempRawFile.exists()) 
+		{
+			Log.w(this.getClass().getName(), "getRawFileNameForProgBar(): tempRawFile exists, will be returned, at " +  tempRawFile.getAbsolutePath());
+			
+			return tempRawFile.getAbsolutePath();
+		}
 		
 		Log.w(this.getClass().getName(), "getRawFileNameForProgBar(): tempRawFile does not exist, return null");
 		return null;
@@ -350,11 +359,16 @@ public class SrmRecorder
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
+		Log.w(this.getClass().getName(), "copyWaveFile(): copied file " 
+				+ inFileName + " to " + outFileName + " successfully!");
 	}
 	
 	private void deleteTempFile() 
 	{
 		File file = new File(getRawFileName());
+		
+		Log.w(this.getClass().getName(), "deleteTempFile(): will delete file " + file.getAbsolutePath());
 		
 		file.delete();
 	}
@@ -427,7 +441,8 @@ public class SrmRecorder
 		String rawFile = getRawFileNameForProgBar();
 		if(rawFile == null)
 		{
-			Log.w(this.getClass().getName(), "updateProgressbar(): raw file does not exist, can not read data!");
+			Log.w(this.getClass().getName(), 
+					"updateProgressbar(): raw file does not exist, can not read data! function returns!");
 			return;
 		}
 		DataOutputStream output = null;
