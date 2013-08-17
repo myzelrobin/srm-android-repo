@@ -41,8 +41,6 @@ public class SrmRecorder
 	public static final String TAG_TESTMIC="TestMicrophone";
 	public static final String TAG_RECORDING="Recording";
 	
-	private static boolean isInitialized = false;
-	
 	//fields for audio record
 	// AudioRecord(int audioSource, int sampleRateInHz, int channelConfig, int audioFormat, int bufferSizeInBytes)
 	private AudioRecord audioRecorder = null;
@@ -79,7 +77,7 @@ public class SrmRecorder
 	 */
 	public SrmRecorder(String dirPath, String fileName) 
 	{
-		if(!isInitialized) initializeSrmRecorder();
+		initializeSrmRecorder();
 		
 		// set default values to the fields
 		this.dirPath = dirPath;
@@ -104,7 +102,7 @@ public class SrmRecorder
 	 */
 	public SrmRecorder(String dirPath, String fileName, DialogSetMicrophoneVolume dialog) 
 	{
-		if(!isInitialized) initializeSrmRecorder();
+		initializeSrmRecorder();
 		
 		// set default values to the fields
 		this.dirPath = dirPath;
@@ -153,7 +151,6 @@ public class SrmRecorder
 		
 		streamVolume = getStreamVolume();
 		
-		isInitialized = true;
 	}
 	
 	public void startRecording()
@@ -198,7 +195,7 @@ public class SrmRecorder
 			public void run() {
 				updateProgressbar(dialog.getProgressBar());
 			}
-		}, "AudioRecorder Thread");
+		}, "UpdateProgressBar Thread");
 	
 		updadeProgressBarThread.start();
 	}
