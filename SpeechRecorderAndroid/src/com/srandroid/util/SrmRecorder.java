@@ -311,14 +311,11 @@ public class SrmRecorder
 	
 	private String getRawFileNameForProgBar() 
 	{
-		File file = new File(dirPath, fileName);
-		if(!file.exists()) file.mkdirs();
+		File tempRawFile = new File(dirPath, AUDIO_RECORDER_TEMP_FILE);
 		
-		File tempFile = new File(dirPath, AUDIO_RECORDER_TEMP_FILE);
+		if(tempRawFile.exists()) return tempRawFile.getAbsolutePath();
 		
-		if(tempFile.exists())
-			return (tempFile.getAbsolutePath());
-		
+		Log.w(this.getClass().getName(), "getRawFileNameForProgBar(): tempRawFile does not exist, return null");
 		return null;
 	}
 	
@@ -430,7 +427,7 @@ public class SrmRecorder
 		String rawFile = getRawFileNameForProgBar();
 		if(rawFile == null)
 		{
-			Log.w(this.getClass().getName(), "raw file does not exist, can not read data!");
+			Log.w(this.getClass().getName(), "updateProgressbar(): raw file does not exist, can not read data!");
 			return;
 		}
 		DataOutputStream output = null;
