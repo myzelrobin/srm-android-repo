@@ -164,7 +164,12 @@ public class SrmRecorder
 		recordingThread = new Thread(new Runnable() 
 			{	
 				@Override
-				public void run() {
+				public void run() 
+				{
+					Log.w(this.getClass().getName(), "Thread recordingThread=" 
+							+ recordingThread.getId()
+							+ " is "
+							+ recordingThread.getState());
 					writeAudioDataToFile();
 				}
 			}, "AudioRecorder Thread");
@@ -184,13 +189,23 @@ public class SrmRecorder
 		recordingThread = new Thread(new Runnable() 
 		{	
 			@Override
-			public void run() {
+			public void run() 
+			{
+				Log.w(this.getClass().getName(), "Thread recordingThread=" 
+						+ recordingThread.getId()
+						+ " is "
+						+ recordingThread.getState());
 				writeAudioDataToFile();
 				
 				updadeProgressBarThread = new Thread(new Runnable() 
 				{	
 					@Override
-					public void run() {
+					public void run() 
+					{
+						Log.w(this.getClass().getName(), "Thread upgradeProgressBarThread=" 
+								+ updadeProgressBarThread.getId()
+								+ " is "
+								+ updadeProgressBarThread.getState());
 						updateProgressbar(dialog.getProgressBar());
 					}
 				}, "UpdateProgressBar Thread");
