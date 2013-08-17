@@ -144,15 +144,16 @@ import com.srandroid.util.Utils;
 					if(isBTestrecordClicked == 1)
 					{
 						Utils.toastText(v.getContext(), "settings: dialog: will play record");
-						// STOP 
-						recorderForTestRecording.stopTestRecording();
+						
+						 isBTestrecordClicked = 2;
+						 bTestrecord.setText("CLOSE");
+						
+						// STOP the test recording
+						 recorderForTestRecording.stopTestRecording();
 						 Log.w(this.getClass().getName(), SrmRecorder.TAG_TESTREC 
 								 + ": test record audio file is saved: " 
 								 + recorderForTestRecording.getAudioFile());
 						 
-						 isBTestrecordClicked = 2;
-						 bTestrecord.setText("CLOSE");
-						
 						// play the record
 						try {
 							Utils.playRecord(getContext(), recorderForTestRecording.getAudioFile());
@@ -167,6 +168,7 @@ import com.srandroid.util.Utils;
 					
 					if(isBTestrecordClicked == 2)
 					{
+						// finish the test recoding, delete the record, close dialog
 						Utils.toastText(v.getContext(), "settings: dialog: finish testing RECORD");
 						recorderForTestRecording.finishedTestRecording();
 						isBTestrecordClicked = 0;
@@ -176,6 +178,8 @@ import com.srandroid.util.Utils;
 					
 					 Utils.toastText(v.getContext(), "settings: dialog: start testing RECORD");
 					 bTestmic.setEnabled(false);
+					 isBTestrecordClicked = 1;
+					 bTestrecord.setText("STOP");
 					 
 					 recorderForTestRecording = new SrmRecorder(Utils.REC_TEST_DIR_EXT_PATH, "test_record");
 					 Log.w(this.getClass().getName(), SrmRecorder.TAG_TESTREC 
@@ -185,14 +189,13 @@ import com.srandroid.util.Utils;
 								+ "\nchannels=" + SrmRecorder.getChannels()
 								+ "\nminBufferSize=" + recorderForTestRecording.getMinBufferSize());
 					try {
-						recorderForTestRecording.startRecording();
+						recorderForTestRecording.startTestRecording();
 					} catch (IllegalStateException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 					 
-					 isBTestrecordClicked = 1;
-					 bTestrecord.setText("STOP");
+					 
 					 break;
 				
 				default:

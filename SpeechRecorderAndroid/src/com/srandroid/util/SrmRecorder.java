@@ -70,7 +70,6 @@ public class SrmRecorder
 	// fields for recording 
 	private Thread recordingThread = null;
 	private Thread updadeProgressBarThread = null;
-	private Thread recordingForTestThread = null;
 	private boolean isRecording = false;
 	
 	
@@ -169,7 +168,7 @@ public class SrmRecorder
 				@Override
 				public void run() 
 				{
-					Log.w(this.getClass().getName(), "Thread recordingThread=" 
+					Log.w(this.getClass().getName(), "startRecording(): Thread recordingThread=" 
 							+ recordingThread.getId()
 							+ " is started, will writeAudioDataToFile()" );
 					writeAudioDataToFile();
@@ -238,19 +237,19 @@ public class SrmRecorder
 		
 		isRecording = true;
 		
-		recordingForTestThread = new Thread(new Runnable() 
+		recordingThread = new Thread(new Runnable() 
 			{	
 				@Override
 				public void run() 
 				{
-					Log.w(this.getClass().getName(), "Thread recordingForTestThread=" 
-							+ recordingForTestThread.getId()
+					Log.w(this.getClass().getName(), "startTestRecording(): Thread recordingThread=" 
+							+ recordingThread.getId()
 							+ " is started, will writeAudioDataToFile()" );
 					writeAudioDataToFile();
 				}
 			}, "AudioRecorder Thread");
 		
-		recordingForTestThread.start();
+		recordingThread.start();
 		
 	}
 
@@ -289,7 +288,6 @@ public class SrmRecorder
 		deleteRawFile();
 	}
 	
-	// NOT delete raw_file
 	public void stopTestRecording() 
 	{
 		if(null != audioRecorder)
@@ -306,7 +304,7 @@ public class SrmRecorder
 		copyWaveFile(getRawFileName(), getFileName());
 		deleteRawFile();
 	}
-	
+	// delete the audio file
 	public void finishedTestRecording() 
 	{
 		deleteFile(getAudioFile());;
