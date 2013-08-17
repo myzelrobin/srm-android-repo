@@ -221,8 +221,6 @@ public class SrmRecorder
 				updadeProgressBarThread.start();
 				
 				
-				
-				
 			}
 		}, "AudioRecorder Thread");
 	
@@ -301,7 +299,7 @@ public class SrmRecorder
 		}
 		String fileFullName = file.getAbsolutePath() + File.separator + System.currentTimeMillis() + SUFFIX;
 		Log.w(this.getClass().getName(), "getFileName(): returns a new file at " +  fileFullName);
-		return (file.getAbsolutePath() + fileFullName);
+		return (fileFullName);
 	}
 	
 	private String getRawFileName() 
@@ -370,11 +368,11 @@ public class SrmRecorder
 			out.close();
 		} catch (FileNotFoundException e) {
 			Log.w(this.getClass().getName(),
-					"copyWaveFile():  throws exception " 
+					"copyWaveFile():  throws FileNotFoundException " 
 							+ e.getMessage() );
 		} catch (IOException e) {
 			Log.w(this.getClass().getName(),
-					"copyWaveFile():  throws exception " 
+					"copyWaveFile():  throws IOException " 
 							+ e.getMessage() );
 		}
 		
