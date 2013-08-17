@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ProgressBar;
 
 import com.srandroid.R;
 import com.srandroid.util.SrmRecorder;
@@ -20,6 +21,8 @@ import com.srandroid.util.Utils;
 	public class DialogSetMicrophoneVolume extends DialogPreference implements OnClickListener
 	{
 		private Button bCancel, bStart, bFinish;
+		private ProgressBar progressBar;
+		
 		private String volume_value = "-1"; 
 		
 		private SrmRecorder recorder;
@@ -64,6 +67,8 @@ import com.srandroid.util.Utils;
 			 bFinish.setOnClickListener(this);
 			 bFinish.setEnabled(false);
 			 
+			 setProgressBar((ProgressBar) view.findViewById(R.id.progressBarInDialogSetMic)); 
+			 
 			 super.onBindDialogView(view);
 		 }
 		 /**
@@ -76,13 +81,16 @@ import com.srandroid.util.Utils;
 			 
 			 switch (id) 
 			 {
+			 	// button CANCEL
 				case R.id.button_cancel_in_dialog_mic:
 					getDialog().dismiss();
 					break;
+				
+				// button START
 				case R.id.button_start_in_dialog_mic:
 					Utils.toastText(v.getContext(), "settings: start testing microphone");
 					
-					recorder = new SrmRecorder(Utils.REC_TEST_DIR_EXT_PATH, "test_mic");
+					recorder = new SrmRecorder(Utils.REC_TEST_DIR_EXT_PATH, "test_mic", this);
 					Log.w(this.getClass().getName(), SrmRecorder.TAG_TESTMIC 
 							+ ": AudioRecord recorder is created: " 
 							+ "\nsampleRateHz=" + SrmRecorder.getSampleRateHz()
@@ -90,26 +98,28 @@ import com.srandroid.util.Utils;
 							+ "\nchannels=" + SrmRecorder.getChannels());
 					
 					
-				try {
-					recorder.startRecording();
-				} catch (IllegalStateException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+					try {
+						recorder.startTestMicrophone();;
+					} catch (IllegalStateException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					
 					bStart.setEnabled(false);
 					bFinish.setEnabled(true);
 					break;
+				
+				// button FINISH
 				case R.id.button_finish_in_dialog_mic:
 					 Utils.toastText(v.getContext(), "settings: finish testing microphone");
 					 volume_value = "999";
 					 
-				try {
-					recorder.stopRecording();
-				} catch (IllegalStateException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+					try {
+						recorder.stopRecording();
+					} catch (IllegalStateException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					 
 					 Log.w(this.getClass().getName(), SrmRecorder.TAG_TESTMIC 
 							 + ": test mic audio file is saved: " 
@@ -120,6 +130,7 @@ import com.srandroid.util.Utils;
 					 onDialogClosed(true);
 					 getDialog().dismiss();
 					break;
+				
 				default:
 					break;
 			}
@@ -157,6 +168,18 @@ import com.srandroid.util.Utils;
 		         persistString(volume_value);
 		     }
 		 }
+		/**
+		 * @return the progressBar
+		 */
+		public ProgressBar getProgressBar() {
+			return progressBar;
+		}
+		/**
+		 * @param progressBar the progressBar to set
+		 */
+		public void setProgressBar(ProgressBar progressBar) {
+			this.progressBar = progressBar;
+		}
 		
 		 
 	}

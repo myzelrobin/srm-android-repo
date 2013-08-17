@@ -53,7 +53,7 @@
 	       <string name="settings_microphone">Microphone</string>
 	       <string name="settings_mic_volume_key">mic_vol</string>
 	       <string name="settings_mic_volume_default">-1</string>
-	       <string name="dialogmessage_microphone">Click "START" to start.\nPlease speak something loud and something light.\nThen click "STOP" to finish the test.</string>
+	       <string name="dialogmessage_microphone">Click "START" to start.\nPlease speak something loud and something light.\nThen click "FINISH" to finish the test.</string>
 	       
 	       <!-- recording values-->
 	       <string name="settings_recvalue">Recording Values</string>

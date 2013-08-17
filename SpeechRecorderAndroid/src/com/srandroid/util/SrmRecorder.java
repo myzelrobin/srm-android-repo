@@ -3,12 +3,14 @@
  */
 package com.srandroid.util;
 
+import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import com.srandroid.overflow.DialogSetMicrophoneVolume;
 import com.srandroid.overflow.PrefActivitySettings;
 
 import android.content.ContentResolver;
@@ -26,6 +28,7 @@ import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.text.TextUtils.StringSplitter;
 import android.util.Log;
+import android.widget.ProgressBar;
 import android.app.Activity;
 
 /**
@@ -37,6 +40,8 @@ public class SrmRecorder
 	
 	public static final String TAG_TESTMIC="TestMicrophone";
 	public static final String TAG_RECORDING="Recording";
+	
+	private static boolean isInitialized = false;
 	
 	//fields for audio record
 	// AudioRecord(int audioSource, int sampleRateInHz, int channelConfig, int audioFormat, int bufferSizeInBytes)
@@ -62,14 +67,19 @@ public class SrmRecorder
 	
 	// fields for recording 
 	private Thread recordingThread = null;
+	private Thread updadeProgressBarThread = null;
 	private boolean isRecording = false;
+	
+	
+	// fields for DialogSetMicrophone
+	private DialogSetMicrophoneVolume dialog;
 
 	/**
-	 * Constructor
+	 * Constructor for recording a item by the speaker
 	 */
 	public SrmRecorder(String dirPath, String fileName) 
 	{
-		initializeSrmRecorder();
+		if(!isInitialized) initializeSrmRecorder();
 		
 		// set default values to the fields
 		this.dirPath = dirPath;
@@ -87,6 +97,33 @@ public class SrmRecorder
 				   "file name of this audio file is invalid, save audio file as unnamed_audio");
 		   fileName = "unnamed_audio";
 		}
+		
+	}
+	/**
+	 * Constructor for testing the microphone
+	 */
+	public SrmRecorder(String dirPath, String fileName, DialogSetMicrophoneVolume dialog) 
+	{
+		if(!isInitialized) initializeSrmRecorder();
+		
+		// set default values to the fields
+		this.dirPath = dirPath;
+		this.fileName = fileName;
+		
+		if(dirPath == null)
+		{
+		   Log.w(this.getClass().getName(), 
+				   "Folder to save audio file doese NOT exist, save audio file to " + Utils.REC_TEST_DIR_EXT_PATH);
+		   dirPath = Utils.REC_TEST_DIR_EXT_PATH;
+		}
+		if(fileName == null)
+		{
+		   Log.w(this.getClass().getName(), 
+				   "file name of this audio file is invalid, save audio file as unnamed_audio");
+		   fileName = "unnamed_audio";
+		}
+		
+		this.dialog = dialog;
 		
 	}
 	
@@ -115,13 +152,10 @@ public class SrmRecorder
 		audioRecorder = new AudioRecord(audioSource, sampleRateHz, channelConfig, audioFormat, bufferSizeInBytes);
 		
 		streamVolume = getStreamVolume();
+		
+		isInitialized = true;
 	}
 	
-	private int getStreamVolume() {
-		// needs a complicated method
-		return 0;
-	}
-
 	public void startRecording()
 	{
 		audioRecorder.startRecording();
@@ -139,6 +173,36 @@ public class SrmRecorder
 		recordingThread.start();
 	}
 	
+	/**
+	 * starts two threads, one for saving file and one for updating progressbar
+	 */
+	public void startTestMicrophone()
+	{
+		audioRecorder.startRecording();
+		
+		isRecording = true;
+		
+		recordingThread = new Thread(new Runnable() 
+		{	
+			@Override
+			public void run() {
+				writeAudioDataToFile();
+			}
+		}, "AudioRecorder Thread");
+	
+		recordingThread.start();
+		
+		updadeProgressBarThread = new Thread(new Runnable() 
+		{	
+			@Override
+			public void run() {
+				updateProgressbar(dialog.getProgressBar());
+			}
+		}, "AudioRecorder Thread");
+	
+		updadeProgressBarThread.start();
+	}
+	
 	
 
 	public void stopRecording() 
@@ -152,6 +216,7 @@ public class SrmRecorder
 			
 			audioRecorder = null;
 			recordingThread = null;
+			updadeProgressBarThread = null;
 		}
 		
 		copyWaveFile(getRawFileName(), getFileName());
@@ -320,6 +385,40 @@ public class SrmRecorder
 	}
 
 
+	
+	
+	
+	private int getStreamVolume() {
+		// needs a complicated method
+		return 0;
+	}
+	
+	public void updateProgressbar(ProgressBar pb)
+	{
+		short[] buffer = new short[bufferSizeInBytes];
+		DataOutputStream output = null;
+		while (isRecording) 
+		{
+			double sum = 0;
+			int readSize = audioRecorder.read(buffer, 0, buffer.length);
+			for (int i = 0; i < readSize; i++) 
+			{
+				try {
+					output.writeShort(buffer [i]);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				sum += buffer [i] * buffer [i];
+			}
+			if (readSize > 0) 
+			{
+				final double amplitude = sum / readSize;
+				pb.setProgress((int) Math.sqrt(amplitude));
+			}
+		}
+		
+	}
 
 	/**
 	 * @return the audioRecorder
