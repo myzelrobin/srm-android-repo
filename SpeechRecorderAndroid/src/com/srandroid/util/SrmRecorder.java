@@ -3,6 +3,7 @@
  */
 package com.srandroid.util;
 
+import java.io.BufferedOutputStream;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -42,7 +43,7 @@ public class SrmRecorder
 	public static final String TAG_RECORDING="Recording";
 	
 	//fields for audio record
-	// AudioRecord(int audioSource, int sampleRateInHz, int channelConfig, int audioFormat, int bufferSizeInBytes)
+	// AudioRecord(int audioSource, int sampleRateInHz, int channelConfig, int audioFormat, int minBufferSize)
 	private AudioRecord audioRecorder = null;
 	
 	private static int audioSource = 0;
@@ -52,12 +53,13 @@ public class SrmRecorder
 	private static int audioFormat = 0;
 	private static int bitsPerSample = 0;
 	
-	private int bufferSizeInBytes = 0;
+	private int minBufferSize = 0;
 	
 	private int streamVolume = 0;
 	
 	// fields for audio file
 	private String audioFileName = null;
+	private String rawFileName = null;
 	private String dirPath = null;
 	private String fileName = null;
 	private static String SUFFIX = ".wav";
@@ -139,15 +141,15 @@ public class SrmRecorder
 		bitsPerSample = 16;
 		
 		
-		bufferSizeInBytes = AudioRecord.getMinBufferSize(sampleRateHz, channelConfig, audioFormat);
+		minBufferSize = AudioRecord.getMinBufferSize(sampleRateHz, channelConfig, audioFormat);
 		
-		if(bufferSizeInBytes < 0) 
+		if(minBufferSize < 0) 
 		{
 			Log.w(this.getClass().getName(), "bufferSize < 0, can not create AudioRecord object!");
 			return;
 		}
 		
-		audioRecorder = new AudioRecord(audioSource, sampleRateHz, channelConfig, audioFormat, bufferSizeInBytes);
+		audioRecorder = new AudioRecord(audioSource, sampleRateHz, channelConfig, audioFormat, minBufferSize);
 		
 		streamVolume = getStreamVolume();
 		
@@ -225,7 +227,7 @@ public class SrmRecorder
 	{
 		String rawFileName = getRawFileName();
 		FileOutputStream os = null;
-		byte data[] = new byte[bufferSizeInBytes];
+		byte data[] = new byte[minBufferSize];
 		
 		try {
 			os = new FileOutputStream(rawFileName);
@@ -237,7 +239,7 @@ public class SrmRecorder
 		
 		if(null != os){
 			while(isRecording){
-				read = audioRecorder.read(data, 0, bufferSizeInBytes);
+				read = audioRecorder.read(data, 0, minBufferSize);
 				
 				if(AudioRecord.ERROR_INVALID_OPERATION != read){
 					try {
@@ -281,9 +283,20 @@ public class SrmRecorder
 		
 		return (file.getAbsolutePath() + File.separator + AUDIO_RECORDER_TEMP_FILE);
 	}
-
-
-
+	
+	private String getRawFileNameForProgBar() 
+	{
+		File file = new File(dirPath, fileName);
+		if(!file.exists()) file.mkdirs();
+		
+		File tempFile = new File(dirPath, AUDIO_RECORDER_TEMP_FILE);
+		
+		if(tempFile.exists())
+			return (file.getAbsolutePath() + File.separator + AUDIO_RECORDER_TEMP_FILE);
+		
+		return null;
+	}
+	
 
 	private void copyWaveFile(String inFileName, String outFileName)
 	{
@@ -293,7 +306,7 @@ public class SrmRecorder
 		long totalDataLen = totalAudioLen + 36;
 		long byteRate = bitsPerSample * sampleRateHz * channels/8;
 		
-		byte[] data = new byte[bufferSizeInBytes];
+		byte[] data = new byte[minBufferSize];
                 
 		try {
 			in = new FileInputStream(inFileName);
@@ -323,6 +336,7 @@ public class SrmRecorder
 		
 		file.delete();
 	}
+	
 	
 	private void WriteWaveFileHeader(FileOutputStream out, 
 											long totalAudioLen,
@@ -392,29 +406,61 @@ public class SrmRecorder
 	
 	public void updateProgressbar(ProgressBar pb)
 	{
-		//short[] buffer
-		short[] buffer = new short[bufferSizeInBytes/2];
-		DataOutputStream output = null;
-		while (isRecording) 
+		String rawFile = getRawFileNameForProgBar();
+		if(rawFile == null)
 		{
-			double sum = 0;
-			int readSize = audioRecorder.read(buffer, 0, buffer.length);
-			for (int i = 0; i < readSize; i++) 
+			Log.w(this.getClass().getName(), "raw file does not exist, can not read data!");
+			return;
+		}
+		DataOutputStream output = null;
+		short[] buffer = new short[minBufferSize];
+		
+		try {
+			output = new DataOutputStream(new BufferedOutputStream(new FileOutputStream(rawFile)));
+			while (isRecording) 
+			{
+				double sum = 0;
+				int readSize = audioRecorder.read(buffer, 0, buffer.length);
+				for (int i = 0; i < readSize; i++) 
+				{
+					try {
+						output.writeShort(buffer[i]);
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					sum += buffer [i] * buffer [i];
+				}
+				if (readSize > 0) 
+				{
+					final double amplitude = sum / readSize;
+					pb.setProgress((int) Math.sqrt(amplitude));
+				}
+			}
+		} catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} finally
+		{
+			pb.setProgress(0);
+			if(output != null)
 			{
 				try {
-					//output.writeShort(buffer [i]);
-					output.writeShort(buffer[i]);
+					output.flush();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
+				} finally
+				{
+					try {
+						output.close();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
-				sum += buffer [i] * buffer [i];
 			}
-			if (readSize > 0) 
-			{
-				final double amplitude = sum / readSize;
-				pb.setProgress((int) Math.sqrt(amplitude));
-			}
+			
 		}
 		
 	}
@@ -568,6 +614,18 @@ public class SrmRecorder
 	 */
 	public void setAudioFileName(String audioFileName) {
 		this.audioFileName = audioFileName;
+	}
+	/**
+	 * @return the minBufferSize
+	 */
+	public int getMinBufferSize() {
+		return minBufferSize;
+	}
+	/**
+	 * @param minBufferSize the minBufferSize to set
+	 */
+	public void setMinBufferSize(int minBufferSize) {
+		this.minBufferSize = minBufferSize;
 	}
 	
 	
