@@ -192,40 +192,38 @@ public class SrmRecorder
 			@Override
 			public void run() 
 			{
-				Log.w(this.getClass().getName(), "Thread recordingThread=" 
+				Log.w(this.getClass().getName(), "startTestMicrophone(): Thread recordingThread=" 
 						+ recordingThread.getId()
 						+ " is started, will writeAudioDataToFile()");
 				writeAudioDataToFile();
-				
-				updadeProgressBarThread = new Thread(new Runnable() 
-				{	
-					@Override
-					public void run() 
-					{
-						Log.w(this.getClass().getName(), "Thread updadeProgressBarThread=" 
-								+ updadeProgressBarThread.getId()
-								+ " is started!" );
-						
-						try {
-							Thread.sleep(200);
-						} catch (InterruptedException e) {
-							// TODO Auto-generated catch block
-							Log.w(this.getClass().getName(),
-									"startTestMicrophone(): Thread.sleep(200) throws error " 
-											+ e.getMessage() );
-						}
-						updateProgressbar(dialog.getProgressBar());
-					}
-				}, "UpdateProgressBar Thread");
-				
-				updadeProgressBarThread.start();
-				
 				
 			}
 		}, "AudioRecorder Thread");
 	
 		recordingThread.start();
 		
+		updadeProgressBarThread = new Thread(new Runnable() 
+		{	
+			@Override
+			public void run() 
+			{
+				Log.w(this.getClass().getName(), "startTestMicrophone(): Thread updadeProgressBarThread=" 
+						+ updadeProgressBarThread.getId()
+						+ " is started!" );
+				
+				try {
+					Thread.sleep(200);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					Log.w(this.getClass().getName(),
+							"startTestMicrophone(): Thread.sleep(200) throws InterruptedException " 
+									+ e.getMessage() );
+				}
+				updateProgressbar(dialog.getProgressBar());
+			}
+		}, "UpdateProgressBar Thread");
+		
+		updadeProgressBarThread.start();
 	}
 	
 	
