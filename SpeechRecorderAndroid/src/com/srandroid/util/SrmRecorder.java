@@ -166,15 +166,17 @@ public class SrmRecorder
 				@Override
 				public void run() 
 				{
-					Log.w(this.getClass().getName(), "Thread recordingThread=" 
-							+ recordingThread.getId()
-							+ " is "
-							+ recordingThread.getState());
+					
 					writeAudioDataToFile();
 				}
 			}, "AudioRecorder Thread");
 		
 		recordingThread.start();
+		
+		Log.w(this.getClass().getName(), "Thread recordingThread=" 
+				+ recordingThread.getId()
+				+ " is "
+				+ recordingThread.getState());
 	}
 	
 	/**
@@ -191,32 +193,38 @@ public class SrmRecorder
 			@Override
 			public void run() 
 			{
-				Log.w(this.getClass().getName(), "Thread recordingThread=" 
-						+ recordingThread.getId()
-						+ " is "
-						+ recordingThread.getState());
+				
 				writeAudioDataToFile();
 				
-				updadeProgressBarThread = new Thread(new Runnable() 
-				{	
-					@Override
-					public void run() 
-					{
-						Log.w(this.getClass().getName(), "Thread upgradeProgressBarThread=" 
-								+ updadeProgressBarThread.getId()
-								+ " is "
-								+ updadeProgressBarThread.getState());
-						updateProgressbar(dialog.getProgressBar());
-					}
-				}, "UpdateProgressBar Thread");
-			
-				updadeProgressBarThread.start();
+				if(getRawFileNameForProgBar() != null)
+				{
+					updadeProgressBarThread = new Thread(new Runnable() 
+					{	
+						@Override
+						public void run() 
+						{
+							updateProgressbar(dialog.getProgressBar());
+						}
+					}, "UpdateProgressBar Thread");
+				
+					updadeProgressBarThread.start();
+					
+					Log.w(this.getClass().getName(), "Thread upgradeProgressBarThread=" 
+							+ updadeProgressBarThread.getId()
+							+ " is "
+							+ updadeProgressBarThread.getState());
+				}
+				
+				
 			}
 		}, "AudioRecorder Thread");
 	
 		recordingThread.start();
 		
-		
+		Log.w(this.getClass().getName(), "Thread recordingThread=" 
+				+ recordingThread.getId()
+				+ " is "
+				+ recordingThread.getState());
 	}
 	
 	
@@ -309,7 +317,7 @@ public class SrmRecorder
 		File tempFile = new File(dirPath, AUDIO_RECORDER_TEMP_FILE);
 		
 		if(tempFile.exists())
-			return (file.getAbsolutePath() + File.separator + AUDIO_RECORDER_TEMP_FILE);
+			return (tempFile.getAbsolutePath());
 		
 		return null;
 	}
