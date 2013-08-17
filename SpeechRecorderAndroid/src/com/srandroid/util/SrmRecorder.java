@@ -392,7 +392,8 @@ public class SrmRecorder
 	
 	public void updateProgressbar(ProgressBar pb)
 	{
-		short[] buffer = new short[bufferSizeInBytes];
+		//short[] buffer
+		byte[] buffer = new byte[bufferSizeInBytes];
 		DataOutputStream output = null;
 		while (isRecording) 
 		{
@@ -401,7 +402,8 @@ public class SrmRecorder
 			for (int i = 0; i < readSize; i++) 
 			{
 				try {
-					output.writeShort(buffer [i]);
+					//output.writeShort(buffer [i]);
+					output.writeByte(buffer [i]);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
