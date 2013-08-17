@@ -20,13 +20,14 @@ import com.srandroid.util.Utils;
 
 	public class DialogSetMicrophoneVolume extends DialogPreference implements OnClickListener
 	{
-		private Button bCancel, bStart, bFinish, bTestrecord;
+		private Button bCancel, bTestmic, bTestrecord;
+		private int isBTestmicClicked = 0;
 		private int isBTestrecordClicked = 0;
 		private ProgressBar progressBar;
 		
 		private String volume_value = "-1"; 
 		
-		private SrmRecorder recorderForProgBar, testRecorder;
+		private SrmRecorder recorderForMic, recorderForRecording;
 		
 		/**
 		 * @param context
@@ -61,13 +62,9 @@ import com.srandroid.util.Utils;
 			 // button CANCEL
 			 bCancel = (Button) view.findViewById(R.id.button_cancel_in_dialog_mic);
 			 bCancel.setOnClickListener(this);
-			 // button START
-			 bStart = (Button) view.findViewById(R.id.button_start_in_dialog_mic);
-			 bStart.setOnClickListener(this);
-			 // button FINISH
-			 bFinish = (Button) view.findViewById(R.id.button_finish_in_dialog_mic);
-			 bFinish.setOnClickListener(this);
-			 bFinish.setEnabled(false);
+			 // button TESTMIC
+			 bTestmic = (Button) view.findViewById(R.id.button_testmic_in_dialog_mic);
+			 bTestmic.setOnClickListener(this);
 			 // button TESTREC
 			 bTestrecord = (Button) view.findViewById(R.id.button_testrecord_in_dialog_mic);
 			 bTestrecord.setOnClickListener(this);
@@ -92,100 +89,78 @@ import com.srandroid.util.Utils;
 					getDialog().dismiss();
 					break;
 				
-				// button START
-				case R.id.button_start_in_dialog_mic:
-					Utils.toastText(v.getContext(), "settings: start testing microphone");
-					bStart.setEnabled(false);
-					bFinish.setEnabled(true);
+				// button MIC
+				case R.id.button_testmic_in_dialog_mic:
 					
-					recorderForProgBar = new SrmRecorder(Utils.REC_TEST_DIR_EXT_PATH, "test_mic", this);
+					if(isBTestmicClicked == 1)
+					{
+						Utils.toastText(v.getContext(), "settings: dialog: finish testing MIC");
+						 volume_value = "999";
+						 
+						 recorderForMic.stopRecording();
+						 Log.w(this.getClass().getName(), SrmRecorder.TAG_TESTMIC 
+								 + ": test mic audio file is saved: " 
+								 + recorderForMic.getAudioFile());
+						 
+						 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+						 // here needs a method to set the volume_value
+						 onDialogClosed(true);
+						 
+						 
+						 getDialog().dismiss();
+						break;
+					}
+					
+					Utils.toastText(v.getContext(), "settings: dialog: start testing MIC");
+					bTestrecord.setEnabled(false);
+					
+					recorderForMic = new SrmRecorder(Utils.REC_TEST_DIR_EXT_PATH, "test_mic", this);
 					Log.w(this.getClass().getName(), SrmRecorder.TAG_TESTMIC 
 							+ ": AudioRecord recorder is created: " 
 							+ "\nsampleRateHz=" + SrmRecorder.getSampleRateHz()
 							+ "\nchannelConfig=" + SrmRecorder.getChannelConfig()
 							+ "\nchannels=" + SrmRecorder.getChannels()
-							+ "\nminBufferSize=" + recorderForProgBar.getMinBufferSize());
+							+ "\nminBufferSize=" + recorderForMic.getMinBufferSize());
 					try {
-						recorderForProgBar.startTestMicrophone();;
+						recorderForMic.startTestMicrophone();;
 					} catch (IllegalStateException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 					
-					testRecorder = new SrmRecorder(Utils.REC_TEST_DIR_EXT_PATH, "test_record");
-					 Log.w(this.getClass().getName(), SrmRecorder.TAG_TESTREC 
-								+ ": AudioRecord recorder is created: " 
-								+ "\nsampleRateHz=" + SrmRecorder.getSampleRateHz()
-								+ "\nchannelConfig=" + SrmRecorder.getChannelConfig()
-								+ "\nchannels=" + SrmRecorder.getChannels()
-								+ "\nminBufferSize=" + testRecorder.getMinBufferSize());
-					try {
-						testRecorder.startRecording();
-					} catch (IllegalStateException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					 
-					
-					
-					
+					isBTestmicClicked = 1;
+					bTestmic.setText("STOP");
 					
 					break;
-				
-				// button FINISH
-				case R.id.button_finish_in_dialog_mic:
-					 Utils.toastText(v.getContext(), "settings: finish testing microphone");
-					 volume_value = "999";
-					 
-					 recorderForProgBar.stopRecording();
-					 Log.w(this.getClass().getName(), SrmRecorder.TAG_TESTMIC 
-							 + ": test mic audio file is saved: " 
-							 + recorderForProgBar.getAudioFile());
-					 
-					 testRecorder.stopRecording();
-					 Log.w(this.getClass().getName(), SrmRecorder.TAG_TESTREC 
-							 + ": test record audio file is saved: " 
-							 + testRecorder.getAudioFile());
-					 
-					 
-					 
-					 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-					 // here needs a method to set the volume_value
-					 onDialogClosed(true);
-					 
-					 
-					 getDialog().dismiss();
-					break;
 					
-					// button TESTREC
+					// button RECORD
 				case R.id.button_testrecord_in_dialog_mic:
 					
 					if(isBTestrecordClicked == 1)
 					{
-						Utils.toastText(v.getContext(), "settings: dialog: stop testing record");
+						Utils.toastText(v.getContext(), "settings: dialog: finish testing RECORD");
 						// STOP 
-						testRecorder.stopRecording();
+						recorderForRecording.stopRecording();
 						 Log.w(this.getClass().getName(), SrmRecorder.TAG_TESTREC 
 								 + ": test record audio file is saved: " 
-								 + testRecorder.getAudioFile());
+								 + recorderForRecording.getAudioFile());
 
 						getDialog().dismiss();
 						break;
 					}
 					
-					 Utils.toastText(v.getContext(), "settings: dialog: button 'TESTREC' is clicked, start testing record");
-					 bStart.setEnabled(false);
-					 bFinish.setEnabled(false);
+					 Utils.toastText(v.getContext(), "settings: dialog: start testing RECORD");
+					 bTestmic.setEnabled(false);
 					 
-					 testRecorder = new SrmRecorder(Utils.REC_TEST_DIR_EXT_PATH, "test_record");
+					 recorderForRecording = new SrmRecorder(Utils.REC_TEST_DIR_EXT_PATH, "test_record");
 					 Log.w(this.getClass().getName(), SrmRecorder.TAG_TESTREC 
 								+ ": AudioRecord recorder is created: " 
 								+ "\nsampleRateHz=" + SrmRecorder.getSampleRateHz()
 								+ "\nchannelConfig=" + SrmRecorder.getChannelConfig()
 								+ "\nchannels=" + SrmRecorder.getChannels()
-								+ "\nminBufferSize=" + testRecorder.getMinBufferSize());
+								+ "\nminBufferSize=" + recorderForRecording.getMinBufferSize());
 					try {
-						testRecorder.startRecording();
+						recorderForRecording.startRecording();
 					} catch (IllegalStateException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();

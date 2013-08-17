@@ -32,23 +32,17 @@
             android:layout_weight="1"
             android:text="CANCEL" />
         <Button
-            android:id="@+id/button_start_in_dialog_mic"
+            android:id="@+id/button_testmic_in_dialog_mic"
            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="START" />
-        <Button
-            android:id="@+id/button_finish_in_dialog_mic"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="FINISH" />
+            android:text="MIC" />
         <Button
             android:id="@+id/button_testrecord_in_dialog_mic"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="TESTREC" />
+            android:text="RECORD" />
     </LinearLayout>
 
 </LinearLayout>
