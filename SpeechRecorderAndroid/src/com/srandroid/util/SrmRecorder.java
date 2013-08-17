@@ -267,7 +267,7 @@ public class SrmRecorder
 			updadeProgressBarThread = null;
 		}
 		
-		copyWaveFile(getRawFileName(), getFileName());
+		copyWaveFile(createRawFile(), createFile());
 		deleteRawFile();
 	}
 	
@@ -301,7 +301,7 @@ public class SrmRecorder
 			recordingThread = null;
 			updadeProgressBarThread = null;
 		}
-		copyWaveFile(getRawFileName(), getFileName());
+		copyWaveFile(createRawFile(), createFile());
 		deleteRawFile();
 	}
 	// delete the audio file
@@ -382,7 +382,7 @@ public class SrmRecorder
 	
 	private void writeAudioDataToFile()
 	{
-		String rawFileName = getRawFileName();
+		String rawFileName = createRawFile();
 		FileOutputStream os = null;
 		byte data[] = new byte[minBufferSize];
 		
@@ -419,7 +419,7 @@ public class SrmRecorder
 		}
 	}
 	
-	private String getFileName()
+	private String createFile()
 	{
 		File file = new File(dirPath, fileName);
 		
@@ -434,7 +434,7 @@ public class SrmRecorder
 		return fileFullName;
 	}
 	
-	private String getRawFileName() 
+	private String createRawFile() 
 	{
 		File file = new File(dirPath, fileName);
 		
@@ -516,7 +516,7 @@ public class SrmRecorder
 	
 	private void deleteRawFile() 
 	{
-		File file = new File(getRawFileName());
+		File file = new File(createRawFile());
 		
 		Log.w(this.getClass().getName(), "deleteRawFile(): will delete rawfile " + file.getAbsolutePath());
 		
