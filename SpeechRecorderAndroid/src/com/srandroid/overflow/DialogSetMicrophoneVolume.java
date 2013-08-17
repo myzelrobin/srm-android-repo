@@ -20,12 +20,13 @@ import com.srandroid.util.Utils;
 
 	public class DialogSetMicrophoneVolume extends DialogPreference implements OnClickListener
 	{
-		private Button bCancel, bStart, bFinish;
+		private Button bCancel, bStart, bFinish, bTestrecord;
+		private boolean isBTestrecordClicked = false;
 		private ProgressBar progressBar;
 		
 		private String volume_value = "-1"; 
 		
-		private SrmRecorder recorder;
+		private SrmRecorder recorderForProgBar, testRecorder;
 		
 		/**
 		 * @param context
@@ -67,6 +68,10 @@ import com.srandroid.util.Utils;
 			 bFinish = (Button) view.findViewById(R.id.button_finish_in_dialog_mic);
 			 bFinish.setOnClickListener(this);
 			 bFinish.setEnabled(false);
+			 // button TESTREC
+			 bTestrecord = (Button) view.findViewById(R.id.button_testrecord_in_dialog_mic);
+			 bFinish.setOnClickListener(this);
+			 
 			 
 			 setProgressBar((ProgressBar) view.findViewById(R.id.progressBarInDialogSetMic)); 
 			 
@@ -90,25 +95,26 @@ import com.srandroid.util.Utils;
 				// button START
 				case R.id.button_start_in_dialog_mic:
 					Utils.toastText(v.getContext(), "settings: start testing microphone");
+					bStart.setEnabled(false);
+					bFinish.setEnabled(true);
 					
-					recorder = new SrmRecorder(Utils.REC_TEST_DIR_EXT_PATH, "test_mic", this);
+					recorderForProgBar = new SrmRecorder(Utils.REC_TEST_DIR_EXT_PATH, "test_mic", this);
 					Log.w(this.getClass().getName(), SrmRecorder.TAG_TESTMIC 
 							+ ": AudioRecord recorder is created: " 
 							+ "\nsampleRateHz=" + SrmRecorder.getSampleRateHz()
 							+ "\nchannelConfig=" + SrmRecorder.getChannelConfig()
 							+ "\nchannels=" + SrmRecorder.getChannels()
-							+ "\nminBufferSize=" + recorder.getMinBufferSize());
+							+ "\nminBufferSize=" + recorderForProgBar.getMinBufferSize());
 					
 					
 					try {
-						recorder.startTestMicrophone();;
+						recorderForProgBar.startTestMicrophone();;
 					} catch (IllegalStateException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 					
-					bStart.setEnabled(false);
-					bFinish.setEnabled(true);
+					
 					break;
 				
 				// button FINISH
@@ -117,7 +123,7 @@ import com.srandroid.util.Utils;
 					 volume_value = "999";
 					 
 					try {
-						recorder.stopRecording();
+						recorderForProgBar.stopRecording();
 					} catch (IllegalStateException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -125,13 +131,51 @@ import com.srandroid.util.Utils;
 					 
 					 Log.w(this.getClass().getName(), SrmRecorder.TAG_TESTMIC 
 							 + ": test mic audio file is saved: " 
-							 + recorder.getAudioFile());
+							 + recorderForProgBar.getAudioFile());
 					 
 					 // here needs a method to set the volume_value
-					 
 					 onDialogClosed(true);
+					 
+					 
 					 getDialog().dismiss();
 					break;
+					
+					// button TESTREC
+				case R.id.button_testrecord_in_dialog_mic:
+					
+					if(isBTestrecordClicked)
+					{
+						// STOP 
+						testRecorder.stopRecording();
+						 Log.w(this.getClass().getName(), SrmRecorder.TAG_TESTREC 
+								 + ": test record audio file is saved: " 
+								 + testRecorder.getAudioFile());
+
+						getDialog().dismiss();
+						break;
+					}
+					
+					 Utils.toastText(v.getContext(), "settings: dialog: button 'TESTREC' is clicked, start testing record");
+					 bStart.setEnabled(false);
+					 bFinish.setEnabled(false);
+					 
+					 testRecorder = new SrmRecorder(Utils.REC_TEST_DIR_EXT_PATH, "test_record");
+					 Log.w(this.getClass().getName(), SrmRecorder.TAG_TESTREC 
+								+ ": AudioRecord recorder is created: " 
+								+ "\nsampleRateHz=" + SrmRecorder.getSampleRateHz()
+								+ "\nchannelConfig=" + SrmRecorder.getChannelConfig()
+								+ "\nchannels=" + SrmRecorder.getChannels()
+								+ "\nminBufferSize=" + testRecorder.getMinBufferSize());
+					try {
+						testRecorder.startRecording();
+					} catch (IllegalStateException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					 
+					 isBTestrecordClicked = true;
+					 bTestrecord.setText("STOP");
+					 break;
 				
 				default:
 					break;

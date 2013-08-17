@@ -40,6 +40,7 @@ public class SrmRecorder
 {
 	
 	public static final String TAG_TESTMIC="TestMicrophone";
+	public static final String TAG_TESTREC="TestRecording";
 	public static final String TAG_RECORDING="Recording";
 	
 	//fields for audio record
@@ -454,8 +455,8 @@ public class SrmRecorder
 							+ e.getMessage() );
 		}
 		
-		Log.w(this.getClass().getName(), "copyWaveFile(): copied file " 
-				+ inFileName + " to " + outFileName + " successfully!");
+		Log.w(this.getClass().getName(), "copyWaveFile() successfully!: copied file from " 
+				+ inFileName + " to " + outFileName + "");
 	}
 	
 	private void deleteTempFile() 

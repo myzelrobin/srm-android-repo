@@ -52,30 +52,31 @@ public final class R {
         public static final int progressbar=0x7f020009;
     }
     public static final class id {
-        public static final int bgroup_overflow=0x7f0a000c;
-        public static final int bgroup_scripts=0x7f0a0012;
-        public static final int bgroup_sessions=0x7f0a000f;
-        public static final int bgroup_speakers=0x7f0a0015;
-        public static final int button_add_session=0x7f0a0010;
-        public static final int button_add_speaker=0x7f0a0016;
+        public static final int bgroup_overflow=0x7f0a000d;
+        public static final int bgroup_scripts=0x7f0a0013;
+        public static final int bgroup_sessions=0x7f0a0010;
+        public static final int bgroup_speakers=0x7f0a0016;
+        public static final int button_add_session=0x7f0a0011;
+        public static final int button_add_speaker=0x7f0a0017;
         public static final int button_cancel_in_dialog_mic=0x7f0a0002;
-        public static final int button_download_script=0x7f0a0013;
-        public static final int button_exit=0x7f0a000e;
+        public static final int button_download_script=0x7f0a0014;
+        public static final int button_exit=0x7f0a000f;
         public static final int button_finish_in_dialog_mic=0x7f0a0004;
-        public static final int button_search_scripts=0x7f0a0014;
-        public static final int button_search_sessions=0x7f0a0011;
-        public static final int button_search_speakers=0x7f0a0017;
-        public static final int button_settings=0x7f0a000d;
+        public static final int button_search_scripts=0x7f0a0015;
+        public static final int button_search_sessions=0x7f0a0012;
+        public static final int button_search_speakers=0x7f0a0018;
+        public static final int button_settings=0x7f0a000e;
         public static final int button_start_in_dialog_mic=0x7f0a0003;
-        public static final int content_frame=0x7f0a0006;
-        public static final int drawer_layout_activity_main=0x7f0a0005;
-        public static final int linearlayout_toasthint=0x7f0a000a;
-        public static final int listview_drawer_items=0x7f0a0007;
+        public static final int button_testrecord_in_dialog_mic=0x7f0a0005;
+        public static final int content_frame=0x7f0a0007;
+        public static final int drawer_layout_activity_main=0x7f0a0006;
+        public static final int linearlayout_toasthint=0x7f0a000b;
+        public static final int listview_drawer_items=0x7f0a0008;
         public static final int progressBarInDialogSetMic=0x7f0a0001;
-        public static final int text_toasthint=0x7f0a000b;
+        public static final int text_toasthint=0x7f0a000c;
         public static final int textview_in_dialog_microphone=0x7f0a0000;
-        public static final int textview_in_fragment=0x7f0a0008;
-        public static final int textview_in_fragment2=0x7f0a0009;
+        public static final int textview_in_fragment=0x7f0a0009;
+        public static final int textview_in_fragment2=0x7f0a000a;
     }
     public static final class layout {
         public static final int dialog_settings_microphone=0x7f030000;
