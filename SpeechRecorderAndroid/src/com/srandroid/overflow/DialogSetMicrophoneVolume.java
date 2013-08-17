@@ -135,7 +135,7 @@ import com.srandroid.util.Utils;
 					}
 					
 					isBTestmicClicked = 1;
-					bTestmic.setText("STOP");
+					bTestmic.setText(R.string.STOP);
 					
 					break;
 					
@@ -147,7 +147,7 @@ import com.srandroid.util.Utils;
 						Utils.toastText(v.getContext(), "settings: dialog: will play record");
 						
 						 isBTestrecordClicked = 2;
-						 bTestrecord.setText("CLOSE");
+						 bTestrecord.setText(R.string.CLOSE);
 						
 						// STOP the test recording
 						 recorderForTestRecording.stopTestRecording();
@@ -181,7 +181,7 @@ import com.srandroid.util.Utils;
 					 bTestmic.setEnabled(false);
 					 bCancel.setEnabled(false);
 					 isBTestrecordClicked = 1;
-					 bTestrecord.setText("STOP");
+					 bTestrecord.setText(R.string.STOP);
 					 
 					 recorderForTestRecording = new SrmRecorder(Utils.REC_TEST_DIR_EXT_PATH, "test_record");
 					 Log.w(this.getClass().getName(), SrmRecorder.TAG_TESTREC 

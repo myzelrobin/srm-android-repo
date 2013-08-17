@@ -1,9 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- application -->
     <string name="app_name">SpeechRecorderAndroid</string>
     <string name="hello_world">Hello world!</string>
     
+    <!-- common strings -->
+    <string name="YES">YES</string>
+    <string name="NO">NO</string>
+    <string name="CANCEL">CANCEL</string>
+    <string name="DONE">DONE</string>
+    <string name="NEXT">NEXT</string>
+    <string name="PREVIOUS">PREVIOUS</string>
+    <string name="PLAY">PLAY</string>
+    <string name="STOP">STOP</string>
+    <string name="FINISH">FINISH</string>
+    <string name="RECORD">RECORD</string>
+    <string name="MIC">MIC</string>
+    <string name="CLOSE">CLOSE</string>
+    <string name="OPEN">OPEN</string>
     
     <!-- ActivityMain -->
 	    <!-- Drawer in ActivityMain -->
