@@ -105,14 +105,29 @@ import com.srandroid.util.Utils;
 							+ "\nchannelConfig=" + SrmRecorder.getChannelConfig()
 							+ "\nchannels=" + SrmRecorder.getChannels()
 							+ "\nminBufferSize=" + recorderForProgBar.getMinBufferSize());
-					
-					
 					try {
 						recorderForProgBar.startTestMicrophone();;
 					} catch (IllegalStateException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
+					
+					testRecorder = new SrmRecorder(Utils.REC_TEST_DIR_EXT_PATH, "test_record");
+					 Log.w(this.getClass().getName(), SrmRecorder.TAG_TESTREC 
+								+ ": AudioRecord recorder is created: " 
+								+ "\nsampleRateHz=" + SrmRecorder.getSampleRateHz()
+								+ "\nchannelConfig=" + SrmRecorder.getChannelConfig()
+								+ "\nchannels=" + SrmRecorder.getChannels()
+								+ "\nminBufferSize=" + testRecorder.getMinBufferSize());
+					try {
+						testRecorder.startRecording();
+					} catch (IllegalStateException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					 
+					
+					
 					
 					
 					break;
@@ -122,17 +137,19 @@ import com.srandroid.util.Utils;
 					 Utils.toastText(v.getContext(), "settings: finish testing microphone");
 					 volume_value = "999";
 					 
-					try {
-						recorderForProgBar.stopRecording();
-					} catch (IllegalStateException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					 
+					 recorderForProgBar.stopRecording();
 					 Log.w(this.getClass().getName(), SrmRecorder.TAG_TESTMIC 
 							 + ": test mic audio file is saved: " 
 							 + recorderForProgBar.getAudioFile());
 					 
+					 testRecorder.stopRecording();
+					 Log.w(this.getClass().getName(), SrmRecorder.TAG_TESTREC 
+							 + ": test record audio file is saved: " 
+							 + testRecorder.getAudioFile());
+					 
+					 
+					 
+					 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 					 // here needs a method to set the volume_value
 					 onDialogClosed(true);
 					 
@@ -145,6 +162,7 @@ import com.srandroid.util.Utils;
 					
 					if(isBTestrecordClicked == 1)
 					{
+						Utils.toastText(v.getContext(), "settings: dialog: stop testing record");
 						// STOP 
 						testRecorder.stopRecording();
 						 Log.w(this.getClass().getName(), SrmRecorder.TAG_TESTREC 
