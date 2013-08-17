@@ -106,7 +106,7 @@ import com.srandroid.util.Utils;
 						 // here needs a method to set the volume_value
 						 onDialogClosed(true);
 						 
-						 
+						 isBTestmicClicked = 0;
 						 getDialog().dismiss();
 						break;
 					}
@@ -144,7 +144,8 @@ import com.srandroid.util.Utils;
 						 Log.w(this.getClass().getName(), SrmRecorder.TAG_TESTREC 
 								 + ": test record audio file is saved: " 
 								 + recorderForRecording.getAudioFile());
-
+						 
+						 isBTestrecordClicked = 0;
 						getDialog().dismiss();
 						break;
 					}
