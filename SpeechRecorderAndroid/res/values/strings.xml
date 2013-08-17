@@ -89,7 +89,6 @@
 	                    <item>44100Hz</item>
 	                    <item>48000Hz</item>
 	                    <item>96000Hz</item>
-	                    <item>unknown</item>
 	                </string-array>
 	                
 		            <string-array name="sample_rate_items_values">
@@ -101,7 +100,6 @@
                         <item>44100</item>
                         <item>48000</item>
                         <item>96000</item>
-                        <item>unknown</item>
                     </string-array>
                
 		       <!-- channels -->
