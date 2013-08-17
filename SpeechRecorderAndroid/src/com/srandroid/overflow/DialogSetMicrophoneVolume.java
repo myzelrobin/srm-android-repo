@@ -30,7 +30,7 @@ import com.srandroid.util.Utils;
 		
 		private String volume_value = "-1"; 
 		
-		private SrmRecorder recorderForMic, recorderForRecording;
+		private SrmRecorder recorderForMic, recorderForTestRecording;
 		
 		/**
 		 * @param context
@@ -105,12 +105,14 @@ import com.srandroid.util.Utils;
 								 + ": test mic audio file is deleted at: " 
 								 + recorderForMic.getAudioFile());
 						 
-						 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+						// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 						 // here needs a method to set the volume_value
 						 onDialogClosed(true);
-						 
+
 						 isBTestmicClicked = 0;
 						 getDialog().dismiss();
+						 
+						 isBTestmicClicked = 0;
 						break;
 					}
 					
@@ -141,39 +143,49 @@ import com.srandroid.util.Utils;
 					
 					if(isBTestrecordClicked == 1)
 					{
-						Utils.toastText(v.getContext(), "settings: dialog: finish testing RECORD");
+						Utils.toastText(v.getContext(), "settings: dialog: will play record");
 						// STOP 
-						recorderForRecording.stopRecording();
+						recorderForTestRecording.stopRecording();
 						 Log.w(this.getClass().getName(), SrmRecorder.TAG_TESTREC 
 								 + ": test record audio file is saved: " 
-								 + recorderForRecording.getAudioFile());
+								 + recorderForTestRecording.getAudioFile());
 						 
-						 isBTestrecordClicked = 0;
-						getDialog().dismiss();
+						 isBTestrecordClicked = 2;
+						 bTestrecord.setText("CLOSE");
 						
 						// play the record
 						try {
-							Utils.playRecord(getContext(), recorderForRecording.getAudioFile());
+							Utils.playRecord(getContext(), recorderForTestRecording.getRawAudioFile());
 						} catch (ActivityNotFoundException e) {
 							Log.w(this.getClass().getName(), 
 									"Utils.playRecord() throws Exceptions " + e.getMessage());
 						}
+						
 
 						break;
+					}
+					
+					if(isBTestrecordClicked == 2)
+					{
+						Utils.toastText(v.getContext(), "settings: dialog: finish testing RECORD");
+						recorderForTestRecording.finishedTestRecording();
+						isBTestrecordClicked = 0;
+						 getDialog().dismiss();
+						 break;
 					}
 					
 					 Utils.toastText(v.getContext(), "settings: dialog: start testing RECORD");
 					 bTestmic.setEnabled(false);
 					 
-					 recorderForRecording = new SrmRecorder(Utils.REC_TEST_DIR_EXT_PATH, "test_record");
+					 recorderForTestRecording = new SrmRecorder(Utils.REC_TEST_DIR_EXT_PATH, "test_record");
 					 Log.w(this.getClass().getName(), SrmRecorder.TAG_TESTREC 
-								+ ": AudioRecord recorderForRecording is created: " 
+								+ ": AudioRecord recorderForTestRecording is created: " 
 								+ "\nsampleRateHz=" + SrmRecorder.getSampleRateHz()
 								+ "\nchannelConfig=" + SrmRecorder.getChannelConfig()
 								+ "\nchannels=" + SrmRecorder.getChannels()
-								+ "\nminBufferSize=" + recorderForRecording.getMinBufferSize());
+								+ "\nminBufferSize=" + recorderForTestRecording.getMinBufferSize());
 					try {
-						recorderForRecording.startRecording();
+						recorderForTestRecording.startRecording();
 					} catch (IllegalStateException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();

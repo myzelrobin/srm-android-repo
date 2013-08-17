@@ -70,6 +70,7 @@ public class SrmRecorder
 	// fields for recording 
 	private Thread recordingThread = null;
 	private Thread updadeProgressBarThread = null;
+	private Thread recordingForTestThread = null;
 	private boolean isRecording = false;
 	
 	
@@ -231,7 +232,27 @@ public class SrmRecorder
 		updadeProgressBarThread.start();
 	}
 	
-	
+	public void startTestRecording()
+	{
+		audioRecorder.startRecording();
+		
+		isRecording = true;
+		
+		recordingForTestThread = new Thread(new Runnable() 
+			{	
+				@Override
+				public void run() 
+				{
+					Log.w(this.getClass().getName(), "Thread recordingForTestThread=" 
+							+ recordingForTestThread.getId()
+							+ " is started, will writeAudioDataToFile()" );
+					writeAudioDataToFile();
+				}
+			}, "AudioRecorder Thread");
+		
+		recordingForTestThread.start();
+		
+	}
 
 	public void stopRecording() 
 	{
@@ -248,7 +269,7 @@ public class SrmRecorder
 		}
 		
 		copyWaveFile(getRawFileName(), getFileName());
-		deleteTempFile();
+		deleteRawFile();
 	}
 	
 	public void stopTestMicrophone() 
@@ -264,10 +285,29 @@ public class SrmRecorder
 			recordingThread = null;
 			updadeProgressBarThread = null;
 		}
-		deleteTempFile();
+		deleteRawFile();
 	}
 	
+	// NOT delete raw_file
+	public void stopTestRecording() 
+	{
+		if(null != audioRecorder)
+		{
+			isRecording = false;
+			
+			audioRecorder.stop();
+			audioRecorder.release();
+			
+			audioRecorder = null;
+			recordingThread = null;
+			updadeProgressBarThread = null;
+		}
+	}
 	
+	public void finishedTestRecording() 
+	{
+		deleteRawFile();
+	}
 	
 	public void updateProgressbar(ProgressBar pb)
 	{
@@ -473,11 +513,11 @@ public class SrmRecorder
 				+ inFileName + " to " + outFileName + "");
 	}
 	
-	private void deleteTempFile() 
+	private void deleteRawFile() 
 	{
 		File file = new File(getRawFileName());
 		
-		Log.w(this.getClass().getName(), "deleteTempFile(): will delete file " + file.getAbsolutePath());
+		Log.w(this.getClass().getName(), "deleteRawFile(): will delete rawfile " + file.getAbsolutePath());
 		
 		file.delete();
 	}
