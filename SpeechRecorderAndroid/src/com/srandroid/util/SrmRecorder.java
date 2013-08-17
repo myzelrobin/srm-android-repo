@@ -394,10 +394,6 @@ public class SrmRecorder
 
 		out.write(header, 0, 44);
 	}
-
-
-	
-	
 	
 	private int getStreamVolume() {
 		// needs a complicated method

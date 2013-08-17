@@ -114,15 +114,11 @@ public class Utils
 		{
 			String path = parentFolderPath + File.separator + folderName;
 			File dir = new File(path);
-			if(dir.exists())
+			if(!dir.exists())
 			{
-				return path;
+				dir.mkdir();
 			}
-			if(dir.mkdir())
-			{
-				return path;
-			}
-			Log.w(Utils.class.getName(), "Can NOT make directory: " + path);
+			return dir.getAbsolutePath();
 		}
 		Log.w(Utils.class.getName(), "Can NOT make directory, parent folder path is null: " + parentFolderPath);
 		return null;
