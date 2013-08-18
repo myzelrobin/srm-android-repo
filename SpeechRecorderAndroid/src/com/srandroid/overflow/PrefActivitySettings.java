@@ -9,6 +9,7 @@ import com.srandroid.util.Utils;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.os.Bundle;
+import android.preference.CheckBoxPreference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
 import android.support.v4.app.NavUtils;
@@ -144,11 +145,14 @@ public class PrefActivitySettings extends PreferenceActivity
 	 */
 	public static class PrefFragmentInSettings extends PreferenceFragment implements OnSharedPreferenceChangeListener
     {
+		private CheckBoxPreference overwriteCheckBox;
+		
         @Override
         public void onCreate(final Bundle savedInstanceState)
         {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.preference_settings);
+            
             
             getPreferenceManager().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
         }

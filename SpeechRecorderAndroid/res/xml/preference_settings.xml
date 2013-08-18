@@ -68,5 +68,11 @@
                     android:persistent="true" />
 
         </PreferenceCategory>
+        
+    <PreferenceCategory 
+        android:title="@string/settings_hardware" >
+        <Preference android:defaultValue="0" android:key="name" />
+        <Preference android:defaultValue="0" android:key="age" />
+    </PreferenceCategory>
 
 </PreferenceScreen>
