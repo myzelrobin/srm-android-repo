@@ -94,7 +94,7 @@ public class ActivityMain extends Activity {
 		Utils.ConstantVars.initializeApp(getApplicationContext());
 		
 		// initialize the app with default values, need a method? is it necessary?
-		PreferenceManager.setDefaultValues(this, R.xml.preference_settings, false);
+		PreferenceManager.setDefaultValues(this, R.xml.preference_settings, true);
 		
 		// update some preferences
 		Utils.setSharedPreference(PreferenceManager.getDefaultSharedPreferences(this));;
