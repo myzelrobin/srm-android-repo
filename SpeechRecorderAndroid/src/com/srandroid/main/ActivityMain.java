@@ -433,11 +433,11 @@ public class ActivityMain extends Activity {
         							ViewGroup container, 
         							Bundle savedInstanceState) 
         {
-            View rootView = inflater.inflate(R.layout.layout_fragment_in_activitymain, container, false);
+            View rootView = inflater.inflate(R.layout.layout_testlayout, container, false);
             int i = getArguments().getInt(ARG_FRAGMENT_NUMBER);
             String fragment_title = getResources().getStringArray(R.array.drawer_items)[i];
-            TextView textview_in_fragment = (TextView) rootView.findViewById(R.id.textview_in_fragment);
-            textview_in_fragment.setText(fragment_title);
+            //TextView textview_in_fragment = (TextView) rootView.findViewById(R.id.textview_in_fragment);
+            //textview_in_fragment.setText(fragment_title);
             getActivity().setTitle(fragment_title);
             
             return rootView;
