@@ -23,7 +23,7 @@
 	            android:layout_width="150dp"
 	            android:layout_height="150dp"
 	            android:scaleType="fitXY"
-	            android:src="@drawable/icon_script_256"  />
+	            android:src="@drawable/icon_session_256"  />
 	    </LinearLayout>    
 	    
 	    
