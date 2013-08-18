@@ -103,8 +103,8 @@ public class Utils
 		// item in Fragment in ActivityMain
 		public static final int ITEMWIDTH = 480;
 		public static final int ITEMHEIGHT = 160;
-		public static int itemBGMarginInVerticalMode = 0;
-		public static int itemBGMarginInHorizontalMode = 0;
+		public static int marginItemBGInVerticalMode = 0;
+		public static int marginItemBGInHorizontalMode = 0;
 		
 		
 		public static boolean isPreStartInitialized = false;
@@ -223,15 +223,14 @@ public class Utils
 			REC_TEST_DIR_EXT_PATH = makeDir(REC_FILES_DIR_EXT_PATH, "test");
 			Log.w(Utils.class.getName(), "REC_TEST_DIR_EXT=" + REC_TEST_DIR_EXT_PATH);
 			
-			
 			int screenWidth = 0;
 			int screenHeight = 0;
 			
 			getScreenSize(context, screenWidth, screenHeight);
 			
-			setItemBGSizeInVerticalMode(screenWidth, screenHeight);
+			setMarginItemBGInVerticalMode(screenWidth, screenHeight);
 			
-			setItemBGSizeInHorizontalMode(screenWidth, screenHeight);
+			setMarginItemBGInHorizontalMode(screenWidth, screenHeight);
 			
 			isPreStartInitialized = true;
 			
@@ -395,18 +394,18 @@ public class Utils
 				
 	}
 	
-	public static void setItemBGSizeInVerticalMode(int screenWidth, int screenHeight)
+	public static void setMarginItemBGInVerticalMode(int screenWidth, int screenHeight)
 	{
-		Utils.ConstantVars.itemBGMarginInVerticalMode = (screenWidth - Utils.ConstantVars.ITEMWIDTH) / 2; 
-		Log.w(Utils.class.getName(), "setItemBGSizeInVerticalMode() set the item margin: margin=" 
-				+ Utils.ConstantVars.itemBGMarginInVerticalMode);
+		Utils.ConstantVars.marginItemBGInVerticalMode = (screenWidth - Utils.ConstantVars.ITEMWIDTH) / 2; 
+		Log.w(Utils.class.getName(), "setMarginItemBGInVerticalMode() set the item margin: margin=" 
+				+ Utils.ConstantVars.marginItemBGInVerticalMode);
 	}
 	
-	public static void setItemBGSizeInHorizontalMode(int screenWidth, int screenHeight)
+	public static void setMarginItemBGInHorizontalMode(int screenWidth, int screenHeight)
 	{
-		Utils.ConstantVars.itemBGMarginInHorizontalMode = (screenWidth - (Utils.ConstantVars.ITEMWIDTH * 2)) / 4; 
-		Log.w(Utils.class.getName(), "setItemBGSizeInHorizontalMode() set the item margin: margin=" 
-				+ Utils.ConstantVars.itemBGMarginInHorizontalMode);
+		Utils.ConstantVars.marginItemBGInHorizontalMode = (screenHeight - (Utils.ConstantVars.ITEMWIDTH * 2)) / 4; 
+		Log.w(Utils.class.getName(), "setMarginItemBGInHorizontalMode() set the item margin: margin=" 
+				+ Utils.ConstantVars.marginItemBGInHorizontalMode);
 	}
 }
 
