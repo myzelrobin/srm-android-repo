@@ -103,6 +103,8 @@ public class Utils
 		// item in Fragment in ActivityMain
 		public static final int ITEMWIDTH = 480;
 		public static final int ITEMHEIGHT = 160;
+		public static int screenWidth = 0;
+		public static int screenHeight = 0;
 		public static int marginItemBGInVerticalMode = 0;
 		public static int marginItemBGInHorizontalMode = 0;
 		
@@ -223,14 +225,9 @@ public class Utils
 			REC_TEST_DIR_EXT_PATH = makeDir(REC_FILES_DIR_EXT_PATH, "test");
 			Log.w(Utils.class.getName(), "REC_TEST_DIR_EXT=" + REC_TEST_DIR_EXT_PATH);
 			
-			int screenWidth = 0;
-			int screenHeight = 0;
-			
-			getScreenSize(context, screenWidth, screenHeight);
-			
-			setMarginItemBGInVerticalMode(screenWidth, screenHeight);
-			
-			setMarginItemBGInHorizontalMode(screenWidth, screenHeight);
+			getScreenSize(context);
+			setMarginItemBGInVerticalMode();
+			setMarginItemBGInHorizontalMode();
 			
 			isPreStartInitialized = true;
 			
@@ -357,7 +354,7 @@ public class Utils
          //Log.w(this.getClass().getName(), "playRecord(): startActivity(intent) throws Exception " + e.getMessage());
 	}
 	
-	public static void getScreenSize(Context context, int screenWidth, int screenHeight)
+	public static void getScreenSize(Context context)
 	{
 		// get screen size in dp
 		DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
@@ -386,24 +383,26 @@ public class Utils
 			screenHeightInt--;
 		}
 		
-		screenWidth = screenWidthInt;
-		screenHeight = screenHeightInt;
+		Utils.ConstantVars.screenWidth = screenWidthInt;
+		Utils.ConstantVars.screenHeight = screenHeightInt;
 		
-		Log.w(Utils.class.getName(), "getScreenSize() optimized the screen size in integer width=" + screenWidth
-				+ " height=" + screenHeight);
+		Log.w(Utils.class.getName(), "getScreenSize() optimized the screen size in integer width=" 
+				+ Utils.ConstantVars.screenWidth + " height=" + Utils.ConstantVars.screenHeight);
 				
 	}
 	
-	public static void setMarginItemBGInVerticalMode(int screenWidth, int screenHeight)
+	public static void setMarginItemBGInVerticalMode()
 	{
-		Utils.ConstantVars.marginItemBGInVerticalMode = (int) ((screenWidth - Utils.ConstantVars.ITEMWIDTH) / 2); 
+		Utils.ConstantVars.marginItemBGInVerticalMode = 
+				(int) ((Utils.ConstantVars.screenWidth - Utils.ConstantVars.ITEMWIDTH) / 2); 
 		Log.w(Utils.class.getName(), "setMarginItemBGInVerticalMode() set the item margin: margin=" 
 				+ Utils.ConstantVars.marginItemBGInVerticalMode);
 	}
 	
-	public static void setMarginItemBGInHorizontalMode(int screenWidth, int screenHeight)
+	public static void setMarginItemBGInHorizontalMode()
 	{
-		Utils.ConstantVars.marginItemBGInHorizontalMode = (int) ((screenHeight - (Utils.ConstantVars.ITEMWIDTH * 2)) / 4); 
+		Utils.ConstantVars.marginItemBGInHorizontalMode = 
+				(int) ((Utils.ConstantVars.screenHeight - (Utils.ConstantVars.ITEMWIDTH * 2)) / 4); 
 		Log.w(Utils.class.getName(), "setMarginItemBGInHorizontalMode() set the item margin: margin=" 
 				+ Utils.ConstantVars.marginItemBGInHorizontalMode);
 	}
