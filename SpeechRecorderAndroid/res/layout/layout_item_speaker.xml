@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="#000000"
+    android:background="#EEEEEE"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
@@ -8,16 +8,25 @@
     
     <LinearLayout 
         android:background="#FFFFFF"
-	    android:layout_width="480dp"
-	    android:layout_height="160dp"
-	    android:orientation="horizontal" >
-	    <ImageView 
-	        android:background="#FFFFFF"
-		    android:id="@+id/iconInItemSpeaker"
-	        android:layout_width="160dp"
-	        android:layout_height="160dp"
-	        android:scaleType="fitXY"
-	        android:src="@drawable/ic_speaker"  />
+        android:layout_width="480dp"
+        android:layout_height="160dp"
+        android:orientation="horizontal" >
+        
+        <LinearLayout 
+            android:background="#FFFFFF"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:gravity="center"
+            android:orientation="horizontal" >
+            <ImageView 
+                android:background="#FFFFFF"
+                android:id="@+id/iconInItemSpeaker"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/icon_session_256"  />
+        </LinearLayout>  
+        
 	    <LinearLayout 
 	        android:background="#FFFFFF"
 	        android:layout_width="280dp"
