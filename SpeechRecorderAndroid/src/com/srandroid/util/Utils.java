@@ -6,6 +6,7 @@ import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.widget.Toast;
 import android.net.Uri;
@@ -98,9 +99,12 @@ public class Utils
 		
 		
 		
-		
-		
-		
+		// layout values
+		// item in Fragment in ActivityMain
+		public static final int ITEMWIDTH = 480;
+		public static final int ITEMHEIGHT = 160;
+		public static int itemBGMarginInVerticalMode = 0;
+		public static int itemBGMarginInHorizontalMode = 0;
 		
 		
 		public static boolean isPreStartInitialized = false;
@@ -218,6 +222,16 @@ public class Utils
 			// make folder path in sdcard(/mnt/sdcard/Android/APP_PACKAGE/records/test)
 			REC_TEST_DIR_EXT_PATH = makeDir(REC_FILES_DIR_EXT_PATH, "test");
 			Log.w(Utils.class.getName(), "REC_TEST_DIR_EXT=" + REC_TEST_DIR_EXT_PATH);
+			
+			
+			int screenWidth = 0;
+			int screenHeight = 0;
+			
+			getScreenSize(context, screenWidth, screenHeight);
+			
+			setItemBGSizeInVerticalMode(screenWidth, screenHeight);
+			
+			setItemBGSizeInHorizontalMode(screenWidth, screenHeight);
 			
 			isPreStartInitialized = true;
 			
@@ -344,19 +358,55 @@ public class Utils
          //Log.w(this.getClass().getName(), "playRecord(): startActivity(intent) throws Exception " + e.getMessage());
 	}
 	
-	public static void getScreenSizeInDP(Context context)
-	{
-		
-	}
-	
-	public static void setItemBGSize()
+	public static void getScreenSize(Context context, int screenWidth, int screenHeight)
 	{
 		// get screen size in dp
-//		DisplayMetrics displayMetrics = new DisplayMetrics(); 
-//		getWindowManager().getDefaultDisplay().getMetrics(displayMetrics); 
-//		float screenWidthDp = displayMetrics.widthPixels / displayMetrics.density; 
-//		float screenHeightDp = displayMetrics.heightPixels / displayMetrics.density; 
-//		textView.setText("this display: Pixels width=" + displayMetrics.widthPixels + " height=" + displayMetrics.heightPixels + "; " + "\nDensity=" + displayMetrics.density + "\nDP width=" + screenWidthDp + "\n height=" + screenHeightDp);
+		DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+		float screenWidthDp = displayMetrics.widthPixels / displayMetrics.density; 
+		float screenHeightDp = displayMetrics.heightPixels / displayMetrics.density;
+		Log.w(Utils.class.getName(), "getScreenSize() gets the screen size in DP width=" + screenWidthDp
+					+ " height=" + screenHeightDp);
+		
+		// use width and height as in vertical mode, so width < height
+		if(screenWidthDp > screenHeightDp)
+		{
+			float mid = screenWidthDp;
+			screenWidthDp = screenHeightDp;
+			screenHeightDp = mid; 
+		}
+		
+		int screenWidthInt = (int) screenWidthDp;
+		int screenHeightInt = (int) screenHeightDp;
+		
+		if((screenWidthInt%2) != 0)
+		{
+			screenWidthInt--;
+		}
+		if((screenHeightInt%2) != 0)
+		{
+			screenHeightInt--;
+		}
+		
+		screenWidth = screenWidthInt;
+		screenHeight = screenHeightInt;
+		
+		Log.w(Utils.class.getName(), "getScreenSize() optimized the screen size in integer width=" + screenWidth
+				+ " height=" + screenHeight);
+				
+	}
+	
+	public static void setItemBGSizeInVerticalMode(int screenWidth, int screenHeight)
+	{
+		Utils.ConstantVars.itemBGMarginInVerticalMode = (screenWidth - Utils.ConstantVars.ITEMWIDTH) / 2; 
+		Log.w(Utils.class.getName(), "setItemBGSizeInVerticalMode() set the item margin: margin=" 
+				+ Utils.ConstantVars.itemBGMarginInVerticalMode);
+	}
+	
+	public static void setItemBGSizeInHorizontalMode(int screenWidth, int screenHeight)
+	{
+		Utils.ConstantVars.itemBGMarginInHorizontalMode = (screenWidth - (Utils.ConstantVars.ITEMWIDTH * 2)) / 4; 
+		Log.w(Utils.class.getName(), "setItemBGSizeInHorizontalMode() set the item margin: margin=" 
+				+ Utils.ConstantVars.itemBGMarginInHorizontalMode);
 	}
 }
 

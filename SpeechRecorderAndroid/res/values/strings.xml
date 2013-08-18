@@ -20,12 +20,9 @@
     <string name="CLOSE">CLOSE</string>
     <string name="OPEN">OPEN</string>
     <string name="TESTVIEWTEXT">
-        The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.
-        \nThe quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.
-        \nThe quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.
-        \nThe quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.
-        \nThe quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.</string>
-    
+        The quick brown fox jumps over the lazy dog.
+        \nThe quick brown fox jumps over the lazy dog.
+        \nThe quick brown fox jumps over the lazy dog.</string>
     
     
     <!-- ActivityMain -->
@@ -141,6 +138,33 @@
                 <string name="settings_overwrite_warning_summary">Show warning before overwriting original file</string>
 	       
     
+        <!-- Item speaker -->
+        <string name="speaker_attr_firstname">First Name</string>
+        <string name="speaker_attr_surname">Surname</string>
+        <string name="speaker_attr_sex">Sex</string>
+        <string name="speaker_attr_accent">Accent</string>
+        <string name="speaker_attr_birthday">Birthday</string>
+        
+        <string name="key_speaker_attr_firstname">first_name</string>
+        <string name="key_speaker_attr_surname">surname</string>
+        <string name="key_speaker_attr_sex">sex</string>
+        <string name="key_speaker_attr_accent">accent</string>
+        <string name="key_speaker_attr_birthday">birthday</string>
+        
+        <!-- Speaker Example -->
+        <string name="speaker1_name" >Adam Speakerman</string>
+        <string name="speaker1_firstname">Adam</string>
+        <string name="speaker1_surname">Speakerman</string>
+        <string name="speaker1_sex">male</string>
+        <string name="speaker1_accent">British</string>
+        <string name="speaker1_birthday">YYYY,MM,DD</string>
+        
+        <string name="speaker2_name" >Mary Speakerlady</string>
+        <string name="speaker2_firstname">Mary</string>
+        <string name="speaker2_surname">Speakerlady</string>
+        <string name="speaker2_sex">female</string>
+        <string name="speaker2_accent">Bayerisch</string>
+        <string name="speaker2_birthday">YYYY,MM,DD</string>
 </resources>
 
 <!-- channels  original
