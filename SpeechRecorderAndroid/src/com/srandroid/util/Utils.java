@@ -396,7 +396,7 @@ public class Utils
 		Utils.ConstantVars.marginItemBGInVerticalMode = 
 				(int) ((Utils.ConstantVars.screenWidth - Utils.ConstantVars.ITEMWIDTH) / 2); 
 		Log.w(Utils.class.getName(), "setMarginItemBGInVerticalMode() set the item margin: margin=" 
-				+ Utils.ConstantVars.marginItemBGInVerticalMode);
+				+ (int) ((Utils.ConstantVars.screenWidth - Utils.ConstantVars.ITEMWIDTH) / 2));
 	}
 	
 	public static void setMarginItemBGInHorizontalMode()
@@ -404,7 +404,7 @@ public class Utils
 		Utils.ConstantVars.marginItemBGInHorizontalMode = 
 				(int) ((Utils.ConstantVars.screenHeight - (Utils.ConstantVars.ITEMWIDTH * 2)) / 4); 
 		Log.w(Utils.class.getName(), "setMarginItemBGInHorizontalMode() set the item margin: margin=" 
-				+ Utils.ConstantVars.marginItemBGInHorizontalMode);
+				+ (int) ((Utils.ConstantVars.screenHeight - (Utils.ConstantVars.ITEMWIDTH * 2)) / 4));
 	}
 }
 
