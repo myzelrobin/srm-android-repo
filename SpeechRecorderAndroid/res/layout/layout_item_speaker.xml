@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="#EEEEEE"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="500dp"
+    android:layout_height="192dp"
     android:gravity="center"
     android:orientation="vertical" >
     
@@ -24,7 +24,7 @@
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:scaleType="fitXY"
-                android:src="@drawable/icon_session_256"  />
+                android:src="@drawable/icon_speaker_256"  />
         </LinearLayout>  
         
 	    <LinearLayout 

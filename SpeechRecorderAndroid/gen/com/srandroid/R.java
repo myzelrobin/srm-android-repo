@@ -42,12 +42,12 @@ public final class R {
     public static final class drawable {
         public static final int ic_button_add=0x7f020000;
         public static final int ic_button_download=0x7f020001;
-        public static final int ic_button_search=0x7f020002;
-        public static final int ic_drawer=0x7f020003;
-        public static final int ic_launcher=0x7f020004;
-        public static final int ic_script=0x7f020005;
-        public static final int ic_session=0x7f020006;
-        public static final int ic_speaker=0x7f020007;
+        public static final int ic_button_mic=0x7f020002;
+        public static final int ic_button_search=0x7f020003;
+        public static final int ic_button_speaker=0x7f020004;
+        public static final int ic_drawer=0x7f020005;
+        public static final int ic_launcher=0x7f020006;
+        public static final int ic_script=0x7f020007;
         public static final int icon_arrow_left=0x7f020008;
         public static final int icon_script_256=0x7f020009;
         public static final int icon_session_256=0x7f02000a;
