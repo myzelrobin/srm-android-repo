@@ -396,14 +396,14 @@ public class Utils
 	
 	public static void setMarginItemBGInVerticalMode(int screenWidth, int screenHeight)
 	{
-		Utils.ConstantVars.marginItemBGInVerticalMode = (screenWidth - Utils.ConstantVars.ITEMWIDTH) / 2; 
+		Utils.ConstantVars.marginItemBGInVerticalMode = (int) ((screenWidth - Utils.ConstantVars.ITEMWIDTH) / 2); 
 		Log.w(Utils.class.getName(), "setMarginItemBGInVerticalMode() set the item margin: margin=" 
 				+ Utils.ConstantVars.marginItemBGInVerticalMode);
 	}
 	
 	public static void setMarginItemBGInHorizontalMode(int screenWidth, int screenHeight)
 	{
-		Utils.ConstantVars.marginItemBGInHorizontalMode = (screenHeight - (Utils.ConstantVars.ITEMWIDTH * 2)) / 4; 
+		Utils.ConstantVars.marginItemBGInHorizontalMode = (int) ((screenHeight - (Utils.ConstantVars.ITEMWIDTH * 2)) / 4); 
 		Log.w(Utils.class.getName(), "setMarginItemBGInHorizontalMode() set the item margin: margin=" 
 				+ Utils.ConstantVars.marginItemBGInHorizontalMode);
 	}
