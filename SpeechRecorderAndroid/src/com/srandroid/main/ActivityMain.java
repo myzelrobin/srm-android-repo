@@ -42,6 +42,9 @@ public class ActivityMain extends Activity {
     private ListView listview_drawer_items;
     private ActionBarDrawerToggle drawer_items_toggle;
     
+    
+    // 
+    private Thread initAppThread = null;
 
 	/**
 	 * 
@@ -84,7 +87,21 @@ public class ActivityMain extends Activity {
 	{
 		super.onCreate(savedInstanceState);
 		
-		Utils.initializeApp(getApplicationContext());
+		// starts thread to set some global values for the app
+		initAppThread = new Thread(new Runnable() 
+		{	
+			@Override
+			public void run() 
+			{
+				Log.w(this.getClass().getName(), "onCreate(): Thread initAppThread=" 
+						+ initAppThread.getId()
+						+ " is started, will Utils.initializeApp()" );
+				Utils.initializeApp(getApplicationContext());
+			}
+		}, "initiliaze app Thread");
+		initAppThread.start();
+		
+		
 		
 		// initialize the app with default values, need a method? is it necessary?
 		PreferenceManager.setDefaultValues(this, R.xml.preference_settings, false);
