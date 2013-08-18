@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="#000000"
+    android:background="#CCCCCC"
     android:layout_width="512dp"
     android:layout_height="192dp"
     android:gravity="center"
@@ -11,13 +11,22 @@
 	    android:layout_width="480dp"
 	    android:layout_height="160dp"
 	    android:orientation="horizontal" >
-	    <ImageView 
+	    <LinearLayout 
 	        android:background="#FFFFFF"
-		    android:id="@+id/iconInItemSpeaker"
 	        android:layout_width="160dp"
 	        android:layout_height="160dp"
-	        android:scaleType="fitXY"
-	        android:src="@drawable/ic_speaker"  />
+	        android:gravity="center"
+	        android:orientation="horizontal" >
+	        <ImageView 
+	            android:background="#FFFFFF"
+	            android:id="@+id/iconInItemSpeaker"
+	            android:layout_width="150dp"
+	            android:layout_height="150dp"
+	            android:scaleType="fitXY"
+	            android:src="@drawable/icon_speaker_256"  />
+	    </LinearLayout>    
+	    
+	    
 	    <LinearLayout 
 	        android:background="#FFFFFF"
 	        android:layout_width="280dp"
