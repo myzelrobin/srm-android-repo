@@ -24,6 +24,8 @@ public class Utils
 		public static final boolean canToastDebugText = true;
 		public static final boolean canToastTextToUser = true;
 		
+		
+		
 	}
 	
 	public static boolean isPreStartInitialized = false;
