@@ -21,24 +21,23 @@ public class Utils
 	public static class ConstantVars
 	{
 		public static final String TESTTEXT = "TEST";
+		public static final boolean canToastDebugText = true;
+		public static final boolean canToastTextToUser = true;
+		
 	}
-	
 	
 	public static boolean isPreStartInitialized = false;
 	
-	public static final boolean canToastDebugText = true;
-	public static final boolean canToastTextToUser = true;
-
-	public static String APP_DIR_INT_PATH;
-	public static String APP_FILES_DIR_INT_PATH;
-	public static String APP_DIR_EXT_PATH;
-	public static String APP_FILES_DIR_EXT_PATH;
-	public static String REC_FILES_DIR_EXT_PATH;
-	public static String REC_TEST_DIR_EXT_PATH;
-	
+	public static String APP_DIR_INT_PATH; // app internal root folder
+	public static String APP_FILES_DIR_INT_PATH; // app internal folder "files"
+	public static String APP_DIR_EXT_PATH; // app external root foler
+	public static String APP_FILES_DIR_EXT_PATH; // app external foler "files"
+	public static String REC_FILES_DIR_EXT_PATH; // folder "records" in "files"
+	public static String REC_TEST_DIR_EXT_PATH; // folder "test_mic" in "records"
 	
 	public static void initializeApp(Context context)
 	{
+		
 		if(isPreStartInitialized) return;
 		
 		Log.w(Utils.class.getName(), "initializeApp(): will initialize data before app starts");
@@ -85,7 +84,8 @@ public class Utils
 	// Toast some text for debugging
 	public static void toastText(Context context, String s)
 	{
-		if(canToastDebugText) Toast.makeText(context, s, 2 * Toast.LENGTH_LONG).show();
+		if(Utils.ConstantVars.canToastDebugText) 
+			Toast.makeText(context, s, 2 * Toast.LENGTH_LONG).show();
 	}
 	
 	
@@ -138,15 +138,16 @@ public class Utils
 	
 	public static void playRecord(Context context, String audioFileName) throws ActivityNotFoundException
 	 {
-		  
 		 Intent intent = new Intent(android.content.Intent.ACTION_VIEW);
          Uri data = Uri.parse("file://" + audioFileName);
          intent.setDataAndType(data, "audio/*");
-
-         
          context.startActivity(intent);
          //Log.w(this.getClass().getName(), "playRecord(): startActivity(intent) throws Exception " + e.getMessage());
-        
+	}
+	
+	public static void getScreenSizeInDP(Context context)
+	{
+		
 	}
 	
 	public static void setItemBGSize()
