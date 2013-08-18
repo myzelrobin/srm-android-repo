@@ -90,8 +90,9 @@ public class SrmRecorder
 		if(dirPath == null)
 		{
 		   Log.w(this.getClass().getName(), 
-				   "Folder to save audio file doese NOT exist, save audio file to " + Utils.REC_TEST_DIR_EXT_PATH);
-		   dirPath = Utils.REC_TEST_DIR_EXT_PATH;
+				   "Folder to save audio file doese NOT exist, save audio file to " 
+						   + Utils.ConstantVars.REC_TEST_DIR_EXT_PATH);
+		   dirPath = Utils.ConstantVars.REC_TEST_DIR_EXT_PATH;
 		}
 		if(fileName == null)
 		{
@@ -115,8 +116,8 @@ public class SrmRecorder
 		if(dirPath == null)
 		{
 		   Log.w(this.getClass().getName(), 
-				   "Folder to save audio file doese NOT exist, save audio file to " + Utils.REC_TEST_DIR_EXT_PATH);
-		   dirPath = Utils.REC_TEST_DIR_EXT_PATH;
+				   "Folder to save audio file doese NOT exist, save audio file to " + Utils.ConstantVars.REC_TEST_DIR_EXT_PATH);
+		   dirPath = Utils.ConstantVars.REC_TEST_DIR_EXT_PATH;
 		}
 		if(fileName == null)
 		{
@@ -132,8 +133,8 @@ public class SrmRecorder
 	private void initializeSrmRecorder() 
 	{
 		audioSource = MediaRecorder.AudioSource.MIC;
-		sampleRateHz = Integer.parseInt(PrefActivitySettings.SAMPLE_RATE);
-		channels = Integer.parseInt(PrefActivitySettings.CHANNELS);
+		sampleRateHz = Integer.parseInt(Utils.ConstantVars.SAMPLE_RATE);
+		channels = Integer.parseInt(Utils.ConstantVars.CHANNELS);
 		
 		if(channels == 1) channelConfig = AudioFormat.CHANNEL_IN_MONO;
 		else if(channels == 2) channelConfig = AudioFormat.CHANNEL_IN_STEREO; //STEREO=12, MONO=16

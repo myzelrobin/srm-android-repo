@@ -11,7 +11,9 @@ import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.PreferenceActivity;
+import android.preference.PreferenceCategory;
 import android.preference.PreferenceFragment;
+import android.preference.PreferenceScreen;
 import android.support.v4.app.NavUtils;
 import android.util.Log;
 import android.view.MenuItem;
@@ -22,32 +24,7 @@ import android.view.MenuItem;
  */
 public class PrefActivitySettings extends PreferenceActivity 
 {
-	public static final String KEY_LANGUAGE = "lang";
-	public static final String KEY_LANGUAGE_DEF = "en";
-	public static String LANGUAGE = KEY_LANGUAGE_DEF;
 	
-	public static final String KEY_MICVOL = "mic_vol";
-	public static final String KEY_MICVOL_DEF = "-1";
-	public static String MICVOL = KEY_MICVOL_DEF;
-	
-	public static final String KEY_PREFSCREEN_RECVALUE = "prefscreen_recvalue";
-	
-	public static final String KEY_SAMPLE_RATE = "sample_rate";
-	public static final String KEY_SAMPLE_RATE_DEF = "22050";
-	public static String SAMPLE_RATE = KEY_SAMPLE_RATE_DEF;
-	
-	public static final String KEY_CHANNELS = "channels";
-	public static final String KEY_CHANNELS_DEF = "2";
-	public static String CHANNELS = KEY_CHANNELS_DEF;
-	
-	public static final String KEY_OVERWRITE = "overwrite"; // boolean value, default true
-	public static boolean ALLOW_OVERWRITE = true;
-	
-	public static final String KEY_OVERWRITE_WARNING = "overwrite_warning"; // boolean value, default true
-	public static boolean ALLOW_OVERWRITE_WARNING = true;
-	
-	public static final String KEY_RECORDS_PATH = "records_path";
-	public static final String KEY_RECORDS_PATH_DEF = "unknown";
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
@@ -78,60 +55,6 @@ public class PrefActivitySettings extends PreferenceActivity
 	    return super.onOptionsItemSelected(item);
 	}
 	
-
-
-
-
-
-	public static String getLANGUAGE() {
-		return LANGUAGE;
-	}
-
-	public static void setLANGUAGE(String lANGUAGE) {
-		LANGUAGE = lANGUAGE;
-	}
-
-	public static String getMICVOL() {
-		return MICVOL;
-	}
-
-	public static void setMICVOL(String mICVOL) {
-		MICVOL = mICVOL;
-	}
-
-	public static String getSAMPLE_RATE() {
-		return SAMPLE_RATE;
-	}
-
-	public static void setSAMPLE_RATE(String sAMPLE_RATE) {
-		SAMPLE_RATE = sAMPLE_RATE;
-	}
-
-	public static String getCHANNELS() {
-		return CHANNELS;
-	}
-
-	public static void setCHANNELS(String cHANNELS) {
-		CHANNELS = cHANNELS;
-	}
-
-	public static boolean isALLOW_OVERWRITE() {
-		return ALLOW_OVERWRITE;
-	}
-
-	public static void setALLOW_OVERWRITE(boolean aLLOW_OVERWRITE) {
-		ALLOW_OVERWRITE = aLLOW_OVERWRITE;
-	}
-
-	public static boolean isALLOW_OVERWRITE_WARNING() {
-		return ALLOW_OVERWRITE_WARNING;
-	}
-
-	public static void setALLOW_OVERWRITE_WARNING(boolean aLLOW_OVERWRITE_WARNING) {
-		ALLOW_OVERWRITE_WARNING = aLLOW_OVERWRITE_WARNING;
-	}
-	
-	
 	
 
 	
@@ -142,6 +65,8 @@ public class PrefActivitySettings extends PreferenceActivity
 	
 	
 	
+	
+
 	/**
 	 * 
 	 *
@@ -156,16 +81,12 @@ public class PrefActivitySettings extends PreferenceActivity
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.preference_settings);
             
-            SharedPreferences app_preferences = getPreferenceManager().getSharedPreferences();
-            SharedPreferences.Editor editor = app_preferences.edit();
-            editor.putString(KEY_RECORDS_PATH, Utils.REC_TEST_DIR_EXT_PATH);
-            editor.commit(); // Very important
-            
-            Log.w(this.getClass().getName(), "onCreate(): SharedPreference changed records_path(key) to " 
-            		+ app_preferences.getString(KEY_RECORDS_PATH, KEY_RECORDS_PATH_DEF));
-            
+            PreferenceScreen prefScreen = (PreferenceScreen) findPreference("pref_screen");
+            PreferenceCategory invisiblePrefCategory = (PreferenceCategory) findPreference("invisible_pref_cate");
+            prefScreen.removePreference(invisiblePrefCategory);
             
             getPreferenceManager().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
+            
         }
         
         @Override
@@ -181,54 +102,63 @@ public class PrefActivitySettings extends PreferenceActivity
     	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences,
     			String key) {
     		// TODO Auto-generated method stub
-    		if(key.equals(KEY_LANGUAGE))
+    		if(key.equals(Utils.ConstantVars.KEY_LANGUAGE))
     		{
-    			setLANGUAGE(sharedPreferences.getString(KEY_LANGUAGE, KEY_LANGUAGE_DEF));
+    			Utils.ConstantVars.setLANGUAGE(sharedPreferences.getString(Utils.ConstantVars.KEY_LANGUAGE, 
+    							Utils.ConstantVars.KEY_LANGUAGE_DEF));
     			Log.w(this.getClass().getName(), "changed language");
     			Utils.toastText(getActivity(), 
     					"changed language to " + 
-    					sharedPreferences.getString(KEY_LANGUAGE, KEY_LANGUAGE_DEF));
+    					sharedPreferences.getString(Utils.ConstantVars.KEY_LANGUAGE, 
+    							Utils.ConstantVars.KEY_LANGUAGE_DEF));
     		}
-    		if(key.equals(KEY_MICVOL))
+    		if(key.equals(Utils.ConstantVars.KEY_MICVOL))
     		{
-    			setMICVOL(sharedPreferences.getString(KEY_MICVOL, KEY_MICVOL_DEF));
+    			Utils.ConstantVars.setMICVOL(sharedPreferences.getString(Utils.ConstantVars.KEY_MICVOL, 
+    							Utils.ConstantVars.KEY_MICVOL_DEF));
     			Log.w(this.getClass().getName(), "changed microphone");
     			Utils.toastText(getActivity(), 
     					"changed microphone to " 
-    					+ sharedPreferences.getString(KEY_MICVOL, KEY_MICVOL_DEF));
+    					+ sharedPreferences.getString(Utils.ConstantVars.KEY_MICVOL, 
+    							Utils.ConstantVars.KEY_MICVOL_DEF));
     		}
-    		if(key.equals(KEY_SAMPLE_RATE))
+    		if(key.equals(Utils.ConstantVars.KEY_SAMPLE_RATE))
     		{
-    			setSAMPLE_RATE(sharedPreferences.getString(KEY_SAMPLE_RATE, KEY_SAMPLE_RATE_DEF));
+    			Utils.ConstantVars.setSAMPLE_RATE(sharedPreferences.getString(Utils.ConstantVars.KEY_SAMPLE_RATE, 
+    							Utils.ConstantVars.KEY_SAMPLE_RATE_DEF));
     			Log.w(this.getClass().getName(), "changed recording_values->sample_rate");
     			Utils.toastText(getActivity(), 
     					"changed recording_value->sample_rate to " 
-    					+ sharedPreferences.getString(KEY_SAMPLE_RATE, KEY_SAMPLE_RATE_DEF));
+    					+ sharedPreferences.getString(Utils.ConstantVars.KEY_SAMPLE_RATE, 
+    							Utils.ConstantVars.KEY_SAMPLE_RATE_DEF));
     		}
-    		if(key.equals(KEY_CHANNELS))
+    		if(key.equals(Utils.ConstantVars.KEY_CHANNELS))
     		{
-    			setCHANNELS(sharedPreferences.getString(KEY_CHANNELS, KEY_CHANNELS_DEF));
+    			Utils.ConstantVars.setCHANNELS(sharedPreferences.getString(Utils.ConstantVars.KEY_CHANNELS, 
+    							Utils.ConstantVars.KEY_CHANNELS_DEF));
     			Log.w(this.getClass().getName(), "changed recording_values->channels");
     			Utils.toastText(getActivity(), 
     					"changed recording_value->channels to " 
-    					+ sharedPreferences.getString(KEY_CHANNELS, KEY_CHANNELS_DEF));
+    					+ sharedPreferences.getString(Utils.ConstantVars.KEY_CHANNELS, 
+    							Utils.ConstantVars.KEY_CHANNELS_DEF));
     		}
-    		if(key.equals(KEY_OVERWRITE))
+    		if(key.equals(Utils.ConstantVars.KEY_OVERWRITE))
     		{
-    			setALLOW_OVERWRITE(sharedPreferences.getBoolean(KEY_OVERWRITE, true));
+    			Utils.ConstantVars.setALLOW_OVERWRITE(sharedPreferences.getBoolean(Utils.ConstantVars.KEY_OVERWRITE, 
+    					true));
     			Log.w(this.getClass().getName(), "changed recording_values->overwrite");
     			Utils.toastText(getActivity(), 
     					"changed recording_value->overwrite to " 
-    					+ sharedPreferences.getBoolean(KEY_OVERWRITE, true));
+    					+ sharedPreferences.getBoolean(Utils.ConstantVars.KEY_OVERWRITE, true));
     		}
-    		if(key.equals(KEY_OVERWRITE_WARNING))
+    		if(key.equals(Utils.ConstantVars.KEY_OVERWRITE_WARNING))
     		{
-    			setALLOW_OVERWRITE_WARNING(sharedPreferences.getBoolean(KEY_OVERWRITE_WARNING, 
+    			Utils.ConstantVars.setALLOW_OVERWRITE_WARNING(sharedPreferences.getBoolean(Utils.ConstantVars.KEY_OVERWRITE_WARNING, 
     					true));
     			Log.w(this.getClass().getName(), "changed recording_values->overwrite_warning");
     			Utils.toastText(getActivity(), 
     					"changed recording_value->overwrite_warning to " 
-    					+ sharedPreferences.getBoolean(KEY_OVERWRITE_WARNING, true));
+    					+ sharedPreferences.getBoolean(Utils.ConstantVars.KEY_OVERWRITE_WARNING, true));
     		}
     	}
 

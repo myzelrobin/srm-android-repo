@@ -120,7 +120,7 @@ import com.srandroid.util.Utils;
 					bTestrecord.setEnabled(false);
 					bCancel.setEnabled(false);
 					
-					recorderForMic = new SrmRecorder(Utils.REC_TEST_DIR_EXT_PATH, "test_mic", this);
+					recorderForMic = new SrmRecorder(Utils.ConstantVars.REC_TEST_DIR_EXT_PATH, "test_mic", this);
 					Log.w(this.getClass().getName(), SrmRecorder.TAG_TESTMIC 
 							+ ": AudioRecord recorderForMic is created: " 
 							+ "\nsampleRateHz=" + SrmRecorder.getSampleRateHz()
@@ -183,7 +183,7 @@ import com.srandroid.util.Utils;
 					 isBTestrecordClicked = 1;
 					 bTestrecord.setText(R.string.STOP);
 					 
-					 recorderForTestRecording = new SrmRecorder(Utils.REC_TEST_DIR_EXT_PATH, "test_record");
+					 recorderForTestRecording = new SrmRecorder(Utils.ConstantVars.REC_TEST_DIR_EXT_PATH, "test_record");
 					 Log.w(this.getClass().getName(), SrmRecorder.TAG_TESTREC 
 								+ ": AudioRecord recorderForTestRecording is created: " 
 								+ "\nsampleRateHz=" + SrmRecorder.getSampleRateHz()
@@ -232,7 +232,7 @@ import com.srandroid.util.Utils;
 		 protected void onSetInitialValue(boolean restorePersistedValue, Object defaultValue) {
 		     if (restorePersistedValue) {
 		         // Restore existing state
-		         volume_value = this.getPersistedString(PrefActivitySettings.KEY_MICVOL_DEF);
+		         volume_value = this.getPersistedString(Utils.ConstantVars.MICVOL);
 		     } else {
 		         // Set default state from the XML attribute
 		    	 volume_value = (String) defaultValue;

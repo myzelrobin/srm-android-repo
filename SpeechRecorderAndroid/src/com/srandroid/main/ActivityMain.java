@@ -7,6 +7,7 @@ import com.srandroid.overflow.PrefActivitySettings;
 import com.srandroid.util.Utils;
 
 import android.os.Bundle;
+import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.app.Activity;
 import android.app.Fragment;
@@ -87,25 +88,21 @@ public class ActivityMain extends Activity {
 	{
 		super.onCreate(savedInstanceState);
 		
-		// starts thread to set some global values for the app
-		initAppThread = new Thread(new Runnable() 
-		{	
-			@Override
-			public void run() 
-			{
-				Log.w(this.getClass().getName(), "onCreate(): Thread initAppThread=" 
-						+ initAppThread.getId()
-						+ " is started, will Utils.initializeApp()" );
-				Utils.initializeApp(getApplicationContext());
-			}
-		}, "initiliaze app Thread");
-		initAppThread.start();
+		// initialize block
 		
-		
+		// initialize some constant values
+		Utils.ConstantVars.initializeApp(getApplicationContext());
 		
 		// initialize the app with default values, need a method? is it necessary?
 		PreferenceManager.setDefaultValues(this, R.xml.preference_settings, false);
 		
+		// update some preferences
+		Utils.setSharedPreference(PreferenceManager.getDefaultSharedPreferences(this));;
+		
+		// initialize block
+		
+		
+		//
 		setContentView(R.layout.drawerlayout_in_activitymain);
 		
 		activity_title = drawer_items_title = getTitle();
