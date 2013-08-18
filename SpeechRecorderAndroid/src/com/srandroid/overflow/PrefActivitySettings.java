@@ -81,10 +81,6 @@ public class PrefActivitySettings extends PreferenceActivity
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.preference_settings);
             
-            PreferenceScreen prefScreen = (PreferenceScreen) findPreference("pref_screen");
-            PreferenceCategory invisiblePrefCategory = (PreferenceCategory) findPreference("invisible_pref_cate");
-            prefScreen.removePreference(invisiblePrefCategory);
-            
             getPreferenceManager().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
             
         }

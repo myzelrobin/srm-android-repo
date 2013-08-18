@@ -88,21 +88,27 @@ public class ActivityMain extends Activity {
 	{
 		super.onCreate(savedInstanceState);
 		
+		
+		
+		
+		
 		// initialize block
 		
 		// initialize some constant values
 		Utils.ConstantVars.initializeApp(getApplicationContext());
 		
-		// initialize the app with default values, need a method? is it necessary?
-		PreferenceManager.setDefaultValues(this, R.xml.preference_settings, true);
-		
-		// update some preferences
-		Utils.setSharedPreference(PreferenceManager.getDefaultSharedPreferences(this));;
+		// initialize the default values in SharedPreference
+		// PreferenceManager.setDefaultValues(this, R.xml.preference_settings, false);
+		Utils.initSharedPreference(PreferenceManager.getDefaultSharedPreferences(this));;
 		
 		// initialize block
 		
 		
-		//
+		
+		
+		
+		
+		
 		setContentView(R.layout.drawerlayout_in_activitymain);
 		
 		activity_title = drawer_items_title = getTitle();

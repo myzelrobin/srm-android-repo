@@ -67,69 +67,7 @@
                     android:key="@string/settings_overwrite_warning_key"
                     android:defaultValue="true" 
                     android:persistent="true" />
-                
-                <Preference 
-            android:key="byte_order1" 
-            android:defaultValue="Little Endian" 
-            android:persistent="true" /> 
-
+               
         </PreferenceCategory>
         
-    <PreferenceCategory 
-        android:key="invisible_pref_cate" >
-                
-        <Preference 
-            android:key="byte_order" 
-            android:defaultValue="Little Endian" 
-            android:persistent="true" /> 
-            <!-- Value:Little Endian, Big Endian, Unknown -->
-        <Preference 
-            android:key="encoding" 
-            android:defaultValue="PCM_16BIT" 
-            android:persistent="true" />
-            <!-- Value:PCM_16BIT, PCM_8BIT -->
-        <Preference 
-            android:key="sample size" 
-            android:defaultValue="2" 
-            android:persistent="true" />
-            <!-- Value:0, 1, 2, 3, 4 -->
-        <Preference 
-            android:key="recording_target" 
-            android:defaultValue="direct" 
-            android:persistent="true" />
-            <!-- Value:direct, temp_raw_file -->
-        <Preference 
-            android:key="recording_mode" 
-            android:defaultValue="manual" 
-            android:persistent="true" />
-            <!-- Value:manule, autoprogress, auto recording -->
-        <Preference 
-            android:key="autoprogress" 
-            android:defaultValue="true" 
-            android:persistent="true" />
-            <!-- autoprogress to next unrecorded item
-            Value: true,false -->
-        <Preference 
-            android:key="reset_peak" 
-            android:defaultValue="true" 
-            android:persistent="true" />
-            <!-- reset peak at start of recording
-            Value:true, false -->
-        <Preference 
-            android:key="prerecdelay" 
-            android:defaultValue="1000" 
-            android:persistent="true" />
-            <!-- Value: milisecond -->
-        <Preference 
-            android:key="postrecdelay" 
-            android:defaultValue="1000" 
-            android:persistent="true" />
-            <!-- Value: milisecond -->
-        <Preference 
-            android:key="records_path" 
-            android:defaultValue="unknown" 
-            android:persistent="true" />
-            <!-- Value: the path to the folder records -->
-    </PreferenceCategory>
-
 </PreferenceScreen>

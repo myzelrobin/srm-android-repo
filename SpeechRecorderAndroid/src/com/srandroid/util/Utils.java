@@ -29,6 +29,8 @@ public class Utils
 		
 		
 		// SharedPreferece key and default values
+		public static final String KEY_PREFSCREEN_RECVALUE = "prefscreen_recvalue";
+
 		public static final String KEY_LANGUAGE = "lang";
 		public static final String KEY_LANGUAGE_DEF = "en";
 		public static String LANGUAGE = KEY_LANGUAGE_DEF;
@@ -36,8 +38,6 @@ public class Utils
 		public static final String KEY_MICVOL = "mic_vol";
 		public static final String KEY_MICVOL_DEF = "-1";
 		public static String MICVOL = KEY_MICVOL_DEF;
-		
-		public static final String KEY_PREFSCREEN_RECVALUE = "prefscreen_recvalue";
 		
 		public static final String KEY_SAMPLE_RATE = "sample_rate";
 		public static final String KEY_SAMPLE_RATE_DEF = "22050";
@@ -53,8 +53,39 @@ public class Utils
 		public static final String KEY_OVERWRITE_WARNING = "overwrite_warning"; // boolean value, default true
 		public static boolean ALLOW_OVERWRITE_WARNING = true;
 		
+		
+		// invisible, user can not change these preferences
+		public static final String KEY_BYTE_ORDER = "byte_order";
+		public static final String KEY_BYTE_ORDER_DEF = "Little Endian"; // Little Endian, Big Endian, Unknown
+		
+		public static final String KEY_ENCODING = "encoding";
+		public static final String KEY_ENCODING_DEF = "PCM_16BIT"; // PCM_16BIT, PCM_8BIT
+		
+		public static final String KEY_SAMPLE_SIZE = "sample_size";
+		public static final String KEY_SAMPLE_SIZE_DEF = "2"; // 0, 1, 2, 3, 4
+		
+		public static final String KEY_RRCORDING_TARGET = "recording_target";
+		public static final String KEY_RECORDING_TARGET_DEF = "direct"; // direct, temp_raw_file
+		
+		public static final String KEY_AUTOPROGRESS = "auto_progress"; 
+		public static boolean ALLOW_AUTOPROGRESS = true;
+		// boolean, default true, autoprogress to next unrecorded item 
+		
+		public static final String KEY_RESET_PEAK = "reset_peak";
+		public static boolean ALLOW_RESET_PEAK= true;
+		// boolean, default true, reset peak at start of recording
+		
+		public static final String KEY_PRERECDELAY = "prerecdelay";
+		public static final String KEY_PRERECDELAY_DEF = "1000"; // float number, millisecond
+		
+		public static final String KEY_POSTRECDELAY = "postrecdelay";
+		public static final String KEY_POSTRECDELAY_DEF = "1000"; // float number, millisecond
+		
 		public static final String KEY_RECORDS_PATH = "records_path";
 		public static final String KEY_RECORDS_PATH_DEF = "unknown";
+		
+		
+		
 		
 		
 		// path variables
@@ -64,6 +95,13 @@ public class Utils
 		public static String APP_FILES_DIR_EXT_PATH; // app external foler "files"
 		public static String REC_FILES_DIR_EXT_PATH; // folder "records" in "files"
 		public static String REC_TEST_DIR_EXT_PATH; // folder "test_mic" in "records"
+		
+		
+		
+		
+		
+		
+		
 		
 		public static boolean isPreStartInitialized = false;
 		
@@ -139,86 +177,7 @@ public class Utils
 		public static void setALLOW_OVERWRITE_WARNING(boolean aLLOW_OVERWRITE_WARNING) {
 			ALLOW_OVERWRITE_WARNING = aLLOW_OVERWRITE_WARNING;
 		}
-		/**
-		 * @return the aPP_DIR_INT_PATH
-		 */
-		public static String getAPP_DIR_INT_PATH() {
-			return APP_DIR_INT_PATH;
-		}
-		/**
-		 * @param aPP_DIR_INT_PATH the aPP_DIR_INT_PATH to set
-		 */
-		public static void setAPP_DIR_INT_PATH(String aPP_DIR_INT_PATH) {
-			APP_DIR_INT_PATH = aPP_DIR_INT_PATH;
-		}
-		/**
-		 * @return the aPP_FILES_DIR_INT_PATH
-		 */
-		public static String getAPP_FILES_DIR_INT_PATH() {
-			return APP_FILES_DIR_INT_PATH;
-		}
-		/**
-		 * @param aPP_FILES_DIR_INT_PATH the aPP_FILES_DIR_INT_PATH to set
-		 */
-		public static void setAPP_FILES_DIR_INT_PATH(String aPP_FILES_DIR_INT_PATH) {
-			APP_FILES_DIR_INT_PATH = aPP_FILES_DIR_INT_PATH;
-		}
-		/**
-		 * @return the aPP_DIR_EXT_PATH
-		 */
-		public static String getAPP_DIR_EXT_PATH() {
-			return APP_DIR_EXT_PATH;
-		}
-		/**
-		 * @param aPP_DIR_EXT_PATH the aPP_DIR_EXT_PATH to set
-		 */
-		public static void setAPP_DIR_EXT_PATH(String aPP_DIR_EXT_PATH) {
-			APP_DIR_EXT_PATH = aPP_DIR_EXT_PATH;
-		}
-		/**
-		 * @return the aPP_FILES_DIR_EXT_PATH
-		 */
-		public static String getAPP_FILES_DIR_EXT_PATH() {
-			return APP_FILES_DIR_EXT_PATH;
-		}
-		/**
-		 * @param aPP_FILES_DIR_EXT_PATH the aPP_FILES_DIR_EXT_PATH to set
-		 */
-		public static void setAPP_FILES_DIR_EXT_PATH(String aPP_FILES_DIR_EXT_PATH) {
-			APP_FILES_DIR_EXT_PATH = aPP_FILES_DIR_EXT_PATH;
-		}
-		/**
-		 * @return the rEC_FILES_DIR_EXT_PATH
-		 */
-		public static String getREC_FILES_DIR_EXT_PATH() {
-			return REC_FILES_DIR_EXT_PATH;
-		}
-		/**
-		 * @param rEC_FILES_DIR_EXT_PATH the rEC_FILES_DIR_EXT_PATH to set
-		 */
-		public static void setREC_FILES_DIR_EXT_PATH(String rEC_FILES_DIR_EXT_PATH) {
-			REC_FILES_DIR_EXT_PATH = rEC_FILES_DIR_EXT_PATH;
-		}
-		/**
-		 * @return the rEC_TEST_DIR_EXT_PATH
-		 */
-		public static String getREC_TEST_DIR_EXT_PATH() {
-			return REC_TEST_DIR_EXT_PATH;
-		}
-		/**
-		 * @param rEC_TEST_DIR_EXT_PATH the rEC_TEST_DIR_EXT_PATH to set
-		 */
-		public static void setREC_TEST_DIR_EXT_PATH(String rEC_TEST_DIR_EXT_PATH) {
-			REC_TEST_DIR_EXT_PATH = rEC_TEST_DIR_EXT_PATH;
-		}
 		
-		/**
-		 * @param isPreStartInitialized the isPreStartInitialized to set
-		 */
-		public static void setPreStartInitialized(boolean isPreStartInitialized) {
-			ConstantVars.isPreStartInitialized = isPreStartInitialized;
-		}
-
 		public static void initializeApp(Context context)
 		{
 			
@@ -270,15 +229,55 @@ public class Utils
 	
 	
 	
-	public static void setSharedPreference(SharedPreferences sharedPreferences) 
+	public static void initSharedPreference(SharedPreferences sharedPreferences) 
 	{
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(Utils.ConstantVars.KEY_RECORDS_PATH, Utils.ConstantVars.REC_TEST_DIR_EXT_PATH);
+		SharedPreferences.Editor editor = sharedPreferences.edit();
+		
+		editor.putString(Utils.ConstantVars.KEY_LANGUAGE, Utils.ConstantVars.KEY_LANGUAGE_DEF);
+        editor.commit(); 
+		
+		editor.putString(Utils.ConstantVars.KEY_MICVOL, Utils.ConstantVars.KEY_MICVOL_DEF);
+        editor.commit(); 
+		
+		editor.putString(Utils.ConstantVars.KEY_SAMPLE_RATE, Utils.ConstantVars.KEY_SAMPLE_RATE_DEF);
+        editor.commit(); 
+		
+		editor.putString(Utils.ConstantVars.KEY_CHANNELS, Utils.ConstantVars.KEY_CHANNELS_DEF);
+        editor.commit(); 
+		
+		editor.putBoolean(Utils.ConstantVars.KEY_OVERWRITE, Utils.ConstantVars.ALLOW_OVERWRITE);
+        editor.commit(); 
+		
+		editor.putBoolean(Utils.ConstantVars.KEY_OVERWRITE_WARNING, Utils.ConstantVars.ALLOW_OVERWRITE_WARNING);
+        editor.commit(); 
+		
+		editor.putString(Utils.ConstantVars.KEY_BYTE_ORDER, Utils.ConstantVars.KEY_BYTE_ORDER_DEF);
+        editor.commit(); 
+		
+		editor.putString(Utils.ConstantVars.KEY_ENCODING, Utils.ConstantVars.KEY_ENCODING_DEF);
+        editor.commit(); 
+		
+		editor.putString(Utils.ConstantVars.KEY_SAMPLE_SIZE, Utils.ConstantVars.KEY_SAMPLE_SIZE_DEF);
+        editor.commit(); 
+		
+		editor.putString(Utils.ConstantVars.KEY_RRCORDING_TARGET, Utils.ConstantVars.KEY_RECORDING_TARGET_DEF);
+        editor.commit(); 
+		
+		editor.putBoolean(Utils.ConstantVars.KEY_AUTOPROGRESS, Utils.ConstantVars.ALLOW_AUTOPROGRESS);
+        editor.commit(); 
+		
+		editor.putBoolean(Utils.ConstantVars.KEY_RESET_PEAK, Utils.ConstantVars.ALLOW_RESET_PEAK);
         editor.commit(); 
         
-        Log.w(Utils.class.getName(), "setSharedPreference(): SharedPreference changed records_path(key) to " 
-        		+ sharedPreferences.getString(Utils.ConstantVars.KEY_RECORDS_PATH, 
-        				Utils.ConstantVars.KEY_RECORDS_PATH_DEF));
+		editor.putString(Utils.ConstantVars.KEY_PRERECDELAY, Utils.ConstantVars.KEY_PRERECDELAY_DEF);
+        editor.commit(); 
+		
+		editor.putString(Utils.ConstantVars.KEY_POSTRECDELAY, Utils.ConstantVars.KEY_POSTRECDELAY_DEF);
+        editor.commit(); 
+		
+		editor.putString(Utils.ConstantVars.KEY_RECORDS_PATH, Utils.ConstantVars.KEY_RECORDS_PATH_DEF);
+        editor.commit(); 
+		
 	}
 
 	// Toast some text for debugging
