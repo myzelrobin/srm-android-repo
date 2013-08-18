@@ -5,7 +5,7 @@
         android:title="@string/settings_application" >
         <ListPreference
             android:title="@string/settings_language" 
-            android:summary="Set the language of the app" 
+            android:summary="@string/settings_language_summary" 
             android:dialogTitle="@string/settings_language"
             android:entries="@array/language_items"
             android:entryValues="@array/language_items_values"
@@ -20,7 +20,7 @@
         android:title="@string/settings_hardware" >
             <com.srandroid.overflow.DialogSetMicrophoneVolume
 	            android:title="@string/settings_microphone"
-	            android:summary="Set the microphone volume" 
+	            android:summary="@string/settings_microphone_summary" 
 	            android:key="@string/settings_mic_volume_key" 
 	            android:defaultValue="@string/settings_mic_volume_default" 
 	            android:persistent="true" />
@@ -30,7 +30,7 @@
             android:title="@string/settings_recvalue" >
                 
                 <ListPreference
-                    android:summary="Set sample rate value"
+                    android:summary="@string/settings_sample_rate_summary"
                     android:title="@string/settings_sample_rate" 
                     android:dialogTitle="@string/settings_sample_rate"
                     android:entries="@array/sample_rate_items"
@@ -42,7 +42,7 @@
                     android:persistent="true" />
                 
                 <ListPreference
-                    android:summary="Set channels"
+                    android:summary="@string/settings_channels_summary"
                     android:title="@string/settings_channels" 
                     android:dialogTitle="@string/settings_channels"
                     android:entries="@array/channels_items"
@@ -55,14 +55,14 @@
     
                 <CheckBoxPreference
                     android:title="@string/settings_overwrite"
-                    android:summary="Overwrite origninal file" 
+                    android:summary="@string/settings_overwrite_summary" 
                     android:key="@string/settings_overwrite_key"
                     android:defaultValue="true" 
                     android:persistent="true" />
                 
                 <CheckBoxPreference
                     android:title="@string/settings_overwrite_warning"
-                    android:summary="Show warning before overwriting origninal file" 
+                    android:summary="@string/settings_overwrite_warning_summary" 
                     android:key="@string/settings_overwrite_warning_key"
                     android:defaultValue="true" 
                     android:persistent="true" />

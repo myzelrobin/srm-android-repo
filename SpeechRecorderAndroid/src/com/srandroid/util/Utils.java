@@ -148,6 +148,16 @@ public class Utils
          //Log.w(this.getClass().getName(), "playRecord(): startActivity(intent) throws Exception " + e.getMessage());
         
 	}
+	
+	public static void setItemBGSize()
+	{
+		// get screen size in dp
+//		DisplayMetrics displayMetrics = new DisplayMetrics(); 
+//		getWindowManager().getDefaultDisplay().getMetrics(displayMetrics); 
+//		float screenWidthDp = displayMetrics.widthPixels / displayMetrics.density; 
+//		float screenHeightDp = displayMetrics.heightPixels / displayMetrics.density; 
+//		textView.setText("this display: Pixels width=" + displayMetrics.widthPixels + " height=" + displayMetrics.heightPixels + "; " + "\nDensity=" + displayMetrics.density + "\nDP width=" + screenWidthDp + "\n height=" + screenHeightDp);
+	}
 }
 
 

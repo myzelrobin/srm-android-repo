@@ -20,9 +20,11 @@
     <string name="CLOSE">CLOSE</string>
     <string name="OPEN">OPEN</string>
     <string name="TESTVIEWTEXT">
-        The quick brown fox jumps over the lazy dog.
-        \nThe quick brown fox jumps over the lazy dog.
-        \nThe quick brown fox jumps over the lazy dog.</string>
+        The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.
+        \nThe quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.
+        \nThe quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.
+        \nThe quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.
+        \nThe quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.</string>
     
     
     
@@ -55,6 +57,7 @@
 	       <!-- language -->
 	       <string name="settings_application">Application</string>
 	       <string name="settings_language">Language</string>
+	       <string name="settings_language_summary">Set the language of the app</string>
 	       <string name="settings_lang_key">lang</string>
 	       <string name="settings_lang_default">en</string>
 			    <string-array name="language_items">
@@ -73,6 +76,7 @@
 	       <!-- microphone -->
 	       <string name="settings_hardware">Hardware</string>
 	       <string name="settings_microphone">Microphone</string>
+	       <string name="settings_microphone_summary">Set the microphone volume</string>
 	       <string name="settings_mic_volume_key">mic_vol</string>
 	       <string name="settings_mic_volume_default">-1</string>
 	       <string name="dialogmessage_microphone">
@@ -86,6 +90,7 @@
 	       
 	           <!-- sample rate -->
 	           <string name="settings_sample_rate">Sample Rate</string>
+	           <string name="settings_sample_rate_summary">Set sample rate value</string>
 	           <string name="settings_sample_rate_key">sample_rate</string>
 	           <string name="settings_sample_rate_default">22050</string>
 		            <string-array name="sample_rate_items">
@@ -113,6 +118,7 @@
 		       <!-- channels -->
                <string name="settings_channels">Channels</string>
                <string name="settings_channels_key">channels</string>
+               <string name="settings_channels_summary">Set channels</string>
                <string name="settings_channels_default">2</string>
                     <string-array name="channels_items">
                         <item>1 Channel</item>
@@ -127,10 +133,12 @@
                 <!-- Overwrite -->
                 <string name="settings_overwrite">Overwrite</string>
                 <string name="settings_overwrite_key">overwrite</string>
+                <string name="settings_overwrite_summary">Overwrite original file</string>
                 
                 <!-- Overwrite -->
                 <string name="settings_overwrite_warning">Overwrite Warning</string>
                 <string name="settings_overwrite_warning_key">overwrite_warning</string>
+                <string name="settings_overwrite_warning_summary">Show warning before overwriting original file</string>
 	       
     
 </resources>
