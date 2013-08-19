@@ -430,33 +430,41 @@ public class ActivityMain extends Activity {
         							Bundle savedInstanceState) 
         {
         	int i = getArguments().getInt(ARG_FRAGMENT_NUMBER);
-        	View rootView = null;
+        	View fragmentView = null;
+        	String fragmentTitle = null;
+        	
+        	Log.w(FragmentInActivityMain.class.getName(), "onCreateView() will update Fragment with arg=" + i);
+        	
+        	
         	switch(i)
         	{
         		default: break;
         		case 0: // Sessions
-        			updateFragment(inflater, container, rootView, i, 
-        					R.layout.layout_testlayout_sessions);
+        			fragmentView = inflater.inflate(R.layout.layout_testlayout_sessions, container, false);
+                	fragmentTitle = getResources().getStringArray(R.array.array_drawer_items)[i];
+                	getActivity().setTitle(fragmentTitle);
         			break;
         		case 1: // Scripts
-                    updateFragment(inflater, container, rootView, i,
-        					R.layout.layout_testlayout_scripts);
+        			fragmentView = inflater.inflate(R.layout.layout_testlayout_scripts, container, false);
+                	fragmentTitle = getResources().getStringArray(R.array.array_drawer_items)[i];
+                	getActivity().setTitle(fragmentTitle);
         			break;
         		case 2: // Speakers
-        			updateFragment(inflater, container, rootView, i, 
-        					R.layout.layout_testlayout_speakers);
+        			fragmentView = inflater.inflate(R.layout.layout_testlayout_speakers, container, false);
+                	fragmentTitle = getResources().getStringArray(R.array.array_drawer_items)[i];
+                	getActivity().setTitle(fragmentTitle);
         			break;
         		
         	}
             
             //TextView textview_in_fragment = (TextView) rootView.findViewById(R.id.textview_in_fragment);
             //textview_in_fragment.setText(fragment_title);
-            return rootView;
+        	return fragmentView;
         }
         
         public void updateFragment(LayoutInflater inflater, 
 				ViewGroup container,
-				View rootView,
+				View fragmentView,
         		int argumentNumber, 
         		int layoutIndex)
         {
@@ -464,9 +472,10 @@ public class ActivityMain extends Activity {
         	
         	Log.w(FragmentInActivityMain.class.getName(), "updateFragment() will update Fragment with arg=" + argumentNumber);
         	
-        	rootView = inflater.inflate(layoutIndex, container, false);
+        	fragmentView = inflater.inflate(layoutIndex, container, false);
         	fragmentTitle = getResources().getStringArray(R.array.array_drawer_items)[argumentNumber];
         	getActivity().setTitle(fragmentTitle);
+        	
         }
         
         @Override
