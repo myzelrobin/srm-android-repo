@@ -152,20 +152,88 @@
         <string name="key_speaker_attr_birthday">birthday</string>
         
         <!-- Speaker Example -->
-        <string name="speaker1_name" >Adam Speakerman</string>
+        <string name="speaker1_name" >Adam Example</string>
         <string name="speaker1_firstname">Adam</string>
-        <string name="speaker1_surname">Speakerman</string>
+        <string name="speaker1_surname">Example</string>
         <string name="speaker1_sex">male</string>
-        <string name="speaker1_accent">British</string>
+        <string name="speaker1_accent">Bayerisch</string>
         <string name="speaker1_birthday">YYYY,MM,DD</string>
         
-        <string name="speaker2_name" >Mary Speakerlady</string>
+        <string name="speaker2_name" >Mary Example</string>
         <string name="speaker2_firstname">Mary</string>
-        <string name="speaker2_surname">Speakerlady</string>
+        <string name="speaker2_surname">Example</string>
         <string name="speaker2_sex">female</string>
         <string name="speaker2_accent">Bayerisch</string>
         <string name="speaker2_birthday">YYYY,MM,DD</string>
+        
+        <!-- Item script -->
+        <string name="script_attr_id">ID</string>
+        <string name="script_attr_description">Description</string>
+        
+        <string name="script_attr_id_key">_id</string>
+        <string name="script_attr_description_key">description</string>
+        
+        <!-- Script Example -->
+        <string name="script1_id">Script ID: #1</string>
+        <string name="script1_description">This is a script example.</string>
+        
+        <!-- Item session -->
+        <string name="session_attr_id">ID</string>
+        <string name="session_attr_script_id">Script ID</string>
+        <string name="session_attr_creation_day">Created on</string>
+        <string name="session_attr_creation_place">Created at</string>
+        <string name="session_attr_state">Finished</string>
+        
+        <string name="session_attr_id_key">_id</string>
+        <string name="session_attr_script_id_key">script_id</string>
+        <string name="session_attr_creation_day_key">day</string>
+        <string name="session_attr_creation_place_key">place</string>
+        <string name="session_attr_state_key">state</string>
+        
+        <!-- Session Example -->
+        <string name="session1_id">Session ID: #1</string>
+        <string name="session1_script_id">Script ID: #1</string>
+        <string name="session1_creation">Created on YYYY,MM,DD\nin Munich</string>
+        <string name="session1_state">Finished</string>
+
+        
 </resources>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- channels  original
 <string-array name="channels_items">

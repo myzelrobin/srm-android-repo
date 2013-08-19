@@ -23,7 +23,7 @@
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:scaleType="fitXY"
-                android:src="@drawable/icon_speaker_256"  />
+                android:src="@drawable/icon_session_256"  />
         </LinearLayout>  
         
 	    <LinearLayout 
@@ -35,31 +35,31 @@
 	        android:orientation="vertical" >
 	        
 	        <TextView 
-	            android:id="@+id/nameInItemSpeaker"
+	            android:id="@+id/idInItemSession"
 	            android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="26sp" 
                 android:textStyle="bold"
-                android:text="@string/speaker2_name"/>
+                android:text="@string/session1_id"/>
 	        <TextView 
-                android:id="@+id/sexInItemSpeaker"
+                android:id="@+id/scriptIdInItemSession"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18sp" 
-                android:text="@string/speaker2_sex"/>
+                android:text="@string/session1_script_id"/>
 	        <TextView 
-                android:id="@+id/accentInItemSpeaker"
+                android:id="@+id/creationInfoInItemSession"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18sp" 
-                android:text="@string/speaker2_accent"/>
+                android:text="@string/session1_creation"/>
 	        <TextView 
-                android:id="@+id/birthdayInItemSpeaker"
+                android:id="@+id/isFinishedInItemSession"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18sp" 
-                android:text="@string/speaker2_birthday"/>
-	        
+                android:textColor="#00FF00"
+                android:text="@string/session1_state"/>
 	    </LinearLayout>
     </LinearLayout>
 </LinearLayout>

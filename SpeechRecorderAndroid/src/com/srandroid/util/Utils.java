@@ -101,7 +101,7 @@ public class Utils
 		
 		// layout values
 		// item in Fragment in ActivityMain
-		public static final int ITEMWIDTH = 480;
+		public static final int ITEMWIDTH = 460;
 		public static final int ITEMHEIGHT = 160;
 		public static int screenWidth = 0;
 		public static int screenHeight = 0;
@@ -186,9 +186,6 @@ public class Utils
 		
 		public static void initializeApp(Context context)
 		{
-			
-			if(isPreStartInitialized) return;
-			
 			Log.w(Utils.class.getName(), "initializeApp(): will initialize data before app starts");
 			// get application folder path (/data/data/APP_PACKAGE/)
 			try {

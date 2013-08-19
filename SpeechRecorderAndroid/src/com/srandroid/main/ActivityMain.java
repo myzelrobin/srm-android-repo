@@ -95,7 +95,8 @@ public class ActivityMain extends Activity {
 		// initialize block
 		
 		// initialize some constant values
-		Utils.ConstantVars.initializeApp(getApplicationContext());
+		if(!Utils.ConstantVars.isPreStartInitialized)
+			Utils.ConstantVars.initializeApp(getApplicationContext());
 		
 		// initialize the default values in SharedPreference
 		// PreferenceManager.setDefaultValues(this, R.xml.preference_settings, false);
