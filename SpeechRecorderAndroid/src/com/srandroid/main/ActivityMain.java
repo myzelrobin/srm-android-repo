@@ -463,7 +463,7 @@ public class ActivityMain extends Activity {
         	String fragmentTitle = null;
         	
         	rootView = inflater.inflate(layoutIndex, container, false);
-        	fragmentTitle = getResources().getStringArray(R.array.drawer_items)[argumentNumber];
+        	fragmentTitle = getResources().getStringArray(R.array.array_drawer_items)[argumentNumber];
         	getActivity().setTitle(fragmentTitle);
         }
         
