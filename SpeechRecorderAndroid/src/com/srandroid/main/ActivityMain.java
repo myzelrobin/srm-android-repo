@@ -37,11 +37,11 @@ public class ActivityMain extends Activity {
 	
 	// fields for Drawer
 	private CharSequence activity_title;
-	private CharSequence drawer_items_title;
+	private CharSequence title_drawer_items;
 	private String[] array_drawer_items;
-    private DrawerLayout drawer_layout_activity_main;
+    private DrawerLayout drawerlayout_in_activitymain;
     private ListView listview_drawer_items;
-    private ActionBarDrawerToggle drawer_items_toggle;
+    private ActionBarDrawerToggle toggle_drawer_items;
     
     
     // 
@@ -102,25 +102,25 @@ public class ActivityMain extends Activity {
 		
 		setContentView(R.layout.drawerlayout_in_activitymain);
 		
-		activity_title = drawer_items_title = getTitle();
+		activity_title = title_drawer_items = getTitle();
 				
 		// Creates drawer
-		array_drawer_items = getResources().getStringArray(R.array.drawer_items);
+		array_drawer_items = getResources().getStringArray(R.array.array_drawer_items);
         listview_drawer_items = (ListView) findViewById(R.id.listview_drawer_items);
-        drawer_layout_activity_main = (DrawerLayout) findViewById(R.id.drawer_layout_activity_main);
+        drawerlayout_in_activitymain = (DrawerLayout) findViewById(R.id.drawer_layout_activity_main);
 
         // Set the adapter for the list view
         listview_drawer_items.setAdapter(new ArrayAdapter<String>(this,
                 R.layout.layout_drawer_items, array_drawer_items));
         
-        int select_sessions = Arrays.asList(array_drawer_items).indexOf("Sessions");
+        int sessionsIndex = Arrays.asList(array_drawer_items).indexOf("Sessions");
         // Set the list's click listener
-        listview_drawer_items.setOnItemClickListener(new DrawerItemClickListener(select_sessions));
+        listview_drawer_items.setOnItemClickListener(new DrawerItemClickListener(sessionsIndex));
         
         // Set the open&close listener in actionbar(swipe and click app icon)
-        drawer_items_toggle = new ActionBarDrawerToggle(
+        toggle_drawer_items = new ActionBarDrawerToggle(
         		this,                         /* host Activity */
-    			drawer_layout_activity_main,   /* DrawerLayout object */
+    			drawerlayout_in_activitymain,   /* DrawerLayout object */
 				R.drawable.ic_drawer,          /* new drawer icon to replace 'Up' caret */
 				R.string.drawer_items_open,    /* "open drawer" description */
 				R.string.drawer_items_close   /* "close drawer" description */
@@ -135,13 +135,13 @@ public class ActivityMain extends Activity {
             /** Called when a drawer has settled in a completely open state. */
             public void onDrawerOpened(View drawerView) 
             {
-                getActionBar().setTitle(drawer_items_title);
+                getActionBar().setTitle(title_drawer_items);
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
         };
 
         // Set the drawer toggle as the DrawerListener
-        drawer_layout_activity_main.setDrawerListener(drawer_items_toggle);
+        drawerlayout_in_activitymain.setDrawerListener(toggle_drawer_items);
         
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);
@@ -192,7 +192,7 @@ public class ActivityMain extends Activity {
 	{
         super.onPostCreate(savedInstanceState);
         // Sync the toggle state after onRestoreInstanceState has occurred.
-        drawer_items_toggle.syncState();
+        toggle_drawer_items.syncState();
     }
 	
     @Override
@@ -200,7 +200,7 @@ public class ActivityMain extends Activity {
     {
         super.onConfigurationChanged(newConfig);
         // Updates the toggle when the device configuration changes while your activity is running
-        drawer_items_toggle.onConfigurationChanged(newConfig);
+        toggle_drawer_items.onConfigurationChanged(newConfig);
     }
     
 	/**
@@ -228,7 +228,7 @@ public class ActivityMain extends Activity {
     public boolean onPrepareOptionsMenu(Menu menu) 
 	{
         // If the navigation drawer is open, hide action items related to the content view
-        boolean isDrawerOpen = drawer_layout_activity_main.isDrawerOpen(listview_drawer_items);
+        boolean isDrawerOpen = drawerlayout_in_activitymain.isDrawerOpen(listview_drawer_items);
         
         // menu.findItem(R.id.button_search).setEnabled(!drawerOpen);
         menu.setGroupVisible(R.id.bgroup_overflow, !isDrawerOpen);
@@ -264,7 +264,7 @@ public class ActivityMain extends Activity {
 	{
         // Pass the event to ActionBarDrawerToggle, if it returns
         // true, then it has handled the app icon touch event
-        if (drawer_items_toggle.onOptionsItemSelected(item)) 
+        if (toggle_drawer_items.onOptionsItemSelected(item)) 
         {
           return true;
         }
@@ -379,26 +379,31 @@ public class ActivityMain extends Activity {
 	    // Insert the fragment by replacing any existing fragment
 	    FragmentManager fragmentManager = getFragmentManager();
 	    fragmentManager.beginTransaction()
-	                   .replace(R.id.content_frame, fragment)
+	                   .replace(R.id.framelayout_in_drawerlayout_activitymain, fragment)
 	                   .commit();
 	
 	    // Highlight the selected item, update the title, and close the drawer
 	    listview_drawer_items.setItemChecked(position, true);
 	    setTitle(array_drawer_items[position]);
-	    drawer_layout_activity_main.closeDrawer(listview_drawer_items);
+	    drawerlayout_in_activitymain.closeDrawer(listview_drawer_items);
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	/**
+	 * @return the array_drawer_items
+	 */
+	public String[] getArray_drawer_items() {
+		return array_drawer_items;
+	}
+
+
+	/**
+	 * @param array_drawer_items the array_drawer_items to set
+	 */
+	public void setArray_drawer_items(String[] array_drawer_items) {
+		this.array_drawer_items = array_drawer_items;
+	}
+
+
 	
 	
 	/**
@@ -424,14 +429,42 @@ public class ActivityMain extends Activity {
         							ViewGroup container, 
         							Bundle savedInstanceState) 
         {
-            View rootView = inflater.inflate(R.layout.layout_testlayout, container, false);
-            int i = getArguments().getInt(ARG_FRAGMENT_NUMBER);
-            String fragment_title = getResources().getStringArray(R.array.drawer_items)[i];
+        	int i = getArguments().getInt(ARG_FRAGMENT_NUMBER);
+        	View rootView = null;
+        	switch(i)
+        	{
+        		default: break;
+        		case 0: // Sessions
+        			updateFragment(inflater, container, rootView, i, 
+        					R.layout.layout_testlayout_sessions);
+        			break;
+        		case 1: // Scripts
+                    updateFragment(inflater, container, rootView, i,
+        					R.layout.layout_testlayout_scripts);
+        			break;
+        		case 2: // Speakers
+        			updateFragment(inflater, container, rootView, i, 
+        					R.layout.layout_testlayout_speakers);
+        			break;
+        		
+        	}
+            
             //TextView textview_in_fragment = (TextView) rootView.findViewById(R.id.textview_in_fragment);
             //textview_in_fragment.setText(fragment_title);
-            getActivity().setTitle(fragment_title);
-            
             return rootView;
+        }
+        
+        public void updateFragment(LayoutInflater inflater, 
+				ViewGroup container,
+				View rootView,
+        		int argumentNumber, 
+        		int layoutIndex)
+        {
+        	String fragmentTitle = null;
+        	
+        	rootView = inflater.inflate(layoutIndex, container, false);
+        	fragmentTitle = getResources().getStringArray(R.array.drawer_items)[argumentNumber];
+        	getActivity().setTitle(fragmentTitle);
         }
         
         @Override

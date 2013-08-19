@@ -9,9 +9,10 @@ package com.srandroid;
 
 public final class R {
     public static final class array {
+        public static final int array_drawer_items=0x7f070000;
         public static final int channels_items=0x7f070005;
         public static final int channels_items_values=0x7f070006;
-        public static final int drawer_items=0x7f070000;
+        public static final int drawer_items=0x7f070007;
         /**  languages 
  languages 
  languages 
@@ -24,8 +25,8 @@ public final class R {
  interfaces 
  interfaces 
          */
-        public static final int theme_items=0x7f070007;
-        public static final int theme_items_values=0x7f070008;
+        public static final int theme_items=0x7f070008;
+        public static final int theme_items_values=0x7f070009;
     }
     public static final class attr {
     }
@@ -74,10 +75,10 @@ public final class R {
         public static final int button_settings=0x7f0a001d;
         public static final int button_testmic_in_dialog_mic=0x7f0a0003;
         public static final int button_testrecord_in_dialog_mic=0x7f0a0004;
-        public static final int content_frame=0x7f0a0006;
         public static final int creationInfoInItemSession=0x7f0a0014;
         public static final int descriptionInItemScript=0x7f0a0011;
         public static final int drawer_layout_activity_main=0x7f0a0005;
+        public static final int framelayout_in_drawerlayout_activitymain=0x7f0a0006;
         public static final int gridLayout_in_fragment_in_activitymain=0x7f0a0008;
         public static final int iconInItemSpeaker=0x7f0a000f;
         public static final int idInItemScript=0x7f0a0010;
@@ -105,7 +106,10 @@ public final class R {
         public static final int layout_item_session=0x7f030005;
         public static final int layout_item_speaker=0x7f030006;
         public static final int layout_testlayout=0x7f030007;
-        public static final int layout_toasthint_in_activitymain=0x7f030008;
+        public static final int layout_testlayout_scripts=0x7f030008;
+        public static final int layout_testlayout_sessions=0x7f030009;
+        public static final int layout_testlayout_speakers=0x7f03000a;
+        public static final int layout_toasthint_in_activitymain=0x7f03000b;
     }
     public static final class menu {
         public static final int menu_items=0x7f090000;

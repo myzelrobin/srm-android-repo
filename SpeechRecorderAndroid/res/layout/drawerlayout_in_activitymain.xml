@@ -7,7 +7,7 @@
     tools:context=".ActivityMain" >
     <!-- The main content view -->
     <FrameLayout
-        android:id="@+id/content_frame"
+        android:id="@+id/framelayout_in_drawerlayout_activitymain"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
     <!-- The navigation drawer -->

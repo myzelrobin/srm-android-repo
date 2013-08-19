@@ -31,7 +31,7 @@
 	    <string name="drawer_items_close">Close navigation drawer</string>
 	    <string name="swipeHintText">Swipe from here to right</string>
 	    
-	    <string-array name="drawer_items">
+	    <string-array name="array_drawer_items">
 	        <item>Sessions</item>
 	        <item>Scripts</item>
 	        <item>Speakers</item>
