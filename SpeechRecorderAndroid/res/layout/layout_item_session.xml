@@ -1,64 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="480dp"
-    android:layout_height="160dp"
-    android:gravity="center"
-    android:orientation="vertical" >
+    style="@style/style_linearlayout_wrap_item" >
     
     <LinearLayout 
-        android:background="#FFFFFF"
-        android:layout_width="460dp"
-        android:layout_height="160dp"
-        android:orientation="horizontal" >
+        style="@style/style_linearlayout_item" >
         
         <LinearLayout 
-            android:background="#FFFFFF"
-            android:layout_width="160dp"
-            android:layout_height="160dp"
-            android:gravity="center"
-            android:orientation="horizontal" >
+            style="@style/style_linearlayout_wrap_imageview_in_item" >
             <ImageView 
-                android:background="#FFFFFF"
+                style="@style/style_linearlayout_imageview_in_item"
                 android:id="@+id/iconInItemSpeaker"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:scaleType="fitXY"
                 android:src="@drawable/icon_session_256"  />
         </LinearLayout>  
         
 	    <LinearLayout 
-	        android:background="#FFFFFF"
-	        android:layout_width="260dp"
-	        android:layout_height="120dp"
-	        android:layout_margin="20dp"
-	        android:gravity="left|center_vertical"
-	        android:orientation="vertical" >
+	        style="@style/style_linearlayout_wrap_textview_in_item" >
 	        
 	        <TextView 
+	            style="@style/style_title_in_textview_in_item"
 	            android:id="@+id/idInItemSession"
-	            android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="26sp" 
-                android:textStyle="bold"
                 android:text="@string/session1_id"/>
 	        <TextView 
+                style="@style/style_text_in_textview_in_item"
                 android:id="@+id/scriptIdInItemSession"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="18sp" 
                 android:text="@string/session1_script_id"/>
 	        <TextView 
+                style="@style/style_text_in_textview_in_item"
                 android:id="@+id/creationInfoInItemSession"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="18sp" 
                 android:text="@string/session1_creation_day"/>
 	        <TextView 
+                style="@style/style_unfinished_session_in_textview_in_item"
                 android:id="@+id/isFinishedInItemSession"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="18sp" 
-                android:textColor="#00FF00"
                 android:text="@string/session1_state"/>
 	    </LinearLayout>
     </LinearLayout>
