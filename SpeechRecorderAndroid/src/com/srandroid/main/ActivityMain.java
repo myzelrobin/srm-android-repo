@@ -3,6 +3,7 @@ package com.srandroid.main;
 import java.util.Arrays;
 
 import com.srandroid.R;
+import com.srandroid.database.DBAccessor;
 import com.srandroid.overflow.PrefActivitySettings;
 import com.srandroid.util.Utils;
 
@@ -34,6 +35,8 @@ public class ActivityMain extends Activity {
 	
 	// presenter
 	private PresenterMain presenter_main;
+	
+	private DBAccessor dbAccessor;
 	
 	// fields for Drawer
 	private CharSequence activity_title;
@@ -88,6 +91,7 @@ public class ActivityMain extends Activity {
 	{
 		super.onCreate(savedInstanceState);
 		
+		dbAccessor = new DBAccessor(getApplicationContext());
 		
 		// initialize some constant values
 		if(!Utils.ConstantVars.isPreStartInitialized)
