@@ -462,6 +462,8 @@ public class ActivityMain extends Activity {
         {
         	String fragmentTitle = null;
         	
+        	Log.w(FragmentInActivityMain.class.getName(), "updateFragment() will update Fragment with arg=" + argumentNumber);
+        	
         	rootView = inflater.inflate(layoutIndex, container, false);
         	fragmentTitle = getResources().getStringArray(R.array.array_drawer_items)[argumentNumber];
         	getActivity().setTitle(fragmentTitle);
