@@ -294,15 +294,10 @@ public final class R {
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f080001;
-        /**  Cusomized application theme DARK. 
+        /**  Cusomized styles 
          */
-        public static final int theme_dark=0x7f080003;
-        /**  Cusomized application theme LIGHT. 
-         */
-        public static final int theme_light=0x7f080002;
-        /**  Cusomized application theme TESTTHEME. 
-         */
-        public static final int theme_test=0x7f080004;
+        public static final int style_gridview_activitymain=0x7f080002;
+        public static final int styletest_linearlayout_activitymain=0x7f080003;
     }
     public static final class xml {
         public static final int preference_settings=0x7f040000;

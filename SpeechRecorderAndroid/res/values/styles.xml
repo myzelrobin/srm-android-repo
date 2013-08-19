@@ -18,19 +18,22 @@
         
     </style>
     
-    <!-- Cusomized application theme LIGHT. -->
-    <style name="theme_light" parent="AppBaseTheme">
-        
+    <!-- Cusomized styles -->
+    <style name="style_gridview_activitymain" parent="@android:style/Widget.GridView">
+        <item name="android:background">#EEEEEE</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:gravity">center</item>
+        <item name="android:orientation">vertical</item>
     </style>
     
-    <!-- Cusomized application theme DARK. -->
-    <style name="theme_dark" parent="android:Theme.Holo">
-        
+    <style name="styletest_linearlayout_activitymain" >
+        <item name="android:background">#EEEEEE</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:gravity">center</item>
+        <item name="android:orientation">vertical</item>
     </style>
     
-    <!-- Cusomized application theme TESTTHEME. -->
-    <style name="theme_test" parent="AppBaseTheme">
-        <item name="android:textColor">#00FF00</item>
-    </style>
 
 </resources>
