@@ -141,6 +141,7 @@
         <!-- Item speaker -->
         <string name="speaker_attr_firstname">First Name</string>
         <string name="speaker_attr_surname">Surname</string>
+        <string name="speaker_attr_name">Name</string>
         <string name="speaker_attr_sex">Sex</string>
         <string name="speaker_attr_accent">Accent</string>
         <string name="speaker_attr_birthday">Birthday</string>

@@ -2,6 +2,8 @@ package com.srandroid.util;
 
 import java.io.File;
 
+import com.srandroid.database.DBAccessor;
+
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
@@ -107,6 +109,16 @@ public class Utils
 		public static int screenHeight = 0;
 		public static int marginItemBGInVerticalMode = 0;
 		public static int marginItemBGInHorizontalMode = 0;
+		
+		
+		
+		
+		// database
+		public static final DBAccessor DBACCESSOR = new DBAccessor();
+		
+		
+		
+		
 		
 		
 		public static boolean isPreStartInitialized = false;
