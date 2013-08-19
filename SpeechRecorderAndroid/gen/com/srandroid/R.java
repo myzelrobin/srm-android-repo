@@ -176,7 +176,7 @@ public final class R {
          */
         public static final int script_attr_id=0x7f060049;
         public static final int script_attr_id_key=0x7f06004b;
-        public static final int session1_creation=0x7f06005b;
+        public static final int session1_creation_day=0x7f06005b;
         /**  Session Example 
          */
         public static final int session1_id=0x7f060059;
