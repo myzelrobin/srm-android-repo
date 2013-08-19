@@ -114,7 +114,6 @@ public class Utils
 		
 		
 		// database
-		public static final DBAccessor DBACCESSOR = new DBAccessor();
 		
 		
 		
