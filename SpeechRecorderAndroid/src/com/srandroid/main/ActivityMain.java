@@ -89,26 +89,16 @@ public class ActivityMain extends Activity {
 		super.onCreate(savedInstanceState);
 		
 		
-		
-		
-		
-		// initialize block
-		
 		// initialize some constant values
 		if(!Utils.ConstantVars.isPreStartInitialized)
+		{
 			Utils.ConstantVars.initializeApp(getApplicationContext());
-		
-		// initialize the default values in SharedPreference
-		// PreferenceManager.setDefaultValues(this, R.xml.preference_settings, false);
-		Utils.initSharedPreference(PreferenceManager.getDefaultSharedPreferences(this));;
-		
-		// initialize block
-		
-		
-		
-		
-		
-		
+			
+			// initialize the default values in SharedPreference
+			// PreferenceManager.setDefaultValues(this, R.xml.preference_settings, false);
+			Utils.initSharedPreference(PreferenceManager.getDefaultSharedPreferences(this));;
+			
+		}
 		
 		setContentView(R.layout.drawerlayout_in_activitymain);
 		
