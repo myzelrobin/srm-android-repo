@@ -46,6 +46,8 @@ public class DBAccessor extends SQLiteOpenHelper
 				+ ", which will destroy all old data");
 			TableServers.onUpgrade(db, oldVersion, newVersion);
 			TableScripts.onUpgrade(db, oldVersion, newVersion);
+			
+			
 			TableSSSRelation.onUpgrade(db, oldVersion, newVersion);
 	}
 	
