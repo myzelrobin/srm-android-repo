@@ -31,9 +31,6 @@ public class DBAccessor extends SQLiteOpenHelper
 		TableServers.onCreate(db);
 		TableScripts.onCreate(db);
 		
-		TableSSSRelation.onCreate(db);
-		
-		insertExamples(db);
 	}
 
 	// upgrade database
@@ -47,8 +44,6 @@ public class DBAccessor extends SQLiteOpenHelper
 			TableServers.onUpgrade(db, oldVersion, newVersion);
 			TableScripts.onUpgrade(db, oldVersion, newVersion);
 			
-			
-			TableSSSRelation.onUpgrade(db, oldVersion, newVersion);
 	}
 	
 	private void insertExamples(SQLiteDatabase db)
