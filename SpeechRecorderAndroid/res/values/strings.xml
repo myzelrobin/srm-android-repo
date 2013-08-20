@@ -194,7 +194,8 @@
         <!-- Session Example -->
         <string name="session1_id">Session ID: #1</string>
         <string name="session1_script_id">Script ID: #1</string>
-        <string name="session1_creation_day">Created on YYYY,MM,DD</string>
+        <string name="session1_speaker">Adam Exampleman</string>
+        <string name="session1_creation_day">YYYY,MM,DD</string>
         <string name="session1_state">Finished</string>
 
         

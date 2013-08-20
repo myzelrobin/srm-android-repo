@@ -26,7 +26,11 @@
                 android:text="@string/session1_script_id"/>
 	        <TextView 
                 style="@style/style_text_in_textview_in_item"
-                android:id="@+id/creationInfoInItemSession"
+                android:id="@+id/speakerInItemSession"
+                android:text="@string/session1_speaker"/>
+	        <TextView 
+                style="@style/style_text_in_textview_in_item"
+                android:id="@+id/creationDateInItemSession"
                 android:text="@string/session1_creation_day"/>
 	        <TextView 
                 style="@style/style_unfinished_session_in_textview_in_item"

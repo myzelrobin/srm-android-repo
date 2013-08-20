@@ -28,8 +28,12 @@ public class DBAccessor extends SQLiteOpenHelper
 	public void onCreate(SQLiteDatabase db) 
 	{
 		Log.w(DBAccessor.class.getName(), "onCreate() will create database");
+		TableSpeakers.onCreate(db);
 		TableServers.onCreate(db);
 		TableScripts.onCreate(db);
+		TableSessions.onCreate(db);
+		TableSections.onCreate(db);
+		TableRecords.onCreate(db);
 		
 	}
 
@@ -41,52 +45,24 @@ public class DBAccessor extends SQLiteOpenHelper
 				"will upgrade database from version " 
 				+ oldVersion + " to " + newVersion 
 				+ ", which will destroy all old data");
+			TableSpeakers.onUpgrade(db, oldVersion, newVersion);
 			TableServers.onUpgrade(db, oldVersion, newVersion);
 			TableScripts.onUpgrade(db, oldVersion, newVersion);
-			
+			TableSessions.onUpgrade(db, oldVersion, newVersion);
+			TableSections.onUpgrade(db, oldVersion, newVersion);
+			TableRecords.onUpgrade(db, oldVersion, newVersion);
 	}
 	
 	private void insertExamples(SQLiteDatabase db)
 	{
-		insertServerExamples(db);
-		insertScriptExamples(db);
-	}
-
-	private void insertServerExamples(SQLiteDatabase db) 
-	{
-		Log.w(DBAccessor.class.getName(), "insertServerExamples() will insert examples");
-		ContentValues values = new ContentValues(); 
-		
-		values.put(TableServers.COLUMN_ADDRESS, "1.1.1.1:8080");
-		values.put(TableServers.COLUMN_DESCRIPTION, "Example server 1");
-		values.put(TableServers.COLUMN_USERNAME, "testuser");
-		values.put(TableServers.COLUMN_PASSWORD, "11111111");
-		db.insert(TableServers.TABLE_SERVERS, null, values);
-		
-		values.put(TableServers.COLUMN_ADDRESS, "2.2.2.2:8080");
-		values.put(TableServers.COLUMN_DESCRIPTION, "Example server 2");
-		values.put(TableServers.COLUMN_USERNAME, "testuser2");
-		values.put(TableServers.COLUMN_PASSWORD, "22222222");
-		db.insert(TableServers.TABLE_SERVERS, null, values);
+		// TableSpeakers.insertScriptExamples(db);
+		TableServers.insertServerExamples(db);
+		TableScripts.insertScriptExamples(db);
+		// TableSessions.insertScriptExamples(db);
+		// TableSections.insertScriptExamples(db);
+		// TableRecords.insertScriptExamples(db);
 		
 	}
 
-	private void insertScriptExamples(SQLiteDatabase db) 
-	{
-		Log.w(DBAccessor.class.getName(), "insertScriptExamples() will insert examples");
-		ContentValues values = new ContentValues(); 
-		
-		values.put(TableScripts.COLUMN_PATH, "/mnt/sdcard/srandroid_testfolder/scripts/script_exp1.xml");
-		values.put(TableScripts.COLUMN_DESCRIPTION, "Example script 1");
-		values.put(TableScripts.COLUMN_IS_RECORDED, "2");
-		values.put(TableScripts.COLUMN_SERVER_ID, "2");
-		db.insert(TableScripts.TABLE_SCRIPTS, null, values);
-		
-		values.put(TableScripts.COLUMN_PATH, "/mnt/sdcard/srandroid_testfolder/scripts/script_exp2.xml");
-		values.put(TableScripts.COLUMN_DESCRIPTION, "Example script 2");
-		values.put(TableScripts.COLUMN_IS_RECORDED, "5");
-		values.put(TableScripts.COLUMN_SERVER_ID, "1");
-		db.insert(TableScripts.TABLE_SCRIPTS, null, values);
-	}
 	
 }

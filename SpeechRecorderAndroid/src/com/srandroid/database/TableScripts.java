@@ -3,6 +3,7 @@
  */
 package com.srandroid.database;
 
+import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
@@ -16,9 +17,8 @@ public class TableScripts
 	// Table Attributes
 	public static final String TABLE_SCRIPTS = "scripts";
 	public static final String COLUMN_ID = "_id"; // key
-	public static final String COLUMN_PATH = "filepath";
+	public static final String COLUMN_FILEPATH = "filepath";
 	public static final String COLUMN_DESCRIPTION = "description";
-	public static final String COLUMN_IS_RECORDED = "is_recorded";
 	public static final String COLUMN_SERVER_ID = "server_id"; // foreign key reference servers(id)
 	
 
@@ -29,9 +29,8 @@ public class TableScripts
 		+ TABLE_SCRIPTS
 		+ " ( "
 		+ COLUMN_ID + " integer primary key autoincrement, "
-		+ COLUMN_PATH + " text not null, "
-		+ COLUMN_DESCRIPTION + " text, "
-		+ COLUMN_IS_RECORDED + " integer, "
+		+ COLUMN_FILEPATH + " text not null, "
+		+ COLUMN_DESCRIPTION + " text not null, "
 		+ COLUMN_SERVER_ID + " integer, "
 		+ " FOREIGN KEY (" + COLUMN_SERVER_ID + ") REFERENCES servers(_id)"
 		+ " );";
@@ -50,4 +49,21 @@ public class TableScripts
 		db.execSQL("drop table if exists: " + TABLE_SCRIPTS);
 		onCreate(db);
 	}
+	
+	public static void insertScriptExamples(SQLiteDatabase db) 
+	{
+		Log.w(TableScripts.class.getName(), "insertScriptExamples() will insert examples");
+		ContentValues values = new ContentValues(); 
+		
+		values.put(TableScripts.COLUMN_FILEPATH, "/mnt/sdcard/srandroid_testfolder/scripts/script_exp1.xml");
+		values.put(TableScripts.COLUMN_DESCRIPTION, "Example script 1");
+		values.put(TableScripts.COLUMN_SERVER_ID, "2");
+		db.insert(TableScripts.TABLE_SCRIPTS, null, values);
+		
+		values.put(TableScripts.COLUMN_FILEPATH, "/mnt/sdcard/srandroid_testfolder/scripts/script_exp2.xml");
+		values.put(TableScripts.COLUMN_DESCRIPTION, "Example script 2");
+		values.put(TableScripts.COLUMN_SERVER_ID, "1");
+		db.insert(TableScripts.TABLE_SCRIPTS, null, values);
+	}
+	
 }
