@@ -28,14 +28,26 @@
                 style="@style/style_text_in_textview_in_item"
                 android:id="@+id/speakerInItemSession"
                 android:text="@string/session1_speaker"/>
-	        <TextView 
-                style="@style/style_text_in_textview_in_item"
-                android:id="@+id/creationDateInItemSession"
-                android:text="@string/session1_creation_day"/>
-	        <TextView 
-                style="@style/style_unfinished_session_in_textview_in_item"
-                android:id="@+id/isFinishedInItemSession"
-                android:text="@string/session1_state"/>
+	        <RelativeLayout 
+	            android:id="@+id/relativelayoutInItemSession"
+	            android:layout_width="260dp"
+	            android:layout_height="wrap_content"
+	            android:orientation="horizontal" >
+	            
+	            <TextView 
+	                style="@style/style_text_in_textview_in_item"
+	                android:layout_alignParentLeft="true"
+	                android:id="@+id/creationDateInItemSession"
+	                android:text="@string/session1_creation_day"/>
+	            <TextView 
+	                style="@style/style_unfinished_session_in_textview_in_item"
+	                android:layout_alignParentRight="true"
+	                android:id="@+id/isFinishedInItemSession"
+	                android:text="@string/session1_state"/>
+	            
+	        </RelativeLayout>
+	        
+	        
 	    </LinearLayout>
     </LinearLayout>
 </LinearLayout>
