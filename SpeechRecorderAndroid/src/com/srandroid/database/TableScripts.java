@@ -32,7 +32,7 @@ public class TableScripts
 		+ COLUMN_PATH + " text not null, "
 		+ COLUMN_DESCRIPTION + " text, "
 		+ COLUMN_IS_RECORDED + " integer, "
-		+ COLUMN_SERVER_ID + "integer, "
+		+ COLUMN_SERVER_ID + " integer, "
 		+ " FOREIGN KEY (" + COLUMN_SERVER_ID + ") REFERENCES servers(_id)"
 		+ " );";
 	
