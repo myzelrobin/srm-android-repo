@@ -29,7 +29,6 @@
                 android:id="@+id/speakerInItemSession"
                 android:text="@string/session1_speaker"/>
 	        <RelativeLayout 
-	            android:id="@+id/relativelayoutInItemSession"
 	            android:layout_width="260dp"
 	            android:layout_height="wrap_content"
 	            android:orientation="horizontal" >
