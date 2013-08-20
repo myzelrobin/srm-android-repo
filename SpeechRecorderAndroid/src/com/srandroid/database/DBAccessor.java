@@ -35,6 +35,8 @@ public class DBAccessor extends SQLiteOpenHelper
 		TableSections.onCreate(db);
 		TableRecords.onCreate(db);
 		
+		insertExamples(db);
+		
 	}
 
 	// upgrade database
@@ -55,10 +57,11 @@ public class DBAccessor extends SQLiteOpenHelper
 	
 	private void insertExamples(SQLiteDatabase db)
 	{
-		// TableSpeakers.insertScriptExamples(db);
+		Log.w(DBAccessor.class.getName(), "insertExamples() will insert examples");
+		TableSpeakers.insertSpeakerExamples(db);
 		TableServers.insertServerExamples(db);
 		TableScripts.insertScriptExamples(db);
-		// TableSessions.insertScriptExamples(db);
+		TableSessions.insertSessionExamples(db);
 		// TableSections.insertScriptExamples(db);
 		// TableRecords.insertScriptExamples(db);
 		

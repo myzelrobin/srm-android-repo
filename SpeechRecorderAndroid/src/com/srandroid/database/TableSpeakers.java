@@ -3,6 +3,7 @@
  */
 package com.srandroid.database;
 
+import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
@@ -50,4 +51,24 @@ public class TableSpeakers
 		db.execSQL("drop table if exists: " + TABLE_SPEAKERS);
 		onCreate(db);
 	}
+	
+	
+	public static void insertSpeakerExamples(SQLiteDatabase db) 
+	{
+		Log.w(TableSpeakers.class.getName(), "insertSpeakerExamples() will insert examples");
+		ContentValues values = new ContentValues(); 
+		
+		values.put(TableSpeakers.COLUMN_FIRSTNAME, "Testman");
+		values.put(TableSpeakers.COLUMN_SURNAME, "Exampler");
+		values.put(TableSpeakers.COLUMN_SEX, "male");
+		values.put(TableSpeakers.COLUMN_ACCENT, "bayerissch");
+		db.insert(TableSpeakers.TABLE_SPEAKERS, null, values);
+		
+		values.put(TableSpeakers.COLUMN_FIRSTNAME, "Testwoman");
+		values.put(TableSpeakers.COLUMN_SURNAME, "Examplin");
+		values.put(TableSpeakers.COLUMN_SEX, "fmale");
+		values.put(TableSpeakers.COLUMN_ACCENT, "bayerissch");
+		db.insert(TableSpeakers.TABLE_SPEAKERS, null, values);
+	}
+	
 }

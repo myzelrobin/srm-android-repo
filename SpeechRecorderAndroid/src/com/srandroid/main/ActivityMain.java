@@ -36,8 +36,6 @@ public class ActivityMain extends Activity {
 	// presenter
 	private PresenterMain presenter_main;
 	
-	private DBAccessor dbAccessor;
-	
 	// fields for Drawer
 	private CharSequence activity_title;
 	private CharSequence title_drawer_items;
@@ -151,8 +149,7 @@ public class ActivityMain extends Activity {
         // Pop up hint at the left side
         toastSwipeHint();
         
-        dbAccessor = new DBAccessor(getApplicationContext());
-		dbAccessor.getWritableDatabase();
+        
 	}
 	
 
@@ -177,7 +174,7 @@ public class ActivityMain extends Activity {
 	@Override
     protected void onPause()
     {
-		dbAccessor.close();
+		Utils.ConstantVars.dbAccessor.close();
 		super.onPause();
 	}
 	

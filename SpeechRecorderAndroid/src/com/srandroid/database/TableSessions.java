@@ -3,6 +3,9 @@
  */
 package com.srandroid.database;
 
+import com.srandroid.util.Utils;
+
+import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
@@ -20,7 +23,7 @@ public class TableSessions
 	public static final String COLUMN_TIME = "time"; // text not null
 	public static final String COLUMN_PLACE = "place"; // text not null
 	public static final String COLUMN_DEVICE_DATA = "device_data"; // text not null
-	public static final String COLUMN_GPS_DATA = "gps_data"; // text not null
+	public static final String COLUMN_GPS_DATA = "gps_data"; // text, android needs a little time to set GPS sensors, only get it when is needed
 	public static final String COLUMN_IS_FINISHED = "is_finished"; // text not null finished/unfinished
 	public static final String COLUMN_SCRIPT_ID = "script_id"; // foreign key reference scripts(_id)
 	public static final String COLUMN_SPEAKER_ID = "speaker_id"; // foreign key reference speakers(_id)
@@ -35,7 +38,7 @@ public class TableSessions
 		+ COLUMN_TIME + " text not null, "
 		+ COLUMN_PLACE + " text not null, "
 		+ COLUMN_DEVICE_DATA + " text not null, "
-		+ COLUMN_GPS_DATA + " text not null, "
+		+ COLUMN_GPS_DATA + " text, "
 		+ COLUMN_IS_FINISHED + " text not null, "
 		+ COLUMN_SCRIPT_ID + " integer, "
 		+ COLUMN_SPEAKER_ID + " integer, "
@@ -57,4 +60,31 @@ public class TableSessions
 		db.execSQL("drop table if exists: " + TABLE_SESSIONS);
 		onCreate(db);
 	}
+	
+	public static void insertSessionExamples(SQLiteDatabase db) 
+	{
+		Log.w(TableSessions.class.getName(), "insertSessionExamples() will insert examples");
+		ContentValues values = new ContentValues(); 
+		
+		values.put(TableSessions.COLUMN_DATE, "1234-56-78");
+		values.put(TableSessions.COLUMN_TIME, "12-34-56");
+		values.put(TableSessions.COLUMN_PLACE, "Munich");
+		values.put(TableSessions.COLUMN_DEVICE_DATA, Utils.ConstantVars.DEVICE_ID);
+		values.put(TableSessions.COLUMN_GPS_DATA, Utils.ConstantVars.GPS_INFO);
+		values.put(TableSessions.COLUMN_IS_FINISHED, "finished");
+		values.put(TableSessions.COLUMN_SCRIPT_ID, "1");
+		values.put(TableSessions.COLUMN_SPEAKER_ID, "1");
+		db.insert(TableSessions.TABLE_SESSIONS, null, values);
+		
+		values.put(TableSessions.COLUMN_DATE, "9876-54-32");
+		values.put(TableSessions.COLUMN_TIME, "23-59-59");
+		values.put(TableSessions.COLUMN_PLACE, "Berlin");
+		values.put(TableSessions.COLUMN_DEVICE_DATA, Utils.ConstantVars.DEVICE_ID);
+		values.put(TableSessions.COLUMN_GPS_DATA, Utils.ConstantVars.GPS_INFO);
+		values.put(TableSessions.COLUMN_IS_FINISHED, "finished");
+		values.put(TableSessions.COLUMN_SCRIPT_ID, "2");
+		values.put(TableSessions.COLUMN_SPEAKER_ID, "2");
+		db.insert(TableSessions.TABLE_SESSIONS, null, values);
+	}
+	
 }

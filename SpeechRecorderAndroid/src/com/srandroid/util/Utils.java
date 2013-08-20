@@ -1,6 +1,8 @@
 package com.srandroid.util;
 
 import java.io.File;
+import java.io.IOException;
+import java.util.Locale;
 
 import com.srandroid.database.DBAccessor;
 
@@ -11,10 +13,16 @@ import android.content.SharedPreferences;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.widget.Toast;
+import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.net.Uri;
+import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
+import android.provider.Settings.Secure;
 
 
 
@@ -30,6 +38,9 @@ public class Utils
 		public static final boolean canToastDebugText = true;
 		public static final boolean canToastTextToUser = true;
 		
+		// device informations
+		public static String DEVICE_ID = null;
+		public static String GPS_INFO = null;
 		
 		// SharedPreferece key and default values
 		public static final String KEY_PREFSCREEN_RECVALUE = "prefscreen_recvalue";
@@ -114,9 +125,10 @@ public class Utils
 		
 		
 		// database
+		public static final String TESTDB_FOLDER_PATH = 
+				"/mnt/sdcard/srandroid_testfolder";
 		
-		
-		
+		public static DBAccessor dbAccessor;
 		
 		
 		
@@ -198,6 +210,10 @@ public class Utils
 		public static void initializeApp(Context context)
 		{
 			Log.w(Utils.class.getName(), "initializeApp(): will initialize data before app starts");
+			
+			getDeviceId(context);
+			
+			
 			// get application folder path (/data/data/APP_PACKAGE/)
 			try {
 				APP_DIR_INT_PATH = getAppInternalDir(context);
@@ -236,6 +252,16 @@ public class Utils
 			getScreenSize(context);
 			setMarginItemBGInVerticalMode();
 			setMarginItemBGInHorizontalMode();
+			
+			// device info
+			getDeviceId(context);
+			
+			// gps info
+			getGPSInfo(context);
+			
+			// database
+			dbAccessor = new DBAccessor(context);
+			dbAccessor.getWritableDatabase();
 			
 			isPreStartInitialized = true;
 			
@@ -298,10 +324,33 @@ public class Utils
 		
 	}
 
+	public static void getDeviceId(Context context) 
+	{
+		Log.w(Utils.class.getName(), "getDeviceId() will get device id");
+		Utils.ConstantVars.DEVICE_ID = Secure.getString(context.getContentResolver(),
+                Secure.ANDROID_ID);
+	}
+	
+	public static void getGPSInfo(Context context) 
+	{
+		//Utils.ConstantVars.GPS_INFO = 
+		Log.w(Utils.class.getName(), "getGPSInfo() will get GPS info");
+		
+		LocationManager locationManager = (LocationManager) context.getSystemService(context.LOCATION_SERVICE);
+		LocationListener locationListener = new MyLocationListener(context);  
+		locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+	}
+
 	// Toast some text for debugging
 	public static void toastText(Context context, String s)
 	{
 		if(Utils.ConstantVars.canToastDebugText) 
+			Toast.makeText(context, s, 2 * Toast.LENGTH_LONG).show();
+	}
+	
+	public static void toastTextToUser(Context context, String s)
+	{
+		if(Utils.ConstantVars.canToastTextToUser) 
 			Toast.makeText(context, s, 2 * Toast.LENGTH_LONG).show();
 	}
 	
@@ -415,6 +464,75 @@ public class Utils
 		Log.w(Utils.class.getName(), "setMarginItemBGInHorizontalMode() set the item margin "
 				+ "Utils.ConstantVars.marginItemBGInHorizontalMode=" 
 				+ Utils.ConstantVars.marginItemBGInHorizontalMode);
+	}
+	
+	
+	
+	/**
+	 * 
+	 * Listener class to get coordinates 
+	 * 
+	 */
+	private static class MyLocationListener implements LocationListener 
+	{
+		private Context context = null;
+		
+		public MyLocationListener(Context context)
+		{
+			this.context = context;
+		}
+
+	    @Override
+	    public void onLocationChanged(Location loc) 
+	    {
+	    	Log.w(MyLocationListener.class.getName(), 
+	    			"Location changed: latitude: " + loc.getLatitude() 
+	    			+ " longitude: " + loc.getLongitude());
+	    	
+	        String longitude = "Longitude: " + loc.getLongitude();
+	        Log.w(MyLocationListener.class.getName(), "get new longitude=" + longitude);
+	        
+	        String latitude = "Latitude: " + loc.getLatitude();
+	        Log.w(MyLocationListener.class.getName(), "get new latitude=" + latitude);
+	        /*-------to get City-Name from coordinates -------- */
+	        String cityName = null;
+	        Geocoder gcd = new Geocoder(context, Locale.getDefault());
+	        try {
+	        	cityName = gcd.getFromLocation(loc.getLatitude(),
+	                    loc.getLongitude(), 1).get(0).getLocality();
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+	        String s = "longitude=" + longitude 
+	        		+ "\nlatitude=" + latitude 
+	        		+ "\n\nCurrent City is: " + cityName;
+	        
+	        Utils.ConstantVars.GPS_INFO = s;
+	        
+	        Log.w(MyLocationListener.class.getName(), 
+	    			"new location is" + s);
+	    }
+
+	    @Override
+	    public void onProviderDisabled(String provider) 
+	    {
+	    	Utils.toastTextToUser(context, "GPS " + provider + " is invalid, check system settings!");
+	    	Utils.ConstantVars.GPS_INFO = "device unavailable";
+	    	// need an Intent to open location settings
+	    }
+
+	    @Override
+	    public void onProviderEnabled(String provider) 
+	    {
+	    	
+	    }
+
+	    @Override
+	    public void onStatusChanged(String provider, int status, Bundle extras) 
+	    {
+	    	
+	    }
+
 	}
 }
 
