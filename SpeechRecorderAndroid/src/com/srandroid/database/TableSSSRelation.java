@@ -32,10 +32,10 @@ public class TableSSSRelation
 		+ COLUMN_SESSION_ID + " integer, "
 		+ COLUMN_SPEAKER_ID + " integer, "
 		+ COLUMN_SCRIPT_ID + " integer, "
-		+ " FOREIGN KEY (" + COLUMN_SESSION_ID + ") REFERENCES sessions(_id)"
-		+ " FOREIGN KEY (" + COLUMN_SPEAKER_ID + ") REFERENCES speakers(_id)"
+		+ COLUMN_IS_RECORDED + " integer, "
+		+ " FOREIGN KEY (" + COLUMN_SESSION_ID + ") REFERENCES sessions(_id),"
+		+ " FOREIGN KEY (" + COLUMN_SPEAKER_ID + ") REFERENCES speakers(_id),"
 		+ " FOREIGN KEY (" + COLUMN_SCRIPT_ID + ") REFERENCES scripts(_id)"
-		+ COLUMN_IS_RECORDED + " integer "
 		+ " );";
 	
 	// create table servers
