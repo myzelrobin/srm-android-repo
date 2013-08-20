@@ -34,12 +34,12 @@ public class TableSessions
 		+ COLUMN_DATE + " text not null, "
 		+ COLUMN_TIME + " text not null, "
 		+ COLUMN_PLACE + " text not null, "
-		+ COLUMN_DEVICE_DATA + " text not null "
-		+ COLUMN_GPS_DATA + " text not null "
-		+ COLUMN_IS_FINISHED + " text not null "
-		+ COLUMN_SCRIPT_ID + " integer "
-		+ COLUMN_SPEAKER_ID + " integer "
-		+ " FOREIGN KEY (" + COLUMN_SCRIPT_ID + ") REFERENCES scripts(_id)"
+		+ COLUMN_DEVICE_DATA + " text not null, "
+		+ COLUMN_GPS_DATA + " text not null, "
+		+ COLUMN_IS_FINISHED + " text not null, "
+		+ COLUMN_SCRIPT_ID + " integer, "
+		+ COLUMN_SPEAKER_ID + " integer, "
+		+ " FOREIGN KEY (" + COLUMN_SCRIPT_ID + ") REFERENCES scripts(_id),"
 		+ " FOREIGN KEY (" + COLUMN_SPEAKER_ID + ") REFERENCES speakers(_id)"
 		+ " );";
 	
