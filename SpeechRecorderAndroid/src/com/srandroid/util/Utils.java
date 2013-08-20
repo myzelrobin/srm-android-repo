@@ -39,8 +39,8 @@ public class Utils
 		public static final boolean canToastTextToUser = true;
 		
 		// device informations
-		public static String DEVICE_ID = null;
-		public static String GPS_INFO = null;
+		public static String DEVICE_ID = "unknow";
+		public static String GPS_INFO = "device unavailable";
 		
 		// SharedPreferece key and default values
 		public static final String KEY_PREFSCREEN_RECVALUE = "prefscreen_recvalue";
@@ -516,8 +516,8 @@ public class Utils
 	    @Override
 	    public void onProviderDisabled(String provider) 
 	    {
-	    	Utils.toastTextToUser(context, "GPS " + provider + " is invalid, check system settings!");
-	    	Utils.ConstantVars.GPS_INFO = "device unavailable";
+	    	Utils.toastTextToUser(context, "GPS " + provider + " is disabled, check system settings!");
+	    	Utils.ConstantVars.GPS_INFO = "device is disabled";
 	    	// need an Intent to open location settings
 	    }
 
