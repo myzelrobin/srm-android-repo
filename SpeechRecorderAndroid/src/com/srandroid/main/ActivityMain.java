@@ -91,8 +91,6 @@ public class ActivityMain extends Activity {
 	{
 		super.onCreate(savedInstanceState);
 		
-		dbAccessor = new DBAccessor(getApplicationContext());
-		
 		// initialize some constant values
 		if(!Utils.ConstantVars.isPreStartInitialized)
 		{
@@ -152,6 +150,9 @@ public class ActivityMain extends Activity {
         
         // Pop up hint at the left side
         toastSwipeHint();
+        
+        dbAccessor = new DBAccessor(getApplicationContext());
+		dbAccessor.getWritableDatabase();
 	}
 	
 
@@ -176,6 +177,7 @@ public class ActivityMain extends Activity {
 	@Override
     protected void onPause()
     {
+		dbAccessor.close();
 		super.onPause();
 	}
 	
