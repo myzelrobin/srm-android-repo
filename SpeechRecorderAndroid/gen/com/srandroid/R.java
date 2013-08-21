@@ -106,7 +106,7 @@ public final class R {
         public static final int layout_toasthint_in_activitymain=0x7f030007;
         public static final int linearlayout_item_script=0x7f030008;
         public static final int linearlayout_item_session=0x7f030009;
-        public static final int linearlayout_wrap_item_speaker=0x7f03000a;
+        public static final int linearlayout_item_speaker=0x7f03000a;
     }
     public static final class menu {
         public static final int menu_items=0x7f090000;

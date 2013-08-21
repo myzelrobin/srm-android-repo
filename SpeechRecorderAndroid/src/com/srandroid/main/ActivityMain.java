@@ -455,7 +455,6 @@ public class ActivityMain extends Activity {
         			gridView = 
         					(GridView) fragmentView.findViewById(
         							R.id.gridview_in_fragment_in_activitymain);
-        			gridView.setNumColumns(Utils.ConstantVars.columnCount);
         			
         			fillFragment();
         			
@@ -476,7 +475,6 @@ public class ActivityMain extends Activity {
         			gridView = 
         					(GridView) fragmentView.findViewById(
         							R.id.gridview_in_fragment_in_activitymain);
-        			gridView.setNumColumns(Utils.ConstantVars.columnCount);
         			
         			fillFragment();
         			
@@ -497,7 +495,6 @@ public class ActivityMain extends Activity {
         			gridView = 
         					(GridView) fragmentView.findViewById(
         							R.id.gridview_in_fragment_in_activitymain);
-        			gridView.setNumColumns(Utils.ConstantVars.columnCount);
         			
         			fillFragment();
         			
@@ -555,7 +552,7 @@ public class ActivityMain extends Activity {
 
 				getLoaderManager().initLoader(0, null, this);
 				adapter = new SimpleCursorAdapter(this.getActivity().getApplicationContext(), 
-									R.layout.linearlayout_wrap_item_speaker, 
+									R.layout.linearlayout_item_speaker, 
 									null, from, to, 0);
 				gridView.setAdapter(adapter);
 				break;
