@@ -37,8 +37,10 @@
         <item name="android:layout_height">match_parent</item>
         <item name="android:gravity">center</item>
         <item name="android:orientation">vertical</item>
-        <item name="android:numColumns">2</item>
+        <item name="android:numColumns">auto_fit</item>
         <item name="android:columnWidth">480dp</item>
+        <item name="android:horizontalSpacing">10dp</item>
+        <item name="android:verticalSpacing">10dp</item>
     </style>
     
     <style name="style_linearlayout_item" >
