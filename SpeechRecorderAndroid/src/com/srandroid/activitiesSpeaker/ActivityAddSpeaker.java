@@ -7,14 +7,19 @@ import java.util.Arrays;
 
 import com.srandroid.R;
 import com.srandroid.database.SpeakerItem;
+import com.srandroid.database.SrmContentProvider;
+import com.srandroid.database.TableSpeakers;
 import com.srandroid.main.ActivityMain;
 import com.srandroid.overflow.PrefActivitySettings;
 import com.srandroid.util.Utils;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.preference.PreferenceManager;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.NavUtils;
@@ -38,6 +43,16 @@ public class ActivityAddSpeaker extends Activity
 	private CharSequence activity_title = null;
 	
 	private SpeakerItem speaker =  new SpeakerItem();
+	
+	EditText firstnameInput = null;
+    EditText surnameInput = null;
+    EditText accentInput = null;
+    Spinner sexDropdownlist = null;
+    EditText yearInput = null;
+    EditText monthInput = null;
+    EditText dayInput = null;
+	
+	
 	/**
 	 * 
 	 */
@@ -67,13 +82,13 @@ public class ActivityAddSpeaker extends Activity
 	        	
 	        }
 	        
-	        EditText firstnameInput = (EditText) findViewById(R.id.id_addspeaker_firstname_textinput);
-	        EditText surnameInput = (EditText) findViewById(R.id.id_addspeaker_surname_textinput);
-	        EditText accentInput = (EditText) findViewById(R.id.id_addspeaker_accent_textinput);
-	        Spinner sexDropdownlist = (Spinner) findViewById(R.id.id_addspeaker_sex_dropdownlist);
-	        EditText yearInput = (EditText) findViewById(R.id.id_addspeaker_year_textinput);
-	        EditText monthInput = (EditText) findViewById(R.id.id_addspeaker_month_textinput);
-	        EditText dayInput = (EditText) findViewById(R.id.id_addspeaker_day_textinput);
+	        firstnameInput = (EditText) findViewById(R.id.id_addspeaker_firstname_textinput);
+	        surnameInput = (EditText) findViewById(R.id.id_addspeaker_surname_textinput);
+	        accentInput = (EditText) findViewById(R.id.id_addspeaker_accent_textinput);
+	        sexDropdownlist = (Spinner) findViewById(R.id.id_addspeaker_sex_dropdownlist);
+	        yearInput = (EditText) findViewById(R.id.id_addspeaker_year_textinput);
+	        monthInput = (EditText) findViewById(R.id.id_addspeaker_month_textinput);
+	        dayInput = (EditText) findViewById(R.id.id_addspeaker_day_textinput);
 	        
 	        
 	        // enable home button
@@ -174,6 +189,22 @@ public class ActivityAddSpeaker extends Activity
 			     // actionbar buttons
 	        	case R.id.activity_addspeaker_button_start:
 	        		Utils.toastText(getApplicationContext(), "clicked start recording");
+	        		if(firstnameInput.getText()==null || surnameInput.getText() == null
+	        				|| accentInput.getText()==null || sexDropdownlist.getSelectedItem() == null)
+	        		{
+	        			Utils.toastTextToUser(this, "Please input name, accent and choose sex to create a speaker!");
+	        			break;
+	        		}
+	        		saveDataToSpeakerItem(speaker);
+	        		Uri speakerItemUri = saveSpeakerItemToDB(speaker);
+	        		Log.w(ActivityAddSpeaker.class.getName(), 
+	        				"saveSpeakerItemToDB() inserted a speaker into db with id=" + speakerItemUri);
+	        		
+	        		/*Intent newI = new Intent(ActivityMain.this, ActivityAddSpeaker.class);
+	        		// newI.putExtra("key", value); //Optional parameters
+	        		ActivityMain.this.startActivity(newI);*/
+	        		
+	        		// send speakerItemUri to next activity
 	        		break;
 	        	default:
 	        		break;
@@ -181,10 +212,43 @@ public class ActivityAddSpeaker extends Activity
 		    return super.onOptionsItemSelected(item);
 	    }
 		
+
+		private void saveDataToSpeakerItem(SpeakerItem speaker) 
+		{
+			speaker.setFirstname(firstnameInput.getText().toString());
+			speaker.setSurname(surnameInput.getText().toString());
+			speaker.setAccent(accentInput.getText().toString());
+			speaker.setSex(String.valueOf(sexDropdownlist.getSelectedItem()));
+			String birthday = yearInput.getText().toString() + "-" 
+						+ monthInput.getText().toString() + "-"
+					+ dayInput.getText().toString();
+			speaker.setBirthday(birthday);
+			
+			
+		}
+		
+
+		private Uri saveSpeakerItemToDB(SpeakerItem speaker) 
+		{
+			ContentValues values = new ContentValues();
+			values.put(TableSpeakers.COLUMN_FIRSTNAME, speaker.getFirstname());
+			values.put(TableSpeakers.COLUMN_SURNAME, speaker.getSurname());
+			values.put(TableSpeakers.COLUMN_ACCENT, speaker.getAccent());
+			values.put(TableSpeakers.COLUMN_SEX, speaker.getSex());
+			values.put(TableSpeakers.COLUMN_BIRTHDAY, speaker.getBirthday());
+
+			
+			Uri speakerItemUri = 
+					getContentResolver().insert(SrmContentProvider.SrmUriMatcher.CONTENT_URI_TABLE_SPEAKERS, values);
+			return speakerItemUri;
+		}
+
+
+
 		@Override
 		protected void onSaveInstanceState(Bundle savedInstanceState) 
 		{
-			
+			savedInstanceState.putParcelable("SPEAKER_ITEM", (Parcelable) speaker);
 		    super.onSaveInstanceState(savedInstanceState);
 		}
 

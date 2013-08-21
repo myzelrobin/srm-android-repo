@@ -481,7 +481,6 @@ public class SrmContentProvider extends ContentProvider
 				break;
 		}
 		
-		//
 		
 		// By default, CursorAdapter objects will get this notification.
 		getContext().getContentResolver().notifyChange(uri, null);
