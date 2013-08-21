@@ -17,6 +17,7 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.app.NavUtils;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.Menu;
@@ -164,19 +165,20 @@ public class ActivityAddSpeaker extends Activity
 	    public boolean onOptionsItemSelected(MenuItem item) 
 		{
 	       
-	        // Handles other action bar items
-	        switch(item.getItemId())
-	        {
-	        	// actionbar buttons
-	        	case R.id.button_add_session:
+	        switch (item.getItemId()) {
+			    // Respond to the action bar's Up/Home button
+			    case android.R.id.home:
+			        NavUtils.navigateUpFromSameTask(this);
+			        return true;
+			        
+			     // actionbar buttons
+	        	case R.id.activity_addspeaker_button_start:
 	        		Utils.toastText(getApplicationContext(), "clicked start recording");
 	        		break;
-	        	
 	        	default:
 	        		break;
-	        }
-	        
-	        return super.onOptionsItemSelected(item);
+		    }
+		    return super.onOptionsItemSelected(item);
 	    }
 		
 		@Override
