@@ -75,7 +75,7 @@ public final class R {
         public static final int button_testrecord_in_dialog_mic=0x7f0a0004;
         public static final int creationDateInItemSession=0x7f0a0011;
         public static final int descriptionInItemScript=0x7f0a000d;
-        public static final int drawer_layout_activity_main=0x7f0a0005;
+        public static final int drawerlayout_in_activitymain=0x7f0a0005;
         public static final int firstnameInItemSpeaker=0x7f0a0013;
         public static final int framelayout_in_drawerlayout_activitymain=0x7f0a0006;
         public static final int gridview_in_fragment_in_activitymain=0x7f0a0008;

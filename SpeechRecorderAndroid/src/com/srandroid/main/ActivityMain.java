@@ -89,6 +89,7 @@ public class ActivityMain extends Activity {
 			
 		}
 		
+		Log.w(ActivityMain.class.getName(), " will create view of this HOME activity.");
 		setContentView(R.layout.drawerlayout_in_activitymain);
 		
 		activity_title = title_drawer_items = getTitle();
@@ -97,7 +98,7 @@ public class ActivityMain extends Activity {
 		array_drawer_items = getResources().getStringArray(R.array.array_drawer_items);
         listview_drawer_items = (ListView) findViewById(R.id.listview_drawer_items);
         drawerlayout_in_activitymain = 
-        		(DrawerLayout) findViewById(R.id.drawer_layout_activity_main);
+        		(DrawerLayout) findViewById(R.id.drawerlayout_in_activitymain);
 
         // Set the adapter for the list view
         listview_drawer_items.setAdapter(new ArrayAdapter<String>(this,
@@ -449,7 +450,7 @@ public class ActivityMain extends Activity {
         					(LayoutInflater) getActivity().getSystemService(
         							Context.LAYOUT_INFLATER_SERVICE);
         			fragmentView = gridInflater.inflate(
-        					R.layout.gridview_in_fragment_in_activitymain, container);
+        					R.layout.gridview_in_fragment_in_activitymain, null);
         			
         			gridView = 
         					(GridView) fragmentView.findViewById(
@@ -470,7 +471,7 @@ public class ActivityMain extends Activity {
         					(LayoutInflater) getActivity().getSystemService(
         							Context.LAYOUT_INFLATER_SERVICE);
         			fragmentView = gridInflater.inflate(
-        					R.layout.gridview_in_fragment_in_activitymain, container);
+        					R.layout.gridview_in_fragment_in_activitymain, null);
         			
         			gridView = 
         					(GridView) fragmentView.findViewById(
@@ -491,7 +492,7 @@ public class ActivityMain extends Activity {
         					(LayoutInflater) getActivity().getSystemService(
         							Context.LAYOUT_INFLATER_SERVICE);
         			fragmentView = gridInflater.inflate(
-        					R.layout.gridview_in_fragment_in_activitymain, container);
+        					R.layout.gridview_in_fragment_in_activitymain, null);
         			
         			gridView = 
         					(GridView) fragmentView.findViewById(
