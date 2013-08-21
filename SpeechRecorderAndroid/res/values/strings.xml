@@ -153,14 +153,12 @@
         <string name="key_speaker_attr_birthday">birthday</string>
         
         <!-- Speaker Example -->
-        <string name="speaker1_name" >Adam Example</string>
         <string name="speaker1_firstname">Adam</string>
         <string name="speaker1_surname">Example</string>
         <string name="speaker1_sex">male</string>
         <string name="speaker1_accent">Bayerisch</string>
         <string name="speaker1_birthday">YYYY,MM,DD</string>
         
-        <string name="speaker2_name" >Mary Example</string>
         <string name="speaker2_firstname">Mary</string>
         <string name="speaker2_surname">Example</string>
         <string name="speaker2_sex">female</string>

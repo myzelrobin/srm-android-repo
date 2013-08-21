@@ -2,14 +2,17 @@ package com.srandroid.util;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Locale;
 
+import com.srandroid.R;
 import com.srandroid.database.DBAccessor;
 
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.widget.Toast;
@@ -37,6 +40,14 @@ public class Utils
 		public static final String TESTTEXT = "TEST";
 		public static final boolean canToastDebugText = true;
 		public static final boolean canToastTextToUser = true;
+		
+		// drawer item array
+		public static String[] arrayDrawerItems = null;
+		public static final int POS_SESSIONS = 0;
+		public static final int POS_SCRIPTS = 1;
+		public static final int POS_SPEAKERS = 2;
+		
+				
 		
 		// device informations
 		public static String DEVICE_ID = "unknow";
@@ -120,7 +131,9 @@ public class Utils
 		public static int screenHeight = 0;
 		public static int marginItemBGInVerticalMode = 0;
 		public static int marginItemBGInHorizontalMode = 0;
-		
+		public static int widthLayoutWrapItem = 0;
+		public static int heightLayoutWrapItem = 0;
+		public static int columnCount = 0;
 		
 		
 		
@@ -129,6 +142,7 @@ public class Utils
 				"/mnt/sdcard/srandroid_testfolder";
 		
 		public static DBAccessor dbAccessor;
+		
 		
 		
 		
@@ -211,7 +225,9 @@ public class Utils
 		{
 			Log.w(Utils.class.getName(), "initializeApp(): will initialize data before app starts");
 			
-			getDeviceId(context);
+			// drawer item array
+			arrayDrawerItems = context.getResources().getStringArray(R.array.array_drawer_items);
+
 			
 			
 			// get application folder path (/data/data/APP_PACKAGE/)
@@ -250,8 +266,8 @@ public class Utils
 			Log.w(Utils.class.getName(), "REC_TEST_DIR_EXT=" + REC_TEST_DIR_EXT_PATH);
 			
 			getScreenSize(context);
-			setMarginItemBGInVerticalMode();
-			setMarginItemBGInHorizontalMode();
+			setLayoutValuesInVerticalMode();
+			setLayoutValuesInHorizontalMode();
 			
 			// device info
 			getDeviceId(context);
@@ -448,22 +464,41 @@ public class Utils
 				
 	}
 	
-	public static void setMarginItemBGInVerticalMode()
+	public static void setLayoutValuesInVerticalMode()
 	{
+		Utils.ConstantVars.columnCount = 
+				Utils.ConstantVars.screenWidth % Utils.ConstantVars.ITEMWIDTH;
 		Utils.ConstantVars.marginItemBGInVerticalMode = 
-				(int) ((Utils.ConstantVars.screenWidth - Utils.ConstantVars.ITEMWIDTH) / 2); 
-		Log.w(Utils.class.getName(), "setMarginItemBGInVerticalMode() set the item margin " 
+				(int) ((Utils.ConstantVars.screenWidth - Utils.ConstantVars.ITEMWIDTH) / 2);
+		Utils.ConstantVars.widthLayoutWrapItem = 
+				Utils.ConstantVars.ITEMWIDTH + 2 * Utils.ConstantVars.marginItemBGInVerticalMode;
+		Utils.ConstantVars.heightLayoutWrapItem = 
+				Utils.ConstantVars.ITEMHEIGHT + 2 * Utils.ConstantVars.marginItemBGInVerticalMode;
+		
+		
+		Log.w(Utils.class.getName(), "setLayoutValuesInVerticalMode() set the item margin " 
 				+ "Utils.ConstantVars.marginItemBGInVerticalMode=" 
 				+ Utils.ConstantVars.marginItemBGInVerticalMode);
+		
 	}
 	
-	public static void setMarginItemBGInHorizontalMode()
+	public static void setLayoutValuesInHorizontalMode()
 	{
+		Utils.ConstantVars.columnCount = 
+				Utils.ConstantVars.screenHeight % Utils.ConstantVars.ITEMWIDTH;
 		Utils.ConstantVars.marginItemBGInHorizontalMode = 
 				(int) ((Utils.ConstantVars.screenHeight - (Utils.ConstantVars.ITEMWIDTH * 2)) / 4); 
-		Log.w(Utils.class.getName(), "setMarginItemBGInHorizontalMode() set the item margin "
+		Utils.ConstantVars.widthLayoutWrapItem = 
+				Utils.ConstantVars.ITEMWIDTH + 2 * Utils.ConstantVars.marginItemBGInVerticalMode;
+		Utils.ConstantVars.heightLayoutWrapItem = 
+				Utils.ConstantVars.ITEMHEIGHT + 2 * Utils.ConstantVars.marginItemBGInVerticalMode;
+		
+		
+		Log.w(Utils.class.getName(), "setLayoutValuesInHorizontalMode() set the item margin "
 				+ "Utils.ConstantVars.marginItemBGInHorizontalMode=" 
 				+ Utils.ConstantVars.marginItemBGInHorizontalMode);
+		
+		
 	}
 	
 	

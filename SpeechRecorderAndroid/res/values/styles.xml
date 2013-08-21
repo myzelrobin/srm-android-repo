@@ -30,7 +30,8 @@
     
     <!-- not finished, need to be changed
     columnCount is calculatet at runtime -->
-    <style name="style_gridview_fragment_in_activitymain" parent="@android:style/Widget.GridView">
+    <style name="style_gridview_fragment_in_activitymain" 
+        parent="@android:style/Widget.GridView">
         <item name="android:background">#EEEEEE</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
@@ -40,8 +41,8 @@
     
     <style name="style_linearlayout_wrap_item" >
         <item name="android:background">#EEEEEE</item>
-        <item name="android:layout_width">480dp</item>
-        <item name="android:layout_height">180dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="android:gravity">center</item>
         <item name="android:orientation">vertical</item>
     </style>
@@ -80,6 +81,8 @@
     <style name="style_title_in_textview_in_item" >
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">0dp</item>
+        <item name="android:layout_marginRight">5dp</item>
         <item name="android:textSize">26sp</item>
         <item name="android:textStyle">bold</item>
     </style>

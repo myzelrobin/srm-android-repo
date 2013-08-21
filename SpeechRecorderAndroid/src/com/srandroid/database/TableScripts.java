@@ -19,6 +19,7 @@ public class TableScripts
 	public static final String COLUMN_ID = "_id"; // key
 	public static final String COLUMN_FILEPATH = "filepath";
 	public static final String COLUMN_DESCRIPTION = "description";
+	public static final String COLUMN_COUNT = "count";
 	public static final String COLUMN_SERVER_ID = "server_id"; // foreign key reference servers(id)
 	
 
@@ -31,6 +32,7 @@ public class TableScripts
 		+ COLUMN_ID + " integer primary key autoincrement, "
 		+ COLUMN_FILEPATH + " text not null, "
 		+ COLUMN_DESCRIPTION + " text not null, "
+		+ COLUMN_COUNT + " integer , "
 		+ COLUMN_SERVER_ID + " integer, "
 		+ " FOREIGN KEY (" + COLUMN_SERVER_ID + ") REFERENCES servers(_id)"
 		+ " );";
@@ -57,11 +59,13 @@ public class TableScripts
 		
 		values.put(TableScripts.COLUMN_FILEPATH, "/mnt/sdcard/srandroid_testfolder/scripts/script_exp1.xml");
 		values.put(TableScripts.COLUMN_DESCRIPTION, "Example script 1");
+		values.put(TableScripts.COLUMN_COUNT, "0");
 		values.put(TableScripts.COLUMN_SERVER_ID, "2");
 		db.insert(TableScripts.TABLE_SCRIPTS, null, values);
 		
 		values.put(TableScripts.COLUMN_FILEPATH, "/mnt/sdcard/srandroid_testfolder/scripts/script_exp2.xml");
 		values.put(TableScripts.COLUMN_DESCRIPTION, "Example script 2");
+		values.put(TableScripts.COLUMN_COUNT, "0");
 		values.put(TableScripts.COLUMN_SERVER_ID, "1");
 		db.insert(TableScripts.TABLE_SCRIPTS, null, values);
 	}

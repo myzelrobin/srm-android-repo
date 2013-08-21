@@ -12,8 +12,8 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal" >
         
-        <include layout="@layout/layout_item_session" />
-        <include layout="@layout/layout_item_session"/>
+        <include layout="@layout/linearlayout_item_session" />
+        <include layout="@layout/linearlayout_item_session"/>
         
     </LinearLayout>
     
@@ -22,8 +22,8 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal" >
         
-        <include layout="@layout/layout_item_session" />
-        <include layout="@layout/layout_item_session"/>
+        <include layout="@layout/linearlayout_item_session" />
+        <include layout="@layout/linearlayout_item_session"/>
         
     </LinearLayout>
     

@@ -4,6 +4,8 @@ import java.util.Arrays;
 
 import com.srandroid.R;
 import com.srandroid.database.DBAccessor;
+import com.srandroid.database.TableSpeakers;
+import com.srandroid.database.SrmContentProvider.SrmUriMatcher;
 import com.srandroid.overflow.PrefActivitySettings;
 import com.srandroid.util.Utils;
 
@@ -13,8 +15,13 @@ import android.preference.PreferenceManager;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.app.LoaderManager;
+import android.content.Context;
+import android.content.CursorLoader;
 import android.content.Intent;
+import android.content.Loader;
 import android.content.res.Configuration;
+import android.database.Cursor;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
@@ -26,15 +33,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.GridView;
 import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
 public class ActivityMain extends Activity {
-	
-	// presenter
-	private PresenterMain presenter_main;
 	
 	// fields for Drawer
 	private CharSequence activity_title;
@@ -53,25 +59,8 @@ public class ActivityMain extends Activity {
 	 */
 	public ActivityMain() {
 		super();
-		// TODO Auto-generated constructor stub
-		this.setPresenter_main(new PresenterMain(this));
 	}
     
-
-	/**
-	 * @return the presenter_main
-	 */
-	public PresenterMain getPresenter_main() {
-		return presenter_main;
-	}
-
-	/**
-	 * @param presenter_main the presenter_main to set
-	 */
-	public void setPresenter_main(PresenterMain presenter_main) {
-		this.presenter_main = presenter_main;
-	}
-	
 	
 	
 	
@@ -107,7 +96,8 @@ public class ActivityMain extends Activity {
 		// Creates drawer
 		array_drawer_items = getResources().getStringArray(R.array.array_drawer_items);
         listview_drawer_items = (ListView) findViewById(R.id.listview_drawer_items);
-        drawerlayout_in_activitymain = (DrawerLayout) findViewById(R.id.drawer_layout_activity_main);
+        drawerlayout_in_activitymain = 
+        		(DrawerLayout) findViewById(R.id.drawer_layout_activity_main);
 
         // Set the adapter for the list view
         listview_drawer_items.setAdapter(new ArrayAdapter<String>(this,
@@ -413,9 +403,21 @@ public class ActivityMain extends Activity {
      * Fragment that appears in the "content_frame", shows a planet
      */
     public static class FragmentInActivityMain extends Fragment 
+    	implements LoaderManager.LoaderCallbacks<Cursor>
     {
         public static final String ARG_FRAGMENT_NUMBER = "fragment_number";
-
+        
+        View fragmentView = null;
+    	GridView gridView = null;
+    	LayoutInflater gridInflater = null;
+        
+        
+        // position of drawer item
+        private int type = -1;
+        
+        // adapter
+        private SimpleCursorAdapter adapter;
+        
         public FragmentInActivityMain() 
         {
             // Empty constructor required for fragment subclasses
@@ -432,40 +434,138 @@ public class ActivityMain extends Activity {
         							ViewGroup container, 
         							Bundle savedInstanceState) 
         {
-        	int i = getArguments().getInt(ARG_FRAGMENT_NUMBER);
-        	View fragmentView = null;
+        	type = getArguments().getInt(ARG_FRAGMENT_NUMBER);
+        	
         	String fragmentTitle = null;
         	
-        	switch(i)
+        	
+        	switch(type)
         	{
         		default: break;
-        		case 0: // Sessions
-        			Log.w(FragmentInActivityMain.class.getName(), "onCreateView() will update Fragment with arg=" + i);
-        			fragmentView = inflater.inflate(R.layout.layout_testlayout_sessions, container, false);
-                	fragmentTitle = getResources().getStringArray(R.array.array_drawer_items)[i];
+        		case Utils.ConstantVars.POS_SESSIONS: // Sessions
+        			Log.w(FragmentInActivityMain.class.getName(), 
+        					"onCreateView() will update Fragment with arg=" + type);
+        			
+        			gridInflater = 
+        					(LayoutInflater) getActivity().getSystemService(
+        							Context.LAYOUT_INFLATER_SERVICE);
+        			fragmentView = gridInflater.inflate(
+        					R.layout.gridview_in_fragment_in_activitymain, container);
+        			
+        			gridView = 
+        					(GridView) fragmentView.findViewById(
+        							R.id.gridview_in_fragment_in_activitymain);
+        			gridView.setNumColumns(Utils.ConstantVars.columnCount);
+        			
+        			fillFragment();
+        			
+                	fragmentTitle = 
+                			getResources().getStringArray(R.array.array_drawer_items)[type];
                 	getActivity().setTitle(fragmentTitle);
         			break;
-        		case 1: // Scripts
-        			Log.w(FragmentInActivityMain.class.getName(), "onCreateView() will update Fragment with arg=" + i);
-        			fragmentView = inflater.inflate(R.layout.layout_testlayout_scripts, container, false);
-                	fragmentTitle = getResources().getStringArray(R.array.array_drawer_items)[i];
+        		case Utils.ConstantVars.POS_SCRIPTS: // Scripts
+        			Log.w(FragmentInActivityMain.class.getName(), 
+        					"onCreateView() will update Fragment with arg=" + type);
+        			
+        			gridInflater = 
+        					(LayoutInflater) getActivity().getSystemService(
+        							Context.LAYOUT_INFLATER_SERVICE);
+        			fragmentView = gridInflater.inflate(
+        					R.layout.gridview_in_fragment_in_activitymain, container);
+        			
+        			gridView = 
+        					(GridView) fragmentView.findViewById(
+        							R.id.gridview_in_fragment_in_activitymain);
+        			gridView.setNumColumns(Utils.ConstantVars.columnCount);
+        			
+        			fillFragment();
+        			
+        			fragmentTitle = 
+                			getResources().getStringArray(R.array.array_drawer_items)[type];
                 	getActivity().setTitle(fragmentTitle);
         			break;
-        		case 2: // Speakers
-        			Log.w(FragmentInActivityMain.class.getName(), "onCreateView() will update Fragment with arg=" + i);
-        			fragmentView = inflater.inflate(R.layout.layout_testlayout_speakers, container, false);
-                	fragmentTitle = getResources().getStringArray(R.array.array_drawer_items)[i];
+        		case Utils.ConstantVars.POS_SPEAKERS: // Speakers
+        			Log.w(FragmentInActivityMain.class.getName(), 
+        					"onCreateView() will update Fragment with arg=" + type);
+        			
+        			gridInflater = 
+        					(LayoutInflater) getActivity().getSystemService(
+        							Context.LAYOUT_INFLATER_SERVICE);
+        			fragmentView = gridInflater.inflate(
+        					R.layout.gridview_in_fragment_in_activitymain, container);
+        			
+        			gridView = 
+        					(GridView) fragmentView.findViewById(
+        							R.id.gridview_in_fragment_in_activitymain);
+        			gridView.setNumColumns(Utils.ConstantVars.columnCount);
+        			
+        			fillFragment();
+        			
+                	fragmentTitle = 
+                			getResources().getStringArray(R.array.array_drawer_items)[type];
                 	getActivity().setTitle(fragmentTitle);
         			break;
         		
         	}
             
-            //TextView textview_in_fragment = (TextView) rootView.findViewById(R.id.textview_in_fragment);
-            //textview_in_fragment.setText(fragment_title);
         	return fragmentView;
         }
         
-        @Override
+        private void fillFragment() 
+        {
+			switch (type) {
+			case Utils.ConstantVars.POS_SESSIONS:
+//				// Fields from the database (projection)
+//				// Must include the _id column for the adapter to work
+//				String[] from = new String[] { TodoTable.COLUMN_SUMMARY };
+//				// Fields on the UI to which we map
+//				int[] to = new int[] { R.id.label };
+//
+//				getLoaderManager().initLoader(0, null, this);
+//				adapter = new SimpleCursorAdapter(this, R.layout.todo_row, null, from, to, 0);
+//				setListAdapter(adapter);
+				break;
+				
+			case Utils.ConstantVars.POS_SCRIPTS:
+//				// Fields from the database (projection)
+//				// Must include the _id column for the adapter to work
+//				String[] from = new String[] { TodoTable.COLUMN_SUMMARY };
+//				// Fields on the UI to which we map
+//				int[] to = new int[] { R.id.label };
+//
+//				getLoaderManager().initLoader(0, null, this);
+//				adapter = new SimpleCursorAdapter(this, R.layout.todo_row, null, from, to, 0);
+//				setListAdapter(adapter);
+				break;
+				
+			case Utils.ConstantVars.POS_SPEAKERS:
+				// Fields from the database (selectColumns)
+				String[] from = new String[] { TableSpeakers.COLUMN_FIRSTNAME,
+												TableSpeakers.COLUMN_SURNAME,
+												TableSpeakers.COLUMN_SEX,
+												TableSpeakers.COLUMN_ACCENT,
+												TableSpeakers.COLUMN_BIRTHDAY};
+				// Fields on the UI to which CursorAdapter maps
+				int[] to = new int[] { R.id.firstnameInItemSpeaker,
+										R.id.surnameInItemSpeaker,
+										R.id.sexInItemSpeaker,
+										R.id.accentInItemSpeaker,
+										R.id.birthdayInItemSpeaker};
+
+				getLoaderManager().initLoader(0, null, this);
+				adapter = new SimpleCursorAdapter(this.getActivity().getApplicationContext(), 
+									R.layout.linearlayout_item_speaker, 
+									null, from, to, 0);
+				gridView.setAdapter(adapter);
+				break;
+
+			default:
+				break;
+			}
+			
+		}
+
+		@Override
         public void onActivityCreated(Bundle savedInstanceState)
         {
         	super.onActivityCreated(savedInstanceState);
@@ -520,6 +620,36 @@ public class ActivityMain extends Activity {
         {
         	super.onDetach();
         }
+
+		@Override
+		public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+			// Fields from the database (selectColumns)
+			// Must include the _id column for the adapter to work
+			String[] projection = { TableSpeakers.COLUMN_ID, 
+									TableSpeakers.COLUMN_FIRSTNAME,
+									TableSpeakers.COLUMN_SURNAME,
+									TableSpeakers.COLUMN_SEX,
+									TableSpeakers.COLUMN_ACCENT,
+									TableSpeakers.COLUMN_BIRTHDAY};
+			CursorLoader cursorLoader = 
+					new CursorLoader(this.getActivity().getApplicationContext(), 
+							SrmUriMatcher.CONTENT_URI_TABLE_SPEAKERS, 
+							projection, null, null, null);
+			return cursorLoader;
+		}
+
+		@Override
+		public void onLoadFinished(Loader<Cursor> loader, Cursor data) 
+		{
+
+			adapter.swapCursor(data);
+		}
+
+		@Override
+		public void onLoaderReset(Loader<Cursor> loader) 
+		{
+			adapter.swapCursor(null);
+		}
 
         
     }

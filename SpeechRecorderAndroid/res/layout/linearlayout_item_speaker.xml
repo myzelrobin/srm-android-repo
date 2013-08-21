@@ -16,10 +16,21 @@
 	    <LinearLayout 
 	        style="@style/style_linearlayout_wrap_textview_in_item" >
 	        
-	        <TextView 
-	            style="@style/style_title_in_textview_in_item"
-	            android:id="@+id/nameInItemSpeaker"
-                android:text="@string/speaker2_name"/>
+	        <LinearLayout 
+	            android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+		         <TextView 
+		              style="@style/style_title_in_textview_in_item"
+		              android:id="@+id/firstnameInItemSpeaker"
+		              android:text="@string/speaker2_firstname"/>
+		         <TextView 
+		              style="@style/style_title_in_textview_in_item"
+		              android:id="@+id/surnameInItemSpeaker"
+		              android:text="@string/speaker2_surname"/>        
+	            
+	        </LinearLayout>
+	        
 	        <TextView 
                 style="@style/style_text_in_textview_in_item"
                 android:id="@+id/sexInItemSpeaker"

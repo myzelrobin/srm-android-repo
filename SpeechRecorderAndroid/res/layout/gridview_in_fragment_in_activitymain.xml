@@ -1,11 +1,11 @@
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<GridView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/style_gridview_fragment_in_activitymain"
     android:columnCount="2"
-    android:id="@+id/gridlayout_in_fragment_in_activitymain"
+    android:id="@+id/gridview_in_fragment_in_activitymain"
     tools:context=".ActivityMain$FragmentInActivityMain" >
 
-</GridLayout>
+</GridView>
 
 
 

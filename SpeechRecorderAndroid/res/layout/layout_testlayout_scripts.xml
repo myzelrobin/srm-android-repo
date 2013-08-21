@@ -8,8 +8,8 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal" >
         
-        <include layout="@layout/layout_item_script" />
-        <include layout="@layout/layout_item_script"/>
+        <include layout="@layout/linearlayout_item_script" />
+        <include layout="@layout/linearlayout_item_script"/>
         
     </LinearLayout>
     
@@ -18,8 +18,8 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal" >
         
-        <include layout="@layout/layout_item_script" />
-        <include layout="@layout/layout_item_script"/>
+        <include layout="@layout/linearlayout_item_script" />
+        <include layout="@layout/linearlayout_item_script"/>
         
     </LinearLayout>
     
