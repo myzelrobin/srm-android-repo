@@ -41,8 +41,8 @@
     
     <style name="style_linearlayout_wrap_item" >
         <item name="android:background">#EEEEEE</item>
-        <item name="android:layout_width">460</item>
-        <item name="android:layout_height">180</item>
+        <item name="android:layout_width">460dp</item>
+        <item name="android:layout_height">180dp</item>
         <item name="android:gravity">center</item>
         <item name="android:orientation">vertical</item>
     </style>
