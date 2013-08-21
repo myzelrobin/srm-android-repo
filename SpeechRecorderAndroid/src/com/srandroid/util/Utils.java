@@ -141,11 +141,6 @@ public class Utils
 		public static final String TESTDB_FOLDER_PATH = 
 				"/mnt/sdcard/srandroid_testfolder";
 		
-		public static DBAccessor dbAccessor;
-		
-		
-		
-		
 		public static boolean isPreStartInitialized = false;
 		
 		/**
@@ -275,9 +270,6 @@ public class Utils
 			// gps info
 			getGPSInfo(context);
 			
-			// database
-			dbAccessor = new DBAccessor(context);
-			dbAccessor.getWritableDatabase();
 			
 			isPreStartInitialized = true;
 			

@@ -164,7 +164,6 @@ public class ActivityMain extends Activity {
 	@Override
     protected void onPause()
     {
-		Utils.ConstantVars.dbAccessor.close();
 		super.onPause();
 	}
 	

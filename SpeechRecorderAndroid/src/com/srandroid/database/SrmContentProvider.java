@@ -26,6 +26,7 @@ import android.util.Log;
 public class SrmContentProvider extends ContentProvider 
 {
 	// database 
+	private DBAccessor dbAccesor;
 	private SQLiteDatabase srmDB;
 
 	/**
@@ -39,9 +40,9 @@ public class SrmContentProvider extends ContentProvider
 	@Override
 	public boolean onCreate() 
 	{
+		srmDB = dbAccesor.getWritableDatabase();
 		Log.w(SrmContentProvider.class.getName(), 
-				"onCreate(): created content provider for database: " 
-				+ Utils.ConstantVars.dbAccessor.getWritableDatabase().getPath());
+				"onCreate(): created content provider for database: " + srmDB.getPath());
 		return true;
 	}
 	
@@ -114,7 +115,6 @@ public class SrmContentProvider extends ContentProvider
 				break;
 		}
 		
-		srmDB = Utils.ConstantVars.dbAccessor.getWritableDatabase();
 		Log.w(SrmContentProvider.class.getName(), "query(): will query from tables: " + queryBuilder.getTables());
 		Cursor cursor = queryBuilder.query(srmDB, 
 											selectColumns,  // from
@@ -292,7 +292,6 @@ public class SrmContentProvider extends ContentProvider
 		}
 		
 		
-		srmDB = Utils.ConstantVars.dbAccessor.getWritableDatabase();
 		int rowDeleted = 0;
 		
 		// switch to a delete action
@@ -342,7 +341,6 @@ public class SrmContentProvider extends ContentProvider
 	@Override
 	public Uri insert(Uri uri, ContentValues values) 
 	{
-		srmDB = Utils.ConstantVars.dbAccessor.getWritableDatabase();
 		
 		Uri uriTemp = null;
 		
@@ -557,7 +555,6 @@ public class SrmContentProvider extends ContentProvider
 				
 		}
 		
-		srmDB = Utils.ConstantVars.dbAccessor.getWritableDatabase();
 		int rowUpdated = 0;
 		
 		switch (switcher) 
