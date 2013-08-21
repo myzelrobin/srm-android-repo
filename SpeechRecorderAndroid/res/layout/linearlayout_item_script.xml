@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/style_linearlayout_wrap_item" >
-    
-    <LinearLayout 
-        style="@style/style_linearlayout_item" >
+    style="@style/style_linearlayout_item" >
         
         <LinearLayout 
             style="@style/style_linearlayout_wrap_imageview_in_item" >
@@ -26,6 +23,5 @@
                 android:id="@+id/descriptionInItemScript"
                 android:text="@string/script1_description"/>
 	        
-	    </LinearLayout>
-    </LinearLayout>
+        </LinearLayout>
 </LinearLayout>
