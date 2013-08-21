@@ -57,6 +57,68 @@ public class SrmContentProvider extends ContentProvider
 		return null;
 	}
 
+	
+	/**
+	 *  see docus, multi tables equals LEFT OUTER JOIN
+	 * 
+	 * @param uri
+	 * @param queryBuilder
+	 */
+	private void setTablesForQuerybuilder(Uri uri, SQLiteQueryBuilder queryBuilder) 
+	{
+		int uriType = SrmUriMatcher.uriMatcher.match(uri);
+		switch(uriType)
+		{
+			default:
+				throw new IllegalArgumentException(
+						SrmContentProvider.class.getName() 
+						+ "setTablesForQuerybuilder(): Unknown URI: " + uri);
+			case SrmUriMatcher.TABLE_SPEAKERS:
+				queryBuilder.setTables(TableSpeakers.TABLE_SPEAKERS);
+				break;
+			case SrmUriMatcher.SPEAKER_ITEM_ID:
+				queryBuilder.setTables(TableSpeakers.TABLE_SPEAKERS);
+				break;
+			case SrmUriMatcher.TABLE_SCRIPTS:
+				queryBuilder.setTables(TableScripts.TABLE_SCRIPTS);
+				break;
+			case SrmUriMatcher.SCRIPT_ITEM_ID:
+				queryBuilder.setTables(TableScripts.TABLE_SCRIPTS);
+				break;
+			case SrmUriMatcher.TABLE_SERVERS:
+				queryBuilder.setTables(TableServers.TABLE_SERVERS);
+				break;
+			case SrmUriMatcher.SERVER_ITEM_ID:
+				queryBuilder.setTables(TableServers.TABLE_SERVERS);
+				break;
+			case SrmUriMatcher.TABLE_SESSIONS:
+				queryBuilder.setTables(TableSessions.TABLE_SESSIONS);
+				break;
+			case SrmUriMatcher.SESSION_ITEM_ID:
+				queryBuilder.setTables(TableSessions.TABLE_SESSIONS);
+				break;
+			case SrmUriMatcher.TABLE_SECTIONS:
+				queryBuilder.setTables(TableSections.TABLE_SECTIONS);
+				break;
+			case SrmUriMatcher.SECTION_ITEM_ID:
+				queryBuilder.setTables(TableSections.TABLE_SECTIONS);
+				break;
+			case SrmUriMatcher.TABLE_RECORDS:
+				queryBuilder.setTables(TableRecords.TABLE_RECORDS);
+				break;
+			case SrmUriMatcher.RECORD_ITEM_ID:
+				queryBuilder.setTables(TableRecords.TABLE_RECORDS);
+				break;
+			case SrmUriMatcher.SESSIONS_LEFTJOIN_SPEAKERS:
+				// String tables= "sessions LEFT OUTER JOIN speakers ON (speakers._id=sessions.speaker_id)";
+				// queryBuilder.setTables(tables);
+				break;
+		}
+		
+	}
+	
+	
+	
 	@Override
 	public Cursor query(Uri uri,       // FROM
 			String[] selectColumns,    // SELECT
@@ -64,13 +126,10 @@ public class SrmContentProvider extends ContentProvider
 			String[] selectionValues,   // WHERE =
 			String sortOrder)           // ORDER BY
 	{
+		
 		// SQLiteQueryBuilder to build SQL query
 		SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
 		
-		Map<String, String> mColumnMap = new HashMap<String, String>();
-		// Check if the caller has requested a column which does not exists
-		// checkColumns(selectColumns);
-
 		// Set the tables
 		setTablesForQuerybuilder(uri, queryBuilder);
 		
@@ -119,14 +178,15 @@ public class SrmContentProvider extends ContentProvider
 						+ "=" + uri.getLastPathSegment());
 				break;
 			case SrmUriMatcher.SESSIONS_LEFTJOIN_SPEAKERS:
-				// map columns with same name
-				mColumnMap.put("sessions._id", "sessions._id AS _id");
-				mColumnMap.put("speakers._id", "speakers._id AS speaker_name");
-				queryBuilder.setProjectionMap(mColumnMap);
+				//
+				Cursor cursor = null;
+				srmDB = dbAccesor.getReadableDatabase();
+				String sqlQuery = "select *, t1._id as session_key_id, t2._id as speaker_key_id "
+						+ "from sessions t1 left outer join speakers t2 on t2._id=t1.script_id;";
+				return cursor = srmDB.rawQuery(sqlQuery, null);
 				
-				queryBuilder.appendWhere("");
-				break;
 		}
+		
 		srmDB = dbAccesor.getWritableDatabase();
 		
 		Log.w(SrmContentProvider.class.getName(), "query(): will query from tables: " + queryBuilder.getTables());
@@ -635,65 +695,7 @@ public class SrmContentProvider extends ContentProvider
 			
 		}
 	}
-	/**
-	 *  see docus, multi tables equals LEFT OUTER JOIN
-	 * 
-	 * @param uri
-	 * @param queryBuilder
-	 */
-	private void setTablesForQuerybuilder(Uri uri, SQLiteQueryBuilder queryBuilder) 
-	{
-		int uriType = SrmUriMatcher.uriMatcher.match(uri);
-		switch(uriType)
-		{
-			default:
-				throw new IllegalArgumentException(
-						SrmContentProvider.class.getName() 
-						+ "setTablesForQuerybuilder(): Unknown URI: " + uri);
-			case SrmUriMatcher.TABLE_SPEAKERS:
-				queryBuilder.setTables(TableSpeakers.TABLE_SPEAKERS);
-				break;
-			case SrmUriMatcher.SPEAKER_ITEM_ID:
-				queryBuilder.setTables(TableSpeakers.TABLE_SPEAKERS);
-				break;
-			case SrmUriMatcher.TABLE_SCRIPTS:
-				queryBuilder.setTables(TableScripts.TABLE_SCRIPTS);
-				break;
-			case SrmUriMatcher.SCRIPT_ITEM_ID:
-				queryBuilder.setTables(TableScripts.TABLE_SCRIPTS);
-				break;
-			case SrmUriMatcher.TABLE_SERVERS:
-				queryBuilder.setTables(TableServers.TABLE_SERVERS);
-				break;
-			case SrmUriMatcher.SERVER_ITEM_ID:
-				queryBuilder.setTables(TableServers.TABLE_SERVERS);
-				break;
-			case SrmUriMatcher.TABLE_SESSIONS:
-				queryBuilder.setTables(TableSessions.TABLE_SESSIONS);
-				break;
-			case SrmUriMatcher.SESSION_ITEM_ID:
-				queryBuilder.setTables(TableSessions.TABLE_SESSIONS);
-				break;
-			case SrmUriMatcher.TABLE_SECTIONS:
-				queryBuilder.setTables(TableSections.TABLE_SECTIONS);
-				break;
-			case SrmUriMatcher.SECTION_ITEM_ID:
-				queryBuilder.setTables(TableSections.TABLE_SECTIONS);
-				break;
-			case SrmUriMatcher.TABLE_RECORDS:
-				queryBuilder.setTables(TableRecords.TABLE_RECORDS);
-				break;
-			case SrmUriMatcher.RECORD_ITEM_ID:
-				queryBuilder.setTables(TableRecords.TABLE_RECORDS);
-				break;
-			case SrmUriMatcher.SESSIONS_LEFTJOIN_SPEAKERS:
-				String tables= "sessions LEFT OUTER JOIN speakers " 
-									+ "ON (sessions.speaker_id=speakers._id)";
-				queryBuilder.setTables(tables);
-				break;
-		}
-		
-	}
+	
 	/**
 	 * UriMatch class
 	 * 

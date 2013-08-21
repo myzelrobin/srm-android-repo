@@ -541,10 +541,6 @@ public class ActivityMain extends Activity {
 		{
         	CursorLoader cursorLoader = null;
         	
-        	CursorLoader cursorLoaderSpeakerTemp = null;
-        	CursorLoader cursorLoaderSessionTemp = null;
-        	
-        	
         	switch (itemIndex)
 			{
 					case Utils.ConstantVars.POS_SESSIONS:
