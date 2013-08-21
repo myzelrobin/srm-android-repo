@@ -40,9 +40,10 @@ public class SrmContentProvider extends ContentProvider
 	@Override
 	public boolean onCreate() 
 	{
-		srmDB = dbAccesor.getWritableDatabase();
+		dbAccesor = new DBAccessor(getContext());
 		Log.w(SrmContentProvider.class.getName(), 
-				"onCreate(): created content provider for database: " + srmDB.getPath());
+				"onCreate(): created content provider for database: " + 
+						dbAccesor.getDatabaseName());
 		return true;
 	}
 	
@@ -114,6 +115,8 @@ public class SrmContentProvider extends ContentProvider
 						+ "=" + uri.getLastPathSegment());
 				break;
 		}
+		
+		srmDB = dbAccesor.getWritableDatabase();
 		
 		Log.w(SrmContentProvider.class.getName(), "query(): will query from tables: " + queryBuilder.getTables());
 		Cursor cursor = queryBuilder.query(srmDB, 
@@ -291,6 +294,7 @@ public class SrmContentProvider extends ContentProvider
 				break;
 		}
 		
+		srmDB = dbAccesor.getWritableDatabase();
 		
 		int rowDeleted = 0;
 		
@@ -343,6 +347,8 @@ public class SrmContentProvider extends ContentProvider
 	{
 		
 		Uri uriTemp = null;
+		
+		srmDB = dbAccesor.getWritableDatabase();
 		
 		long id = 0;
 		
@@ -554,6 +560,8 @@ public class SrmContentProvider extends ContentProvider
 				break;
 				
 		}
+		
+		srmDB = dbAccesor.getWritableDatabase();
 		
 		int rowUpdated = 0;
 		
