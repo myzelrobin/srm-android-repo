@@ -64,5 +64,46 @@ public class DBAccessor extends SQLiteOpenHelper
 		
 	}
 
+	public static final String[] AVAILABLE_COLUMNS = 
+		{
+			TableRecords.TABLE_RECORDS,
+			TableRecords.COLUMN_ID, 
+			"record_key_id", // for join query
+			TableRecords.COLUMN_FILEPATH,
+			TableRecords.COLUMN_SECTION_ID,
+			TableScripts.COLUMN_DESCRIPTION,
+			TableScripts.COLUMN_FILEPATH,
+			TableScripts.COLUMN_ID,
+			"script_key_id",
+			TableScripts.COLUMN_SERVER_ID,
+			TableSections.COLUMN_ID,
+			"section_key_id",
+			TableSections.COLUMN_SCRIPT_ID,
+			TableSections.COLUMN_SECTIONID_INSCRIPT,
+			TableServers.COLUMN_ADDRESS,
+			TableServers.COLUMN_DESCRIPTION,
+			TableServers.COLUMN_ID,
+			"server_key_id",
+			TableServers.COLUMN_PASSWORD,
+			TableServers.COLUMN_USERNAME,
+			TableSessions.COLUMN_COUNT,
+			TableSessions.COLUMN_DATE,
+			TableSessions.COLUMN_DEVICE_DATA,
+			TableSessions.COLUMN_GPS_DATA,
+			TableSessions.COLUMN_ID,
+			"table_key_id",
+			TableSessions.COLUMN_IS_FINISHED,
+			TableSessions.COLUMN_PLACE,
+			TableSessions.COLUMN_SCRIPT_ID,
+			TableSessions.COLUMN_SPEAKER_ID,
+			TableSessions.COLUMN_TIME,
+			TableSpeakers.COLUMN_ACCENT,
+			TableSpeakers.COLUMN_BIRTHDAY,
+			TableSpeakers.COLUMN_FIRSTNAME,
+			TableSpeakers.COLUMN_ID,
+			"speaker_key_id",
+			TableSpeakers.COLUMN_SEX,
+			TableSpeakers.COLUMN_SURNAME
+	};
 	
 }

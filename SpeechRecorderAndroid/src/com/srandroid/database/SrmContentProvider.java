@@ -678,7 +678,7 @@ public class SrmContentProvider extends ContentProvider
 	
 	private void checkColumns(String[] inputColumns)
 	{
-		String[] availableCols = { }; // add tableColumns
+		String[] availableCols = DBAccessor.AVAILABLE_COLUMNS; // add tableColumns
 		if (inputColumns != null)
 		{
 			HashSet<String> requestedColsTemp = 
