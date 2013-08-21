@@ -43,6 +43,7 @@ public class ActivityAddSpeaker extends Activity
 	private CharSequence activity_title = null;
 	
 	private SpeakerItem speaker =  new SpeakerItem();
+	private Uri speakerItemUri = null;
 	
 	EditText firstnameInput = null;
     EditText surnameInput = null;
@@ -189,8 +190,8 @@ public class ActivityAddSpeaker extends Activity
 			     // actionbar buttons
 	        	case R.id.activity_addspeaker_button_start:
 	        		Utils.toastText(getApplicationContext(), "clicked start recording");
-	        		if(firstnameInput.getText() != null && surnameInput.getText() != null
-	        				&& accentInput.getText() != null && sexDropdownlist.getSelectedItem() != null)
+	        		if(!firstnameInput.getText().equals("") && !surnameInput.getText().equals("")
+	        				&& !accentInput.getText().equals("") && !sexDropdownlist.isSelected())
 	        		{
 	        			saveDataToSpeakerItem(speaker);
 		        		Uri speakerItemUri = saveSpeakerItemToDB(speaker);
@@ -239,7 +240,7 @@ public class ActivityAddSpeaker extends Activity
 			values.put(TableSpeakers.COLUMN_BIRTHDAY, speaker.getBirthday());
 
 			
-			Uri speakerItemUri = 
+			speakerItemUri = 
 					getContentResolver().insert(SrmContentProvider.SrmUriMatcher.CONTENT_URI_TABLE_SPEAKERS, values);
 			return speakerItemUri;
 		}
@@ -249,7 +250,7 @@ public class ActivityAddSpeaker extends Activity
 		@Override
 		protected void onSaveInstanceState(Bundle savedInstanceState) 
 		{
-			savedInstanceState.putParcelable("SPEAKER_ITEM", (Parcelable) speaker);
+			savedInstanceState.putParcelable("NEW_SPEAKER_ITEM_URI", speakerItemUri);
 		    super.onSaveInstanceState(savedInstanceState);
 		}
 
