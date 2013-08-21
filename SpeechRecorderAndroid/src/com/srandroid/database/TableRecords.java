@@ -41,7 +41,7 @@ public class TableRecords
 	public static void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
 	{
 		Log.w(TableRecords.class.getName(), "onUpgrade(): will upgrade table: " + TABLE_RECORDS);
-		db.execSQL("drop table if exists: " + TABLE_RECORDS);
+		db.execSQL("drop table if exists " + TABLE_RECORDS  + ";\n");
 		onCreate(db);
 	}
 }

@@ -312,9 +312,8 @@ public class ActivityMain extends Activity {
     }
 	
 	@Override
-	protected void onSaveInstanceState(Bundle outState) {
-	    super.onSaveInstanceState(outState);
-	    outState.putString("testkey", "test test");
+	protected void onSaveInstanceState(Bundle savedInstanceState) {
+	    super.onSaveInstanceState(savedInstanceState);
 	}
 
 	

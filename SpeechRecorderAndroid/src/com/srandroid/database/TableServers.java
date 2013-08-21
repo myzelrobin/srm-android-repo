@@ -47,7 +47,7 @@ public class TableServers
 	public static void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
 	{
 		Log.w(TableServers.class.getName(), "onUpgrade(): will upgrade table: " + TABLE_SERVERS);
-		db.execSQL("drop table if exists: " + TABLE_SERVERS);
+		db.execSQL("drop table if exists " + TABLE_SERVERS + ";\n");
 		onCreate(db);
 	}
 	

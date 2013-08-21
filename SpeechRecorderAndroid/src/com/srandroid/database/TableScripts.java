@@ -46,7 +46,7 @@ public class TableScripts
 	public static void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
 	{
 		Log.w(TableScripts.class.getName(), "onUpgrade(): will upgrade table: " + TABLE_SCRIPTS);
-		db.execSQL("drop table if exists: " + TABLE_SCRIPTS);
+		db.execSQL("drop table if exists " + TABLE_SCRIPTS  + ";\n");
 		onCreate(db);
 	}
 	

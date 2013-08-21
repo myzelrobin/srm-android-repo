@@ -59,7 +59,7 @@ public class TableSessions
 	public static void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
 	{
 		Log.w(TableSessions.class.getName(), "onUpgrade(): will upgrade table: " + TABLE_SESSIONS);
-		db.execSQL("drop table if exists: " + TABLE_SESSIONS);
+		db.execSQL("drop table if exists " + TABLE_SESSIONS + ";\n");
 		onCreate(db);
 	}
 	

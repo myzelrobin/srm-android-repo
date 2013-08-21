@@ -48,7 +48,7 @@ public class TableSpeakers
 	public static void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
 	{
 		Log.w(TableSpeakers.class.getName(), "onUpgrade(): will upgrade table: " + TABLE_SPEAKERS);
-		db.execSQL("drop table if exists: " + TABLE_SPEAKERS);
+		db.execSQL("drop table if exists " + TABLE_SPEAKERS + ";\n");
 		onCreate(db);
 	}
 	

@@ -41,7 +41,7 @@ public class TableSections
 	public static void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
 	{
 		Log.w(TableSections.class.getName(), "onUpgrade(): will upgrade table: " + TABLE_SECTIONS);
-		db.execSQL("drop table if exists: " + TABLE_SECTIONS);
+		db.execSQL("drop table if exists " + TABLE_SECTIONS  + ";\n");
 		onCreate(db);
 	}
 }
