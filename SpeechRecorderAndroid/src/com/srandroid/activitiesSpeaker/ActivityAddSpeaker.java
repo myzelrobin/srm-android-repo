@@ -70,7 +70,9 @@ public class ActivityAddSpeaker extends Activity
 	        EditText surnameInput = (EditText) findViewById(R.id.id_addspeaker_surname_textinput);
 	        EditText accentInput = (EditText) findViewById(R.id.id_addspeaker_accent_textinput);
 	        Spinner sexDropdownlist = (Spinner) findViewById(R.id.id_addspeaker_sex_dropdownlist);
-	        
+	        EditText yearInput = (EditText) findViewById(R.id.id_addspeaker_year_textinput);
+	        EditText monthInput = (EditText) findViewById(R.id.id_addspeaker_month_textinput);
+	        EditText dayInput = (EditText) findViewById(R.id.id_addspeaker_day_textinput);
 	        
 	        
 	        // enable home button
