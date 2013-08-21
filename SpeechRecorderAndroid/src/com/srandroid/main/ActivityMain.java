@@ -4,6 +4,7 @@ import java.sql.Savepoint;
 import java.util.Arrays;
 
 import com.srandroid.R;
+import com.srandroid.activitiesSpeaker.ActivityAddSpeaker;
 import com.srandroid.database.DBAccessor;
 import com.srandroid.database.TableScripts;
 import com.srandroid.database.TableSessions;
@@ -317,6 +318,9 @@ public class ActivityMain extends Activity {
         		break;
         	case R.id.button_add_speaker:
         		Utils.toastText(getApplicationContext(), "clicked add speaker");
+        		Intent newI = new Intent(ActivityMain.this, ActivityAddSpeaker.class);
+        		// newI.putExtra("key", value); //Optional parameters
+        		ActivityMain.this.startActivity(newI);
         		break;
         	case R.id.button_search_speakers:
         		Utils.toastText(getApplicationContext(), "clicked search speakers");

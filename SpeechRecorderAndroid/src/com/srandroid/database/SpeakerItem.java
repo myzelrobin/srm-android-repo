@@ -1,6 +1,6 @@
 package com.srandroid.database;
 
-public class Speakeritem {
+public class SpeakerItem {
 
 	private String item_id = "speaker#";
 	private String key_id = null; // key
@@ -11,7 +11,8 @@ public class Speakeritem {
 	private String birthday = null; // text
 	
 	
-	public Speakeritem() {
+	public SpeakerItem() 
+	{
 		// TODO Auto-generated constructor stub
 	}
 

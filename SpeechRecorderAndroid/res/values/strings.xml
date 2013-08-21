@@ -197,6 +197,23 @@
         <string name="session1_isfinished">Finished</string>
 
         
+        
+        <!-- activity add speaker -->
+        <string name="activity_addspeaker_title">Add Speaker</string>
+        <string name="activity_addspeaker_button_startrecording_text">Start</string>
+        <string name="activity_addspeaker_firstname_text">Firstname</string>
+        <string name="activity_addspeaker_surname_text">Surname</string>
+        <string name="activity_addspeaker_accent_text">Accent</string>
+        <string name="activity_addspeaker_sex_text">Sex</string>
+        <string name="activity_addspeaker_birthday_text">birthday</string>
+        <string-array name="activity_addspeaker_sex_dropdown_items">
+                        <item>male</item>
+                        <item>female</item>
+                    </string-array>
+        
+        
+        
+        
 </resources>
 
 

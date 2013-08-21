@@ -105,5 +105,12 @@
         <item name="android:textColor">#FF0000</item>
     </style>
     
+    <style name="style_linearlayout_activity_addspeaker" >
+        <item name="android:background">#EEEEEE</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:gravity">center</item>
+        <item name="android:orientation">vertical</item>
+    </style>
 
 </resources>

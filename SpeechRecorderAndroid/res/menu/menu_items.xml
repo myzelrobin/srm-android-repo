@@ -81,6 +81,20 @@
             android:title="@string/button_search" />
         
     </group>
+    
+    <!-- Activity add speaker -->
+    <group 
+        android:id="@+id/bgroup_addspeaker"
+        android:visible="false" >
+    
+        <item
+            android:id="@+id/activity_addspeaker_button_start"
+            android:icon="@drawable/ic_button_mic"
+            android:showAsAction="always"
+            android:title="@string/activity_addspeaker_button_startrecording_text" />
+        
+        
+    </group>
 
 </menu>
 
