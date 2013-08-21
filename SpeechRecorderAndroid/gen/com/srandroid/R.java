@@ -291,19 +291,18 @@ public final class R {
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f080001;
-        public static final int style_finished_session_in_textview_in_item=0x7f08000b;
+        public static final int style_finished_session_in_textview_in_item=0x7f08000a;
         /**  not finished, need to be changed
     columnCount is calculatet at runtime 
          */
         public static final int style_gridview_fragment_in_activitymain=0x7f080003;
-        public static final int style_linearlayout_imageview_in_item=0x7f080007;
-        public static final int style_linearlayout_item=0x7f080005;
-        public static final int style_linearlayout_wrap_imageview_in_item=0x7f080006;
-        public static final int style_linearlayout_wrap_item=0x7f080004;
-        public static final int style_linearlayout_wrap_textview_in_item=0x7f080008;
-        public static final int style_text_in_textview_in_item=0x7f08000a;
-        public static final int style_title_in_textview_in_item=0x7f080009;
-        public static final int style_unfinished_session_in_textview_in_item=0x7f08000c;
+        public static final int style_linearlayout_imageview_in_item=0x7f080006;
+        public static final int style_linearlayout_item=0x7f080004;
+        public static final int style_linearlayout_wrap_imageview_in_item=0x7f080005;
+        public static final int style_linearlayout_wrap_textview_in_item=0x7f080007;
+        public static final int style_text_in_textview_in_item=0x7f080009;
+        public static final int style_title_in_textview_in_item=0x7f080008;
+        public static final int style_unfinished_session_in_textview_in_item=0x7f08000b;
         /**  Cusomized styles 
          */
         public static final int styletest_linearlayout_activitymain=0x7f080002;
