@@ -65,7 +65,7 @@ public class SrmContentProvider extends ContentProvider
 		SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
 		
 		// Check if the caller has requested a column which does not exists
-		checkColumns(selectColumns);
+		// checkColumns(selectColumns);
 
 		// Set the tables
 		setTablesForQuerybuilder(uri, queryBuilder);
@@ -617,7 +617,7 @@ public class SrmContentProvider extends ContentProvider
 			if(!availableColsTemp.containsAll(requestedColsTemp))
 			{
 				throw new IllegalArgumentException(SrmContentProvider.class.getName() 
-						+ "SrmContentProvider->checkColumns(): "
+						+ " checkColumns(): "
 						+ "Unknown requested column in selectColumns!");
 			}
 			
