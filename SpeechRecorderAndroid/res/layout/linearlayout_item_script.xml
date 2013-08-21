@@ -14,10 +14,20 @@
 	    <LinearLayout 
 	        style="@style/style_linearlayout_wrap_textview_in_item" >
 	        
-	        <TextView 
-	            style="@style/style_title_in_textview_in_item"
-	            android:id="@+id/idInItemScript"
-                android:text="@string/script1_id" />
+	        <LinearLayout 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+		        <TextView 
+		            style="@style/style_title_in_textview_in_item"
+		            android:id="@+id/idSignInItemScript"
+	                android:text="#" />
+		        <TextView 
+                    style="@style/style_title_in_textview_in_item"
+                    android:id="@+id/idInItemScript"
+                    android:text="@string/script1_id" />    
+	        </LinearLayout>
+		    
 	        <TextView 
                 style="@style/style_text_in_textview_in_item"
                 android:id="@+id/descriptionInItemScript"
