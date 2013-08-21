@@ -421,6 +421,10 @@ public class ActivityMain extends Activity {
     {
         public static final String ARG_FRAGMENT_NUMBER = "fragment_number";
         
+        // state for savedInstance
+        
+        
+        // view
         View fragmentView = null;
     	GridView gridView = null;
     	LayoutInflater gridInflater = null;
@@ -431,7 +435,6 @@ public class ActivityMain extends Activity {
         
         // adapter
         private SimpleCursorAdapter adapter;
-        
         
         // title
         private String fragmentTitle = null;
@@ -446,7 +449,7 @@ public class ActivityMain extends Activity {
         public void onCreate(Bundle savedInstanceState) 
         {
         	super.onCreate(savedInstanceState);
-        	if(!savedInstanceState.isEmpty())
+        	if(savedInstanceState != null)
         	{
         		type = savedInstanceState.getInt("newType");
             	
@@ -508,16 +511,6 @@ public class ActivityMain extends Activity {
         			Log.w(FragmentInActivityMain.class.getName(), 
         					"onCreateView() will update Fragment with arg=" + type);
         			
-        			gridInflater = 
-        					(LayoutInflater) getActivity().getSystemService(
-        							Context.LAYOUT_INFLATER_SERVICE);
-        			fragmentView = gridInflater.inflate(
-        					R.layout.gridview_in_fragment_in_activitymain, null);
-        			
-        			gridView = 
-        					(GridView) fragmentView.findViewById(
-        							R.id.gridview_in_fragment_in_activitymain);
-        			
         			fillFragment();
         			
         			break;
@@ -557,7 +550,15 @@ public class ActivityMain extends Activity {
 				break;
 				
 			case Utils.ConstantVars.POS_SPEAKERS:
-				
+				gridInflater = 
+				(LayoutInflater) getActivity().getSystemService(
+						Context.LAYOUT_INFLATER_SERVICE);
+				fragmentView = gridInflater.inflate(
+						R.layout.gridview_in_fragment_in_activitymain, null);
+		
+				gridView = 
+						(GridView) fragmentView.findViewById(
+								R.id.gridview_in_fragment_in_activitymain);
 				
 				// Fields from the database (selectColumns)
 				String[] from = new String[] { TableSpeakers.COLUMN_FIRSTNAME,
@@ -600,8 +601,8 @@ public class ActivityMain extends Activity {
         
 		@Override
 		public void onSaveInstanceState(Bundle savedInstanceState) {
-		    super.onSaveInstanceState(savedInstanceState);
 		    savedInstanceState.putInt("newType", type);
+		    super.onSaveInstanceState(savedInstanceState);
 		    
 		}
         /*
