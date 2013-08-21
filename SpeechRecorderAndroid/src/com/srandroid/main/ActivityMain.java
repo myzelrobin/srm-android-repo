@@ -548,7 +548,7 @@ public class ActivityMain extends Activity {
 						// Sessions left outer join Speakers
 						// all columns with different names in two tables
 						String[] selectColumns_SessionsLEFTJOINSpeakers = {
-								TableSessions.COLUMN_ID,
+								"session_key_id",
 								TableSessions.COLUMN_DATE,
 								TableSessions.COLUMN_TIME,
 								TableSessions.COLUMN_PLACE,
@@ -628,7 +628,7 @@ public class ActivityMain extends Activity {
 						// Sessions left outer join Speakers
 						
 						// Fields from the database (selectColumns)
-						from = new String[] {TableSessions.COLUMN_ID,
+						from = new String[] {"session_key_id",
 												TableSessions.COLUMN_SCRIPT_ID,
 												TableSessions.COLUMN_DATE,
 												TableSessions.COLUMN_IS_FINISHED,
