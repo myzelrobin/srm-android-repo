@@ -39,7 +39,7 @@
         <item name="android:orientation">vertical</item>
         <item name="android:numColumns">auto_fit</item>
         <item name="android:columnWidth">480dp</item>
-        <item name="android:horizontalSpacing">10dp</item>
+        <item name="android:horizontalSpacing">5dp</item>
         <item name="android:verticalSpacing">10dp</item>
     </style>
     
