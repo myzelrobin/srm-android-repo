@@ -140,7 +140,7 @@ public class ActivityMain extends Activity {
         // Pop up hint at the left side
         toastSwipeHint();
         
-        
+        Utils.ConstantVars.dbAccessor.close();
 	}
 	
 
