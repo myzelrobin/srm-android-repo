@@ -49,7 +49,7 @@ public class ActivityMain extends Activity {
     private DrawerLayout drawerlayout_in_activitymain;
     private ListView listview_drawer_items;
     private ActionBarDrawerToggle toggle_drawer_items;
-    
+    private int selectedItemIndex = -1;
     
     // 
     private Thread initAppThread = null;
@@ -104,9 +104,16 @@ public class ActivityMain extends Activity {
         listview_drawer_items.setAdapter(new ArrayAdapter<String>(this,
                 R.layout.layout_textview_drawer_items, array_drawer_items));
         
-        int sessionsIndex = Arrays.asList(array_drawer_items).indexOf("Sessions");
-        // Set the list's click listener
-        listview_drawer_items.setOnItemClickListener(new DrawerItemClickListener(sessionsIndex));
+        
+        // in the first onCreate(), select Sessions
+        if(selectedItemIndex == -1)
+        {
+        	
+        	int sessionsIndex = Arrays.asList(array_drawer_items).indexOf("Sessions");
+        	// Set the list's click listener
+            listview_drawer_items.setOnItemClickListener(new DrawerItemClickListener(sessionsIndex));
+            selectedItemIndex = sessionsIndex;
+        }
         
         // Set the open&close listener in actionbar(swipe and click app icon)
         toggle_drawer_items = new ActionBarDrawerToggle(
@@ -304,6 +311,13 @@ public class ActivityMain extends Activity {
         return super.onOptionsItemSelected(item);
     }
 	
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+	    super.onSaveInstanceState(outState);
+	    outState.putString("testkey", "test test");
+	}
+
+	
 	/**
 	 * 
 	 * @param title
@@ -314,6 +328,7 @@ public class ActivityMain extends Activity {
 	    activity_title = title;
 	    getActionBar().setTitle(activity_title);
 	}
+
 	
 	/**
 	 *  Shows a toast with "swipe from here to right" at the left center of the screen
