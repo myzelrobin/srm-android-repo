@@ -61,13 +61,13 @@ public class TableSpeakers
 		for(int i = 1; i < 6; i++)
 		{
 			values.put(TableSpeakers.COLUMN_FIRSTNAME, "Testman" + "#" + i);
-			values.put(TableSpeakers.COLUMN_SURNAME, "Exampler");
+			values.put(TableSpeakers.COLUMN_SURNAME, "Exp");
 			values.put(TableSpeakers.COLUMN_SEX, "male");
 			values.put(TableSpeakers.COLUMN_ACCENT, "bayerisch");
 			db.insert(TableSpeakers.TABLE_SPEAKERS, null, values);
 			
 			values.put(TableSpeakers.COLUMN_FIRSTNAME, "Testwoman" + "#" + i);
-			values.put(TableSpeakers.COLUMN_SURNAME, "Examplin");
+			values.put(TableSpeakers.COLUMN_SURNAME, "Exp");
 			values.put(TableSpeakers.COLUMN_SEX, "female");
 			values.put(TableSpeakers.COLUMN_ACCENT, "bayerisch");
 			db.insert(TableSpeakers.TABLE_SPEAKERS, null, values);
