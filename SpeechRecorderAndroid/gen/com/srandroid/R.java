@@ -151,6 +151,9 @@ public final class R {
         /**  activity add speaker 
          */
         public static final int activity_addspeaker_title=0x7f06005d;
+        /**  activity speaker detials 
+         */
+        public static final int activity_speakerdetials_title=0x7f060064;
         /**  application 
          */
         public static final int app_name=0x7f060000;
@@ -167,8 +170,8 @@ public final class R {
  Buttons in Overflow 
  Buttons in Overflow 
          */
-        public static final int button_set_microphone=0x7f060064;
-        public static final int button_set_recording_values=0x7f060065;
+        public static final int button_set_microphone=0x7f060065;
+        public static final int button_set_recording_values=0x7f060066;
         /**  Buttons in Overflow 
          */
         public static final int button_settings=0x7f060016;
@@ -258,7 +261,7 @@ public final class R {
         public static final int settings_sample_rate_default=0x7f060028;
         public static final int settings_sample_rate_key=0x7f060027;
         public static final int settings_sample_rate_summary=0x7f060026;
-        public static final int settings_theme=0x7f060066;
+        public static final int settings_theme=0x7f060067;
         public static final int speaker1_accent=0x7f060041;
         public static final int speaker1_birthday=0x7f060042;
         /**  Speaker Example 

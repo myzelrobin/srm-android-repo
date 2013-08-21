@@ -212,7 +212,9 @@
                     </string-array>
         
         
-        
+         
+        <!-- activity speaker detials -->
+        <string name="activity_speakerdetials_title">Speaker Infos</string>
         
 </resources>
 
