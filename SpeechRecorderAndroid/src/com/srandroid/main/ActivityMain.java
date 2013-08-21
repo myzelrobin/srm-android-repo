@@ -432,6 +432,11 @@ public class ActivityMain extends Activity {
         // adapter
         private SimpleCursorAdapter adapter;
         
+        
+        // title
+        private String fragmentTitle = null;
+        
+        
         public FragmentInActivityMain() 
         {
             // Empty constructor required for fragment subclasses
@@ -441,6 +446,14 @@ public class ActivityMain extends Activity {
         public void onCreate(Bundle savedInstanceState) 
         {
         	super.onCreate(savedInstanceState);
+        	if(!savedInstanceState.isEmpty())
+        	{
+        		type = savedInstanceState.getInt("newType");
+            	
+            	fillFragment();
+            	setTitle();
+        	}
+        	
         }
 
         @Override
@@ -450,7 +463,7 @@ public class ActivityMain extends Activity {
         {
         	type = getArguments().getInt(ARG_FRAGMENT_NUMBER);
         	
-        	String fragmentTitle = null;
+        	
         	
         	
         	switch(type)
@@ -472,9 +485,7 @@ public class ActivityMain extends Activity {
         			
         			fillFragment();
         			
-                	fragmentTitle = 
-                			getResources().getStringArray(R.array.array_drawer_items)[type];
-                	getActivity().setTitle(fragmentTitle);
+                	
         			break;
         		case Utils.ConstantVars.POS_SCRIPTS: // Scripts
         			Log.w(FragmentInActivityMain.class.getName(), 
@@ -492,9 +503,6 @@ public class ActivityMain extends Activity {
         			
         			fillFragment();
         			
-        			fragmentTitle = 
-                			getResources().getStringArray(R.array.array_drawer_items)[type];
-                	getActivity().setTitle(fragmentTitle);
         			break;
         		case Utils.ConstantVars.POS_SPEAKERS: // Speakers
         			Log.w(FragmentInActivityMain.class.getName(), 
@@ -512,12 +520,11 @@ public class ActivityMain extends Activity {
         			
         			fillFragment();
         			
-                	fragmentTitle = 
-                			getResources().getStringArray(R.array.array_drawer_items)[type];
-                	getActivity().setTitle(fragmentTitle);
         			break;
-        		
+        			
         	}
+        	fragmentTitle = getResources().getStringArray(R.array.array_drawer_items)[type];
+			getActivity().setTitle(fragmentTitle);
             
         	return fragmentView;
         }
@@ -550,6 +557,8 @@ public class ActivityMain extends Activity {
 				break;
 				
 			case Utils.ConstantVars.POS_SPEAKERS:
+				
+				
 				// Fields from the database (selectColumns)
 				String[] from = new String[] { TableSpeakers.COLUMN_FIRSTNAME,
 												TableSpeakers.COLUMN_SURNAME,
@@ -576,6 +585,12 @@ public class ActivityMain extends Activity {
 			}
 			
 		}
+        
+        private void setTitle()
+        {
+        	fragmentTitle = getResources().getStringArray(R.array.array_drawer_items)[type];
+			getActivity().setTitle(fragmentTitle);
+        }
 
 		@Override
         public void onActivityCreated(Bundle savedInstanceState)
@@ -583,6 +598,12 @@ public class ActivityMain extends Activity {
         	super.onActivityCreated(savedInstanceState);
         }
         
+		@Override
+		public void onSaveInstanceState(Bundle savedInstanceState) {
+		    super.onSaveInstanceState(savedInstanceState);
+		    savedInstanceState.putInt("newType", type);
+		    
+		}
         /*
         @Override
         public void onViewStateRestored(Bundle savedInstanceState)
