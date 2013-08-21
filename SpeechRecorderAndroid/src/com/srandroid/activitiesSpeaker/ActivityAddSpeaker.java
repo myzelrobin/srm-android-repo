@@ -190,8 +190,10 @@ public class ActivityAddSpeaker extends Activity
 			     // actionbar buttons
 	        	case R.id.activity_addspeaker_button_start:
 	        		Utils.toastText(getApplicationContext(), "clicked start recording");
-	        		if(!firstnameInput.getText().equals("") && !surnameInput.getText().equals("")
-	        				&& !accentInput.getText().equals("") && !sexDropdownlist.isSelected())
+	        		if(!firstnameInput.getText().toString().matches("") 
+	        				&& !surnameInput.getText().toString().matches("")
+	        				&& !accentInput.getText().toString().matches("") 
+	        				&& !sexDropdownlist.isSelected())
 	        		{
 	        			saveDataToSpeakerItem(speaker);
 		        		Uri speakerItemUri = saveSpeakerItemToDB(speaker);
