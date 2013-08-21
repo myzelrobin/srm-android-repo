@@ -122,7 +122,11 @@ public class SrmContentProvider extends ContentProvider
 		srmDB = dbAccesor.getWritableDatabase();
 		
 		Log.w(SrmContentProvider.class.getName(), "query(): will query from tables: " + queryBuilder.getTables());
-		Log.w(SrmContentProvider.class.getName(), "query(): will query from tables: " + queryBuilder.toString());
+		Log.w(SrmContentProvider.class.getName(), "query(): will query from tables: " 
+				+ "\nqueryBuilder:selectColumns" + selectColumns.toString()
+				+ "\nwhereSelection=" + whereSelection.toString()
+				+ "\nselectionValues=" + selectionValues.toString()
+				+ "\nsortOrder=" + sortOrder.toString() );
 		Cursor cursor = queryBuilder.query(srmDB, 
 											selectColumns,  // from
 											whereSelection, // where
