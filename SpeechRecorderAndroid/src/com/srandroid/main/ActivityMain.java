@@ -1,5 +1,6 @@
 package com.srandroid.main;
 
+import java.sql.Savepoint;
 import java.util.Arrays;
 
 import com.srandroid.R;
@@ -51,6 +52,9 @@ public class ActivityMain extends Activity {
     private ActionBarDrawerToggle toggle_drawer_items;
     private int selectedItemIndex = -1;
     
+    // STATE
+    public static final String SELECTED_ITEM_INDEX = "selectedItemIndex";
+    
     // 
     private Thread initAppThread = null;
 
@@ -89,7 +93,12 @@ public class ActivityMain extends Activity {
 			
 		}
 		
+		
+		
+		
+		
 		Log.w(ActivityMain.class.getName(), " will create view of this HOME activity.");
+		
 		setContentView(R.layout.drawerlayout_in_activitymain);
 		
 		activity_title = title_drawer_items = getTitle();
@@ -105,15 +114,31 @@ public class ActivityMain extends Activity {
                 R.layout.layout_textview_drawer_items, array_drawer_items));
         
         
-        // in the first onCreate(), select Sessions
-        if(selectedItemIndex == -1)
+        
+        
+        
+        
+        
+        // orientation changed
+        if(savedInstanceState != null)
         {
-        	
-        	int sessionsIndex = Arrays.asList(array_drawer_items).indexOf("Sessions");
-        	// Set the list's click listener
-            listview_drawer_items.setOnItemClickListener(new DrawerItemClickListener(sessionsIndex));
-            selectedItemIndex = sessionsIndex;
+        	selectedItemIndex = savedInstanceState.getInt(SELECTED_ITEM_INDEX);
         }
+        else
+        {
+        	// in the first onCreate(), select Sessions
+            if(selectedItemIndex == -1)
+            {
+            	// select the first item
+            	selectedItemIndex = 0;
+            }
+            
+        }
+        
+        // Set the list's click listener, and select one item
+        listview_drawer_items.setOnItemClickListener(new DrawerItemClickListener(selectedItemIndex));
+        
+        
         
         // Set the open&close listener in actionbar(swipe and click app icon)
         toggle_drawer_items = new ActionBarDrawerToggle(
@@ -141,6 +166,8 @@ public class ActivityMain extends Activity {
         // Set the drawer toggle as the DrawerListener
         drawerlayout_in_activitymain.setDrawerListener(toggle_drawer_items);
         
+        
+        // enable home button
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);
         
@@ -239,19 +266,18 @@ public class ActivityMain extends Activity {
         Log.w(this.getClass().getName(), "onPrepareOptionsMenu: title=" + title + " index=" + index);
 		switch(index)
 		{
-			case 0:
+			case Utils.ConstantVars.POS_SESSIONS:
 				menu.setGroupVisible(R.id.bgroup_sessions, true);
 				break;
-			case 1:
+			case Utils.ConstantVars.POS_SCRIPTS:
 				menu.setGroupVisible(R.id.bgroup_scripts, true);
 				break;
-			case 2:
+			case Utils.ConstantVars.POS_SPEAKERS:
 				menu.setGroupVisible(R.id.bgroup_speakers, true);
 				break;
 			default:
 				break;
 		}
-        
         
         return super.onPrepareOptionsMenu(menu);
     }
@@ -312,7 +338,9 @@ public class ActivityMain extends Activity {
     }
 	
 	@Override
-	protected void onSaveInstanceState(Bundle savedInstanceState) {
+	protected void onSaveInstanceState(Bundle savedInstanceState) 
+	{
+		savedInstanceState.putInt(SELECTED_ITEM_INDEX, selectedItemIndex);
 	    super.onSaveInstanceState(savedInstanceState);
 	}
 
@@ -393,6 +421,7 @@ public class ActivityMain extends Activity {
 	    listview_drawer_items.setItemChecked(position, true);
 	    setTitle(array_drawer_items[position]);
 	    drawerlayout_in_activitymain.closeDrawer(listview_drawer_items);
+	    selectedItemIndex = position;
 	}
 	
 	/**
@@ -451,10 +480,7 @@ public class ActivityMain extends Activity {
         	super.onCreate(savedInstanceState);
         	if(savedInstanceState != null)
         	{
-        		type = savedInstanceState.getInt("newType");
-            	
-            	fillFragment();
-            	setTitle();
+        		
         	}
         	
         }
@@ -601,7 +627,6 @@ public class ActivityMain extends Activity {
         
 		@Override
 		public void onSaveInstanceState(Bundle savedInstanceState) {
-		    savedInstanceState.putInt("newType", type);
 		    super.onSaveInstanceState(savedInstanceState);
 		    
 		}
