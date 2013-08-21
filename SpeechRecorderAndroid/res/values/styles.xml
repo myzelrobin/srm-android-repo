@@ -98,7 +98,7 @@
         <item name="android:textColor">#00FF00</item>
     </style>
     
-    <style name="style_unfinished_session_in_textview_in_item" >
+    <style name="style_textred_in_textview_in_item" >
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">18sp</item>

@@ -68,7 +68,7 @@
 	                android:id="@+id/creationDateInItemSession"
 	                android:text="@string/session1_creation_day"/>
 	            <TextView 
-	                style="@style/style_unfinished_session_in_textview_in_item"
+	                style="@style/style_textred_in_textview_in_item"
 	                android:layout_alignParentRight="true"
 	                android:id="@+id/isFinishedInItemSession"
 	                android:text="@string/session1_isfinished"/>
