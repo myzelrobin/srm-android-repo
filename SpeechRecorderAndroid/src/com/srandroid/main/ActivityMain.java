@@ -38,6 +38,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.ListView;
@@ -454,7 +455,7 @@ public class ActivityMain extends Activity {
      * Fragment that appears in the "content_frame", shows a planet
      */
     public static class FragmentInActivityMain extends Fragment 
-    	implements LoaderManager.LoaderCallbacks<Cursor>, OnClickListener
+    	implements LoaderManager.LoaderCallbacks<Cursor>, OnItemClickListener
     {
         public static final String ARG_FRAGMENT_NUMBER = "fragment_number";
         
@@ -507,7 +508,7 @@ public class ActivityMain extends Activity {
     		
 			gridView = (GridView) fragmentView.findViewById(
 							R.id.gridview_in_fragment_in_activitymain);
-        	gridView.setOnClickListener(this);
+        	gridView.setOnItemClickListener(this);
         	
         	switch(itemIndex)
         	{
@@ -762,9 +763,9 @@ public class ActivityMain extends Activity {
         }
 
 		@Override
-		public void onClick(View view) 
-		{
-			
+		public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+				long arg3) {
+			// TODO Auto-generated method stub
 			
 		}
 
