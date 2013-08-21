@@ -102,7 +102,7 @@ public class ActivityMain extends Activity {
 
         // Set the adapter for the list view
         listview_drawer_items.setAdapter(new ArrayAdapter<String>(this,
-                R.layout.layout_drawer_items, array_drawer_items));
+                R.layout.layout_textview_drawer_items, array_drawer_items));
         
         int sessionsIndex = Arrays.asList(array_drawer_items).indexOf("Sessions");
         // Set the list's click listener

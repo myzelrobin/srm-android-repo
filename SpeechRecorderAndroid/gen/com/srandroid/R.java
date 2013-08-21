@@ -99,10 +99,10 @@ public final class R {
         public static final int dialog_settings_microphone=0x7f030000;
         public static final int drawerlayout_in_activitymain=0x7f030001;
         public static final int gridview_in_fragment_in_activitymain=0x7f030002;
-        public static final int layout_drawer_items=0x7f030003;
-        public static final int layout_testlayout_scripts=0x7f030004;
-        public static final int layout_testlayout_sessions=0x7f030005;
-        public static final int layout_testlayout_speakers=0x7f030006;
+        public static final int layout_testlayout_scripts=0x7f030003;
+        public static final int layout_testlayout_sessions=0x7f030004;
+        public static final int layout_testlayout_speakers=0x7f030005;
+        public static final int layout_textview_drawer_items=0x7f030006;
         public static final int layout_toasthint_in_activitymain=0x7f030007;
         public static final int linearlayout_item_script=0x7f030008;
         public static final int linearlayout_item_session=0x7f030009;
