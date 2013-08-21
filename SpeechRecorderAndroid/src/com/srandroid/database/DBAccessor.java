@@ -15,7 +15,7 @@ import android.util.Log;
 public class DBAccessor extends SQLiteOpenHelper
 {
 	private static final String DATABASE_NAME = "srandroid_database.db";
-	private static final int DATABASE_VERSION = 2;
+	private static final int DATABASE_VERSION = 3;
 	
 
 	public DBAccessor(Context context) 
@@ -34,9 +34,6 @@ public class DBAccessor extends SQLiteOpenHelper
 		TableSessions.onCreate(db);
 		TableSections.onCreate(db);
 		TableRecords.onCreate(db);
-		
-		insertExamples(db);
-		
 	}
 
 	// upgrade database

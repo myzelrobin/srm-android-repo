@@ -40,6 +40,7 @@ public class TableScripts
 	{
 		Log.w(TableScripts.class.getName(), "onCreate(): will create table: " + TABLE_SCRIPTS);
 		db.execSQL(CREATE_TABLE_SCRIPTS);
+		insertScriptExamples(db);
 	}
 	
 	// upgrade table scripts

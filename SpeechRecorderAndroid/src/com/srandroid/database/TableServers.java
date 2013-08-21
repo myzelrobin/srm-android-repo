@@ -41,6 +41,7 @@ public class TableServers
 	{
 		Log.w(TableServers.class.getName(), "onCreate(): will create table: " + TABLE_SERVERS);
 		db.execSQL(CREATE_TABLE_SERVERS);
+		insertServerExamples(db);
 	}
 	
 	// upgrade table servers

@@ -42,6 +42,7 @@ public class TableSpeakers
 	{
 		Log.w(TableSpeakers.class.getName(), "onCreate(): will create table: " + TABLE_SPEAKERS);
 		db.execSQL(CREATE_TABLE_SPEAKERS);
+		insertSpeakerExamples(db);
 	}
 	
 	// upgrade table speakers
