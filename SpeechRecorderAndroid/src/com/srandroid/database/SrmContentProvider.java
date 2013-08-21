@@ -678,7 +678,7 @@ public class SrmContentProvider extends ContentProvider
 				queryBuilder.setTables(TableRecords.TABLE_RECORDS);
 				break;
 			case SrmUriMatcher.SESSIONS_LEFTJOIN_SPEAKERS:
-				queryBuilder.setTables("sessions LFET OUTER JOIN speakers ON (speakers._id=sessions.speaker_id)");
+				queryBuilder.setTables(TableSessions.TABLE_SESSIONS + "," + TableSpeakers.TABLE_SPEAKERS);
 				break;
 		}
 		
