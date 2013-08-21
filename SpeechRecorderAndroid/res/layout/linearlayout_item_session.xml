@@ -13,23 +13,47 @@
 	    <LinearLayout 
 	        style="@style/style_linearlayout_wrap_textview_in_item" >
 	        
-	        <TextView 
-	            style="@style/style_title_in_textview_in_item"
-	            android:id="@+id/idInItemSession"
-                android:text="@string/session1_id"/>
+	         <LinearLayout 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+                <TextView 
+                    style="@style/style_title_in_textview_in_item"
+                    android:id="@+id/idSignInItemSession"
+                    android:text="#" />
+                <TextView 
+	                style="@style/style_title_in_textview_in_item"
+	                android:id="@+id/idInItemSession"
+	                android:text="@string/session1_id"/>   
+            </LinearLayout>
+	        
 	        <TextView 
                 style="@style/style_text_in_textview_in_item"
                 android:id="@+id/scriptIdInItemSession"
                 android:text="@string/session1_script_id"/>
-	        <TextView 
-                style="@style/style_text_in_textview_in_item"
-                android:id="@+id/speakerInItemSession"
-                android:text="@string/session1_speaker"/>
+	        
+	        
+	        <LinearLayout 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+                 <TextView 
+                      style="@style/style_text_in_textview_in_item"
+                      android:id="@+id/firstnameInItemSession"
+                      android:layout_marginRight="3dp"
+                      android:text="@string/speaker2_firstname"/>
+                 <TextView 
+                      style="@style/style_text_in_textview_in_item"
+                      android:id="@+id/surnameInItemSession"
+                      android:text="@string/speaker2_surname"/>        
+                
+            </LinearLayout>
+	        
+	        
 	        <RelativeLayout 
 	            android:layout_width="260dp"
 	            android:layout_height="wrap_content"
 	            android:orientation="horizontal" >
-	            
 	            <TextView 
 	                style="@style/style_text_in_textview_in_item"
 	                android:layout_alignParentLeft="true"
@@ -40,7 +64,6 @@
 	                android:layout_alignParentRight="true"
 	                android:id="@+id/isFinishedInItemSession"
 	                android:text="@string/session1_state"/>
-	            
 	        </RelativeLayout>
 	        
 	        

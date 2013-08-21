@@ -28,6 +28,7 @@ public class SrmContentProvider extends ContentProvider
 	// database 
 	private DBAccessor dbAccesor;
 	private SQLiteDatabase srmDB;
+	private int isJoinQuery = 0;
 
 	/**
 	 * 
@@ -114,8 +115,10 @@ public class SrmContentProvider extends ContentProvider
 				queryBuilder.appendWhere(TableRecords.COLUMN_ID 
 						+ "=" + uri.getLastPathSegment());
 				break;
+			case SrmUriMatcher.SESSIONS_LEFTJOIN_SPEAKERS:
+				queryBuilder.appendWhere("");
+				break;
 		}
-		
 		srmDB = dbAccesor.getWritableDatabase();
 		
 		Log.w(SrmContentProvider.class.getName(), "query(): will query from tables: " + queryBuilder.getTables());
@@ -674,6 +677,9 @@ public class SrmContentProvider extends ContentProvider
 			case SrmUriMatcher.RECORD_ITEM_ID:
 				queryBuilder.setTables(TableRecords.TABLE_RECORDS);
 				break;
+			case SrmUriMatcher.SESSIONS_LEFTJOIN_SPEAKERS:
+				queryBuilder.setTables("sessions LFET OUTER JOIN speakers ON (speakers._id=sessions.speaker_id)");
+				break;
 		}
 		
 	}
@@ -769,6 +775,20 @@ public class SrmContentProvider extends ContentProvider
 		private static final int RECORD_ITEM_ID = 61; //_id
 		
 		
+		// other tables
+		// some special URIs, like Join, for what queries the CursorLoader can not build
+		private static final String PATH_TABLE_SESSIONS_LEFTJOIN_SPEAKERS = "table_sessions_leftjoin_speakers";
+		public static final Uri CONTENT_URI_TABLE_SESSIONS_LEFTJOIN_SPEAKERS = 
+				Uri.parse("content://" + AUTHORITY + "/" + PATH_TABLE_SESSIONS_LEFTJOIN_SPEAKERS);
+		
+		public static final String CONTENT_TYPE_TABLE_SESSIONS_LFETJOIN_SPEAKERS = 
+				ContentResolver.CURSOR_DIR_BASE_TYPE + "/table_sessions_leftjoin_speakers";
+		public static final String CONTENT_ITEM_TYPE_SESSIONS_LFETJOIN_SPEAKERS = 
+				ContentResolver.CURSOR_DIR_BASE_TYPE + "/item_sessions_leftjoin_speakers";
+		
+		private static final int SESSIONS_LEFTJOIN_SPEAKERS = 101;
+		
+		
 		// if necessary, define Strings above and add uri below, like SELECT JOIN
 		
 		private static final UriMatcher  uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
@@ -797,6 +817,10 @@ public class SrmContentProvider extends ContentProvider
 			// table records
 			uriMatcher.addURI(AUTHORITY, PATH_TABLE_RECORDS, TABLE_RECORDS);
 			uriMatcher.addURI(AUTHORITY, PATH_TABLE_RECORDS + "/#", RECORD_ITEM_ID);
+			
+			
+			// other tables
+			uriMatcher.addURI(AUTHORITY, PATH_TABLE_SESSIONS_LEFTJOIN_SPEAKERS, SESSIONS_LEFTJOIN_SPEAKERS);
 		}
 		
 	}

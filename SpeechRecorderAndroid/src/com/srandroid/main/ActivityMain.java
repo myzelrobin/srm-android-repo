@@ -6,6 +6,7 @@ import java.util.Arrays;
 import com.srandroid.R;
 import com.srandroid.database.DBAccessor;
 import com.srandroid.database.TableScripts;
+import com.srandroid.database.TableSessions;
 import com.srandroid.database.TableSpeakers;
 import com.srandroid.database.SrmContentProvider.SrmUriMatcher;
 import com.srandroid.overflow.PrefActivitySettings;
@@ -24,6 +25,7 @@ import android.content.Intent;
 import android.content.Loader;
 import android.content.res.Configuration;
 import android.database.Cursor;
+import android.database.CursorJoiner;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
@@ -531,61 +533,7 @@ public class ActivityMain extends Activity {
         	return fragmentView;
         }
         
-        private void fillFragment() 
-        {
-        	String[] from = null;
-        	int[] to = null;
-        	
-			switch (itemIndex)
-			{
-					case Utils.ConstantVars.POS_SESSIONS:
-						
-						break;
-						
-					case Utils.ConstantVars.POS_SCRIPTS:
-						// Fields from the database (selectColumns)
-						from = new String[] { TableScripts.COLUMN_ID,
-								TableScripts.COLUMN_DESCRIPTION};
-						// Fields on the UI to which CursorAdapter maps
-						to = new int[] { R.id.idInItemScript,
-										R.id.descriptionInItemScript};
-						
-						
-						getLoaderManager().initLoader(0, null, this);
-						adapter = new SimpleCursorAdapter(this.getActivity().getApplicationContext(), 
-									R.layout.linearlayout_item_script, 
-									null, from, to, 0);
-						gridView.setAdapter(adapter);
-						break;
-						
-					case Utils.ConstantVars.POS_SPEAKERS:
-						
-						// Fields from the database (selectColumns)
-						from = new String[] { TableSpeakers.COLUMN_FIRSTNAME,
-														TableSpeakers.COLUMN_SURNAME,
-														TableSpeakers.COLUMN_SEX,
-														TableSpeakers.COLUMN_ACCENT,
-														TableSpeakers.COLUMN_BIRTHDAY};
-						// Fields on the UI to which CursorAdapter maps
-						to = new int[] { R.id.firstnameInItemSpeaker,
-												R.id.surnameInItemSpeaker,
-												R.id.sexInItemSpeaker,
-												R.id.accentInItemSpeaker,
-												R.id.birthdayInItemSpeaker};
-						
-		
-						getLoaderManager().initLoader(0, null, this);
-						adapter = new SimpleCursorAdapter(this.getActivity().getApplicationContext(), 
-											R.layout.linearlayout_item_speaker, 
-											null, from, to, 0);
-						gridView.setAdapter(adapter);
-						break;
-	
-					default:
-						break;
-			}
-			
-		}
+        
         
         // retrieve data from database
         @Override
@@ -593,10 +541,26 @@ public class ActivityMain extends Activity {
 		{
         	CursorLoader cursorLoader = null;
         	
+        	CursorLoader cursorLoaderSpeakerTemp = null;
+        	CursorLoader cursorLoaderSessionTemp = null;
+        	
         	
         	switch (itemIndex)
 			{
 					case Utils.ConstantVars.POS_SESSIONS:
+						
+						// Sessions left outer join Speakers
+						String[] selectColumns_SessionsLEFTJOINSpeakers = {
+								TableSessions.COLUMN_ID,
+								TableSessions.COLUMN_SCRIPT_ID,
+								TableSessions.COLUMN_DATE,
+								TableSessions.COLUMN_IS_FINISHED,
+								TableSpeakers.COLUMN_FIRSTNAME,
+								TableSpeakers.COLUMN_SURNAME};
+						cursorLoader = 
+								new CursorLoader(this.getActivity().getApplicationContext(), 
+										SrmUriMatcher.CONTENT_URI_TABLE_SESSIONS_LEFTJOIN_SPEAKERS, 
+										selectColumns_SessionsLEFTJOINSpeakers, null, null, null);
 						
 						break;
 						
@@ -644,6 +608,84 @@ public class ActivityMain extends Activity {
 		public void onLoaderReset(Loader<Cursor> loader) 
 		{
 			adapter.swapCursor(null);
+		}
+		
+		private void fillFragment() 
+        {
+        	String[] from = null;
+        	int[] to = null;
+        	
+			switch (itemIndex)
+			{
+					case Utils.ConstantVars.POS_SESSIONS:
+						
+						// Sessions left outer join Speakers
+						
+						// Fields from the database (selectColumns)
+						from = new String[] {TableSessions.COLUMN_ID,
+												TableSessions.COLUMN_SCRIPT_ID,
+												TableSessions.COLUMN_DATE,
+												TableSessions.COLUMN_IS_FINISHED,
+												TableSpeakers.COLUMN_FIRSTNAME,
+												TableSpeakers.COLUMN_SURNAME,};
+						// Fields on the UI to which CursorAdapter maps
+						to = new int[] { R.id.idInItemSession,
+												R.id.scriptIdInItemSession,
+												R.id.creationDateInItemSession,
+												R.id.isFinishedInItemSession,
+												R.id.firstnameInItemSession,
+												R.id.surnameInItemSession};
+						
+						getLoaderManager().initLoader(0, null, this);		
+						adapter = new SimpleCursorAdapter(this.getActivity().getApplicationContext(), 
+											R.layout.linearlayout_item_session, 
+											null, from, to, 0);
+						gridView.setAdapter(adapter);
+						break;
+						
+					case Utils.ConstantVars.POS_SCRIPTS:
+						// Fields from the database (selectColumns)
+						from = new String[] { TableScripts.COLUMN_ID,
+								TableScripts.COLUMN_DESCRIPTION};
+						// Fields on the UI to which CursorAdapter maps
+						to = new int[] { R.id.idInItemScript,
+										R.id.descriptionInItemScript};
+						
+						
+						getLoaderManager().initLoader(0, null, this);
+						adapter = new SimpleCursorAdapter(this.getActivity().getApplicationContext(), 
+									R.layout.linearlayout_item_script, 
+									null, from, to, 0);
+						gridView.setAdapter(adapter);
+						break;
+						
+					case Utils.ConstantVars.POS_SPEAKERS:
+						
+						// Fields from the database (selectColumns)
+						from = new String[] { TableSpeakers.COLUMN_FIRSTNAME,
+														TableSpeakers.COLUMN_SURNAME,
+														TableSpeakers.COLUMN_SEX,
+														TableSpeakers.COLUMN_ACCENT,
+														TableSpeakers.COLUMN_BIRTHDAY};
+						// Fields on the UI to which CursorAdapter maps
+						to = new int[] { R.id.firstnameInItemSpeaker,
+												R.id.surnameInItemSpeaker,
+												R.id.sexInItemSpeaker,
+												R.id.accentInItemSpeaker,
+												R.id.birthdayInItemSpeaker};
+						
+		
+						getLoaderManager().initLoader(0, null, this);
+						adapter = new SimpleCursorAdapter(this.getActivity().getApplicationContext(), 
+											R.layout.linearlayout_item_speaker, 
+											null, from, to, 0);
+						gridView.setAdapter(adapter);
+						break;
+	
+					default:
+						break;
+			}
+			
 		}
 
 
