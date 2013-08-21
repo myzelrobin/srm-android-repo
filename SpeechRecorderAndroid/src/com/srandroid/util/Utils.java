@@ -131,8 +131,8 @@ public class Utils
 		public static int screenHeight = 0;
 		public static int marginItemBGInVerticalMode = 0;
 		public static int marginItemBGInHorizontalMode = 0;
-		public static int widthLayoutWrapItem = 0;
-		public static int heightLayoutWrapItem = 0;
+		public static int widthLLWrapItem = 0;
+		public static int heightLLWrapItem = 0;
 		public static int columnCount = 0;
 		
 		
@@ -462,9 +462,9 @@ public class Utils
 				Utils.ConstantVars.screenWidth % Utils.ConstantVars.ITEMWIDTH;
 		Utils.ConstantVars.marginItemBGInVerticalMode = 
 				(int) ((Utils.ConstantVars.screenWidth - Utils.ConstantVars.ITEMWIDTH) / 2);
-		Utils.ConstantVars.widthLayoutWrapItem = 
+		Utils.ConstantVars.widthLLWrapItem = 
 				Utils.ConstantVars.ITEMWIDTH + 2 * Utils.ConstantVars.marginItemBGInVerticalMode;
-		Utils.ConstantVars.heightLayoutWrapItem = 
+		Utils.ConstantVars.heightLLWrapItem = 
 				Utils.ConstantVars.ITEMHEIGHT + 2 * Utils.ConstantVars.marginItemBGInVerticalMode;
 		
 		
@@ -480,9 +480,9 @@ public class Utils
 				Utils.ConstantVars.screenHeight % Utils.ConstantVars.ITEMWIDTH;
 		Utils.ConstantVars.marginItemBGInHorizontalMode = 
 				(int) ((Utils.ConstantVars.screenHeight - (Utils.ConstantVars.ITEMWIDTH * 2)) / 4); 
-		Utils.ConstantVars.widthLayoutWrapItem = 
+		Utils.ConstantVars.widthLLWrapItem = 
 				Utils.ConstantVars.ITEMWIDTH + 2 * Utils.ConstantVars.marginItemBGInVerticalMode;
-		Utils.ConstantVars.heightLayoutWrapItem = 
+		Utils.ConstantVars.heightLLWrapItem = 
 				Utils.ConstantVars.ITEMHEIGHT + 2 * Utils.ConstantVars.marginItemBGInVerticalMode;
 		
 		

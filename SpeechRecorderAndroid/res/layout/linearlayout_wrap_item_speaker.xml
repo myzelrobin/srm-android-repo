@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/style_linearlayout_wrap_item" >
+    style="@style/style_linearlayout_wrap_item" 
+    android:id="@+id/linearlayout_item_speaker"    >
     
     <LinearLayout 
         style="@style/style_linearlayout_item" >
@@ -14,7 +15,8 @@
         </LinearLayout>  
         
 	    <LinearLayout 
-	        style="@style/style_linearlayout_wrap_textview_in_item" >
+	        style="@style/style_linearlayout_wrap_textview_in_item" 
+	        android:id="@+id/linearlayout_wrap_textview_in_item">
 	        
 	        <LinearLayout 
 	            android:layout_width="wrap_content"

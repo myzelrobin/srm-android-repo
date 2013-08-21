@@ -551,10 +551,11 @@ public class ActivityMain extends Activity {
 										R.id.sexInItemSpeaker,
 										R.id.accentInItemSpeaker,
 										R.id.birthdayInItemSpeaker};
+				
 
 				getLoaderManager().initLoader(0, null, this);
 				adapter = new SimpleCursorAdapter(this.getActivity().getApplicationContext(), 
-									R.layout.linearlayout_item_speaker, 
+									R.layout.linearlayout_wrap_item_speaker, 
 									null, from, to, 0);
 				gridView.setAdapter(adapter);
 				break;
