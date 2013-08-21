@@ -4,7 +4,9 @@
 package com.srandroid.database;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 
 import com.srandroid.util.Utils;
 
@@ -65,6 +67,7 @@ public class SrmContentProvider extends ContentProvider
 		// SQLiteQueryBuilder to build SQL query
 		SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
 		
+		Map<String, String> mColumnMap = new HashMap<String, String>();
 		// Check if the caller has requested a column which does not exists
 		// checkColumns(selectColumns);
 
@@ -116,17 +119,18 @@ public class SrmContentProvider extends ContentProvider
 						+ "=" + uri.getLastPathSegment());
 				break;
 			case SrmUriMatcher.SESSIONS_LEFTJOIN_SPEAKERS:
+				// map columns with same name
+				mColumnMap.put("sessions._id", "sessions._id AS _id");
+				mColumnMap.put("speakers._id", "speakers._id AS speaker_name");
+				queryBuilder.setProjectionMap(mColumnMap);
+				
 				queryBuilder.appendWhere("");
 				break;
 		}
 		srmDB = dbAccesor.getWritableDatabase();
 		
 		Log.w(SrmContentProvider.class.getName(), "query(): will query from tables: " + queryBuilder.getTables());
-		Log.w(SrmContentProvider.class.getName(), "query(): will query from tables: " 
-				+ "\nqueryBuilder:selectColumns" + selectColumns.toString()
-				+ "\nwhereSelection=" + whereSelection.toString()
-				+ "\nselectionValues=" + selectionValues.toString()
-				+ "\nsortOrder=" + sortOrder.toString() );
+		
 		Cursor cursor = queryBuilder.query(srmDB, 
 											selectColumns,  // from
 											whereSelection, // where
@@ -683,7 +687,9 @@ public class SrmContentProvider extends ContentProvider
 				queryBuilder.setTables(TableRecords.TABLE_RECORDS);
 				break;
 			case SrmUriMatcher.SESSIONS_LEFTJOIN_SPEAKERS:
-				queryBuilder.setTables(TableSpeakers.TABLE_SPEAKERS + "," + TableSessions.TABLE_SESSIONS);
+				String tables= "sessions LEFT OUTER JOIN speakers " 
+									+ "ON (sessions.speaker_id=speakers._id)";
+				queryBuilder.setTables(tables);
 				break;
 		}
 		
