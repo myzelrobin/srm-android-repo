@@ -189,22 +189,23 @@ public class ActivityAddSpeaker extends Activity
 			     // actionbar buttons
 	        	case R.id.activity_addspeaker_button_start:
 	        		Utils.toastText(getApplicationContext(), "clicked start recording");
-	        		if(firstnameInput.getText()==null || surnameInput.getText() == null
-	        				|| accentInput.getText()==null || sexDropdownlist.getSelectedItem() == null)
+	        		if(firstnameInput.getText() != null && surnameInput.getText() != null
+	        				&& accentInput.getText() != null && sexDropdownlist.getSelectedItem() != null)
 	        		{
-	        			Utils.toastTextToUser(this, "Please input name, accent and choose sex to create a speaker!");
+	        			saveDataToSpeakerItem(speaker);
+		        		Uri speakerItemUri = saveSpeakerItemToDB(speaker);
+		        		Log.w(ActivityAddSpeaker.class.getName(), 
+		        				"saveSpeakerItemToDB() inserted a speaker into db with id=" + speakerItemUri);
+		        		
+		        		/*Intent newI = new Intent(ActivityMain.this, ActivityAddSpeaker.class);
+		        		// newI.putExtra("key", value); //Optional parameters
+		        		ActivityMain.this.startActivity(newI);*/
+		        		
+		        		// send speakerItemUri to next activity
+	        			
 	        			break;
 	        		}
-	        		saveDataToSpeakerItem(speaker);
-	        		Uri speakerItemUri = saveSpeakerItemToDB(speaker);
-	        		Log.w(ActivityAddSpeaker.class.getName(), 
-	        				"saveSpeakerItemToDB() inserted a speaker into db with id=" + speakerItemUri);
-	        		
-	        		/*Intent newI = new Intent(ActivityMain.this, ActivityAddSpeaker.class);
-	        		// newI.putExtra("key", value); //Optional parameters
-	        		ActivityMain.this.startActivity(newI);*/
-	        		
-	        		// send speakerItemUri to next activity
+	        		Utils.toastTextToUser(this, "Please input name, accent and choose sex to create a speaker!");
 	        		break;
 	        	default:
 	        		break;
