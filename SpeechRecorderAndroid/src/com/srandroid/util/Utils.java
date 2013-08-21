@@ -223,7 +223,9 @@ public class Utils
 			// drawer item array
 			arrayDrawerItems = context.getResources().getStringArray(R.array.array_drawer_items);
 
-			
+			// database
+			DBAccessor dbAccessor = new DBAccessor(context);
+			dbAccessor.getWritableDatabase();
 			
 			// get application folder path (/data/data/APP_PACKAGE/)
 			try {
@@ -269,6 +271,8 @@ public class Utils
 			
 			// gps info
 			getGPSInfo(context);
+			
+			
 			
 			
 			isPreStartInitialized = true;
