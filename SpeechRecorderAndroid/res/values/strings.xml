@@ -166,14 +166,14 @@
         <string name="speaker2_birthday">YYYY,MM,DD</string>
         
         <!-- Item script -->
-        <string name="script_attr_id">ID</string>
+        <string name="script_attr_id">Script ID</string>
         <string name="script_attr_description">Description</string>
         
         <string name="script_attr_id_key">_id</string>
         <string name="script_attr_description_key">description</string>
         
         <!-- Script Example -->
-        <string name="script1_id">Script ID: #1</string>
+        <string name="script1_id">1</string>
         <string name="script1_description">This is a script example.</string>
         
         <!-- Item session -->
@@ -181,20 +181,20 @@
         <string name="session_attr_script_id">Script ID</string>
         <string name="session_attr_creation_day">Created on</string>
         <string name="session_attr_creation_place">Created at</string>
-        <string name="session_attr_state">Finished</string>
+        <string name="session_attr_isfinished">Finished</string>
         
         <string name="session_attr_id_key">_id</string>
         <string name="session_attr_script_id_key">script_id</string>
         <string name="session_attr_creation_day_key">day</string>
         <string name="session_attr_creation_place_key">place</string>
-        <string name="session_attr_state_key">state</string>
+        <string name="session_attr_isfinished_key">is_finished</string>
         
         <!-- Session Example -->
-        <string name="session1_id">Session ID: #1</string>
-        <string name="session1_script_id">Script ID: #1</string>
+        <string name="session1_id">1</string>
+        <string name="session1_script_id">1</string>
         <string name="session1_speaker">Adam Exampleman</string>
         <string name="session1_creation_day">YYYY,MM,DD</string>
-        <string name="session1_state">Finished</string>
+        <string name="session1_isfinished">Finished</string>
 
         
 </resources>

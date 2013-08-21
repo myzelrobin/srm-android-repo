@@ -181,9 +181,9 @@ public final class R {
         /**  Session Example 
          */
         public static final int session1_id=0x7f060058;
+        public static final int session1_isfinished=0x7f06005c;
         public static final int session1_script_id=0x7f060059;
         public static final int session1_speaker=0x7f06005a;
-        public static final int session1_state=0x7f06005c;
         public static final int session_attr_creation_day=0x7f060050;
         public static final int session_attr_creation_day_key=0x7f060055;
         public static final int session_attr_creation_place=0x7f060051;
@@ -192,10 +192,10 @@ public final class R {
          */
         public static final int session_attr_id=0x7f06004e;
         public static final int session_attr_id_key=0x7f060053;
+        public static final int session_attr_isfinished=0x7f060052;
+        public static final int session_attr_isfinished_key=0x7f060057;
         public static final int session_attr_script_id=0x7f06004f;
         public static final int session_attr_script_id_key=0x7f060054;
-        public static final int session_attr_state=0x7f060052;
-        public static final int session_attr_state_key=0x7f060057;
         /**  language 
          */
         public static final int settings_application=0x7f060019;

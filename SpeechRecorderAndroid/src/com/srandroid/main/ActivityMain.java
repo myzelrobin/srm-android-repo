@@ -626,7 +626,7 @@ public class ActivityMain extends Activity {
 					case Utils.ConstantVars.POS_SESSIONS:
 						
 						// Sessions left outer join Speakers
-						
+						// !!! some columns are using same name, rename them in the query
 						// Fields from the database (selectColumns)
 						from = new String[] {"session_key_id",
 												TableSessions.COLUMN_SCRIPT_ID,

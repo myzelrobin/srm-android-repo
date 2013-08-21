@@ -187,7 +187,7 @@ public class SrmContentProvider extends ContentProvider
 				
 		}
 		
-		srmDB = dbAccesor.getWritableDatabase();
+		srmDB = dbAccesor.getReadableDatabase();
 		
 		Log.w(SrmContentProvider.class.getName(), "query(): will query from tables: " + queryBuilder.getTables());
 		

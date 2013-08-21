@@ -27,11 +27,19 @@
 	                android:text="@string/session1_id"/>   
             </LinearLayout>
 	        
-	        <TextView 
-                style="@style/style_text_in_textview_in_item"
-                android:id="@+id/scriptIdInItemSession"
-                android:text="@string/session1_script_id"/>
-	        
+	         <LinearLayout 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+                 <TextView 
+                    style="@style/style_text_in_textview_in_item"
+                    android:layout_marginRight="3dp"
+                    android:text="@string/script_attr_id" />
+		        <TextView 
+	                style="@style/style_text_in_textview_in_item"
+	                android:id="@+id/scriptIdInItemSession"
+	                android:text="@string/session1_script_id"/>
+	        </LinearLayout>
 	        
 	        <LinearLayout 
                 android:layout_width="wrap_content"
@@ -63,7 +71,7 @@
 	                style="@style/style_unfinished_session_in_textview_in_item"
 	                android:layout_alignParentRight="true"
 	                android:id="@+id/isFinishedInItemSession"
-	                android:text="@string/session1_state"/>
+	                android:text="@string/session1_isfinished"/>
 	        </RelativeLayout>
 	        
 	        
