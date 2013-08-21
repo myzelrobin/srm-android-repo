@@ -46,7 +46,7 @@
         <activity 
             android:screenOrientation="landscape"
             android:configChanges="orientation|keyboardHidden"
-            android:name=".activitiesSpeaker.AtivityAddSpeaker"
+            android:name=".activitiesSpeaker.ActivityAddSpeaker"
             android:label="@string/activity_addspeaker_title"
             android:parentActivityName="com.srandroid.main.ActivityMain" >
             <meta-data
