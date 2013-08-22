@@ -15,7 +15,7 @@ import android.util.Log;
 public class DBAccessor extends SQLiteOpenHelper
 {
 	private static final String DATABASE_NAME = "srandroid_database.db";
-	private static final int DATABASE_VERSION = 3;
+	private static final int DATABASE_VERSION = 4;
 	
 
 	public DBAccessor(Context context) 
@@ -92,6 +92,7 @@ public class DBAccessor extends SQLiteOpenHelper
 			TableSessions.COLUMN_SCRIPT_ID,
 			TableSessions.COLUMN_SPEAKER_ID,
 			TableSessions.COLUMN_TIME,
+			TableSessions.COLUMN_LAST_SECTION,
 			TableSpeakers.COLUMN_ACCENT,
 			TableSpeakers.COLUMN_BIRTHDAY,
 			TableSpeakers.COLUMN_FIRSTNAME,

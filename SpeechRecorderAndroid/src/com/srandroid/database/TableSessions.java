@@ -26,6 +26,7 @@ public class TableSessions
 	public static final String COLUMN_GPS_DATA = "gps_data"; // text, android needs a little time to set GPS sensors, only get it when is needed
 	public static final String COLUMN_IS_FINISHED = "is_finished"; // text not null finished/unfinished
 	public static final String COLUMN_COUNT = "count"; // integer
+	public static final String COLUMN_LAST_SECTION = "last_section"; // text 
 	public static final String COLUMN_SCRIPT_ID = "script_id"; // foreign key reference scripts(_id)
 	public static final String COLUMN_SPEAKER_ID = "speaker_id"; // foreign key reference speakers(_id)
 	
@@ -42,6 +43,7 @@ public class TableSessions
 		+ COLUMN_GPS_DATA + " text, "
 		+ COLUMN_IS_FINISHED + " text not null, "
 		+ COLUMN_COUNT + " integer, "
+		+ COLUMN_LAST_SECTION + " text, "
 		+ COLUMN_SCRIPT_ID + " integer, "
 		+ COLUMN_SPEAKER_ID + " integer, "
 		+ " FOREIGN KEY (" + COLUMN_SCRIPT_ID + ") REFERENCES scripts(_id),"
@@ -87,7 +89,7 @@ public class TableSessions
 			values.put(TableSessions.COLUMN_PLACE, "Berlin");
 			values.put(TableSessions.COLUMN_DEVICE_DATA, Utils.ConstantVars.DEVICE_ID);
 			values.put(TableSessions.COLUMN_GPS_DATA, Utils.ConstantVars.GPS_INFO);
-			values.put(TableSessions.COLUMN_IS_FINISHED, "finished");
+			values.put(TableSessions.COLUMN_IS_FINISHED, "unfinished");
 			values.put(TableSessions.COLUMN_COUNT, "0");
 			values.put(TableSessions.COLUMN_SCRIPT_ID, ""+i);
 			values.put(TableSessions.COLUMN_SPEAKER_ID, ""+i);

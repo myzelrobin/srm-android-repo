@@ -209,7 +209,7 @@ public class SrmContentProvider extends ContentProvider
 				String result = builder.toString();
 				
 				srmDB = dbAccesor.getReadableDatabase();
-				String sqlQuery = "select " + result 
+				String sqlQuery = "select " + result + ", sessions._id "
 						+ " from sessions left outer join speakers on sessions.speaker_id=speakers._id;";
 				
 				cursor = srmDB.rawQuery(sqlQuery, null);
