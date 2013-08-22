@@ -183,7 +183,6 @@ public class SrmContentProvider extends ContentProvider
 				//
 				Cursor cursor = null;
 				String[] selectColumnsArray = {
-						TableSessions.COLUMN_ID,
 						TableSessions.COLUMN_DATE,
 						TableSessions.COLUMN_TIME,
 						TableSessions.COLUMN_PLACE,
@@ -203,7 +202,7 @@ public class SrmContentProvider extends ContentProvider
 				String result = builder.toString();
 				
 				srmDB = dbAccesor.getReadableDatabase();
-				String sqlQuery = "select " + result + " t1._id as session_key_id, t2._id as speaker_key_id "
+				String sqlQuery = "select " + result + " t1._id as _id, t2._id as speaker_key_id "
 						+ "from sessions t1 left outer join speakers t2 on t2._id=t1.script_id;";
 				return cursor = srmDB.rawQuery(sqlQuery, null);
 				
