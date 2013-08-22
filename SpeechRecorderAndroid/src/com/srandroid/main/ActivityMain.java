@@ -690,8 +690,6 @@ public class ActivityMain extends Activity {
 						break;
 						
 					case Utils.ConstantVars.POS_SPEAKERS:
-						test = getTextFromItem(itemView, R.id.itemSpeaker_textFirstNameValue);
-						
 						Intent i=new Intent(this.getActivity(), ActivitySpeakerDetails.class);
 						i.putExtra("itemId", rowId);
 						this.getActivity().startActivity(i);
