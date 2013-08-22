@@ -41,6 +41,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
@@ -622,85 +623,7 @@ public class ActivityMain extends Activity {
 			adapter.swapCursor(null);
 		}
 		
-		private void fillFragment() 
-        {
-        	String[] from = null;
-        	int[] to = null;
-        	
-			switch (itemIndex)
-			{
-					case Utils.ConstantVars.POS_SESSIONS:
-						
-						// Sessions left outer join Speakers
-						// !!! some columns are using same name, rename them in the query
-						// Fields from the database (selectColumns)
-						from = new String[] {"session_key_id",
-												TableSessions.COLUMN_SCRIPT_ID,
-												TableSessions.COLUMN_DATE,
-												TableSessions.COLUMN_IS_FINISHED,
-												TableSpeakers.COLUMN_FIRSTNAME,
-												TableSpeakers.COLUMN_SURNAME,};
-						// Fields on the UI to which CursorAdapter maps
-						to = new int[] { R.id.idInItemSession,
-												R.id.scriptIdInItemSession,
-												R.id.creationDateInItemSession,
-												R.id.isFinishedInItemSession,
-												R.id.firstnameInItemSession,
-												R.id.surnameInItemSession};
-						
-						getLoaderManager().initLoader(0, null, this);		
-						adapter = new SimpleCursorAdapter(this.getActivity().getApplicationContext(), 
-											R.layout.linearlayout_item_session, 
-											null, from, to, 0);
-						gridView.setAdapter(adapter);
-						break;
-						
-					case Utils.ConstantVars.POS_SCRIPTS:
-						// Fields from the database (selectColumns)
-						from = new String[] { TableScripts.COLUMN_ID,
-								TableScripts.COLUMN_DESCRIPTION};
-						// Fields on the UI to which CursorAdapter maps
-						to = new int[] { R.id.idInItemScript,
-										R.id.descriptionInItemScript};
-						
-						
-						getLoaderManager().initLoader(0, null, this);
-						adapter = new SimpleCursorAdapter(this.getActivity().getApplicationContext(), 
-									R.layout.linearlayout_item_script, 
-									null, from, to, 0);
-						gridView.setAdapter(adapter);
-						break;
-						
-					case Utils.ConstantVars.POS_SPEAKERS:
-						
-						// Fields from the database (selectColumns)
-						from = new String[] { TableSpeakers.COLUMN_FIRSTNAME,
-														TableSpeakers.COLUMN_SURNAME,
-														TableSpeakers.COLUMN_SEX,
-														TableSpeakers.COLUMN_ACCENT,
-														TableSpeakers.COLUMN_BIRTHDAY};
-						// Fields on the UI to which CursorAdapter maps
-						to = new int[] { R.id.firstnameInItemSpeaker,
-												R.id.surnameInItemSpeaker,
-												R.id.sexInItemSpeaker,
-												R.id.accentInItemSpeaker,
-												R.id.birthdayInItemSpeaker};
-						
 		
-						getLoaderManager().initLoader(0, null, this);
-						adapter = new SimpleCursorAdapter(this.getActivity().getApplicationContext(), 
-											R.layout.linearlayout_item_speaker, 
-											null, from, to, 0);
-						gridView.setAdapter(adapter);
-						break;
-	
-					default:
-						break;
-			}
-			
-		}
-
-
 		@Override
         public void onActivityCreated(Bundle savedInstanceState)
         {
@@ -763,18 +686,131 @@ public class ActivityMain extends Activity {
         }
 
 		@Override
-		public void onItemClick(AdapterView<?> arg0, 
-				View arg1, 
-				int arg2,
-				long arg3) 
+		public void onItemClick(AdapterView<?> adapterView, 
+				View view, 
+				int position,
+				long id) 
 		{
+			LinearLayout item = (LinearLayout) adapterView.getItemAtPosition(position);
+			String test = null;
+			switch (itemIndex)
+			{
+					case Utils.ConstantVars.POS_SESSIONS:
+						test = getTextFromItem(item, R.id.itemSession_textIdValue);
+						Utils.toastTextToUser(this.getActivity(), "Session Item position=" + position 
+								+ " id=" + id + " showid=" + test);
+						break;
+						
+					case Utils.ConstantVars.POS_SCRIPTS:
+						test = getTextFromItem(item, R.id.itemScript_textIdValue);
+						Utils.toastTextToUser(this.getActivity(), "Session Item position=" + position 
+								+ " id=" + id + " showid=" + test);
+						break;
+						
+					case Utils.ConstantVars.POS_SPEAKERS:
+						test = getTextFromItem(item, R.id.itemSpeaker_textFirstNameValue);
+						Utils.toastTextToUser(this.getActivity(), "Session Item position=" + position 
+								+ " id=" + id + " firstname=" + test);
+						break;
+	
+					default:
+						break;
+			}
+			
 			
 			
 		}
 
+
+		/**
+		 * fills gridview with items
+		 */
+		private void fillFragment() 
+        {
+        	String[] from = null;
+        	int[] to = null;
+        	
+			switch (itemIndex)
+			{
+					case Utils.ConstantVars.POS_SESSIONS:
+						
+						// Sessions left outer join Speakers
+						// !!! some columns are using same name, rename them in the query
+						// Fields from the database (selectColumns)
+						from = new String[] {"session_key_id",
+												TableSessions.COLUMN_SCRIPT_ID,
+												TableSessions.COLUMN_DATE,
+												TableSessions.COLUMN_IS_FINISHED,
+												TableSpeakers.COLUMN_FIRSTNAME,
+												TableSpeakers.COLUMN_SURNAME,};
+						// Fields on the UI to which CursorAdapter maps
+						to = new int[] { R.id.itemSession_textIdValue,
+												R.id.itemSession_textScriptIdValue,
+												R.id.itemSession_textCreateDate,
+												R.id.itemSession_textIsFinished,
+												R.id.itemSession_textSpeakerFirstname,
+												R.id.itemSession_textSpeakerSurname};
+						
+						getLoaderManager().initLoader(0, null, this);		
+						adapter = new SimpleCursorAdapter(this.getActivity().getApplicationContext(), 
+											R.layout.linearlayout_item_session, 
+											null, from, to, 0);
+						gridView.setAdapter(adapter);
+						break;
+						
+					case Utils.ConstantVars.POS_SCRIPTS:
+						// Fields from the database (selectColumns)
+						from = new String[] { TableScripts.COLUMN_ID,
+								TableScripts.COLUMN_DESCRIPTION};
+						// Fields on the UI to which CursorAdapter maps
+						to = new int[] { R.id.itemScript_textIdValue,
+										R.id.itemScript_textDesciptionValue};
+						
+						
+						getLoaderManager().initLoader(0, null, this);
+						adapter = new SimpleCursorAdapter(this.getActivity().getApplicationContext(), 
+									R.layout.linearlayout_item_script, 
+									null, from, to, 0);
+						gridView.setAdapter(adapter);
+						break;
+						
+					case Utils.ConstantVars.POS_SPEAKERS:
+						
+						// Fields from the database (selectColumns)
+						from = new String[] { TableSpeakers.COLUMN_FIRSTNAME,
+														TableSpeakers.COLUMN_SURNAME,
+														TableSpeakers.COLUMN_SEX,
+														TableSpeakers.COLUMN_ACCENT,
+														TableSpeakers.COLUMN_BIRTHDAY};
+						// Fields on the UI to which CursorAdapter maps
+						to = new int[] { R.id.itemSpeaker_textFirstNameValue,
+												R.id.itemSpeaker_textSurnameValue,
+												R.id.itemSpeaker_textSexValue,
+												R.id.itemSpeaker_textAccentValue,
+												R.id.itemSpeaker_textBirthdayValue};
+						
+						getLoaderManager().initLoader(0, null, this);
+						adapter = new SimpleCursorAdapter(this.getActivity().getApplicationContext(), 
+											R.layout.linearlayout_item_speaker, 
+											null, from, to, 0);
+						gridView.setAdapter(adapter);
+						break;
+	
+					default:
+						break;
+			}
+			
+		}
 		
+		private String getTextFromItem(LinearLayout ll, int textViewId)
+		{
+			TextView textView = (TextView) ll.findViewById(textViewId);
+			return textView.getText().toString();
+		}
+
+
         
     }
-
+    
 }
 

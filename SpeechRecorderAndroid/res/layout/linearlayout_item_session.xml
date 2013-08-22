@@ -19,11 +19,11 @@
                 android:orientation="horizontal" >
                 <TextView 
                     style="@style/style_title_in_textview_in_item"
-                    android:id="@+id/idSignInItemSession"
+                    android:id="@+id/itemSession_textIdSign"
                     android:text="#" />
                 <TextView 
 	                style="@style/style_title_in_textview_in_item"
-	                android:id="@+id/idInItemSession"
+	                android:id="@+id/itemSession_textIdValue"
 	                android:text="@string/session1_id"/>   
             </LinearLayout>
 	        
@@ -37,7 +37,7 @@
                     android:text="@string/script_attr_id" />
 		        <TextView 
 	                style="@style/style_text_in_textview_in_item"
-	                android:id="@+id/scriptIdInItemSession"
+	                android:id="@+id/itemSession_textScriptIdValue"
 	                android:text="@string/session1_script_id"/>
 	        </LinearLayout>
 	        
@@ -47,12 +47,12 @@
                 android:orientation="horizontal" >
                  <TextView 
                       style="@style/style_text_in_textview_in_item"
-                      android:id="@+id/firstnameInItemSession"
+                      android:id="@+id/itemSession_textSpeakerFirstname"
                       android:layout_marginRight="3dp"
                       android:text="@string/speaker2_firstname"/>
                  <TextView 
                       style="@style/style_text_in_textview_in_item"
-                      android:id="@+id/surnameInItemSession"
+                      android:id="@+id/itemSession_textSpeakerSurname"
                       android:text="@string/speaker2_surname"/>        
                 
             </LinearLayout>
@@ -65,12 +65,12 @@
 	            <TextView 
 	                style="@style/style_text_in_textview_in_item"
 	                android:layout_alignParentLeft="true"
-	                android:id="@+id/creationDateInItemSession"
+	                android:id="@+id/itemSession_textCreateDate"
 	                android:text="@string/session1_creation_day"/>
 	            <TextView 
 	                style="@style/style_textred_in_textview_in_item"
 	                android:layout_alignParentRight="true"
-	                android:id="@+id/isFinishedInItemSession"
+	                android:id="@+id/itemSession_textIsFinished"
 	                android:text="@string/session1_isfinished"/>
 	        </RelativeLayout>
 	        

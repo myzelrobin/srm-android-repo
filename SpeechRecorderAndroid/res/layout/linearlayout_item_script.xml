@@ -20,17 +20,17 @@
                 android:orientation="horizontal" >
                 <TextView 
                     style="@style/style_title_in_textview_in_item"
-                    android:id="@+id/idSignInItemScript"
+                    android:id="@+id/itemScript_textIdSign"
                     android:text="#" />
                 <TextView 
                     style="@style/style_title_in_textview_in_item"
-                    android:id="@+id/idInItemScript"
+                    android:id="@+id/itemScript_textIdValue"
                     android:text="@string/script1_id" />    
             </LinearLayout>
             
             <TextView 
                 style="@style/style_text_in_textview_in_item"
-                android:id="@+id/descriptionInItemScript"
+                android:id="@+id/itemScript_textDesciptionValue"
                 android:text="@string/script1_description"/>
             
         </LinearLayout>

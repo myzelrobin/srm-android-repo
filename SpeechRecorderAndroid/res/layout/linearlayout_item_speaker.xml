@@ -21,26 +21,26 @@
                 android:orientation="horizontal" >
 		         <TextView 
 		              style="@style/style_title_in_textview_in_item"
-		              android:id="@+id/firstnameInItemSpeaker"
+		              android:id="@+id/itemSpeaker_textFirstNameValue"
 		              android:text="@string/speaker2_firstname"/>
 		         <TextView 
 		              style="@style/style_title_in_textview_in_item"
-		              android:id="@+id/surnameInItemSpeaker"
+		              android:id="@+id/itemSpeaker_textSurnameValue"
 		              android:text="@string/speaker2_surname"/>        
 	            
 	        </LinearLayout>
 	        
 	        <TextView 
                 style="@style/style_text_in_textview_in_item"
-                android:id="@+id/sexInItemSpeaker"
+                android:id="@+id/itemSpeaker_textSexValue"
                 android:text="@string/speaker2_sex"/>
 	        <TextView 
                 style="@style/style_text_in_textview_in_item"
-                android:id="@+id/accentInItemSpeaker"
+                android:id="@+id/itemSpeaker_textAccentValue"
                 android:text="@string/speaker2_accent"/>
 	        <TextView 
                 style="@style/style_text_in_textview_in_item"
-                android:id="@+id/birthdayInItemSpeaker"
+                android:id="@+id/itemSpeaker_textBirthdayValue"
                 android:text="@string/speaker2_birthday"/>
 	        
 	    </LinearLayout>
