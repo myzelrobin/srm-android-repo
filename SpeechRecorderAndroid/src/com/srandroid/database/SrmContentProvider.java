@@ -111,6 +111,10 @@ public class SrmContentProvider extends ContentProvider
 			case SrmUriMatcher.RECORD_ITEM_ID:
 				queryBuilder.setTables(TableRecords.TABLE_RECORDS);
 				break;
+			case SrmUriMatcher.TABLE_SESSIONS_LEFTJOIN_SPEAKERS:
+				break;
+			case SrmUriMatcher.TABLE_SPEAKERS_LEFTJOIN_SESSIONS:
+				break;
 		}
 		
 	}
@@ -181,7 +185,6 @@ public class SrmContentProvider extends ContentProvider
 						+ "=" + uri.getLastPathSegment());
 				break;
 			case SrmUriMatcher.TABLE_SESSIONS_LEFTJOIN_SPEAKERS:
-				
 				
 				// must include _id column
 				// sessions _id use sessions._id
