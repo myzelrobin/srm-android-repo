@@ -553,9 +553,11 @@ public class ActivityMain extends Activity {
 					case Utils.ConstantVars.POS_SESSIONS:
 						
 						// Sessions left outer join Speakers
+						// Must include the _id column for the adapter to work
 						// all columns with different names in two tables
+						
 						String[] selectColumns_SessionsLEFTJOINSpeakers = {
-								"session_key_id",
+								TableSessions.COLUMN_ID,
 								TableSessions.COLUMN_DATE,
 								TableSessions.COLUMN_TIME,
 								TableSessions.COLUMN_PLACE,
@@ -687,7 +689,7 @@ public class ActivityMain extends Activity {
 
 		@Override
 		public void onItemClick(AdapterView<?> parent, 
-				View view, 
+				View itemView, 
 				int position,
 				long rowId) 
 		{
@@ -695,18 +697,22 @@ public class ActivityMain extends Activity {
 			switch (itemIndex)
 			{
 					case Utils.ConstantVars.POS_SESSIONS:
-						test = getTextFromItem(view, R.id.itemSession_textIdValue);
-						Utils.toastTextToUser(this.getActivity(), "Session Item position=" + " key_id=" + test);
+						test = getTextFromItem(itemView, R.id.itemSession_textIdValue);
+						Utils.toastTextToUser(this.getActivity(), "Session Item position=" 
+								+ " key_id=" + test + " rowId=" + rowId );
+						// use rowId
 						break;
 						
 					case Utils.ConstantVars.POS_SCRIPTS:
-						test = getTextFromItem(view, R.id.itemScript_textIdValue);
-						Utils.toastTextToUser(this.getActivity(), "Session Item position=" + " key_id=" + test);
+						test = getTextFromItem(itemView, R.id.itemScript_textIdValue);
+						Utils.toastTextToUser(this.getActivity(), "Session Item position=" + " key_id=" 
+								+ " key_id=" + test + " rowId=" + rowId );
 						break;
 						
 					case Utils.ConstantVars.POS_SPEAKERS:
-						test = getTextFromItem(view, R.id.itemSpeaker_textFirstNameValue);
-						Utils.toastTextToUser(this.getActivity(), "Session Item position=" + " firstname=" + test);
+						test = getTextFromItem(itemView, R.id.itemSpeaker_textFirstNameValue);
+						Utils.toastTextToUser(this.getActivity(), "Session Item position=" + " firstname=" 
+								+ " key_id=" + test + " rowId=" + rowId );
 						break;
 	
 					default:
