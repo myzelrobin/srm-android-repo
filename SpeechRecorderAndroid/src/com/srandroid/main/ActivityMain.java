@@ -556,27 +556,27 @@ public class ActivityMain extends Activity {
 						// Must include the _id column for the adapter to work
 						// ?Must have all columns with different names in two tables, but with only one "_id" for adapter
 						
-						String[] selectColumns_SessionsLEFTJOINSpeakers = {
-								TableSessions.COLUMN_ID,
-								TableSessions.COLUMN_DATE,
-								TableSessions.COLUMN_TIME,
-								TableSessions.COLUMN_PLACE,
-								TableSessions.COLUMN_IS_FINISHED,
-								TableSessions.COLUMN_DEVICE_DATA,
-								TableSessions.COLUMN_GPS_DATA,
-								TableSessions.COLUMN_COUNT,
-								TableSessions.COLUMN_SCRIPT_ID,
-								TableSessions.COLUMN_SPEAKER_ID,
-								TableSpeakers.COLUMN_ID,
-								TableSpeakers.COLUMN_FIRSTNAME,
-								TableSpeakers.COLUMN_SURNAME,
-								TableSpeakers.COLUMN_ACCENT,
-								TableSpeakers.COLUMN_SEX,
-								TableSpeakers.COLUMN_BIRTHDAY};
-						cursorLoader = 
-								new CursorLoader(this.getActivity().getApplicationContext(), 
-										SrmUriMatcher.CONTENT_URI_TABLE_SESSIONS_LEFTJOIN_SPEAKERS, 
-										selectColumns_SessionsLEFTJOINSpeakers, null, null, null);
+//						String[] selectColumns_SessionsLEFTJOINSpeakers = {
+//								TableSessions.COLUMN_ID,
+//								TableSessions.COLUMN_DATE,
+//								TableSessions.COLUMN_TIME,
+//								TableSessions.COLUMN_PLACE,
+//								TableSessions.COLUMN_IS_FINISHED,
+//								TableSessions.COLUMN_DEVICE_DATA,
+//								TableSessions.COLUMN_GPS_DATA,
+//								TableSessions.COLUMN_COUNT,
+//								TableSessions.COLUMN_SCRIPT_ID,
+//								TableSessions.COLUMN_SPEAKER_ID,
+//								TableSpeakers.COLUMN_ID,
+//								TableSpeakers.COLUMN_FIRSTNAME,
+//								TableSpeakers.COLUMN_SURNAME,
+//								TableSpeakers.COLUMN_ACCENT,
+//								TableSpeakers.COLUMN_SEX,
+//								TableSpeakers.COLUMN_BIRTHDAY};
+//						cursorLoader = 
+//								new CursorLoader(this.getActivity().getApplicationContext(), 
+//										SrmUriMatcher.CONTENT_URI_TABLE_SESSIONS_LEFTJOIN_SPEAKERS, 
+//										selectColumns_SessionsLEFTJOINSpeakers, null, null, null);
 						
 						break;
 						
@@ -733,12 +733,18 @@ public class ActivityMain extends Activity {
         	String[] from = null;
         	int[] to = null;
         	
+        	Cursor cursor = null;
+        	
 			switch (itemIndex)
 			{
 					case Utils.ConstantVars.POS_SESSIONS:
 						
+						cursor = getActivity().getContentResolver().query(SrmUriMatcher.CONTENT_URI_TABLE_SESSIONS_LEFTJOIN_SPEAKERS, 
+								null, null, null, null);
+						
+						
+						
 						// Sessions left outer join Speakers
-						// !!! some columns are using same name, rename them in the query
 						// Fields from the database (selectColumns)
 						from = new String[] {"session_key_id",
 												TableSessions.COLUMN_SCRIPT_ID,
@@ -757,7 +763,7 @@ public class ActivityMain extends Activity {
 						getLoaderManager().initLoader(0, null, this);		
 						adapter = new SimpleCursorAdapter(this.getActivity().getApplicationContext(), 
 											R.layout.linearlayout_item_session, 
-											null, from, to, 0);
+											cursor, from, to, 0);
 						gridView.setAdapter(adapter);
 						break;
 						
