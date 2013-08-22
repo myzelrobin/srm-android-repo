@@ -119,10 +119,6 @@ public class SrmContentProvider extends ContentProvider
 				tablesTemp= "speakers left outer join sessions on sessions.speaker_id=speakers._id";
 				queryBuilder.setTables(tablesTemp);
 				break;
-			case SrmUriMatcher.ITEM_SPEAKERS_LEFTJOIN_SESSIONS:
-				tablesTemp= "speakers left outer join sessions on sessions.speaker_id=speakers._id";
-				queryBuilder.setTables(tablesTemp);
-				break;
 		}
 		
 	}
@@ -265,7 +261,7 @@ public class SrmContentProvider extends ContentProvider
 //				
 //				return cursor;
 				break;
-				
+
 		}
 		
 		srmDB = dbAccesor.getReadableDatabase();

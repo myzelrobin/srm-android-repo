@@ -86,11 +86,11 @@ public class ActivitySpeakerDetails extends Activity
 					TableSpeakers.COLUMN_SEX,
 					TableSpeakers.COLUMN_BIRTHDAY,
 					TableSessions.COLUMN_SCRIPT_ID,
-					"speakers._id",
+					"speakers._id as speaker_key_id",
 					"sessions._id as session_key_id"
 			};
 			
-			String wherePart = "speakers._id=" + itemId;
+			String wherePart = "speaker_key_id=" + itemId;
 			
 			Cursor cursor = getContentResolver().query(SrmUriMatcher.CONTENT_URI_TABLE_SPEAKERS_LEFTJOIN_SESSIONS, 
 					selectColumns, null, null, null);
