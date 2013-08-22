@@ -38,6 +38,8 @@ import android.widget.Spinner;
  */
 public class ActivityAddSpeaker extends Activity
 {
+	// state
+	public static final String NEW_SPEAKER_ITEM_URI = "NEW_SPEAKER_ITEM_URI";
 
 	
 	private CharSequence activity_title = null;
@@ -74,9 +76,6 @@ public class ActivityAddSpeaker extends Activity
 			
 			activity_title = this.getTitle();
 					
-	        
-	        
-	        
 	        // orientation changed
 	        if(savedInstanceState != null)
 	        {
@@ -215,6 +214,25 @@ public class ActivityAddSpeaker extends Activity
 		    return super.onOptionsItemSelected(item);
 	    }
 		
+		@Override
+		protected void onSaveInstanceState(Bundle savedInstanceState) 
+		{
+			savedInstanceState.putParcelable("NEW_SPEAKER_ITEM_URI", speakerItemUri);
+		    super.onSaveInstanceState(savedInstanceState);
+		}
+
+		
+		/**
+		 * 
+		 * @param title
+		 */
+		@Override
+		public void setTitle(CharSequence title) 
+		{
+		    activity_title = title;
+		    getActionBar().setTitle(activity_title);
+		}
+
 
 		private void saveDataToSpeakerItem(SpeakerItem speaker) 
 		{
@@ -245,27 +263,5 @@ public class ActivityAddSpeaker extends Activity
 					getContentResolver().insert(SrmContentProvider.SrmUriMatcher.CONTENT_URI_TABLE_SPEAKERS, values);
 			return speakerItemUri;
 		}
-
-
-
-		@Override
-		protected void onSaveInstanceState(Bundle savedInstanceState) 
-		{
-			savedInstanceState.putParcelable("NEW_SPEAKER_ITEM_URI", speakerItemUri);
-		    super.onSaveInstanceState(savedInstanceState);
-		}
-
-		
-		/**
-		 * 
-		 * @param title
-		 */
-		@Override
-		public void setTitle(CharSequence title) 
-		{
-		    activity_title = title;
-		    getActionBar().setTitle(activity_title);
-		}
-
 
 }

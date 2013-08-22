@@ -50,8 +50,8 @@ public class Utils
 				
 		
 		// device informations
-		public static String DEVICE_ID = "unknow";
-		public static String GPS_INFO = "device unavailable";
+		public static String DEVICE_ID = "default unknow";
+		public static String GPS_INFO = "default device unavailable";
 		
 		// SharedPreferece key and default values
 		public static final String KEY_PREFSCREEN_RECVALUE = "prefscreen_recvalue";
@@ -542,7 +542,7 @@ public class Utils
 	        Utils.ConstantVars.GPS_INFO = s;
 	        
 	        Log.w(MyLocationListener.class.getName(), 
-	    			"new location is" + s);
+	    			"new location is:" + s);
 	    }
 
 	    @Override
