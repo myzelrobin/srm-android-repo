@@ -183,6 +183,7 @@ public class SrmContentProvider extends ContentProvider
 				
 				Cursor cursor = null;
 				
+				// must include _id column
 				// sessions _id use sessions._id
 				String[] selectColumnsArray = {
 						TableSessions.COLUMN_DATE,
@@ -208,7 +209,7 @@ public class SrmContentProvider extends ContentProvider
 				String result = builder.toString();
 				
 				srmDB = dbAccesor.getReadableDatabase();
-				String sqlQuery = "select " + result + ", sessions._id "
+				String sqlQuery = "select " + result 
 						+ " from sessions left outer join speakers on sessions.speaker_id=speakers._id;";
 				
 				cursor = srmDB.rawQuery(sqlQuery, null);
@@ -231,7 +232,6 @@ public class SrmContentProvider extends ContentProvider
 											null,  // having
 											sortOrder);  // sort by
 		
-		//
 		
 		// By default, CursorAdapter objects will get this notification.
 		cursor.setNotificationUri(getContext().getContentResolver(), uri);

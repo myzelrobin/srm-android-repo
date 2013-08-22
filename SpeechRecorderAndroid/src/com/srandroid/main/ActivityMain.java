@@ -553,26 +553,6 @@ public class ActivityMain extends Activity {
 					case Utils.ConstantVars.POS_SESSIONS:
 						
 						// Sessions left outer join Speakers
-						// Must include the _id column for the adapter to work
-						// ?Must have all columns with different names in two tables, but with only one "_id" for adapter
-						
-//						String[] selectColumns_SessionsLEFTJOINSpeakers = {
-//								TableSessions.COLUMN_ID,
-//								TableSessions.COLUMN_DATE,
-//								TableSessions.COLUMN_TIME,
-//								TableSessions.COLUMN_PLACE,
-//								TableSessions.COLUMN_IS_FINISHED,
-//								TableSessions.COLUMN_DEVICE_DATA,
-//								TableSessions.COLUMN_GPS_DATA,
-//								TableSessions.COLUMN_COUNT,
-//								TableSessions.COLUMN_SCRIPT_ID,
-//								TableSessions.COLUMN_SPEAKER_ID,
-//								TableSpeakers.COLUMN_ID,
-//								TableSpeakers.COLUMN_FIRSTNAME,
-//								TableSpeakers.COLUMN_SURNAME,
-//								TableSpeakers.COLUMN_ACCENT,
-//								TableSpeakers.COLUMN_SEX,
-//								TableSpeakers.COLUMN_BIRTHDAY};
 						cursorLoader = 
 								new CursorLoader(this.getActivity().getApplicationContext(), 
 										SrmUriMatcher.CONTENT_URI_TABLE_SESSIONS_LEFTJOIN_SPEAKERS, 
@@ -741,7 +721,7 @@ public class ActivityMain extends Activity {
 						
 						
 						// Sessions left outer join Speakers, both have _id so use a new column
-						// Fields from the database (selectColumns)
+						// Fields from the database 
 						from = new String[] {TableSessions.COLUMN_ID,
 												TableSessions.COLUMN_SCRIPT_ID,
 												TableSessions.COLUMN_DATE,
@@ -756,8 +736,6 @@ public class ActivityMain extends Activity {
 												R.id.itemSession_textSpeakerFirstname,
 												R.id.itemSession_textSpeakerSurname};
 						
-						//cursor = getActivity().getContentResolver().query(SrmUriMatcher.CONTENT_URI_TABLE_SESSIONS_LEFTJOIN_SPEAKERS, from, null, null, null);
-
 						getLoaderManager().initLoader(0, null, this);		
 						adapter = new SimpleCursorAdapter(this.getActivity().getApplicationContext(), 
 											R.layout.linearlayout_item_session, 
