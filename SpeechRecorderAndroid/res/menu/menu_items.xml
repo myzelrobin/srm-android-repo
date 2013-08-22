@@ -89,7 +89,7 @@
     
         <item
             android:id="@+id/activity_addspeaker_button_start"
-            android:icon="@drawable/ic_button_mic"
+            android:icon="@drawable/icon_session_256"
             android:showAsAction="always"
             android:title="@string/activity_addspeaker_button_startrecording_text" />
         
