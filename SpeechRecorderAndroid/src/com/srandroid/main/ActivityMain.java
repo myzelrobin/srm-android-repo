@@ -689,27 +689,24 @@ public class ActivityMain extends Activity {
 		public void onItemClick(AdapterView<?> parent, 
 				View view, 
 				int position,
-				long id) 
+				long rowId) 
 		{
 			String test = null;
 			switch (itemIndex)
 			{
 					case Utils.ConstantVars.POS_SESSIONS:
 						test = getTextFromItem(view, R.id.itemSession_textIdValue);
-						Utils.toastTextToUser(this.getActivity(), "Session Item position=" + position 
-								+ " id=" + id + " showid=" + test);
+						Utils.toastTextToUser(this.getActivity(), "Session Item position=" + " key_id=" + test);
 						break;
 						
 					case Utils.ConstantVars.POS_SCRIPTS:
 						test = getTextFromItem(view, R.id.itemScript_textIdValue);
-						Utils.toastTextToUser(this.getActivity(), "Session Item position=" + position 
-								+ " id=" + id + " showid=" + test);
+						Utils.toastTextToUser(this.getActivity(), "Session Item position=" + " key_id=" + test);
 						break;
 						
 					case Utils.ConstantVars.POS_SPEAKERS:
 						test = getTextFromItem(view, R.id.itemSpeaker_textFirstNameValue);
-						Utils.toastTextToUser(this.getActivity(), "Session Item position=" + position 
-								+ " id=" + id + " firstname=" + test);
+						Utils.toastTextToUser(this.getActivity(), "Session Item position=" + " firstname=" + test);
 						break;
 	
 					default:
