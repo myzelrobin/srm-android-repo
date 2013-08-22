@@ -557,7 +557,7 @@ public class ActivityMain extends Activity {
 						// all columns with different names in two tables, but with only one "_id" for adapter
 						
 						String[] selectColumns_SessionsLEFTJOINSpeakers = {
-								TableSessions.COLUMN_ID,
+								"session_key_id",
 								TableSessions.COLUMN_DATE,
 								TableSessions.COLUMN_TIME,
 								TableSessions.COLUMN_PLACE,
@@ -568,7 +568,10 @@ public class ActivityMain extends Activity {
 								TableSessions.COLUMN_SCRIPT_ID,
 								TableSessions.COLUMN_SPEAKER_ID,
 								TableSpeakers.COLUMN_FIRSTNAME,
-								TableSpeakers.COLUMN_SURNAME};
+								TableSpeakers.COLUMN_SURNAME,
+								TableSpeakers.COLUMN_ACCENT,
+								TableSpeakers.COLUMN_SEX,
+								TableSpeakers.COLUMN_BIRTHDAY};
 						cursorLoader = 
 								new CursorLoader(this.getActivity().getApplicationContext(), 
 										SrmUriMatcher.CONTENT_URI_TABLE_SESSIONS_LEFTJOIN_SPEAKERS, 

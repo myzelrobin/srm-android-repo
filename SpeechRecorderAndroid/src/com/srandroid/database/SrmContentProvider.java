@@ -109,7 +109,7 @@ public class SrmContentProvider extends ContentProvider
 			case SrmUriMatcher.RECORD_ITEM_ID:
 				queryBuilder.setTables(TableRecords.TABLE_RECORDS);
 				break;
-			case SrmUriMatcher.SESSIONS_LEFTJOIN_SPEAKERS:
+			case SrmUriMatcher.TABLE_SESSIONS_LEFTJOIN_SPEAKERS:
 				// String tables= "sessions LEFT OUTER JOIN speakers ON (speakers._id=sessions.speaker_id)";
 				// queryBuilder.setTables(tables);
 				break;
@@ -179,12 +179,11 @@ public class SrmContentProvider extends ContentProvider
 				queryBuilder.appendWhere(TableRecords.COLUMN_ID 
 						+ "=" + uri.getLastPathSegment());
 				break;
-			case SrmUriMatcher.SESSIONS_LEFTJOIN_SPEAKERS:
+			case SrmUriMatcher.TABLE_SESSIONS_LEFTJOIN_SPEAKERS:
 				//
 				Cursor cursor = null;
 				
 				String[] selectColumnsArray = {
-						TableSessions.COLUMN_ID,
 						TableSessions.COLUMN_DATE,
 						TableSessions.COLUMN_TIME,
 						TableSessions.COLUMN_PLACE,
@@ -208,8 +207,8 @@ public class SrmContentProvider extends ContentProvider
 				String result = builder.toString();
 				
 				srmDB = dbAccesor.getReadableDatabase();
-				String sqlQuery = "select " + result
-						+ " from sessions t1 left outer join speakers t2 on t2._id=t1.speeker_id;";
+				String sqlQuery = "select " + result + ", t1._id as session_key_id "
+						+ " from sessions t1 left outer join speakers t2 on t2._id=t1.speaker_id;";
 				return cursor = srmDB.rawQuery(sqlQuery, null);
 				
 		}
@@ -825,7 +824,7 @@ public class SrmContentProvider extends ContentProvider
 		public static final String CONTENT_ITEM_TYPE_SESSIONS_LFETJOIN_SPEAKERS = 
 				ContentResolver.CURSOR_DIR_BASE_TYPE + "/item_sessions_leftjoin_speakers";
 		
-		private static final int SESSIONS_LEFTJOIN_SPEAKERS = 101;
+		private static final int TABLE_SESSIONS_LEFTJOIN_SPEAKERS = 101;
 		
 		
 		// if necessary, define Strings above and add uri below, like SELECT JOIN
@@ -859,7 +858,7 @@ public class SrmContentProvider extends ContentProvider
 			
 			
 			// other tables
-			uriMatcher.addURI(AUTHORITY, PATH_TABLE_SESSIONS_LEFTJOIN_SPEAKERS, SESSIONS_LEFTJOIN_SPEAKERS);
+			uriMatcher.addURI(AUTHORITY, PATH_TABLE_SESSIONS_LEFTJOIN_SPEAKERS, TABLE_SESSIONS_LEFTJOIN_SPEAKERS);
 		}
 		
 	}
