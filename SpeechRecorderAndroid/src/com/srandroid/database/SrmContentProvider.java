@@ -111,14 +111,6 @@ public class SrmContentProvider extends ContentProvider
 			case SrmUriMatcher.RECORD_ITEM_ID:
 				queryBuilder.setTables(TableRecords.TABLE_RECORDS);
 				break;
-			case SrmUriMatcher.TABLE_SESSIONS_LEFTJOIN_SPEAKERS:
-				// String tables= "sessions LEFT OUTER JOIN speakers ON (speakers._id=sessions.speaker_id)";
-				// queryBuilder.setTables(tables);
-				break;
-			case SrmUriMatcher.TABLE_SPEAKERS_LEFTJOIN_SESSIONS:
-				tablesTemp= "speakers left outer join sessions on sessions.speaker_id=speakers._id";
-				queryBuilder.setTables(tablesTemp);
-				break;
 		}
 		
 	}
@@ -128,8 +120,8 @@ public class SrmContentProvider extends ContentProvider
 	@Override
 	public Cursor query(Uri uri,       // FROM
 			String[] selectColumns,    // SELECT
-			String whereSelection,      // WHERE
-			String[] selectionValues,   // WHERE =
+			String wherePart,      // WHERE
+			String[] wherePartValues,   // WHERE =
 			String sortOrder)           // ORDER BY
 	{
 		Cursor cursor = null;
@@ -154,7 +146,7 @@ public class SrmContentProvider extends ContentProvider
 			case SrmUriMatcher.TABLE_SPEAKERS:
 				break;
 			case SrmUriMatcher.SPEAKER_ITEM_ID:
-				// Adding the whereSelection = selectionValues to the query
+				// Adding the wherePart = wherePartValues to the query
 				queryBuilder.appendWhere(TableSpeakers.COLUMN_ID 
 						+ "=" + uri.getLastPathSegment());
 				break;
@@ -227,40 +219,51 @@ public class SrmContentProvider extends ContentProvider
 				return cursor;
 			
 			case SrmUriMatcher.TABLE_SPEAKERS_LEFTJOIN_SESSIONS:
-//				
-//				String[] selectColumnsArray2 = {
-//						TableSpeakers.COLUMN_FIRSTNAME,
-//						TableSpeakers.COLUMN_SURNAME,
-//						TableSpeakers.COLUMN_SEX,
-//						TableSpeakers.COLUMN_ACCENT,
-//						TableSpeakers.COLUMN_BIRTHDAY,
-//						TableSessions.COLUMN_DATE,
-//						TableSessions.COLUMN_TIME,
-//						TableSessions.COLUMN_PLACE,
-//						TableSessions.COLUMN_IS_FINISHED,
-//						TableSessions.COLUMN_DEVICE_DATA,
-//						TableSessions.COLUMN_GPS_DATA,
-//						TableSessions.COLUMN_COUNT,
-//						TableSessions.COLUMN_SCRIPT_ID,
-//						TableSessions.COLUMN_SPEAKER_ID,
-//						TableSessions.COLUMN_LAST_SECTION};
-//				StringBuilder builder2 = new StringBuilder();
-//				builder2.append(selectColumnsArray2[0]);
-//				for (int i = 1; i < selectColumnsArray2.length; i++) {
-//				   builder2.append("," + selectColumnsArray2[i]);
-//				}
-//				String result2 = builder2.toString();
-//				
-//				srmDB = dbAccesor.getReadableDatabase();
-//				String sqlQuery2 = "select " + result2 + ", speakers._id, sessions._id as session_key_id "
-//						+ " from speakers left outer join sessions on sessions.speaker_id=speakers._id;";
-//				
-//				cursor = srmDB.rawQuery(sqlQuery2, null);
-//				
-//				cursor.setNotificationUri(getContext().getContentResolver(), uri); 
-//				
-//				return cursor;
-				break;
+				
+				String[] selectColumnsArray2 = {
+						TableSpeakers.COLUMN_FIRSTNAME,
+						TableSpeakers.COLUMN_SURNAME,
+						TableSpeakers.COLUMN_SEX,
+						TableSpeakers.COLUMN_ACCENT,
+						TableSpeakers.COLUMN_BIRTHDAY,
+						TableSessions.COLUMN_DATE,
+						TableSessions.COLUMN_TIME,
+						TableSessions.COLUMN_PLACE,
+						TableSessions.COLUMN_IS_FINISHED,
+						TableSessions.COLUMN_DEVICE_DATA,
+						TableSessions.COLUMN_GPS_DATA,
+						TableSessions.COLUMN_COUNT,
+						TableSessions.COLUMN_SCRIPT_ID,
+						TableSessions.COLUMN_SPEAKER_ID,
+						TableSessions.COLUMN_LAST_SECTION};
+				StringBuilder builder2 = new StringBuilder();
+				builder2.append(selectColumnsArray2[0]);
+				for (int i = 1; i < selectColumnsArray2.length; i++) {
+				   builder2.append("," + selectColumnsArray2[i]);
+				}
+				String result2 = builder2.toString();
+				
+				srmDB = dbAccesor.getReadableDatabase();
+				
+				if(wherePart.length() == 0)
+				{
+					String sqlQuery2 = "select " + result2 + ", speakers._id, sessions._id as session_key_id "
+							+ " from speakers left outer join sessions on sessions.speaker_id=speakers._id;";
+					
+					cursor = srmDB.rawQuery(sqlQuery2, null);
+				}
+				else
+				{
+					String sqlQuery2 = "SELECT " + result2 + ", speakers._id, sessions._id AS session_key_id "
+							+ " FROM speakers LEFT OUTER JOIN sessions ON sessions.speaker_id=speakers._id"
+							+ " where " + wherePart + ";";
+					
+					cursor = srmDB.rawQuery(sqlQuery2, null);
+				}
+					
+				cursor.setNotificationUri(getContext().getContentResolver(), uri); 
+				
+				return cursor;
 
 		}
 		
@@ -270,8 +273,8 @@ public class SrmContentProvider extends ContentProvider
 		
 		cursor = queryBuilder.query(srmDB, 
 											selectColumns,  // select
-											whereSelection, // where
-											selectionValues,  // where =
+											wherePart, // where
+											wherePartValues,  // where =
 											null,  // group by
 											null,  // having
 											sortOrder);  // sort by
@@ -285,8 +288,8 @@ public class SrmContentProvider extends ContentProvider
 	
 	@Override
 	public int delete(Uri uri, 
-			String whereSelection, 
-			String[] selectionValues) 
+			String wherePart, 
+			String[] wherePartValues) 
 	{
 		
 		// switcher with three values for three delete actions
@@ -321,7 +324,7 @@ public class SrmContentProvider extends ContentProvider
 				requestedID = uri.getLastPathSegment();
 				table = TableSpeakers.TABLE_SPEAKERS;
 				_id = TableSpeakers.COLUMN_ID; 
-				if (TextUtils.isEmpty(whereSelection))
+				if (TextUtils.isEmpty(wherePart))
 				{   // delete item with id
 					switcher = 2;
 				}
@@ -341,7 +344,7 @@ public class SrmContentProvider extends ContentProvider
 				requestedID = uri.getLastPathSegment();
 				table = TableScripts.TABLE_SCRIPTS;
 				_id = TableScripts.COLUMN_ID; 
-				if (TextUtils.isEmpty(whereSelection))
+				if (TextUtils.isEmpty(wherePart))
 				{
 					// delete item with id
 					switcher = 2;
@@ -363,7 +366,7 @@ public class SrmContentProvider extends ContentProvider
 				requestedID = uri.getLastPathSegment();
 				table = TableServers.TABLE_SERVERS;
 				_id = TableServers.COLUMN_ID; 
-				if (TextUtils.isEmpty(whereSelection))
+				if (TextUtils.isEmpty(wherePart))
 				{
 					// delete item with id
 					switcher = 2;
@@ -385,7 +388,7 @@ public class SrmContentProvider extends ContentProvider
 				requestedID = uri.getLastPathSegment();
 				table = TableSessions.TABLE_SESSIONS;
 				_id = TableSessions.COLUMN_ID; 
-				if (TextUtils.isEmpty(whereSelection))
+				if (TextUtils.isEmpty(wherePart))
 				{
 					// delete item with id
 					switcher = 2;
@@ -407,7 +410,7 @@ public class SrmContentProvider extends ContentProvider
 				requestedID = uri.getLastPathSegment();
 				table = TableSections.TABLE_SECTIONS;
 				_id = TableSections.COLUMN_ID; 
-				if (TextUtils.isEmpty(whereSelection))
+				if (TextUtils.isEmpty(wherePart))
 				{
 					// delete item with id
 					switcher = 2;
@@ -429,7 +432,7 @@ public class SrmContentProvider extends ContentProvider
 				requestedID = uri.getLastPathSegment();
 				table = TableRecords.TABLE_RECORDS;
 				_id = TableRecords.COLUMN_ID; 
-				if (TextUtils.isEmpty(whereSelection))
+				if (TextUtils.isEmpty(wherePart))
 				{
 					// delete item with id
 					switcher = 2;
@@ -454,11 +457,11 @@ public class SrmContentProvider extends ContentProvider
 			case 1: 
 				// delete items with conditions
 				Log.w(SrmContentProvider.class.getName(), 
-						"delete(): will delete items with WHERE(" + whereSelection 
-                        + "=" + Arrays.toString(selectionValues) 
+						"delete(): will delete items with WHERE(" + wherePart 
+                        + "=" + Arrays.toString(wherePartValues) 
                         + ") from table " + table);
 				rowDeleted = srmDB.delete(table, 
-						whereSelection, selectionValues);
+						wherePart, wherePartValues);
 				break;
 			case 2:
 				// delete item with id
@@ -472,12 +475,12 @@ public class SrmContentProvider extends ContentProvider
 				// delete item with id and condition
 				Log.w(SrmContentProvider.class.getName(), 
 						"delete(): will delete item id=" + requestedID 
-                        + " and selecitons(" + whereSelection 
-                        + "=" + Arrays.toString(selectionValues) 
+                        + " and selecitons(" + wherePart 
+                        + "=" + Arrays.toString(wherePartValues) 
                         + ") from table " + table);
 				rowDeleted = srmDB.delete(table, 
 						_id + "=" + requestedID + " and " 
-						+ whereSelection, selectionValues);
+						+ wherePart, wherePartValues);
 				break;
 	
 		}
@@ -568,8 +571,8 @@ public class SrmContentProvider extends ContentProvider
 	@Override
 	public int update(Uri uri, 
 			ContentValues values, 
-			String whereSelection, 
-			String[] selectionValues) 
+			String wherePart, 
+			String[] wherePartValues) 
 	{
 		// switcher with three values for three update actions
 		// 1: update items with conditions
@@ -601,7 +604,7 @@ public class SrmContentProvider extends ContentProvider
 				requestedID = uri.getLastPathSegment();
 				table = TableSpeakers.TABLE_SPEAKERS;
 				_id = TableSpeakers.COLUMN_ID;
-				if (TextUtils.isEmpty(whereSelection))
+				if (TextUtils.isEmpty(wherePart))
 				{
 					switcher = 2;
 				}
@@ -620,7 +623,7 @@ public class SrmContentProvider extends ContentProvider
 				requestedID = uri.getLastPathSegment();
 				table = TableScripts.TABLE_SCRIPTS;
 				_id = TableScripts.COLUMN_ID;
-				if (TextUtils.isEmpty(whereSelection))
+				if (TextUtils.isEmpty(wherePart))
 				{
 					switcher = 2;
 				}
@@ -639,7 +642,7 @@ public class SrmContentProvider extends ContentProvider
 				requestedID = uri.getLastPathSegment();
 				table = TableServers.TABLE_SERVERS;
 				_id = TableServers.COLUMN_ID;
-				if (TextUtils.isEmpty(whereSelection))
+				if (TextUtils.isEmpty(wherePart))
 				{
 					switcher = 2;
 				}
@@ -658,7 +661,7 @@ public class SrmContentProvider extends ContentProvider
 				requestedID = uri.getLastPathSegment();
 				table = TableSessions.TABLE_SESSIONS;
 				_id = TableSessions.COLUMN_ID;
-				if (TextUtils.isEmpty(whereSelection))
+				if (TextUtils.isEmpty(wherePart))
 				{
 					switcher = 2;
 				}
@@ -677,7 +680,7 @@ public class SrmContentProvider extends ContentProvider
 				requestedID = uri.getLastPathSegment();
 				table = TableSections.TABLE_SECTIONS;
 				_id = TableSections.COLUMN_ID;
-				if (TextUtils.isEmpty(whereSelection))
+				if (TextUtils.isEmpty(wherePart))
 				{
 					switcher = 2;
 				}
@@ -696,7 +699,7 @@ public class SrmContentProvider extends ContentProvider
 				requestedID = uri.getLastPathSegment();
 				table = TableRecords.TABLE_RECORDS;
 				_id = TableRecords.COLUMN_ID;
-				if (TextUtils.isEmpty(whereSelection))
+				if (TextUtils.isEmpty(wherePart))
 				{
 					switcher = 2;
 				}
@@ -721,9 +724,9 @@ public class SrmContentProvider extends ContentProvider
 				// 1: update items with conditions
 				Log.w(SrmContentProvider.class.getName(), 
 						"will update item with selections(" 
-						+ whereSelection + "=" + Arrays.toString(selectionValues) 
+						+ wherePart + "=" + Arrays.toString(wherePartValues) 
 						+ ") from table " + table);
-				rowUpdated = srmDB.update(table, values, whereSelection, selectionValues);
+				rowUpdated = srmDB.update(table, values, wherePart, wherePartValues);
 				break;
 			case 2:
 				// 2: update item with id
@@ -736,12 +739,12 @@ public class SrmContentProvider extends ContentProvider
 				// 3: update item with id and conditions
 				Log.w(SrmContentProvider.class.getName(), 
 						"update(): will update item id=" + requestedID 
-                        + " and selecitons(" + whereSelection + "=" 
-						+ Arrays.toString(selectionValues) 
+                        + " and selecitons(" + wherePart + "=" 
+						+ Arrays.toString(wherePartValues) 
                         + ") from table " + table);
 				rowUpdated = srmDB.update(table, values, 
                                         _id + "=" + requestedID 
-                                        + " and " + whereSelection, selectionValues);
+                                        + " and " + wherePart, wherePartValues);
 				break;
 	
 		}
