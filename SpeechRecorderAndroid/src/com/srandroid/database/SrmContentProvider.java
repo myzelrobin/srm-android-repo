@@ -182,7 +182,9 @@ public class SrmContentProvider extends ContentProvider
 			case SrmUriMatcher.SESSIONS_LEFTJOIN_SPEAKERS:
 				//
 				Cursor cursor = null;
+				
 				String[] selectColumnsArray = {
+						TableSessions.COLUMN_ID,
 						TableSessions.COLUMN_DATE,
 						TableSessions.COLUMN_TIME,
 						TableSessions.COLUMN_PLACE,
@@ -193,17 +195,21 @@ public class SrmContentProvider extends ContentProvider
 						TableSessions.COLUMN_SCRIPT_ID,
 						TableSessions.COLUMN_SPEAKER_ID,
 						TableSpeakers.COLUMN_FIRSTNAME,
-						TableSpeakers.COLUMN_SURNAME};
+						TableSpeakers.COLUMN_SURNAME,
+						TableSpeakers.COLUMN_SEX,
+						TableSpeakers.COLUMN_ACCENT,
+						TableSpeakers.COLUMN_BIRTHDAY};
 				StringBuilder builder = new StringBuilder();
-				for (int i = 0; i < selectColumnsArray.length; i++) {
-				   builder.append(selectColumnsArray[i] + ",");
+				builder.append(selectColumnsArray[0]);
+				for (int i = 1; i < selectColumnsArray.length; i++) {
+				   builder.append("," + selectColumnsArray[i]);
 				   //result.append( optional separator );
 				}
 				String result = builder.toString();
 				
 				srmDB = dbAccesor.getReadableDatabase();
-				String sqlQuery = "select " + result + " t1._id as _id "
-						+ "from sessions t1 left outer join speakers t2 on t2._id=t1.script_id;";
+				String sqlQuery = "select " + result
+						+ " from sessions t1 left outer join speakers t2 on t2._id=t1.speeker_id;";
 				return cursor = srmDB.rawQuery(sqlQuery, null);
 				
 		}
