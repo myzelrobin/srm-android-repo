@@ -577,7 +577,7 @@ public class ActivityMain extends Activity {
 						cursorLoader = 
 								new CursorLoader(this.getActivity().getApplicationContext(), 
 										SrmUriMatcher.CONTENT_URI_TABLE_SESSIONS_LEFTJOIN_SPEAKERS, 
-										null, null, null, null);
+										selectColumns_SessionsLEFTJOINSpeakers, null, null, null);
 						
 						break;
 						
