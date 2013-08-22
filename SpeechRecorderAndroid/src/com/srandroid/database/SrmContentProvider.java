@@ -265,10 +265,6 @@ public class SrmContentProvider extends ContentProvider
 //				
 //				return cursor;
 				break;
-			case SrmUriMatcher.ITEM_SPEAKERS_LEFTJOIN_SESSIONS:
-				queryBuilder.appendWhere(TableSpeakers.COLUMN_ID 
-						+ "=" + uri.getLastPathSegment());
-				break;
 				
 		}
 		

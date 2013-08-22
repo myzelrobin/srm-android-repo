@@ -678,20 +678,23 @@ public class ActivityMain extends Activity {
 			{
 					case Utils.ConstantVars.POS_SESSIONS:
 						test = getTextFromItem(itemView, R.id.itemSession_textIdValue);
-						Utils.toastTextToUser(this.getActivity(), "Session Item position=" 
+						Utils.toastTextToUser(this.getActivity(), "clicked Session Item position=" 
 								+ " key_id=" + test + " rowId=" + rowId );
 						// use rowId
 						break;
 						
 					case Utils.ConstantVars.POS_SCRIPTS:
 						test = getTextFromItem(itemView, R.id.itemScript_textIdValue);
-						Utils.toastTextToUser(this.getActivity(), "Session Item position=" 
+						Utils.toastTextToUser(this.getActivity(), "clicked script ttem position=" 
 								+ " key_id=" + test + " rowId=" + rowId );
 						break;
 						
 					case Utils.ConstantVars.POS_SPEAKERS:
+						Utils.toastTextToUser(this.getActivity(), "clicked speaker item position=" 
+								+ " key_id=" + test + " rowId=" + rowId );
+						
 						Intent i=new Intent(this.getActivity(), ActivitySpeakerDetails.class);
-						i.putExtra("itemId", rowId);
+						i.putExtra("itemId", Long.toString(rowId));
 						this.getActivity().startActivity(i);
 						
 						

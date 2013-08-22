@@ -32,7 +32,7 @@ public class ActivitySpeakerDetails extends Activity
 	// state
 		public static final String ITEM_URI = "ITEM_URI";
 		private Uri speakerItemUri = null;
-		private int itemId = 0;
+		private String itemId = null;
 		
 		
 		private CharSequence activity_title = null;
@@ -66,13 +66,13 @@ public class ActivitySpeakerDetails extends Activity
 
 			if (extras != null) 
 			{
-			    itemId = extras.getInt("itemId");
+			    itemId = extras.getString("itemId");
 			}
 			
 			// orientation changed
 	        if(savedInstanceState != null)
 	        {
-	        	itemId = savedInstanceState.getInt("itemId");
+	        	itemId = savedInstanceState.getString("itemId");
 	        }
 	        
 	        Log.w(ActivitySpeakerDetails.class.getName(), "get itemId=" + itemId);
@@ -90,9 +90,9 @@ public class ActivitySpeakerDetails extends Activity
 					"sessions._id as session_key_id"
 			};
 			
-			Uri uriTemp = Uri.parse(SrmUriMatcher.CONTENT_URI_TABLE_SPEAKERS_LEFTJOIN_SESSIONS + "/" + itemId);
+			String wherePart = "speakers._id=" + itemId;
 			
-			Cursor cursor = getContentResolver().query(uriTemp, 
+			Cursor cursor = getContentResolver().query(SrmUriMatcher.CONTENT_URI_TABLE_SPEAKERS_LEFTJOIN_SESSIONS, 
 					selectColumns, null, null, null);
 			
 			
@@ -262,7 +262,7 @@ public class ActivitySpeakerDetails extends Activity
 		@Override
 		protected void onSaveInstanceState(Bundle savedInstanceState) 
 		{
-			savedInstanceState.putInt("itemId", itemId);
+			savedInstanceState.putString("itemId", itemId);
 		    super.onSaveInstanceState(savedInstanceState);
 		}
 
