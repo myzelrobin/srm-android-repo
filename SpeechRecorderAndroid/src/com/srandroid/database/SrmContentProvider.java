@@ -180,9 +180,10 @@ public class SrmContentProvider extends ContentProvider
 						+ "=" + uri.getLastPathSegment());
 				break;
 			case SrmUriMatcher.TABLE_SESSIONS_LEFTJOIN_SPEAKERS:
-				//
+				
 				Cursor cursor = null;
 				
+				// sessions _id use sessions._id
 				String[] selectColumnsArray = {
 						TableSessions.COLUMN_DATE,
 						TableSessions.COLUMN_TIME,
@@ -207,7 +208,7 @@ public class SrmContentProvider extends ContentProvider
 				String result = builder.toString();
 				
 				srmDB = dbAccesor.getReadableDatabase();
-				String sqlQuery = "select " + result + ", sessions._id as session_key_id"
+				String sqlQuery = "select " + result + ", sessions._id "
 						+ " from sessions left outer join speakers on sessions.speaker_id=speakers._id;";
 				
 				cursor = srmDB.rawQuery(sqlQuery, null);
