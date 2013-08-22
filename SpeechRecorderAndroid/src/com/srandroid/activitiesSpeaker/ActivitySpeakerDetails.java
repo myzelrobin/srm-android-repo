@@ -96,7 +96,7 @@ public class ActivitySpeakerDetails extends Activity
 			String wherePart = "speaker_key_id=" + itemId;
 			
 			Cursor cursor = getContentResolver().query(SrmUriMatcher.CONTENT_URI_TABLE_SPEAKERS_LEFTJOIN_SESSIONS, 
-					selectColumns, null, null, null);
+					selectColumns, wherePart, null, null);
 			
 			
 			

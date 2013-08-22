@@ -223,32 +223,32 @@ public class SrmContentProvider extends ContentProvider
 			
 			case SrmUriMatcher.TABLE_SPEAKERS_LEFTJOIN_SESSIONS:
 				
-				String[] selectColumnsArray2 = {
-						TableSpeakers.COLUMN_FIRSTNAME,
-						TableSpeakers.COLUMN_SURNAME,
-						TableSpeakers.COLUMN_SEX,
-						TableSpeakers.COLUMN_ACCENT,
-						TableSpeakers.COLUMN_BIRTHDAY,
-						TableSessions.COLUMN_DATE,
-						TableSessions.COLUMN_TIME,
-						TableSessions.COLUMN_PLACE,
-						TableSessions.COLUMN_IS_FINISHED,
-						TableSessions.COLUMN_DEVICE_DATA,
-						TableSessions.COLUMN_GPS_DATA,
-						TableSessions.COLUMN_COUNT,
-						TableSessions.COLUMN_SCRIPT_ID,
-						TableSessions.COLUMN_SPEAKER_ID,
-						TableSessions.COLUMN_LAST_SECTION};
+//				String[] selectColumnsArray2 = {
+//						TableSpeakers.COLUMN_FIRSTNAME,
+//						TableSpeakers.COLUMN_SURNAME,
+//						TableSpeakers.COLUMN_SEX,
+//						TableSpeakers.COLUMN_ACCENT,
+//						TableSpeakers.COLUMN_BIRTHDAY,
+//						TableSessions.COLUMN_DATE,
+//						TableSessions.COLUMN_TIME,
+//						TableSessions.COLUMN_PLACE,
+//						TableSessions.COLUMN_IS_FINISHED,
+//						TableSessions.COLUMN_DEVICE_DATA,
+//						TableSessions.COLUMN_GPS_DATA,
+//						TableSessions.COLUMN_COUNT,
+//						TableSessions.COLUMN_SCRIPT_ID,
+//						TableSessions.COLUMN_SPEAKER_ID,
+//						TableSessions.COLUMN_LAST_SECTION};
 				StringBuilder builder2 = new StringBuilder();
-				builder2.append(selectColumnsArray2[0]);
-				for (int i = 1; i < selectColumnsArray2.length; i++) {
-				   builder2.append("," + selectColumnsArray2[i]);
+				builder2.append(selectColumns[0]);
+				for (int i = 1; i < selectColumns.length; i++) {
+				   builder2.append("," + selectColumns[i]);
 				}
 				String result2 = builder2.toString();
 				
 				srmDB = dbAccesor.getReadableDatabase();
 				
-				if(wherePart.length() == 0)
+				if(wherePart == null)
 				{
 					String sqlQuery2 = "select " + result2 + ", speakers._id, sessions._id as session_key_id "
 							+ " from speakers left outer join sessions on sessions.speaker_id=speakers._id;";
