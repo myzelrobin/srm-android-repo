@@ -686,29 +686,28 @@ public class ActivityMain extends Activity {
         }
 
 		@Override
-		public void onItemClick(AdapterView<?> adapterView, 
+		public void onItemClick(AdapterView<?> parent, 
 				View view, 
 				int position,
 				long id) 
 		{
-			LinearLayout item = (LinearLayout) adapterView.getItemAtPosition(position);
 			String test = null;
 			switch (itemIndex)
 			{
 					case Utils.ConstantVars.POS_SESSIONS:
-						test = getTextFromItem(item, R.id.itemSession_textIdValue);
+						test = getTextFromItem(view, R.id.itemSession_textIdValue);
 						Utils.toastTextToUser(this.getActivity(), "Session Item position=" + position 
 								+ " id=" + id + " showid=" + test);
 						break;
 						
 					case Utils.ConstantVars.POS_SCRIPTS:
-						test = getTextFromItem(item, R.id.itemScript_textIdValue);
+						test = getTextFromItem(view, R.id.itemScript_textIdValue);
 						Utils.toastTextToUser(this.getActivity(), "Session Item position=" + position 
 								+ " id=" + id + " showid=" + test);
 						break;
 						
 					case Utils.ConstantVars.POS_SPEAKERS:
-						test = getTextFromItem(item, R.id.itemSpeaker_textFirstNameValue);
+						test = getTextFromItem(view, R.id.itemSpeaker_textFirstNameValue);
 						Utils.toastTextToUser(this.getActivity(), "Session Item position=" + position 
 								+ " id=" + id + " firstname=" + test);
 						break;
@@ -802,9 +801,9 @@ public class ActivityMain extends Activity {
 			
 		}
 		
-		private String getTextFromItem(LinearLayout ll, int textViewId)
+		private String getTextFromItem(View view, int textViewId)
 		{
-			TextView textView = (TextView) ll.findViewById(textViewId);
+			TextView textView = (TextView) view.findViewById(textViewId);
 			return textView.getText().toString();
 		}
 
