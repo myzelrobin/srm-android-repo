@@ -557,7 +557,6 @@ public class ActivityMain extends Activity {
 						// ?Must have all columns with different names in two tables, but with only one "_id" for adapter
 						
 						String[] selectColumns_SessionsLEFTJOINSpeakers = {
-								"session_key_id",
 								TableSessions.COLUMN_ID,
 								TableSessions.COLUMN_DATE,
 								TableSessions.COLUMN_TIME,
