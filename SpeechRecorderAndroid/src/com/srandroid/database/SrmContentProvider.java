@@ -184,6 +184,7 @@ public class SrmContentProvider extends ContentProvider
 				Cursor cursor = null;
 				
 				String[] selectColumnsArray = {
+						TableSessions.COLUMN_ID,
 						TableSessions.COLUMN_DATE,
 						TableSessions.COLUMN_TIME,
 						TableSessions.COLUMN_PLACE,

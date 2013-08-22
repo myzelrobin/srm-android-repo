@@ -739,14 +739,10 @@ public class ActivityMain extends Activity {
 			{
 					case Utils.ConstantVars.POS_SESSIONS:
 						
-						cursor = getActivity().getContentResolver().query(SrmUriMatcher.CONTENT_URI_TABLE_SESSIONS_LEFTJOIN_SPEAKERS, 
-								null, null, null, null);
-						
-						
 						
 						// Sessions left outer join Speakers
 						// Fields from the database (selectColumns)
-						from = new String[] {"session_key_id",
+						from = new String[] {TableSessions.COLUMN_ID,
 												TableSessions.COLUMN_SCRIPT_ID,
 												TableSessions.COLUMN_DATE,
 												TableSessions.COLUMN_IS_FINISHED,
@@ -760,7 +756,10 @@ public class ActivityMain extends Activity {
 												R.id.itemSession_textSpeakerFirstname,
 												R.id.itemSession_textSpeakerSurname};
 						
-						getLoaderManager().initLoader(0, null, this);		
+						cursor = getActivity().getContentResolver().query(SrmUriMatcher.CONTENT_URI_TABLE_SESSIONS_LEFTJOIN_SPEAKERS, 
+								from, null, null, null);
+
+						//getLoaderManager().initLoader(0, null, this);		
 						adapter = new SimpleCursorAdapter(this.getActivity().getApplicationContext(), 
 											R.layout.linearlayout_item_session, 
 											cursor, from, to, 0);
