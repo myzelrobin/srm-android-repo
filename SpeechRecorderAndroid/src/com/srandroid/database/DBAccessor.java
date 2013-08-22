@@ -70,6 +70,7 @@ public class DBAccessor extends SQLiteOpenHelper
 			TableRecords.COLUMN_ID, 
 			TableRecords.COLUMN_FILEPATH,
 			TableRecords.COLUMN_SECTION_ID,
+			TableRecords.COLUMN_ISUPLOADED,
 			TableScripts.COLUMN_DESCRIPTION,
 			TableScripts.COLUMN_FILEPATH,
 			TableScripts.COLUMN_ID,

@@ -6,9 +6,10 @@ package com.srandroid.activitiesSpeaker;
 import java.util.Arrays;
 
 import com.srandroid.R;
-import com.srandroid.database.SpeakerItem;
+import com.srandroid.database.TableSpeakers;
 import com.srandroid.database.SrmContentProvider;
 import com.srandroid.database.TableSpeakers;
+import com.srandroid.database.TableSpeakers.SpeakerItem;
 import com.srandroid.main.ActivityMain;
 import com.srandroid.overflow.PrefActivitySettings;
 import com.srandroid.util.Utils;
@@ -45,6 +46,7 @@ public class ActivityAddSpeaker extends Activity
 	private CharSequence activity_title = null;
 	
 	private SpeakerItem speaker =  new SpeakerItem();
+	
 	private Uri speakerItemUri = null;
 	
 	EditText firstnameInput = null;

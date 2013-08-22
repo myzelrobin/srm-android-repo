@@ -686,14 +686,14 @@ public class ActivityMain extends Activity {
 						
 					case Utils.ConstantVars.POS_SCRIPTS:
 						test = getTextFromItem(itemView, R.id.itemScript_textIdValue);
-						Utils.toastTextToUser(this.getActivity(), "Session Item position=" + " key_id=" 
+						Utils.toastTextToUser(this.getActivity(), "Session Item position=" 
 								+ " key_id=" + test + " rowId=" + rowId );
 						break;
 						
 					case Utils.ConstantVars.POS_SPEAKERS:
 						test = getTextFromItem(itemView, R.id.itemSpeaker_textFirstNameValue);
-						Utils.toastTextToUser(this.getActivity(), "Session Item position=" + " firstname=" 
-								+ " key_id=" + test + " rowId=" + rowId );
+						Utils.toastTextToUser(this.getActivity(), "Session Item position=" 
+								+ " firstname=" + test + " rowId=" + rowId );
 						break;
 	
 					default:
