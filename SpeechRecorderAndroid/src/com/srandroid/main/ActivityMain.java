@@ -558,6 +558,7 @@ public class ActivityMain extends Activity {
 						
 						String[] selectColumns_SessionsLEFTJOINSpeakers = {
 								"session_key_id",
+								TableSessions.COLUMN_ID,
 								TableSessions.COLUMN_DATE,
 								TableSessions.COLUMN_TIME,
 								TableSessions.COLUMN_PLACE,
@@ -567,6 +568,7 @@ public class ActivityMain extends Activity {
 								TableSessions.COLUMN_COUNT,
 								TableSessions.COLUMN_SCRIPT_ID,
 								TableSessions.COLUMN_SPEAKER_ID,
+								TableSpeakers.COLUMN_ID,
 								TableSpeakers.COLUMN_FIRSTNAME,
 								TableSpeakers.COLUMN_SURNAME,
 								TableSpeakers.COLUMN_ACCENT,
