@@ -131,7 +131,7 @@ public class ActivitySpeakerDetails extends Activity
 				
 				StringBuilder sb1 = new StringBuilder(); // sessions
 				StringBuilder sb2 = new StringBuilder(); // scripts
-				while(cursor.isAfterLast())
+				while(!cursor.isAfterLast())
 				{
 					String s1 = cursor.getString(cursor.getColumnIndexOrThrow("session_key_id"));
 					if(!sb1.toString().contains(s1)) sb1.append(s1 + ", ");
