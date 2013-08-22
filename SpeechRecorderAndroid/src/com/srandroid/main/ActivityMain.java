@@ -552,10 +552,18 @@ public class ActivityMain extends Activity {
 					case Utils.ConstantVars.POS_SESSIONS:
 						
 						// Sessions left outer join Speakers
+						String[] selectColumns = {
+								TableSessions.COLUMN_DATE,
+								TableSessions.COLUMN_IS_FINISHED,
+								TableSessions.COLUMN_SCRIPT_ID,
+								TableSessions.COLUMN_SPEAKER_ID,
+								TableSpeakers.COLUMN_FIRSTNAME,
+								TableSpeakers.COLUMN_SURNAME};
+						
 						cursorLoader = 
 								new CursorLoader(this.getActivity().getApplicationContext(), 
 										SrmUriMatcher.CONTENT_URI_TABLE_SESSIONS_LEFTJOIN_SPEAKERS, 
-										null, null, null, null);
+										selectColumns, null, null, null);
 						
 						break;
 						

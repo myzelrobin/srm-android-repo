@@ -185,33 +185,34 @@ public class SrmContentProvider extends ContentProvider
 						+ "=" + uri.getLastPathSegment());
 				break;
 			case SrmUriMatcher.TABLE_SESSIONS_LEFTJOIN_SPEAKERS:
-				
-				// must include _id column
-				// sessions _id use sessions._id
-				String[] selectColumnsArray1 = {
-						TableSessions.COLUMN_DATE,
-						TableSessions.COLUMN_TIME,
-						TableSessions.COLUMN_PLACE,
-						TableSessions.COLUMN_IS_FINISHED,
-						TableSessions.COLUMN_DEVICE_DATA,
-						TableSessions.COLUMN_GPS_DATA,
-						TableSessions.COLUMN_COUNT,
-						TableSessions.COLUMN_SCRIPT_ID,
-						TableSessions.COLUMN_SPEAKER_ID,
-						TableSessions.COLUMN_LAST_SECTION,
-						TableSpeakers.COLUMN_FIRSTNAME,
-						TableSpeakers.COLUMN_SURNAME,
-						TableSpeakers.COLUMN_SEX,
-						TableSpeakers.COLUMN_ACCENT,
-						TableSpeakers.COLUMN_BIRTHDAY};
+
+//				String[] selectColumnsArray1 = {
+//						TableSessions.COLUMN_DATE,
+//						TableSessions.COLUMN_TIME,
+//						TableSessions.COLUMN_PLACE,
+//						TableSessions.COLUMN_IS_FINISHED,
+//						TableSessions.COLUMN_DEVICE_DATA,
+//						TableSessions.COLUMN_GPS_DATA,
+//						TableSessions.COLUMN_COUNT,
+//						TableSessions.COLUMN_SCRIPT_ID,
+//						TableSessions.COLUMN_SPEAKER_ID,
+//						TableSessions.COLUMN_LAST_SECTION,
+//						TableSpeakers.COLUMN_FIRSTNAME,
+//						TableSpeakers.COLUMN_SURNAME,
+//						TableSpeakers.COLUMN_SEX,
+//						TableSpeakers.COLUMN_ACCENT,
+//						TableSpeakers.COLUMN_BIRTHDAY};
 				StringBuilder builder = new StringBuilder();
-				builder.append(selectColumnsArray1[0]);
-				for (int i = 1; i < selectColumnsArray1.length; i++) {
-				   builder.append("," + selectColumnsArray1[i]);
+				builder.append(selectColumns[0]);
+				for (int i = 1; i < selectColumns.length; i++) {
+				   builder.append("," + selectColumns[i]);
 				}
 				String result = builder.toString();
 				
 				srmDB = dbAccesor.getReadableDatabase();
+				
+				// must include _id column
+				// sessions _id use sessions._id
 				String sqlQuery = "select " + result + ", sessions._id "
 						+ " from sessions left outer join speakers on sessions.speaker_id=speakers._id;";
 				
@@ -223,22 +224,6 @@ public class SrmContentProvider extends ContentProvider
 			
 			case SrmUriMatcher.TABLE_SPEAKERS_LEFTJOIN_SESSIONS:
 				
-//				String[] selectColumnsArray2 = {
-//						TableSpeakers.COLUMN_FIRSTNAME,
-//						TableSpeakers.COLUMN_SURNAME,
-//						TableSpeakers.COLUMN_SEX,
-//						TableSpeakers.COLUMN_ACCENT,
-//						TableSpeakers.COLUMN_BIRTHDAY,
-//						TableSessions.COLUMN_DATE,
-//						TableSessions.COLUMN_TIME,
-//						TableSessions.COLUMN_PLACE,
-//						TableSessions.COLUMN_IS_FINISHED,
-//						TableSessions.COLUMN_DEVICE_DATA,
-//						TableSessions.COLUMN_GPS_DATA,
-//						TableSessions.COLUMN_COUNT,
-//						TableSessions.COLUMN_SCRIPT_ID,
-//						TableSessions.COLUMN_SPEAKER_ID,
-//						TableSessions.COLUMN_LAST_SECTION};
 				StringBuilder builder2 = new StringBuilder();
 				builder2.append(selectColumns[0]);
 				for (int i = 1; i < selectColumns.length; i++) {
