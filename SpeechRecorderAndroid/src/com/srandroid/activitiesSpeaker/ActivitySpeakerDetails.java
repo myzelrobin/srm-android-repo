@@ -3,6 +3,9 @@
  */
 package com.srandroid.activitiesSpeaker;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.res.Configuration;
@@ -104,8 +107,6 @@ public class ActivitySpeakerDetails extends Activity
 				
 				setContentView(R.layout.linearlayout_activity_speakerdetails);
 				
-				activity_title = this.getTitle();
-						
 		        
 		        name = (TextView) findViewById(R.id.activity_speakerdetails_name_textvalue);
 		        accent = (TextView) findViewById(R.id.activity_speakerdetails_accent_textvalue);
@@ -117,11 +118,12 @@ public class ActivitySpeakerDetails extends Activity
 	        	
 				cursor.moveToFirst();
 				
-				String fulName = cursor.getString(cursor.getColumnIndex(TableSpeakers.COLUMN_FIRSTNAME)) + " " 
-						+ cursor.getString(cursor.getColumnIndexOrThrow(TableSpeakers.COLUMN_SURNAME));
-				name.setText(fulName);
+				String firstname = cursor.getString(cursor.getColumnIndex(TableSpeakers.COLUMN_FIRSTNAME));
+				String surname = cursor.getString(cursor.getColumnIndexOrThrow(TableSpeakers.COLUMN_SURNAME));
+				String fullName = firstname + " " + surname;
+				name.setText(fullName);
 				
-				setTitle(fulName);
+				setTitle(fullName);
 				
 				accent.setText(cursor.getString(cursor.getColumnIndexOrThrow(TableSpeakers.COLUMN_ACCENT)));
 				
@@ -129,19 +131,20 @@ public class ActivitySpeakerDetails extends Activity
 				
 				birthday.setText(cursor.getString(cursor.getColumnIndexOrThrow(TableSpeakers.COLUMN_BIRTHDAY)));
 				
-				StringBuilder sb1 = new StringBuilder(); // sessions
-				StringBuilder sb2 = new StringBuilder(); // scripts
+				List<String> sessionlist = new ArrayList<String>();
+				List<String> scriptlist = new ArrayList<String>();
+				
 				while(!cursor.isAfterLast())
 				{
 					String s1 = cursor.getString(cursor.getColumnIndexOrThrow("session_key_id"));
-					if(!sb1.toString().contains(s1)) sb1.append(s1 + ", ");
+					if(!sessionlist.contains(s1)) sessionlist.add(s1);
 					
 					String s2 = cursor.getString(cursor.getColumnIndexOrThrow(TableSessions.COLUMN_SCRIPT_ID));
-					if(!sb2.toString().contains(s2)) sb2.append(s1 + ", ");
+					if(!scriptlist.contains(s2)) scriptlist.add(s2);
 				}
 				
-				sessions.setText(sb1.toString());
-				scripts.setText(sb2.toString());
+				sessions.setText(sessionlist.toString());
+				scripts.setText(scriptlist.toString());
 				
 			}
 	        
