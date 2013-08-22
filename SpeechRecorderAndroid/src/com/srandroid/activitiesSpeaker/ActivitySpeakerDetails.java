@@ -75,7 +75,7 @@ public class ActivitySpeakerDetails extends Activity
 	        	itemId = savedInstanceState.getInt("itemId");
 	        }
 	        
-	        
+	        Log.w(ActivitySpeakerDetails.class.getName(), "get itemId=" + itemId);
 	        
 	        
 	        // query from db
@@ -89,10 +89,11 @@ public class ActivitySpeakerDetails extends Activity
 					"speakers._id",
 					"sessions._id as session_key_id"
 			};
-			String wherePart = "speakers._id=" + itemId;
 			
-			Cursor cursor = getContentResolver().query(SrmUriMatcher.CONTENT_URI_TABLE_SPEAKERS_LEFTJOIN_SESSIONS, 
-					selectColumns, wherePart, null, null);
+			Uri uriTemp = Uri.parse(SrmUriMatcher.CONTENT_URI_TABLE_SPEAKERS_LEFTJOIN_SESSIONS + "/" + itemId);
+			
+			Cursor cursor = getContentResolver().query(uriTemp, 
+					selectColumns, null, null, null);
 			
 			
 			

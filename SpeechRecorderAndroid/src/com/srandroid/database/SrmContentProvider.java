@@ -116,8 +116,12 @@ public class SrmContentProvider extends ContentProvider
 				// queryBuilder.setTables(tables);
 				break;
 			case SrmUriMatcher.TABLE_SPEAKERS_LEFTJOIN_SESSIONS:
-				String tables= "speakers left outer join sessions on sessions.speaker_id=speakers._id";
-				queryBuilder.setTables(tables);
+				tablesTemp= "speakers left outer join sessions on sessions.speaker_id=speakers._id";
+				queryBuilder.setTables(tablesTemp);
+				break;
+			case SrmUriMatcher.ITEM_SPEAKERS_LEFTJOIN_SESSIONS:
+				tablesTemp= "speakers left outer join sessions on sessions.speaker_id=speakers._id";
+				queryBuilder.setTables(tablesTemp);
 				break;
 		}
 		
@@ -260,6 +264,10 @@ public class SrmContentProvider extends ContentProvider
 //				cursor.setNotificationUri(getContext().getContentResolver(), uri); 
 //				
 //				return cursor;
+				break;
+			case SrmUriMatcher.ITEM_SPEAKERS_LEFTJOIN_SESSIONS:
+				queryBuilder.appendWhere(TableSpeakers.COLUMN_ID 
+						+ "=" + uri.getLastPathSegment());
 				break;
 				
 		}
