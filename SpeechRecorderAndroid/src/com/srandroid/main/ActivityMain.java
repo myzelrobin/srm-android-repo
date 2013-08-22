@@ -554,7 +554,7 @@ public class ActivityMain extends Activity {
 						
 						// Sessions left outer join Speakers
 						// Must include the _id column for the adapter to work
-						// all columns with different names in two tables
+						// all columns with different names in two tables, but with only one "_id" for adapter
 						
 						String[] selectColumns_SessionsLEFTJOINSpeakers = {
 								TableSessions.COLUMN_ID,
@@ -567,15 +567,12 @@ public class ActivityMain extends Activity {
 								TableSessions.COLUMN_COUNT,
 								TableSessions.COLUMN_SCRIPT_ID,
 								TableSessions.COLUMN_SPEAKER_ID,
-								TableSpeakers.COLUMN_ID,
 								TableSpeakers.COLUMN_FIRSTNAME,
-								TableSpeakers.COLUMN_SURNAME,
-								TableSpeakers.COLUMN_ACCENT,
-								TableSpeakers.COLUMN_BIRTHDAY};
+								TableSpeakers.COLUMN_SURNAME};
 						cursorLoader = 
 								new CursorLoader(this.getActivity().getApplicationContext(), 
 										SrmUriMatcher.CONTENT_URI_TABLE_SESSIONS_LEFTJOIN_SPEAKERS, 
-										selectColumns_SessionsLEFTJOINSpeakers, null, null, null);
+										null, null, null, null);
 						
 						break;
 						
