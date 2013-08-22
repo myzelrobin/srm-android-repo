@@ -205,7 +205,7 @@
         <string name="activity_addspeaker_surname_text">Surname</string>
         <string name="activity_addspeaker_accent_text">Accent</string>
         <string name="activity_addspeaker_sex_text">Sex</string>
-        <string name="activity_addspeaker_birthday_text">birthday</string>
+        <string name="activity_addspeaker_birthday_text">Birthday</string>
         <string-array name="activity_addspeaker_sex_dropdown_items">
                         <item>male</item>
                         <item>female</item>
@@ -214,7 +214,15 @@
         
          
         <!-- activity speaker detials -->
-        <string name="activity_speakerdetials_title">Speaker Infos</string>
+        <string name="activity_speakerdetials_title">Speaker Details</string>
+        <string name="activity_speakerdetails_button_startrecording_text">Start</string>
+        <string name="activity_speakerdetails_name_text">Name</string>
+        <string name="activity_speakerdetails_accent_text">Accent</string>
+        <string name="activity_speakerdetails_sex_text">Sex</string>
+        <string name="activity_speakerdetails_birthday_text">Birthday</string>
+        <string name="activity_speakerdetails_sessions_text">Sessions</string>
+        <string name="activity_speakerdetails_scripts_text">Scripts</string>
+        
         
 </resources>
 

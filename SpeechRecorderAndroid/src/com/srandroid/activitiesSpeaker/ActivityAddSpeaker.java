@@ -3,15 +3,11 @@
  */
 package com.srandroid.activitiesSpeaker;
 
-import java.util.Arrays;
 
 import com.srandroid.R;
 import com.srandroid.database.TableSpeakers;
 import com.srandroid.database.SrmContentProvider;
-import com.srandroid.database.TableSpeakers;
 import com.srandroid.database.TableSpeakers.SpeakerItem;
-import com.srandroid.main.ActivityMain;
-import com.srandroid.overflow.PrefActivitySettings;
 import com.srandroid.util.Utils;
 
 import android.app.Activity;
@@ -22,16 +18,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.preference.PreferenceManager;
-import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.NavUtils;
-import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Spinner;
 
 /**
@@ -40,14 +31,14 @@ import android.widget.Spinner;
 public class ActivityAddSpeaker extends Activity
 {
 	// state
-	public static final String NEW_SPEAKER_ITEM_URI = "NEW_SPEAKER_ITEM_URI";
+	public static final String SPEAKER_ITEM_URI = "SPEAKER_ITEM_URI";
+	private Uri speakerItemUri = null;
 
 	
 	private CharSequence activity_title = null;
 	
 	private SpeakerItem speaker =  new SpeakerItem();
 	
-	private Uri speakerItemUri = null;
 	
 	EditText firstnameInput = null;
     EditText surnameInput = null;
@@ -220,7 +211,7 @@ public class ActivityAddSpeaker extends Activity
 		@Override
 		protected void onSaveInstanceState(Bundle savedInstanceState) 
 		{
-			savedInstanceState.putParcelable("NEW_SPEAKER_ITEM_URI", speakerItemUri);
+			savedInstanceState.putParcelable("SPEAKER_ITEM_URI", speakerItemUri);
 		    super.onSaveInstanceState(savedInstanceState);
 		}
 

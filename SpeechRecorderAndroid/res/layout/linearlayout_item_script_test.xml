@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/style_linearlayout_item" >
+        
+        <LinearLayout 
+            style="@style/style_linearlayout_wrap_imageview_in_item" >
+            
+            <ImageView 
+                style="@style/style_linearlayout_imageview_in_item"
+                android:id="@+id/iconInItemSpeaker"
+                android:src="@drawable/icon_script_256"  />
+        </LinearLayout>  
+        
+        <LinearLayout 
+            style="@style/style_linearlayout_wrap_textview_in_item" >
+            
+            <LinearLayout 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+                <TextView 
+                    style="@style/style_title_in_textview_in_item"
+                    android:id="@+id/itemScript_textIdSign"
+                    android:text="#" />
+                <TextView 
+                    style="@style/style_title_in_textview_in_item"
+                    android:id="@+id/itemScript_textIdValue"
+                    android:text="@string/script1_id" />    
+            </LinearLayout>
+            
+            <TextView 
+                style="@style/style_text_in_textview_in_item"
+                android:id="@+id/itemScript_textDesciptionValue"
+                android:text="@string/script1_description"/>
+            
+        </LinearLayout>
+</LinearLayout>

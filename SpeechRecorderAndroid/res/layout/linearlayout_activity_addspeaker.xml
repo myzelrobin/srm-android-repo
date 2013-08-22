@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/style_linearlayout_activity_addspeaker" >
+    style="@style/style_linearlayout_activity_example" >
 
     <LinearLayout
         android:background="#FFFFFF"

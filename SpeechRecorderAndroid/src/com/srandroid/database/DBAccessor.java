@@ -99,7 +99,13 @@ public class DBAccessor extends SQLiteOpenHelper
 			TableSpeakers.COLUMN_FIRSTNAME,
 			TableSpeakers.COLUMN_ID,
 			TableSpeakers.COLUMN_SEX,
-			TableSpeakers.COLUMN_SURNAME
+			TableSpeakers.COLUMN_SURNAME,
+			"speaker_key_id", // for join query
+			"script_key_id",
+			"server_key_id",
+			"session_key_id",
+			"section_key_id",
+			"record_key_id"
 	};
 	
 }

@@ -30,7 +30,7 @@
     
         <item
             android:id="@+id/button_add_session"
-            android:icon="@drawable/icon_button_add"
+            android:icon="@drawable/ic_button_add"
             android:showAsAction="always"
             android:title="@string/button_add" />
         
@@ -89,9 +89,23 @@
     
         <item
             android:id="@+id/activity_addspeaker_button_start"
-            android:icon="@drawable/icon_session_256"
+            android:icon="@drawable/icon_button_mic"
             android:showAsAction="always"
             android:title="@string/activity_addspeaker_button_startrecording_text" />
+        
+        
+    </group>
+    
+    <!-- Activity speaker details -->
+    <group 
+        android:id="@+id/bgroup_speakerdetails"
+        android:visible="false" >
+    
+        <item
+            android:id="@+id/activity_speakerdetails_button_start"
+            android:icon="@drawable/icon_button_mic"
+            android:showAsAction="always"
+            android:title="@string/activity_speakerdetails_button_startrecording_text" />
         
         
     </group>

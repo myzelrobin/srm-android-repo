@@ -5,6 +5,7 @@ import java.util.Arrays;
 
 import com.srandroid.R;
 import com.srandroid.activitiesSpeaker.ActivityAddSpeaker;
+import com.srandroid.activitiesSpeaker.ActivitySpeakerDetails;
 import com.srandroid.database.DBAccessor;
 import com.srandroid.database.TableScripts;
 import com.srandroid.database.TableSessions;
@@ -14,6 +15,7 @@ import com.srandroid.overflow.PrefActivitySettings;
 import com.srandroid.util.Utils;
 
 import android.os.Bundle;
+import android.os.Parcel;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.app.Activity;
@@ -460,9 +462,6 @@ public class ActivityMain extends Activity {
     {
         public static final String ARG_FRAGMENT_NUMBER = "fragment_number";
         
-        // state for savedInstance
-        
-        
         // view
         View fragmentView = null;
     	GridView gridView = null;
@@ -692,8 +691,12 @@ public class ActivityMain extends Activity {
 						
 					case Utils.ConstantVars.POS_SPEAKERS:
 						test = getTextFromItem(itemView, R.id.itemSpeaker_textFirstNameValue);
-						Utils.toastTextToUser(this.getActivity(), "Session Item position=" 
-								+ " firstname=" + test + " rowId=" + rowId );
+						
+						Intent i=new Intent(this.getActivity(), ActivitySpeakerDetails.class);
+						i.putExtra("itemId", rowId);
+						this.getActivity().startActivity(i);
+						
+						
 						break;
 	
 					default:
@@ -703,7 +706,6 @@ public class ActivityMain extends Activity {
 			
 			
 		}
-
 
 		/**
 		 * fills gridview with items

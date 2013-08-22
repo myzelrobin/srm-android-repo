@@ -15,7 +15,10 @@
     
     <!-- gps -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
-    	
+
+    <!-- network -->
+    <uses-permission android:name="android.permission.INTERNET" ></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" ></uses-permission>	
 
     <application
         android:allowBackup="true"
@@ -64,6 +67,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.srandroid.main.ActivityMain" />
         </activity>
+        
         
         <provider
             android:authorities="com.srandroid.contentprovider"

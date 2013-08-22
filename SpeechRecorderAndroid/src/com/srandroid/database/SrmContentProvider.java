@@ -59,13 +59,15 @@ public class SrmContentProvider extends ContentProvider
 
 	
 	/**
-	 *  see docus, multi tables equals LEFT OUTER JOIN
+	 *  FROM
 	 * 
 	 * @param uri
 	 * @param queryBuilder
 	 */
 	private void setTablesForQuerybuilder(Uri uri, SQLiteQueryBuilder queryBuilder) 
 	{
+		String tablesTemp =null;
+		
 		int uriType = SrmUriMatcher.uriMatcher.match(uri);
 		switch(uriType)
 		{
@@ -113,6 +115,10 @@ public class SrmContentProvider extends ContentProvider
 				// String tables= "sessions LEFT OUTER JOIN speakers ON (speakers._id=sessions.speaker_id)";
 				// queryBuilder.setTables(tables);
 				break;
+			case SrmUriMatcher.TABLE_SPEAKERS_LEFTJOIN_SESSIONS:
+				String tables= "speakers left outer join sessions on sessions.speaker_id=speakers._id";
+				queryBuilder.setTables(tables);
+				break;
 		}
 		
 	}
@@ -126,6 +132,7 @@ public class SrmContentProvider extends ContentProvider
 			String[] selectionValues,   // WHERE =
 			String sortOrder)           // ORDER BY
 	{
+		Cursor cursor = null;
 		
 		// SQLiteQueryBuilder to build SQL query
 		SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
@@ -135,6 +142,8 @@ public class SrmContentProvider extends ContentProvider
 		
 		checkColumns(DBAccessor.AVAILABLE_COLUMNS);
 		
+		
+		// append itemid to where part, only for select from single table
 		int uriType = SrmUriMatcher.uriMatcher.match(uri);
 		switch(uriType)
 		{
@@ -181,11 +190,10 @@ public class SrmContentProvider extends ContentProvider
 				break;
 			case SrmUriMatcher.TABLE_SESSIONS_LEFTJOIN_SPEAKERS:
 				
-				Cursor cursor = null;
 				
 				// must include _id column
 				// sessions _id use sessions._id
-				String[] selectColumnsArray = {
+				String[] selectColumnsArray1 = {
 						TableSessions.COLUMN_DATE,
 						TableSessions.COLUMN_TIME,
 						TableSessions.COLUMN_PLACE,
@@ -195,16 +203,16 @@ public class SrmContentProvider extends ContentProvider
 						TableSessions.COLUMN_COUNT,
 						TableSessions.COLUMN_SCRIPT_ID,
 						TableSessions.COLUMN_SPEAKER_ID,
+						TableSessions.COLUMN_LAST_SECTION,
 						TableSpeakers.COLUMN_FIRSTNAME,
 						TableSpeakers.COLUMN_SURNAME,
 						TableSpeakers.COLUMN_SEX,
 						TableSpeakers.COLUMN_ACCENT,
 						TableSpeakers.COLUMN_BIRTHDAY};
 				StringBuilder builder = new StringBuilder();
-				builder.append(selectColumnsArray[0]);
-				for (int i = 1; i < selectColumnsArray.length; i++) {
-				   builder.append("," + selectColumnsArray[i]);
-				   //result.append( optional separator );
+				builder.append(selectColumnsArray1[0]);
+				for (int i = 1; i < selectColumnsArray1.length; i++) {
+				   builder.append("," + selectColumnsArray1[i]);
 				}
 				String result = builder.toString();
 				
@@ -217,6 +225,42 @@ public class SrmContentProvider extends ContentProvider
 				cursor.setNotificationUri(getContext().getContentResolver(), uri); 
 				
 				return cursor;
+			
+//			case SrmUriMatcher.TABLE_SPEAKERS_LEFTJOIN_SESSIONS:
+//				
+//				String[] selectColumnsArray2 = {
+//						TableSpeakers.COLUMN_FIRSTNAME,
+//						TableSpeakers.COLUMN_SURNAME,
+//						TableSpeakers.COLUMN_SEX,
+//						TableSpeakers.COLUMN_ACCENT,
+//						TableSpeakers.COLUMN_BIRTHDAY,
+//						TableSessions.COLUMN_DATE,
+//						TableSessions.COLUMN_TIME,
+//						TableSessions.COLUMN_PLACE,
+//						TableSessions.COLUMN_IS_FINISHED,
+//						TableSessions.COLUMN_DEVICE_DATA,
+//						TableSessions.COLUMN_GPS_DATA,
+//						TableSessions.COLUMN_COUNT,
+//						TableSessions.COLUMN_SCRIPT_ID,
+//						TableSessions.COLUMN_SPEAKER_ID,
+//						TableSessions.COLUMN_LAST_SECTION};
+//				StringBuilder builder2 = new StringBuilder();
+//				builder2.append(selectColumnsArray2[0]);
+//				for (int i = 1; i < selectColumnsArray2.length; i++) {
+//				   builder2.append("," + selectColumnsArray2[i]);
+//				}
+//				String result2 = builder2.toString();
+//				
+//				srmDB = dbAccesor.getReadableDatabase();
+//				String sqlQuery2 = "select " + result2 + ", speakers._id, sessions._id as session_key_id "
+//						+ " from speakers left outer join sessions on sessions.speaker_id=speakers._id;";
+//				
+//				cursor = srmDB.rawQuery(sqlQuery2, null);
+//				
+//				cursor.setNotificationUri(getContext().getContentResolver(), uri); 
+//				
+//				return cursor;
+//				break;
 				
 		}
 		
@@ -224,8 +268,8 @@ public class SrmContentProvider extends ContentProvider
 		
 		Log.w(SrmContentProvider.class.getName(), "query(): will query from tables: " + queryBuilder.getTables());
 		
-		Cursor cursor = queryBuilder.query(srmDB, 
-											selectColumns,  // from
+		cursor = queryBuilder.query(srmDB, 
+											selectColumns,  // select
 											whereSelection, // where
 											selectionValues,  // where =
 											null,  // group by
@@ -820,7 +864,10 @@ public class SrmContentProvider extends ContentProvider
 		
 		
 		// other tables
-		// some special URIs, like Join, for what queries the CursorLoader can not build
+		
+		// some special URIs, like Join, for what queries the queryBuilder can not build
+		
+		// sessions left join speakers
 		private static final String PATH_TABLE_SESSIONS_LEFTJOIN_SPEAKERS = "table_sessions_leftjoin_speakers";
 		public static final Uri CONTENT_URI_TABLE_SESSIONS_LEFTJOIN_SPEAKERS = 
 				Uri.parse("content://" + AUTHORITY + "/" + PATH_TABLE_SESSIONS_LEFTJOIN_SPEAKERS);
@@ -831,6 +878,22 @@ public class SrmContentProvider extends ContentProvider
 				ContentResolver.CURSOR_DIR_BASE_TYPE + "/item_sessions_leftjoin_speakers";
 		
 		private static final int TABLE_SESSIONS_LEFTJOIN_SPEAKERS = 101;
+		private static final int ITEM_SESSIONS_LEFTJOIN_SPEAKERS = 102;
+		
+		
+		// speakers left join sessions
+		private static final String PATH_TABLE_SPEAKERS_LEFTJOIN_SESSIONS = "table_speakers_leftjoin_sessions";
+		public static final Uri CONTENT_URI_TABLE_SPEAKERS_LEFTJOIN_SESSIONS  = 
+				Uri.parse("content://" + AUTHORITY + "/" + PATH_TABLE_SPEAKERS_LEFTJOIN_SESSIONS);
+		
+		public static final String CONTENT_TYPE_TABLE_SPEAKERS_LEFTJOIN_SESSIONS = 
+				ContentResolver.CURSOR_DIR_BASE_TYPE + "/table_speakers_leftjoin_sessions";
+		public static final String CONTENT_ITEM_TYPE_SPEAKERS_LEFTJOIN_SESSIONS = 
+				ContentResolver.CURSOR_DIR_BASE_TYPE + "/item_speakers_leftjoin_sessions";
+		
+		private static final int TABLE_SPEAKERS_LEFTJOIN_SESSIONS = 103;
+		private static final int ITEM_SPEAKERS_LEFTJOIN_SESSIONS = 104;
+		
 		
 		
 		// if necessary, define Strings above and add uri below, like SELECT JOIN
@@ -864,7 +927,20 @@ public class SrmContentProvider extends ContentProvider
 			
 			
 			// other tables
-			uriMatcher.addURI(AUTHORITY, PATH_TABLE_SESSIONS_LEFTJOIN_SPEAKERS, TABLE_SESSIONS_LEFTJOIN_SPEAKERS);
+			
+			// sessions left join speakers
+			uriMatcher.addURI(AUTHORITY, PATH_TABLE_SESSIONS_LEFTJOIN_SPEAKERS, 
+					TABLE_SESSIONS_LEFTJOIN_SPEAKERS);
+			uriMatcher.addURI(AUTHORITY, PATH_TABLE_SESSIONS_LEFTJOIN_SPEAKERS + "/#", 
+					ITEM_SESSIONS_LEFTJOIN_SPEAKERS);
+			
+			// speakers left join sessions
+			uriMatcher.addURI(AUTHORITY, PATH_TABLE_SPEAKERS_LEFTJOIN_SESSIONS, 
+					TABLE_SPEAKERS_LEFTJOIN_SESSIONS);
+			uriMatcher.addURI(AUTHORITY, PATH_TABLE_SPEAKERS_LEFTJOIN_SESSIONS + "/#", 
+					ITEM_SPEAKERS_LEFTJOIN_SESSIONS);
+			
+			
 		}
 		
 	}
