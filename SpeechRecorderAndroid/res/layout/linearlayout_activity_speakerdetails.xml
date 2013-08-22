@@ -87,11 +87,11 @@
 	                    android:textStyle="bold" />
 		               <TextView
                         android:id="@+id/activity_speakerdetails_sessions_textvalue"
-                        android:layout_width="250dp"
+                        android:layout_width="200dp"
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
                         android:layout_marginLeft="20dp"
-                        android:text="@string/activity_speakerdetails_sessions_text" 
+                        android:text="@string/activity_speakerdetails_sessions_text2" 
                         android:textSize="20sp"/>
 		        </LinearLayout>
 		        
@@ -109,11 +109,11 @@
                         android:textStyle="bold" />
                        <TextView
                         android:id="@+id/activity_speakerdetails_scripts_textvalue"
-                        android:layout_width="250dp"
+                        android:layout_width="200dp"
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
                         android:layout_marginLeft="20dp"
-                        android:text="@string/activity_speakerdetails_scripts_text" 
+                        android:text="@string/activity_speakerdetails_scripts_text2" 
                         android:textSize="20sp"/>
                        
                 </LinearLayout>

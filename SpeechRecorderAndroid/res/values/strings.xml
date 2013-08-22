@@ -222,6 +222,8 @@
         <string name="activity_speakerdetails_birthday_text">Birthday</string>
         <string name="activity_speakerdetails_sessions_text">Sessions</string>
         <string name="activity_speakerdetails_scripts_text">Scripts</string>
+        <string name="activity_speakerdetails_sessions_text2">No sessions informations</string>
+        <string name="activity_speakerdetails_scripts_text2">No script informations</string>
         
         
 </resources>

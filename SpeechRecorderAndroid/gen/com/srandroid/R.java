@@ -170,7 +170,9 @@ public final class R {
         public static final int activity_speakerdetails_button_startrecording_text=0x7f060065;
         public static final int activity_speakerdetails_name_text=0x7f060066;
         public static final int activity_speakerdetails_scripts_text=0x7f06006b;
+        public static final int activity_speakerdetails_scripts_text2=0x7f06006d;
         public static final int activity_speakerdetails_sessions_text=0x7f06006a;
+        public static final int activity_speakerdetails_sessions_text2=0x7f06006c;
         public static final int activity_speakerdetails_sex_text=0x7f060068;
         /**  activity speaker detials 
          */
@@ -191,8 +193,8 @@ public final class R {
  Buttons in Overflow 
  Buttons in Overflow 
          */
-        public static final int button_set_microphone=0x7f06006c;
-        public static final int button_set_recording_values=0x7f06006d;
+        public static final int button_set_microphone=0x7f06006e;
+        public static final int button_set_recording_values=0x7f06006f;
         /**  Buttons in Overflow 
          */
         public static final int button_settings=0x7f060016;
@@ -282,7 +284,7 @@ public final class R {
         public static final int settings_sample_rate_default=0x7f060028;
         public static final int settings_sample_rate_key=0x7f060027;
         public static final int settings_sample_rate_summary=0x7f060026;
-        public static final int settings_theme=0x7f06006e;
+        public static final int settings_theme=0x7f060070;
         public static final int speaker1_accent=0x7f060041;
         public static final int speaker1_birthday=0x7f060042;
         /**  Speaker Example 
