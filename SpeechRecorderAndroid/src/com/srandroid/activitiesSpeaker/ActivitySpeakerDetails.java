@@ -89,30 +89,31 @@ public class ActivitySpeakerDetails extends Activity
 					"speakers._id",
 					"sessions._id as session_key_id"
 			};
-			String wherePart = "speakers._id=" + itemId;
+			String wherePart = TableSpeakers.COLUMN_ID + itemId;
 			
 			Cursor cursor = getContentResolver().query(SrmUriMatcher.CONTENT_URI_TABLE_SPEAKERS_LEFTJOIN_SESSIONS, 
 					selectColumns, wherePart, null, null);
 			
 			
 			
-			
-			Log.w(ActivitySpeakerDetails.class.getName(), " will create view of this activity.");
-			
-			setContentView(R.layout.linearlayout_activity_speakerdetails);
-			
-			activity_title = this.getTitle();
-					
-	        
-	        name = (TextView) findViewById(R.id.activity_speakerdetails_name_textvalue);
-	        accent = (TextView) findViewById(R.id.activity_speakerdetails_accent_textvalue);
-	        sex = (TextView) findViewById(R.id.activity_speakerdetails_sex_textvalue);
-	        birthday = (TextView) findViewById(R.id.activity_speakerdetails_birthday_textvalue);
-	        sessions = (TextView) findViewById(R.id.activity_speakerdetails_sessions_textvalue);
-	        scripts = (TextView) findViewById(R.id.activity_speakerdetails_scripts_textvalue);
-	        
-	        if (cursor != null) 
+	        if (cursor != null && cursor.getCount()!=0) 
 			{
+				
+				Log.w(ActivitySpeakerDetails.class.getName(), " will create view of this activity.");
+				
+				setContentView(R.layout.linearlayout_activity_speakerdetails);
+				
+				activity_title = this.getTitle();
+						
+		        
+		        name = (TextView) findViewById(R.id.activity_speakerdetails_name_textvalue);
+		        accent = (TextView) findViewById(R.id.activity_speakerdetails_accent_textvalue);
+		        sex = (TextView) findViewById(R.id.activity_speakerdetails_sex_textvalue);
+		        birthday = (TextView) findViewById(R.id.activity_speakerdetails_birthday_textvalue);
+		        sessions = (TextView) findViewById(R.id.activity_speakerdetails_sessions_textvalue);
+		        scripts = (TextView) findViewById(R.id.activity_speakerdetails_scripts_textvalue);
+		        
+	        	
 				cursor.moveToFirst();
 				
 				String fulName = cursor.getString(cursor.getColumnIndex(TableSpeakers.COLUMN_FIRSTNAME)) + " " 
@@ -141,12 +142,9 @@ public class ActivitySpeakerDetails extends Activity
 				sessions.setText(sb1.toString());
 				scripts.setText(sb2.toString());
 				
-				cursor.close();
 			}
 	        
-	        
-	        
-	        
+	        cursor.close();
 	        // enable home button
 	        getActionBar().setDisplayHomeAsUpEnabled(true);
 	        getActionBar().setHomeButtonEnabled(true);
