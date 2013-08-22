@@ -554,7 +554,7 @@ public class ActivityMain extends Activity {
 						
 						// Sessions left outer join Speakers
 						// Must include the _id column for the adapter to work
-						// all columns with different names in two tables, but with only one "_id" for adapter
+						// ?Must have all columns with different names in two tables, but with only one "_id" for adapter
 						
 						String[] selectColumns_SessionsLEFTJOINSpeakers = {
 								"session_key_id",
@@ -577,7 +577,7 @@ public class ActivityMain extends Activity {
 						cursorLoader = 
 								new CursorLoader(this.getActivity().getApplicationContext(), 
 										SrmUriMatcher.CONTENT_URI_TABLE_SESSIONS_LEFTJOIN_SPEAKERS, 
-										selectColumns_SessionsLEFTJOINSpeakers, null, null, null);
+										null, null, null, null);
 						
 						break;
 						
