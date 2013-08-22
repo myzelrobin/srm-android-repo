@@ -141,6 +141,7 @@ public class ActivitySpeakerDetails extends Activity
 					
 					String s2 = cursor.getString(cursor.getColumnIndexOrThrow(TableSessions.COLUMN_SCRIPT_ID));
 					if(!scriptlist.contains(s2)) scriptlist.add(s2);
+					cursor.moveToNext();
 				}
 				
 				sessions.setText(sessionlist.toString());
