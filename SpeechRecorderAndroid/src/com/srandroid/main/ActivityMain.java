@@ -761,7 +761,7 @@ public class ActivityMain extends Activity {
 						getLoaderManager().initLoader(0, null, this);		
 						adapter = new SimpleCursorAdapter(this.getActivity().getApplicationContext(), 
 											R.layout.linearlayout_item_session, 
-											cursor, from, to, 0);
+											null, from, to, 0);
 						gridView.setAdapter(adapter);
 						break;
 						
