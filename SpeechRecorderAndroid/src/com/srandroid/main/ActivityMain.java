@@ -573,10 +573,10 @@ public class ActivityMain extends Activity {
 //								TableSpeakers.COLUMN_ACCENT,
 //								TableSpeakers.COLUMN_SEX,
 //								TableSpeakers.COLUMN_BIRTHDAY};
-//						cursorLoader = 
-//								new CursorLoader(this.getActivity().getApplicationContext(), 
-//										SrmUriMatcher.CONTENT_URI_TABLE_SESSIONS_LEFTJOIN_SPEAKERS, 
-//										selectColumns_SessionsLEFTJOINSpeakers, null, null, null);
+						cursorLoader = 
+								new CursorLoader(this.getActivity().getApplicationContext(), 
+										SrmUriMatcher.CONTENT_URI_TABLE_SESSIONS_LEFTJOIN_SPEAKERS, 
+										null, null, null, null);
 						
 						break;
 						
@@ -756,10 +756,9 @@ public class ActivityMain extends Activity {
 												R.id.itemSession_textSpeakerFirstname,
 												R.id.itemSession_textSpeakerSurname};
 						
-						cursor = getActivity().getContentResolver().query(SrmUriMatcher.CONTENT_URI_TABLE_SESSIONS_LEFTJOIN_SPEAKERS, 
-								from, null, null, null);
+						//cursor = getActivity().getContentResolver().query(SrmUriMatcher.CONTENT_URI_TABLE_SESSIONS_LEFTJOIN_SPEAKERS, from, null, null, null);
 
-						//getLoaderManager().initLoader(0, null, this);		
+						getLoaderManager().initLoader(0, null, this);		
 						adapter = new SimpleCursorAdapter(this.getActivity().getApplicationContext(), 
 											R.layout.linearlayout_item_session, 
 											cursor, from, to, 0);
