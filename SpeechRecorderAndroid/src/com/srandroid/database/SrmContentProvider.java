@@ -226,7 +226,7 @@ public class SrmContentProvider extends ContentProvider
 				
 				return cursor;
 			
-//			case SrmUriMatcher.TABLE_SPEAKERS_LEFTJOIN_SESSIONS:
+			case SrmUriMatcher.TABLE_SPEAKERS_LEFTJOIN_SESSIONS:
 //				
 //				String[] selectColumnsArray2 = {
 //						TableSpeakers.COLUMN_FIRSTNAME,
@@ -260,7 +260,7 @@ public class SrmContentProvider extends ContentProvider
 //				cursor.setNotificationUri(getContext().getContentResolver(), uri); 
 //				
 //				return cursor;
-//				break;
+				break;
 				
 		}
 		
