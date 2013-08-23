@@ -140,7 +140,7 @@ public class Utils
 		// database
 		public static final String TESTDB_FOLDER_PATH = 
 				"/mnt/sdcard/srandroid_testfolder";
-		public  static DBAccessor dbAccessor;
+		//public  static DBAccessor dbAccessor;
 		
 		public static boolean isPreStartInitialized = false;
 		
@@ -225,8 +225,8 @@ public class Utils
 			arrayDrawerItems = context.getResources().getStringArray(R.array.array_drawer_items);
 
 			// database
-			dbAccessor = new DBAccessor(context);
-			dbAccessor.getWritableDatabase();
+			//dbAccessor = new DBAccessor(context);
+			//dbAccessor.getWritableDatabase();
 			
 			// get application folder path (/data/data/APP_PACKAGE/)
 			try {
