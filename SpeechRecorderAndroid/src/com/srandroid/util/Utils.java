@@ -47,7 +47,7 @@ public class Utils
 		public static final int POS_SCRIPTS = 1;
 		public static final int POS_SPEAKERS = 2;
 		
-				
+		public static int selectedItemIndex = -1;
 		
 		// device informations
 		public static String DEVICE_ID = "default unknow";

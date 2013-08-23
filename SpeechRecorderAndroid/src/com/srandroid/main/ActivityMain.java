@@ -92,23 +92,8 @@ public class ActivityMain extends Activity {
 	{
 		super.onCreate(savedInstanceState);
 		
-		//
-		// start activity from main
-		Bundle extras = getIntent().getExtras(); 
-
-		if (extras != null) 
-		{
-			selectedItemIndex = extras.getInt(SELECTED_ITEM_INDEX);
-		}
-					
 		
-		if(savedInstanceState != null)
-		{
-			selectedItemIndex = savedInstanceState.getInt(SELECTED_ITEM_INDEX);
-		}
-		
-		Log.w(ActivityMain.class.getName(), "after read extras and savedInstance index=" + selectedItemIndex);
-		
+		selectedItemIndex = Utils.ConstantVars.selectedItemIndex;
 		if(selectedItemIndex == -1)
         {
         	// select the first item
@@ -211,6 +196,7 @@ public class ActivityMain extends Activity {
 	@Override
     protected void onPause()
     {
+		Utils.ConstantVars.selectedItemIndex = selectedItemIndex;
 		super.onPause();
 	}
 	
