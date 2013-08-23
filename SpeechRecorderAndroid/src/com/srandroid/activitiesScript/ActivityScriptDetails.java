@@ -39,7 +39,7 @@ public class ActivityScriptDetails extends Activity
 		
 		private CharSequence activity_title = null;
 		
-		private ScriptItem script =  new ScriptItem();
+		private ScriptItem scriptItem =  new ScriptItem();
 		
 		
 		TextView scriptid = null;
@@ -128,7 +128,7 @@ public class ActivityScriptDetails extends Activity
 					cursor.moveToNext();
 				}
 				if(!(sessionlist.toString() == "[null]")) sessions.setText(sessionlist.toString());
-				if(!(speakerlist.toString() == "[null]")) speakers.setText(speakerlist.toString());
+				//if(!(speakerlist.toString() == "[null]")) speakers.setText(speakerlist.toString());
 				
 			}
 	        
