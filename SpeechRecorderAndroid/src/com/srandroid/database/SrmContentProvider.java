@@ -195,13 +195,26 @@ public class SrmContentProvider extends ContentProvider
 				
 				srmDB = dbAccesor.getReadableDatabase();
 				
-				// must include _id column
-				// sessions _id use sessions._id
-				String sqlQuery = "select " + result 
-						+ ", sessions._id, sessions._id as session_key_id, speakers._id as speaker_key_id"
-						+ " from sessions left outer join speakers on sessions.speaker_id=speakers._id;";
 				
-				cursor = srmDB.rawQuery(sqlQuery, null);
+				if(wherePart == null)
+				{
+					// must include _id column
+					// sessions _id use sessions._id
+					String sqlQuery = "SELECT " + result 
+							+ ", sessions._id, sessions._id as session_key_id, speakers._id as speaker_key_id"
+							+ " FROM sessions LEFT OUTER JOIN speakers ON sessions.speaker_id=speakers._id;";
+					
+					cursor = srmDB.rawQuery(sqlQuery, null);
+				}
+				else
+				{
+					String sqlQuery = "SELECT " + result 
+							+ ", sessions._id, sessions._id as session_key_id, speakers._id as speaker_key_id"
+							+ " FROM sessions LEFT OUTER JOIN speakers ON sessions.speaker_id=speakers._id"
+							+ " WHERE " + wherePart;
+					
+					cursor = srmDB.rawQuery(sqlQuery, null);
+				}
 				
 				cursor.setNotificationUri(getContext().getContentResolver(), uri); 
 				
@@ -230,7 +243,7 @@ public class SrmContentProvider extends ContentProvider
 					String sqlQuery2 = "SELECT " + result2 
 							+ ", speakers._id, speakers._id as speaker_key_id, sessions._id AS session_key_id "
 							+ " FROM speakers LEFT OUTER JOIN sessions ON sessions.speaker_id=speakers._id"
-							+ " where " + wherePart + ";";
+							+ " WHRER " + wherePart + ";";
 					cursor = srmDB.rawQuery(sqlQuery2, null);
 				}
 				

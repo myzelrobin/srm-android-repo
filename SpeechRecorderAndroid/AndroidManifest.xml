@@ -90,6 +90,29 @@
                 android:value="com.srandroid.main.ActivityMain" />
         </activity>
         
+        <activity 
+            android:screenOrientation="landscape"
+            android:configChanges="orientation|keyboardHidden"
+            android:name=".activitiesSession.ActivitySessionDetails"
+            android:label="@string/act_sessiondetials_title"
+            android:parentActivityName="com.srandroid.main.ActivityMain" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.srandroid.main.ActivityMain" />
+        </activity>
+        
+        <activity 
+            android:screenOrientation="landscape"
+            android:configChanges="orientation|keyboardHidden"
+            android:name=".activitiesSession.ActivitySearchSessions"
+            android:label="@string/act_sessiondetials_title"
+            android:parentActivityName="com.srandroid.main.ActivityMain" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.srandroid.main.ActivityMain" />
+        </activity>
+        
+        
         <provider
             android:authorities="com.srandroid.contentprovider"
             android:name=".database.SrmContentProvider" >

@@ -21,11 +21,10 @@ import android.widget.Spinner;
 
 import com.srandroid.R;
 import com.srandroid.database.SrmContentProvider;
-import com.srandroid.database.TableScripts;
-import com.srandroid.database.TableSpeakers;
 import com.srandroid.database.SrmContentProvider.SrmUriMatcher;
 import com.srandroid.database.TableScripts.ScriptItem;
 import com.srandroid.database.TableSessions;
+import com.srandroid.database.TableSpeakers;
 import com.srandroid.util.Utils;
 
 /**

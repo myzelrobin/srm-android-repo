@@ -3,7 +3,6 @@ package com.srandroid.main;
 import java.sql.Savepoint;
 import java.util.Arrays;
 
-import com.srandroid.R;
 import com.srandroid.activitiesScript.ActivityScriptDetails;
 import com.srandroid.activitiesSpeaker.ActivityAddSpeaker;
 import com.srandroid.activitiesSpeaker.ActivitySpeakerDetails;
@@ -682,8 +681,9 @@ public class ActivityMain extends Activity {
 						Log.w(this.getActivity().getClass().getName(), 
 								"clicked session ttem position=" 
 										+ " key_id=" + test + " rowId=" + rowId );
-						Utils.toastTextToUser(this.getActivity(), "clicked Session Item position=" 
-								+ " key_id=" + test + " rowId=" + rowId );
+						Intent i1=new Intent(this.getActivity(), ActivitySessionDetails.class);
+						i1.putExtra("itemId", Long.toString(rowId));
+						this.getActivity().startActivity(i1);
 						// use rowId
 						break;
 						

@@ -133,7 +133,7 @@
             android:id="@+id/activity_sessiondetails_button_start"
             android:icon="@drawable/icon_button_mic"
             android:showAsAction="always"
-            android:title="@string/activity_sessiondetials_button_startrecording_text" />
+            android:title="@string/act_sessiondetials_button_startrecording_text" />
         
         
     </group>
