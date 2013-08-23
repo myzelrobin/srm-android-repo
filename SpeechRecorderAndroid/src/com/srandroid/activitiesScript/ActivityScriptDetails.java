@@ -114,20 +114,20 @@ public class ActivityScriptDetails extends Activity
 				
 				scriptdesc.setText(cursor.getString(cursor.getColumnIndexOrThrow(TableScripts.COLUMN_DESCRIPTION)));
 				
-				List<String> sessionlist = new ArrayList<String>();
-				List<String> speakerlist = new ArrayList<String>();
-				
-				while(!cursor.isAfterLast())
-				{
-					String s1 = cursor.getString(cursor.getColumnIndexOrThrow("session_key_id"));
-					if(!sessionlist.contains(s1)) sessionlist.add(s1);
-					
-					String s2 = cursor.getString(cursor.getColumnIndexOrThrow(TableSessions.COLUMN_SPEAKER_ID));
-					if(!speakerlist.contains(s2)) speakerlist.add(s2);
-					cursor.moveToNext();
-				}
-				if(!(sessionlist.toString() == "[null]")) sessions.setText(sessionlist.toString());
-				if(!(speakerlist.toString() == "[null]"))  speakers.setText(speakerlist.toString());
+//				List<String> sessionlist = new ArrayList<String>();
+//				List<String> speakerlist = new ArrayList<String>();
+//				
+//				while(!cursor.isAfterLast())
+//				{
+//					String s1 = cursor.getString(cursor.getColumnIndexOrThrow("session_key_id"));
+//					if(!sessionlist.contains(s1)) sessionlist.add(s1);
+//					
+//					String s2 = cursor.getString(cursor.getColumnIndexOrThrow(TableSessions.COLUMN_SPEAKER_ID));
+//					if(!speakerlist.contains(s2)) speakerlist.add(s2);
+//					cursor.moveToNext();
+//				}
+//				if(!(sessionlist.toString() == "[null]")) sessions.setText(sessionlist.toString());
+//				if(!(speakerlist.toString() == "[null]"))  speakers.setText(speakerlist.toString());
 				
 			}
 	        
