@@ -13,11 +13,13 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Spinner;
+
 import com.srandroid.R;
 import com.srandroid.database.SrmContentProvider;
 import com.srandroid.database.TableScripts;
@@ -126,8 +128,8 @@ public class ActivityScriptDetails extends Activity
 					
 					cursor.moveToNext();
 				}
-				if(!(sessionlist.toString().contains("null"))) sessions.setText(sessionlist.toString());
-				if(!(speakerlist.toString().contains("null"))) speakers.setText(speakerlist.toString());
+				if(!(sessionlist.toString().contains("null"))) sessions.setText(TextUtils.join(",", sessionlist));
+				if(!(speakerlist.toString().contains("null"))) speakers.setText(TextUtils.join(",", speakerlist));
 				
 			}
 	        
