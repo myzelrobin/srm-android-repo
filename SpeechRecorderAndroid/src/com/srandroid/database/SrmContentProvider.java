@@ -9,6 +9,7 @@ import java.util.HashSet;
 import java.util.Map;
 
 import com.srandroid.util.Utils;
+import com.srandroid.database.DBAccessor;
 
 import android.content.ContentProvider;
 import android.content.ContentResolver;
@@ -18,7 +19,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
-import android.provider.ContactsContract.DeletedContacts;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -30,7 +30,6 @@ public class SrmContentProvider extends ContentProvider
 	// database 
 	private DBAccessor dbAccesor;
 	private SQLiteDatabase srmDB;
-	private int isJoinQuery = 0;
 
 	/**
 	 * 
