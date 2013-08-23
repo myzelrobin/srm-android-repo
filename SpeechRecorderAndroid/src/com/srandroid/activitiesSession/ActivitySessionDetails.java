@@ -85,6 +85,7 @@ public class ActivitySessionDetails extends Activity
 					TableSessions.COLUMN_PLACE,
 					TableSessions.COLUMN_IS_FINISHED,
 					TableSessions.COLUMN_SPEAKER_ID,
+					TableSessions.COLUMN_SCRIPT_ID,
 					TableSpeakers.COLUMN_FIRSTNAME,
 					TableSpeakers.COLUMN_SURNAME};
 			
