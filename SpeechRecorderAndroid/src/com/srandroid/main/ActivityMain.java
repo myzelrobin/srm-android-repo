@@ -61,7 +61,7 @@ public class ActivityMain extends Activity {
     private DrawerLayout drawerlayout_in_activitymain;
     private ListView listview_drawer_items;
     private ActionBarDrawerToggle toggle_drawer_items;
-    private int selectedItemIndex = 0; // select the first item
+    private int selectedItemIndex = -1; // app starts, select the first item 0
     
     // STATE for savedInstance
     public static final String SELECTED_ITEM_INDEX = "selectedItemIndex";
@@ -93,12 +93,16 @@ public class ActivityMain extends Activity {
 	{
 		super.onCreate(savedInstanceState);
 		
-		Utils.ConstantVars.initializeApp(getApplicationContext());
 		
-		// initialize the default values in SharedPreference
-		// PreferenceManager.setDefaultValues(this, R.xml.preference_settings, false);
-		Utils.initSharedPreference(PreferenceManager.getDefaultSharedPreferences(this));
-		
+		if(selectedItemIndex == -1)
+		{
+			Utils.ConstantVars.initializeApp(getApplicationContext());
+			
+			// initialize the default values in SharedPreference
+			// PreferenceManager.setDefaultValues(this, R.xml.preference_settings, false);
+			Utils.initSharedPreference(PreferenceManager.getDefaultSharedPreferences(this));
+		}
+			
 		if(Utils.ConstantVars.selectedItemIndex != -1)
 			selectedItemIndex = Utils.ConstantVars.selectedItemIndex;
 
