@@ -103,7 +103,7 @@ public class ActivityScriptDetails extends Activity
 		        scriptid = (TextView) findViewById(R.id.activity_scriptdetails_scriptid_textvalue);
 		        scriptdesc = (TextView) findViewById(R.id.activity_scriptdetails_desc_textvalue);
 		        sessions = (TextView) findViewById(R.id.activity_scriptdetails_sessions_textvalue);
-		        speakers = (TextView) findViewById(R.id.activity_speakerdetails_scripts_textvalue);
+		        speakers = (TextView) findViewById(R.id.activity_scriptdetails_speakers_textvalue);
 		        
 	        	
 				cursor.moveToFirst();
@@ -128,8 +128,7 @@ public class ActivityScriptDetails extends Activity
 					cursor.moveToNext();
 				}
 				if(!(sessionlist.toString() == "[null]")) sessions.setText(sessionlist.toString());
-				//if(!(speakerlist.toString() == "[null]")) speakers.setText(speakerlist.toString());
-				speakers.setText(speakerlist.toString());
+				if(!(speakerlist.toString() == "[null]")) speakers.setText(speakerlist.toString());
 				
 			}
 	        
