@@ -53,7 +53,7 @@ import android.widget.Toast;
 
 
 public class ActivityMain extends Activity {
-	// push test
+	// push test 2
 	// fields for Drawer
 	private CharSequence activity_title;
 	private CharSequence title_drawer_items;
