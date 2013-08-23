@@ -93,20 +93,11 @@ public class ActivityMain extends Activity {
 	{
 		super.onCreate(savedInstanceState);
 		
+		Utils.ConstantVars.initializeApp(getApplicationContext());
 		
-		
-		
-		// initialize some constant values
-		if(!Utils.ConstantVars.isPreStartInitialized)
-		{
-			Utils.ConstantVars.initializeApp(getApplicationContext());
-			
-			// initialize the default values in SharedPreference
-			// PreferenceManager.setDefaultValues(this, R.xml.preference_settings, false);
-			Utils.initSharedPreference(PreferenceManager.getDefaultSharedPreferences(this));;
-			
-		}
-		
+		// initialize the default values in SharedPreference
+		// PreferenceManager.setDefaultValues(this, R.xml.preference_settings, false);
+		Utils.initSharedPreference(PreferenceManager.getDefaultSharedPreferences(this));
 		
 		if(Utils.ConstantVars.selectedItemIndex != -1)
 			selectedItemIndex = Utils.ConstantVars.selectedItemIndex;
