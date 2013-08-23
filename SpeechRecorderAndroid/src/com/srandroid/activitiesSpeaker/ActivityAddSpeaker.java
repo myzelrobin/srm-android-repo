@@ -215,6 +215,12 @@ public class ActivityAddSpeaker extends Activity
 		    super.onSaveInstanceState(savedInstanceState);
 		}
 
+
+		@Override
+		protected void onRestoreInstanceState(Bundle savedInstanceState) 
+		{
+		  super.onRestoreInstanceState(savedInstanceState);
+		}
 		
 		/**
 		 * 

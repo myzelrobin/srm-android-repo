@@ -123,6 +123,20 @@
         
         
     </group>
+    
+    <!-- Activity session details -->
+    <group 
+        android:id="@+id/bgroup_sessiondetails"
+        android:visible="false" >
+    
+        <item
+            android:id="@+id/activity_sessiondetails_button_start"
+            android:icon="@drawable/icon_button_mic"
+            android:showAsAction="always"
+            android:title="@string/activity_sessiondetials_button_startrecording_text" />
+        
+        
+    </group>
 
 </menu>
 

@@ -339,15 +339,14 @@ public class ActivityMain extends Activity {
     }
 
 	@Override
-	public void onRestoreInstanceState(Bundle savedInstanceState) {
+	public void onRestoreInstanceState(Bundle savedInstanceState) 
+	{
 	  super.onRestoreInstanceState(savedInstanceState);
-	  selectedItemIndex = savedInstanceState.getInt(SELECTED_ITEM_INDEX);
 	}
 	
 	@Override
 	protected void onSaveInstanceState(Bundle savedInstanceState) 
 	{
-		savedInstanceState.putInt(SELECTED_ITEM_INDEX, selectedItemIndex);
 	    super.onSaveInstanceState(savedInstanceState);
 	}
 	

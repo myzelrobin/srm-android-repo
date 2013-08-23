@@ -22,8 +22,8 @@
 		                android:layout_width="180dp"
 		                android:layout_height="180dp"
 		                android:scaleType="fitXY"
-		                android:id="@+id/speakerdetails_icon_speaker"
-		                android:src="@drawable/icon_speaker_256"  />
+		                android:id="@+id/sessiondetails_icon_session"
+		                android:src="@drawable/icon_session_256"  />
 		    </LinearLayout>
 		    
             <LinearLayout
@@ -33,40 +33,41 @@
             android:gravity="left" >
 		            
                     <TextView
-                    android:id="@+id/activity_speakerdetails_name_textvalue"
+                    android:id="@+id/act_sessiondetails_sessionid_textvalue"
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:gravity="center_vertical"
                     android:layout_marginLeft="20dp"
-                    android:text="@string/activity_speakerdetails_name_text" 
+                    android:text="@string/act_sessiondetails_sessionid_text" 
                     android:textSize="20sp"/>
                     
                     <TextView
-                    android:id="@+id/activity_speakerdetails_sex_textvalue"
+                    android:id="@+id/act_sessionsdetails_datatime_textvalue"
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:gravity="center_vertical"
                     android:layout_marginLeft="20dp"
-                    android:text="@string/activity_speakerdetails_sex_text" 
+                    android:text="@string/act_sessiondetails_datetime_text" 
                     android:textSize="20sp"/>
                     
                     <TextView
-                    android:id="@+id/activity_speakerdetails_accent_textvalue"
+                    android:id="@+id/act_sessiondetails_place_textvalue"
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:gravity="center_vertical"
                     android:layout_marginLeft="20dp"
-                    android:text="@string/activity_speakerdetails_accent_text" 
+                    android:text="@string/act_sessiondetails_place_text" 
                     android:textSize="20sp"/>
                     
                     <TextView
-                    android:id="@+id/activity_speakerdetails_birthday_textvalue"
+                    android:id="@+id/act_sessiondetails_isfinished_textvalue"
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:gravity="center_vertical"
                     android:layout_marginLeft="20dp"
-                    android:text="@string/activity_speakerdetails_birthday_text" 
+                    android:text="@string/act_sessiondetails_isfinished_text" 
                     android:textSize="20sp"/>
+                    
             </LinearLayout>
         </LinearLayout>
         <LinearLayout
@@ -82,16 +83,16 @@
 	                    android:layout_width="150dp"
 	                    android:layout_height="match_parent"
 	                    android:gravity="center"
-	                    android:text="@string/activity_speakerdetails_sessions_text" 
+	                    android:text="@string/act_sessiondetails_speakers_text" 
 	                    android:textSize="30sp"
 	                    android:textStyle="bold" />
 		               <TextView
-                        android:id="@+id/activity_speakerdetails_sessions_textvalue"
+                        android:id="@+id/act_sessiondetails_speakers_textvalue"
                         android:layout_width="200dp"
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
                         android:layout_marginLeft="20dp"
-                        android:text="@string/activity_speakerdetails_sessions_text2" 
+                        android:text="@string/act_sessiondetails_speakers_text2" 
                         android:textSize="20sp"/>
 		        </LinearLayout>
 		        
@@ -104,16 +105,16 @@
                         android:layout_width="150dp"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:text="@string/activity_speakerdetails_scripts_text" 
+                        android:text="@string/act_sessiondetails_scripts_text" 
                         android:textSize="30sp"
                         android:textStyle="bold" />
                        <TextView
-                        android:id="@+id/activity_speakerdetails_scripts_textvalue"
+                        android:id="@+id/act_sessiondetails_scripts_textvalue"
                         android:layout_width="200dp"
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
                         android:layout_marginLeft="20dp"
-                        android:text="@string/activity_speakerdetails_scripts_text2" 
+                        android:text="@string/act_sessiondetails_scripts_text2" 
                         android:textSize="20sp"/>
                        
                 </LinearLayout>

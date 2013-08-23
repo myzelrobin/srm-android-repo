@@ -64,6 +64,7 @@ public final class R {
         public static final int activity_scriptdetails_scriptid_textvalue=0x7f0a0018;
         public static final int activity_scriptdetails_sessions_textvalue=0x7f0a001a;
         public static final int activity_scriptdetails_speakers_textvalue=0x7f0a001b;
+        public static final int activity_sessiondetails_button_start=0x7f0a0047;
         public static final int activity_speakerdetails_accent_textvalue=0x7f0a001e;
         public static final int activity_speakerdetails_birthday_textvalue=0x7f0a001f;
         public static final int activity_speakerdetails_button_start=0x7f0a0043;
@@ -75,6 +76,7 @@ public final class R {
         public static final int bgroup_overflow=0x7f0a0034;
         public static final int bgroup_scriptdetails=0x7f0a0044;
         public static final int bgroup_scripts=0x7f0a003a;
+        public static final int bgroup_sessiondetails=0x7f0a0046;
         public static final int bgroup_sessions=0x7f0a0037;
         public static final int bgroup_speakerdetails=0x7f0a0042;
         public static final int bgroup_speakers=0x7f0a003d;
@@ -164,6 +166,16 @@ public final class R {
         /**  common strings 
          */
         public static final int YES=0x7f060002;
+        public static final int act_sessiondetails_button_startrecording_text=0x7f060077;
+        public static final int act_sessiondetails_date_text=0x7f060079;
+        public static final int act_sessiondetails_place_text=0x7f06007b;
+        public static final int act_sessiondetails_scripts_text2=0x7f06007e;
+        public static final int act_sessiondetails_sessionid_text=0x7f060078;
+        public static final int act_sessiondetails_speakers_text2=0x7f06007f;
+        public static final int act_sessiondetails_time_text=0x7f06007a;
+        /**  activity script detials 
+         */
+        public static final int act_sessiondetails_title=0x7f060076;
         public static final int activity_addspeaker_accent_text=0x7f060061;
         public static final int activity_addspeaker_birthday_text=0x7f060063;
         public static final int activity_addspeaker_button_startrecording_text=0x7f06005e;
@@ -183,6 +195,8 @@ public final class R {
         /**  activity script detials 
          */
         public static final int activity_scriptdetials_title=0x7f06006e;
+        public static final int activity_sessiondetails_scripts_text=0x7f06007c;
+        public static final int activity_sessiondetails_speakers_text=0x7f06007d;
         public static final int activity_speakerdetails_accent_text=0x7f060067;
         public static final int activity_speakerdetails_birthday_text=0x7f060069;
         public static final int activity_speakerdetails_button_startrecording_text=0x7f060065;
@@ -211,8 +225,8 @@ public final class R {
  Buttons in Overflow 
  Buttons in Overflow 
          */
-        public static final int button_set_microphone=0x7f060076;
-        public static final int button_set_recording_values=0x7f060077;
+        public static final int button_set_microphone=0x7f060080;
+        public static final int button_set_recording_values=0x7f060081;
         /**  Buttons in Overflow 
          */
         public static final int button_settings=0x7f060016;
@@ -302,7 +316,7 @@ public final class R {
         public static final int settings_sample_rate_default=0x7f060028;
         public static final int settings_sample_rate_key=0x7f060027;
         public static final int settings_sample_rate_summary=0x7f060026;
-        public static final int settings_theme=0x7f060078;
+        public static final int settings_theme=0x7f060082;
         public static final int speaker1_accent=0x7f060041;
         public static final int speaker1_birthday=0x7f060042;
         /**  Speaker Example 

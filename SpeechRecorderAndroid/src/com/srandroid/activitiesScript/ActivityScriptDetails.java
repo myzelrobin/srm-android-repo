@@ -160,6 +160,7 @@ public class ActivityScriptDetails extends Activity
 		@Override
 	    protected void onPause()
 	    {
+			
 			super.onPause();
 		}
 		
@@ -255,6 +256,12 @@ public class ActivityScriptDetails extends Activity
 		    super.onSaveInstanceState(savedInstanceState);
 		}
 
+		@Override
+		public void onRestoreInstanceState(Bundle savedInstanceState) 
+		{
+		  super.onRestoreInstanceState(savedInstanceState);
+		}
+		
 		
 		/**
 		 * 
