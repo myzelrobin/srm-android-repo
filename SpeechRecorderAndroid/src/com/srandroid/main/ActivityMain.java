@@ -107,6 +107,8 @@ public class ActivityMain extends Activity {
 			selectedItemIndex = savedInstanceState.getInt(SELECTED_ITEM_INDEX);
 		}
 		
+		Log.w(ActivityMain.class.getName(), "after read extras and savedInstance index=" + selectedItemIndex);
+		
 		if(selectedItemIndex == -1)
         {
         	// select the first item
@@ -349,18 +351,18 @@ public class ActivityMain extends Activity {
         
         return super.onOptionsItemSelected(item);
     }
+
+	@Override
+	public void onRestoreInstanceState(Bundle savedInstanceState) {
+	  super.onRestoreInstanceState(savedInstanceState);
+	  selectedItemIndex = savedInstanceState.getInt(SELECTED_ITEM_INDEX);
+	}
 	
 	@Override
 	protected void onSaveInstanceState(Bundle savedInstanceState) 
 	{
 		savedInstanceState.putInt(SELECTED_ITEM_INDEX, selectedItemIndex);
 	    super.onSaveInstanceState(savedInstanceState);
-	}
-	
-	@Override
-	public void onRestoreInstanceState(Bundle savedInstanceState) {
-	  super.onRestoreInstanceState(savedInstanceState);
-	  selectedItemIndex = savedInstanceState.getInt(SELECTED_ITEM_INDEX);
 	}
 	
 	/**
