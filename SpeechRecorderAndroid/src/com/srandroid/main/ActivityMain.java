@@ -4,6 +4,7 @@ import java.sql.Savepoint;
 import java.util.Arrays;
 
 import com.srandroid.R;
+import com.srandroid.activitiesScript.ActivityScriptDetails;
 import com.srandroid.activitiesSpeaker.ActivityAddSpeaker;
 import com.srandroid.activitiesSpeaker.ActivitySpeakerDetails;
 import com.srandroid.database.DBAccessor;
@@ -685,25 +686,34 @@ public class ActivityMain extends Activity {
 			switch (itemIndex)
 			{
 					case Utils.ConstantVars.POS_SESSIONS:
-						test = getTextFromItem(itemView, R.id.itemSession_textIdValue);
+						
+						Log.w(this.getActivity().getClass().getName(), 
+								"clicked session ttem position=" 
+										+ " key_id=" + test + " rowId=" + rowId );
 						Utils.toastTextToUser(this.getActivity(), "clicked Session Item position=" 
 								+ " key_id=" + test + " rowId=" + rowId );
 						// use rowId
 						break;
 						
 					case Utils.ConstantVars.POS_SCRIPTS:
-						test = getTextFromItem(itemView, R.id.itemScript_textIdValue);
-						Utils.toastTextToUser(this.getActivity(), "clicked script ttem position=" 
-								+ " key_id=" + test + " rowId=" + rowId );
+						Log.w(this.getActivity().getClass().getName(), 
+								"clicked script item position=" 
+										+ " key_id=" + test + " rowId=" + rowId );
+						
+						Intent i2=new Intent(this.getActivity(), ActivityScriptDetails.class);
+						i2.putExtra("itemId", Long.toString(rowId));
+						this.getActivity().startActivity(i2);
+						
 						break;
 						
 					case Utils.ConstantVars.POS_SPEAKERS:
-						Utils.toastTextToUser(this.getActivity(), "clicked speaker item position=" 
-								+ " key_id=" + test + " rowId=" + rowId );
+						Log.w(this.getActivity().getClass().getName(), 
+								"clicked speaker item position=" 
+										+ " key_id=" + test + " rowId=" + rowId);
 						
-						Intent i=new Intent(this.getActivity(), ActivitySpeakerDetails.class);
-						i.putExtra("itemId", Long.toString(rowId));
-						this.getActivity().startActivity(i);
+						Intent i3=new Intent(this.getActivity(), ActivitySpeakerDetails.class);
+						i3.putExtra("itemId", Long.toString(rowId));
+						this.getActivity().startActivity(i3);
 						
 						
 						break;
