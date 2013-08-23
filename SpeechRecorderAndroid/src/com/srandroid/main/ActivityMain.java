@@ -61,7 +61,7 @@ public class ActivityMain extends Activity {
     private DrawerLayout drawerlayout_in_activitymain;
     private ListView listview_drawer_items;
     private ActionBarDrawerToggle toggle_drawer_items;
-    private int selectedItemIndex = -1;
+    private int selectedItemIndex = 0; // select the first item
     
     // STATE for savedInstance
     public static final String SELECTED_ITEM_INDEX = "selectedItemIndex";
@@ -94,12 +94,6 @@ public class ActivityMain extends Activity {
 		super.onCreate(savedInstanceState);
 		
 		
-		selectedItemIndex = Utils.ConstantVars.selectedItemIndex;
-		if(selectedItemIndex == -1)
-        {
-        	// select the first item
-        	selectedItemIndex = 0;
-        }
 		
 		
 		// initialize some constant values
@@ -114,7 +108,9 @@ public class ActivityMain extends Activity {
 		}
 		
 		
-		
+		if(Utils.ConstantVars.selectedItemIndex != -1)
+			selectedItemIndex = Utils.ConstantVars.selectedItemIndex;
+
 		
 		
 		Log.w(ActivityMain.class.getName(), " will create view of this HOME activity.");
