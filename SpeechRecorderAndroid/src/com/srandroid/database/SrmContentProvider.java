@@ -43,10 +43,10 @@ public class SrmContentProvider extends ContentProvider
 	@Override
 	public boolean onCreate() 
 	{
-		dbAccesor = new DBAccessor(getContext());
-		Log.w(SrmContentProvider.class.getName(), 
-				"onCreate(): created content provider for database: " + 
-						dbAccesor.getDatabaseName());
+//		dbAccesor = new DBAccessor(getContext());
+//		Log.w(SrmContentProvider.class.getName(), 
+//				"onCreate(): created content provider for database: " + 
+//						dbAccesor.getDatabaseName());
 		return true;
 	}
 	
