@@ -104,7 +104,7 @@ public class ActivitySessionDetails extends Activity
 				
 		        
 		        sessionid = (TextView) findViewById(R.id.act_sessiondetails_sessionid_textvalue);
-		        datetime = (TextView) findViewById(R.id.act_sessiondetails_datetime_textvalue);
+		        datetime = (TextView) findViewById(R.id.act_sessionsdetails_datetime_textvalue);
 		        place = (TextView) findViewById(R.id.act_sessiondetails_place_textvalue);
 		        isfinished = (TextView) findViewById(R.id.act_sessiondetails_isfinished_textvalue);
 		        speakers = (TextView) findViewById(R.id.act_sessiondetails_speakers_textvalue);

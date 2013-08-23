@@ -42,7 +42,7 @@
                     android:textSize="20sp"/>
                     
                     <TextView
-                    android:id="@+id/act_sessionsdetails_datatime_textvalue"
+                    android:id="@+id/act_sessionsdetails_datetime_textvalue"
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:gravity="center_vertical"

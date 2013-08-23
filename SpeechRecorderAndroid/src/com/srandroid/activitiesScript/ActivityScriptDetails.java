@@ -18,7 +18,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Spinner;
-
 import com.srandroid.R;
 import com.srandroid.database.SrmContentProvider;
 import com.srandroid.database.TableScripts;

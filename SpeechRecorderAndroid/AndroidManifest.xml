@@ -94,7 +94,7 @@
             android:screenOrientation="landscape"
             android:configChanges="orientation|keyboardHidden"
             android:name=".activitiesSession.ActivitySessionDetails"
-            android:label="@string/act_sessiondetials_title"
+            android:label="@string/act_sessiondetails_title"
             android:parentActivityName="com.srandroid.main.ActivityMain" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -105,7 +105,7 @@
             android:screenOrientation="landscape"
             android:configChanges="orientation|keyboardHidden"
             android:name=".activitiesSession.ActivitySearchSessions"
-            android:label="@string/act_sessiondetials_title"
+            android:label="@string/act_sessiondetails_title"
             android:parentActivityName="com.srandroid.main.ActivityMain" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
