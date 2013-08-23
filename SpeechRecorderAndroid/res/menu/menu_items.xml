@@ -109,6 +109,20 @@
         
         
     </group>
+    
+    <!-- Activity script details -->
+    <group 
+        android:id="@+id/bgroup_scriptdetails"
+        android:visible="false" >
+    
+        <item
+            android:id="@+id/activity_scriptdetails_button_start"
+            android:icon="@drawable/icon_button_mic"
+            android:showAsAction="always"
+            android:title="@string/activity_scriptdetials_button_startrecording_text" />
+        
+        
+    </group>
 
 </menu>
 

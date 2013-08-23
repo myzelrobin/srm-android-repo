@@ -66,8 +66,6 @@ public class SrmContentProvider extends ContentProvider
 	 */
 	private void setTablesForQuerybuilder(Uri uri, SQLiteQueryBuilder queryBuilder) 
 	{
-		String tablesTemp =null;
-		
 		int uriType = SrmUriMatcher.uriMatcher.match(uri);
 		switch(uriType)
 		{
@@ -114,6 +112,8 @@ public class SrmContentProvider extends ContentProvider
 			case SrmUriMatcher.TABLE_SESSIONS_LEFTJOIN_SPEAKERS:
 				break;
 			case SrmUriMatcher.TABLE_SPEAKERS_LEFTJOIN_SESSIONS:
+				break;
+			case SrmUriMatcher.TABLE_SCRIPTS_LOJ_SESSIONS:
 				break;
 		}
 		
@@ -186,22 +186,6 @@ public class SrmContentProvider extends ContentProvider
 				break;
 			case SrmUriMatcher.TABLE_SESSIONS_LEFTJOIN_SPEAKERS:
 
-//				String[] selectColumnsArray1 = {
-//						TableSessions.COLUMN_DATE,
-//						TableSessions.COLUMN_TIME,
-//						TableSessions.COLUMN_PLACE,
-//						TableSessions.COLUMN_IS_FINISHED,
-//						TableSessions.COLUMN_DEVICE_DATA,
-//						TableSessions.COLUMN_GPS_DATA,
-//						TableSessions.COLUMN_COUNT,
-//						TableSessions.COLUMN_SCRIPT_ID,
-//						TableSessions.COLUMN_SPEAKER_ID,
-//						TableSessions.COLUMN_LAST_SECTION,
-//						TableSpeakers.COLUMN_FIRSTNAME,
-//						TableSpeakers.COLUMN_SURNAME,
-//						TableSpeakers.COLUMN_SEX,
-//						TableSpeakers.COLUMN_ACCENT,
-//						TableSpeakers.COLUMN_BIRTHDAY};
 				StringBuilder builder = new StringBuilder();
 				builder.append(selectColumns[0]);
 				for (int i = 1; i < selectColumns.length; i++) {
@@ -213,7 +197,8 @@ public class SrmContentProvider extends ContentProvider
 				
 				// must include _id column
 				// sessions _id use sessions._id
-				String sqlQuery = "select " + result + ", sessions._id "
+				String sqlQuery = "select " + result 
+						+ ", sessions._id, sessions._id as session_key_id, speakers._id as speaker_key_id"
 						+ " from sessions left outer join speakers on sessions.speaker_id=speakers._id;";
 				
 				cursor = srmDB.rawQuery(sqlQuery, null);
@@ -235,18 +220,51 @@ public class SrmContentProvider extends ContentProvider
 				
 				if(wherePart == null)
 				{
-					String sqlQuery2 = "select " + result2 + ", speakers._id, sessions._id as session_key_id "
+					String sqlQuery2 = "select " + result2 
+							+ ", speakers._id, speakers._id as speaker_key_id, sessions._id as session_key_id "
 							+ " from speakers left outer join sessions on sessions.speaker_id=speakers._id;";
-					
 					cursor = srmDB.rawQuery(sqlQuery2, null);
 				}
 				else
 				{
-					String sqlQuery2 = "SELECT " + result2 + ", speakers._id, sessions._id AS session_key_id "
+					String sqlQuery2 = "SELECT " + result2 
+							+ ", speakers._id, speakers._id as speaker_key_id, sessions._id AS session_key_id "
 							+ " FROM speakers LEFT OUTER JOIN sessions ON sessions.speaker_id=speakers._id"
 							+ " where " + wherePart + ";";
-					
 					cursor = srmDB.rawQuery(sqlQuery2, null);
+				}
+				
+				cursor.setNotificationUri(getContext().getContentResolver(), uri); 
+				
+				return cursor;
+				
+			case SrmUriMatcher.TABLE_SCRIPTS_LOJ_SESSIONS:
+				
+				StringBuilder builder3 = new StringBuilder();
+				builder3.append(selectColumns[0]);
+				for (int i = 1; i < selectColumns.length; i++) {
+				   builder3.append("," + selectColumns[i]);
+				}
+				String result3 = builder3.toString();
+				
+				srmDB = dbAccesor.getReadableDatabase();
+				
+				if(wherePart == null)
+				{
+					String sqlQuery3 = "SELECT " + result3 
+							+ ", scripts._id, scripts._id as script_key_id, sessions._id as session_key_id "
+							+ " FROM scripts LEFT OUT JOIN sessions ON sessions.script_id=scripts._id;";
+					
+					cursor = srmDB.rawQuery(sqlQuery3, null);
+				}
+				else
+				{
+					String sqlQuery3 = "SELECT " + result3 
+							+ ", scripts._id, scripts._id as script_key_id, sessions._id as session_key_id "
+							+ " FROM scripts LEFT OUTER JOIN sessions ON sessions.script_id=scripts._id"
+							+ " where " + wherePart + ";";
+					
+					cursor = srmDB.rawQuery(sqlQuery3, null);
 				}
 					
 				cursor.setNotificationUri(getContext().getContentResolver(), uri); 
@@ -869,7 +887,6 @@ public class SrmContentProvider extends ContentProvider
 				ContentResolver.CURSOR_DIR_BASE_TYPE + "/item_sessions_leftjoin_speakers";
 		
 		private static final int TABLE_SESSIONS_LEFTJOIN_SPEAKERS = 101;
-		private static final int ITEM_SESSIONS_LEFTJOIN_SPEAKERS = 102;
 		
 		
 		// speakers left join sessions
@@ -882,9 +899,20 @@ public class SrmContentProvider extends ContentProvider
 		public static final String CONTENT_ITEM_TYPE_SPEAKERS_LEFTJOIN_SESSIONS = 
 				ContentResolver.CURSOR_DIR_BASE_TYPE + "/item_speakers_leftjoin_sessions";
 		
-		private static final int TABLE_SPEAKERS_LEFTJOIN_SESSIONS = 103;
-		private static final int ITEM_SPEAKERS_LEFTJOIN_SESSIONS = 104;
+		private static final int TABLE_SPEAKERS_LEFTJOIN_SESSIONS = 102;
 		
+		
+		// scripts left outer join speakers sessions
+		private static final String PATH_TABLE_SCRIPTS_LOJ_SESSIONS = "table_sessions_loj_sessions";
+		public static final Uri CONTENT_URI_TABLE_SCRIPTS_LOJ_SESSIONS = 
+				Uri.parse("content://" + AUTHORITY + "/" + PATH_TABLE_SCRIPTS_LOJ_SESSIONS);
+		
+		public static final String CONTENT_TYPE_TABLE_SCRIPTS_LOJ_SESSIONS = 
+				ContentResolver.CURSOR_DIR_BASE_TYPE + "/table_sessions_loj_sessions";
+		public static final String CONTENT_ITEM_TYPE_SCRIPTS_LOJ_SESSIONS = 
+				ContentResolver.CURSOR_DIR_BASE_TYPE + "/item_sessions_loj_sessions";
+		
+		private static final int TABLE_SCRIPTS_LOJ_SESSIONS = 103;
 		
 		
 		// if necessary, define Strings above and add uri below, like SELECT JOIN
@@ -922,14 +950,14 @@ public class SrmContentProvider extends ContentProvider
 			// sessions left join speakers
 			uriMatcher.addURI(AUTHORITY, PATH_TABLE_SESSIONS_LEFTJOIN_SPEAKERS, 
 					TABLE_SESSIONS_LEFTJOIN_SPEAKERS);
-			uriMatcher.addURI(AUTHORITY, PATH_TABLE_SESSIONS_LEFTJOIN_SPEAKERS + "/#", 
-					ITEM_SESSIONS_LEFTJOIN_SPEAKERS);
 			
 			// speakers left join sessions
 			uriMatcher.addURI(AUTHORITY, PATH_TABLE_SPEAKERS_LEFTJOIN_SESSIONS, 
 					TABLE_SPEAKERS_LEFTJOIN_SESSIONS);
-			uriMatcher.addURI(AUTHORITY, PATH_TABLE_SPEAKERS_LEFTJOIN_SESSIONS + "/#", 
-					ITEM_SPEAKERS_LEFTJOIN_SESSIONS);
+			
+			// scripts left outer join sessions
+			uriMatcher.addURI(AUTHORITY, PATH_TABLE_SCRIPTS_LOJ_SESSIONS, 
+					TABLE_SCRIPTS_LOJ_SESSIONS);
 			
 			
 		}

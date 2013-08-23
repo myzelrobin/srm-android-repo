@@ -192,7 +192,7 @@ public class ActivityAddSpeaker extends Activity
 		        				"saveSpeakerItemToDB() inserted a speaker into db with id=" + speakerItemUri);
 		        		Utils.toastTextToUser(this, "saved a speaker with id=" + speakerItemUri);
 		        		
-		        		/*Intent newI = new Intent(ActivityMain.this, ActivityAddSpeaker.class);
+		        		/*Intent newI = new Intent(ActivityMain.this, ActivityDownloadScript.class);
 		        		// newI.putExtra("key", value); //Optional parameters
 		        		ActivityMain.this.startActivity(newI);*/
 		        		

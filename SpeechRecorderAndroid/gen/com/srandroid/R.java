@@ -58,35 +58,41 @@ public final class R {
         public static final int progressbar=0x7f02000d;
     }
     public static final class id {
-        public static final int activity_addspeaker_button_start=0x7f0a003d;
-        public static final int activity_speakerdetails_accent_textvalue=0x7f0a001a;
-        public static final int activity_speakerdetails_birthday_textvalue=0x7f0a001b;
-        public static final int activity_speakerdetails_button_start=0x7f0a003f;
-        public static final int activity_speakerdetails_name_textvalue=0x7f0a0018;
-        public static final int activity_speakerdetails_scripts_textvalue=0x7f0a001d;
-        public static final int activity_speakerdetails_sessions_textvalue=0x7f0a001c;
-        public static final int activity_speakerdetails_sex_textvalue=0x7f0a0019;
-        public static final int bgroup_addspeaker=0x7f0a003c;
-        public static final int bgroup_overflow=0x7f0a0030;
-        public static final int bgroup_scripts=0x7f0a0036;
-        public static final int bgroup_sessions=0x7f0a0033;
-        public static final int bgroup_speakerdetails=0x7f0a003e;
-        public static final int bgroup_speakers=0x7f0a0039;
-        public static final int button_add_session=0x7f0a0034;
-        public static final int button_add_speaker=0x7f0a003a;
+        public static final int activity_addspeaker_button_start=0x7f0a0041;
+        public static final int activity_scriptdetails_button_start=0x7f0a0045;
+        public static final int activity_scriptdetails_desc_textvalue=0x7f0a0019;
+        public static final int activity_scriptdetails_scriptid_textvalue=0x7f0a0018;
+        public static final int activity_scriptdetails_sessions_textvalue=0x7f0a001a;
+        public static final int activity_scriptdetails_speakers_textvalue=0x7f0a001b;
+        public static final int activity_speakerdetails_accent_textvalue=0x7f0a001e;
+        public static final int activity_speakerdetails_birthday_textvalue=0x7f0a001f;
+        public static final int activity_speakerdetails_button_start=0x7f0a0043;
+        public static final int activity_speakerdetails_name_textvalue=0x7f0a001c;
+        public static final int activity_speakerdetails_scripts_textvalue=0x7f0a0021;
+        public static final int activity_speakerdetails_sessions_textvalue=0x7f0a0020;
+        public static final int activity_speakerdetails_sex_textvalue=0x7f0a001d;
+        public static final int bgroup_addspeaker=0x7f0a0040;
+        public static final int bgroup_overflow=0x7f0a0034;
+        public static final int bgroup_scriptdetails=0x7f0a0044;
+        public static final int bgroup_scripts=0x7f0a003a;
+        public static final int bgroup_sessions=0x7f0a0037;
+        public static final int bgroup_speakerdetails=0x7f0a0042;
+        public static final int bgroup_speakers=0x7f0a003d;
+        public static final int button_add_session=0x7f0a0038;
+        public static final int button_add_speaker=0x7f0a003e;
         public static final int button_cancel_in_dialog_mic=0x7f0a0002;
-        public static final int button_download_script=0x7f0a0037;
-        public static final int button_exit=0x7f0a0032;
-        public static final int button_search_scripts=0x7f0a0038;
-        public static final int button_search_sessions=0x7f0a0035;
-        public static final int button_search_speakers=0x7f0a003b;
-        public static final int button_settings=0x7f0a0031;
+        public static final int button_download_script=0x7f0a003b;
+        public static final int button_exit=0x7f0a0036;
+        public static final int button_search_scripts=0x7f0a003c;
+        public static final int button_search_sessions=0x7f0a0039;
+        public static final int button_search_speakers=0x7f0a003f;
+        public static final int button_settings=0x7f0a0035;
         public static final int button_testmic_in_dialog_mic=0x7f0a0003;
         public static final int button_testrecord_in_dialog_mic=0x7f0a0004;
         public static final int drawerlayout_in_activitymain=0x7f0a0005;
         public static final int framelayout_in_drawerlayout_activitymain=0x7f0a0006;
         public static final int gridview_in_fragment_in_activitymain=0x7f0a0008;
-        public static final int iconInItemSpeaker=0x7f0a001e;
+        public static final int iconInItemSpeaker=0x7f0a0022;
         public static final int id_addspeaker_accent_text=0x7f0a000f;
         public static final int id_addspeaker_accent_textinput=0x7f0a0010;
         public static final int id_addspeaker_birthday_text=0x7f0a0013;
@@ -99,24 +105,24 @@ public final class R {
         public static final int id_addspeaker_surname_text=0x7f0a000d;
         public static final int id_addspeaker_surname_textinput=0x7f0a000e;
         public static final int id_addspeaker_year_textinput=0x7f0a0014;
-        public static final int itemScript_textDesciptionValue=0x7f0a0021;
-        public static final int itemScript_textIdSign=0x7f0a001f;
-        public static final int itemScript_textIdValue=0x7f0a0020;
-        public static final int itemSession_textCreateDate=0x7f0a0027;
-        public static final int itemSession_textIdSign=0x7f0a0022;
-        public static final int itemSession_textIdValue=0x7f0a0023;
-        public static final int itemSession_textIsFinished=0x7f0a0028;
-        public static final int itemSession_textScriptIdValue=0x7f0a0024;
-        public static final int itemSession_textSpeakerFirstname=0x7f0a0025;
-        public static final int itemSession_textSpeakerSurname=0x7f0a0026;
-        public static final int itemSpeaker_textAccentValue=0x7f0a002e;
-        public static final int itemSpeaker_textBirthdayValue=0x7f0a002f;
-        public static final int itemSpeaker_textFirstNameValue=0x7f0a002b;
-        public static final int itemSpeaker_textSexValue=0x7f0a002d;
-        public static final int itemSpeaker_textSurnameValue=0x7f0a002c;
-        public static final int linearlayout_item_speaker=0x7f0a0029;
+        public static final int itemScript_textDesciptionValue=0x7f0a0025;
+        public static final int itemScript_textIdSign=0x7f0a0023;
+        public static final int itemScript_textIdValue=0x7f0a0024;
+        public static final int itemSession_textCreateDate=0x7f0a002b;
+        public static final int itemSession_textIdSign=0x7f0a0026;
+        public static final int itemSession_textIdValue=0x7f0a0027;
+        public static final int itemSession_textIsFinished=0x7f0a002c;
+        public static final int itemSession_textScriptIdValue=0x7f0a0028;
+        public static final int itemSession_textSpeakerFirstname=0x7f0a0029;
+        public static final int itemSession_textSpeakerSurname=0x7f0a002a;
+        public static final int itemSpeaker_textAccentValue=0x7f0a0032;
+        public static final int itemSpeaker_textBirthdayValue=0x7f0a0033;
+        public static final int itemSpeaker_textFirstNameValue=0x7f0a002f;
+        public static final int itemSpeaker_textSexValue=0x7f0a0031;
+        public static final int itemSpeaker_textSurnameValue=0x7f0a0030;
+        public static final int linearlayout_item_speaker=0x7f0a002d;
         public static final int linearlayout_toasthint=0x7f0a0009;
-        public static final int linearlayout_wrap_textview_in_item=0x7f0a002a;
+        public static final int linearlayout_wrap_textview_in_item=0x7f0a002e;
         public static final int listview_drawer_items=0x7f0a0007;
         public static final int progressBarInDialogSetMic=0x7f0a0001;
         public static final int speakerdetails_icon_speaker=0x7f0a0017;
@@ -130,11 +136,13 @@ public final class R {
         public static final int layout_textview_drawer_items=0x7f030003;
         public static final int layout_toasthint_in_activitymain=0x7f030004;
         public static final int linearlayout_activity_addspeaker=0x7f030005;
-        public static final int linearlayout_activity_speakerdetails=0x7f030006;
-        public static final int linearlayout_item_script=0x7f030007;
-        public static final int linearlayout_item_script_test=0x7f030008;
-        public static final int linearlayout_item_session=0x7f030009;
-        public static final int linearlayout_item_speaker=0x7f03000a;
+        public static final int linearlayout_activity_scriptdetails=0x7f030006;
+        public static final int linearlayout_activity_sessiondetails=0x7f030007;
+        public static final int linearlayout_activity_speakerdetails=0x7f030008;
+        public static final int linearlayout_item_script=0x7f030009;
+        public static final int linearlayout_item_script_test=0x7f03000a;
+        public static final int linearlayout_item_session=0x7f03000b;
+        public static final int linearlayout_item_speaker=0x7f03000c;
     }
     public static final class menu {
         public static final int menu_items=0x7f090000;
@@ -165,6 +173,16 @@ public final class R {
         /**  activity add speaker 
          */
         public static final int activity_addspeaker_title=0x7f06005d;
+        public static final int activity_scriptdetials_button_startrecording_text=0x7f06006f;
+        public static final int activity_scriptdetials_desc_text=0x7f060071;
+        public static final int activity_scriptdetials_scriptid_text=0x7f060070;
+        public static final int activity_scriptdetials_sessions_text=0x7f060072;
+        public static final int activity_scriptdetials_sessions_text2=0x7f060074;
+        public static final int activity_scriptdetials_speakers_text=0x7f060073;
+        public static final int activity_scriptdetials_speakers_text2=0x7f060075;
+        /**  activity script detials 
+         */
+        public static final int activity_scriptdetials_title=0x7f06006e;
         public static final int activity_speakerdetails_accent_text=0x7f060067;
         public static final int activity_speakerdetails_birthday_text=0x7f060069;
         public static final int activity_speakerdetails_button_startrecording_text=0x7f060065;
@@ -193,8 +211,8 @@ public final class R {
  Buttons in Overflow 
  Buttons in Overflow 
          */
-        public static final int button_set_microphone=0x7f06006e;
-        public static final int button_set_recording_values=0x7f06006f;
+        public static final int button_set_microphone=0x7f060076;
+        public static final int button_set_recording_values=0x7f060077;
         /**  Buttons in Overflow 
          */
         public static final int button_settings=0x7f060016;
@@ -284,7 +302,7 @@ public final class R {
         public static final int settings_sample_rate_default=0x7f060028;
         public static final int settings_sample_rate_key=0x7f060027;
         public static final int settings_sample_rate_summary=0x7f060026;
-        public static final int settings_theme=0x7f060070;
+        public static final int settings_theme=0x7f060078;
         public static final int speaker1_accent=0x7f060041;
         public static final int speaker1_birthday=0x7f060042;
         /**  Speaker Example 

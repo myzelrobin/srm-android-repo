@@ -225,6 +225,16 @@
         <string name="activity_speakerdetails_sessions_text2">No sessions informations</string>
         <string name="activity_speakerdetails_scripts_text2">No script informations</string>
         
+        <!-- activity script detials -->
+        <string name="activity_scriptdetials_title">Script Details</string>
+        <string name="activity_scriptdetials_button_startrecording_text">Start</string>
+        <string name="activity_scriptdetials_scriptid_text">Script ID:</string>
+        <string name="activity_scriptdetials_desc_text">Description</string>
+        <string name="activity_scriptdetials_sessions_text">Sessions</string>
+        <string name="activity_scriptdetials_speakers_text">Speakers</string>
+        <string name="activity_scriptdetials_sessions_text2">No sessions informations</string>
+        <string name="activity_scriptdetials_speakers_text2">No speakers informations</string>
+        
         
 </resources>
 

@@ -68,6 +68,27 @@
                 android:value="com.srandroid.main.ActivityMain" />
         </activity>
         
+        <activity 
+            android:screenOrientation="landscape"
+            android:configChanges="orientation|keyboardHidden"
+            android:name=".activitiesScript.ActivityScriptDetails"
+            android:label="@string/activity_scriptdetials_title"
+            android:parentActivityName="com.srandroid.main.ActivityMain" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.srandroid.main.ActivityMain" />
+        </activity>
+        
+        <activity 
+            android:screenOrientation="landscape"
+            android:configChanges="orientation|keyboardHidden"
+            android:name=".activitiesScript.ActivityDownloadscript"
+            android:label="@string/activity_scriptdetials_title"
+            android:parentActivityName="com.srandroid.main.ActivityMain" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.srandroid.main.ActivityMain" />
+        </activity>
         
         <provider
             android:authorities="com.srandroid.contentprovider"
