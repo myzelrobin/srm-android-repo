@@ -92,6 +92,28 @@ public class ActivityMain extends Activity {
 	{
 		super.onCreate(savedInstanceState);
 		
+		//
+		// start activity from main
+		Bundle extras = getIntent().getExtras(); 
+
+		if (extras != null) 
+		{
+			selectedItemIndex = extras.getInt(SELECTED_ITEM_INDEX);
+		}
+					
+		
+		if(savedInstanceState != null)
+		{
+			selectedItemIndex = savedInstanceState.getInt(SELECTED_ITEM_INDEX);
+		}
+		
+		if(selectedItemIndex == -1)
+        {
+        	// select the first item
+        	selectedItemIndex = 0;
+        }
+		
+		
 		// initialize some constant values
 		if(!Utils.ConstantVars.isPreStartInitialized)
 		{
@@ -122,29 +144,7 @@ public class ActivityMain extends Activity {
         // Set the adapter for the list view
         listview_drawer_items.setAdapter(new ArrayAdapter<String>(this,
                 R.layout.layout_textview_drawer_items, array_drawer_items));
-        
-        
-        
-        
-        
-        
-        
-        // orientation changed
-        if(savedInstanceState != null)
-        {
-        	selectedItemIndex = savedInstanceState.getInt(SELECTED_ITEM_INDEX);
-        }
-        else
-        {
-        	// in the first onCreate(), select Sessions
-            if(selectedItemIndex == -1)
-            {
-            	// select the first item
-            	selectedItemIndex = 0;
-            }
-            
-        }
-        
+          
         // Set the list's click listener, and select one item
         listview_drawer_items.setOnItemClickListener(new DrawerItemClickListener(selectedItemIndex));
         
@@ -356,7 +356,12 @@ public class ActivityMain extends Activity {
 		savedInstanceState.putInt(SELECTED_ITEM_INDEX, selectedItemIndex);
 	    super.onSaveInstanceState(savedInstanceState);
 	}
-
+	
+	@Override
+	public void onRestoreInstanceState(Bundle savedInstanceState) {
+	  super.onRestoreInstanceState(savedInstanceState);
+	  selectedItemIndex = savedInstanceState.getInt(SELECTED_ITEM_INDEX);
+	}
 	
 	/**
 	 * 
