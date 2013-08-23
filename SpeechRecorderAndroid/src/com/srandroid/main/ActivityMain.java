@@ -66,6 +66,8 @@ public class ActivityMain extends Activity {
     // STATE for savedInstance
     public static final String SELECTED_ITEM_INDEX = "selectedItemIndex";
     
+    private DBAccessor dbAceAccessor;
+    
     // 
     private Thread initAppThread = null;
 
@@ -106,7 +108,7 @@ public class ActivityMain extends Activity {
 		if(Utils.ConstantVars.selectedItemIndex != -1)
 			selectedItemIndex = Utils.ConstantVars.selectedItemIndex;
 
-		
+		dbAceAccessor = new DBAccessor(getApplicationContext());
 		
 		Log.w(ActivityMain.class.getName(), " will create view of this HOME activity.");
 		
@@ -188,6 +190,7 @@ public class ActivityMain extends Activity {
 	@Override
     protected void onPause()
     {
+		dbAceAccessor.close();
 		Utils.ConstantVars.selectedItemIndex = selectedItemIndex;
 		super.onPause();
 	}
