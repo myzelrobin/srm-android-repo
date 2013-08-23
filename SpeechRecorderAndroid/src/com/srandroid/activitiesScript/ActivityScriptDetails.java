@@ -127,8 +127,8 @@ public class ActivityScriptDetails extends Activity
 					
 					cursor.moveToNext();
 				}
-				if(!(sessionlist.toString() == "[null]")) sessions.setText(sessionlist.toString());
-				if(!(speakerlist.toString() == "[null]")) speakers.setText(speakerlist.toString());
+				if(!(sessionlist.toString().contains("null"))) sessions.setText(sessionlist.toString());
+				if(!(speakerlist.toString().contains("null"))) speakers.setText(speakerlist.toString());
 				
 			}
 	        
